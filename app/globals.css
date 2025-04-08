@@ -138,3 +138,7 @@
     font-family: var(--font-cursive);
   }
 }
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}

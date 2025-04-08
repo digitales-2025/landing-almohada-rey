@@ -37,7 +37,14 @@ export default function Header() {
   // Función para renderizar un ítem de navegación
   function renderNavItem(item: NavItem, deviceType: "desktop" | "mobile") {
     const active = isActive(item);
-    const styles = getNavItemStyles(item.type || "link", active, item.position || "left", item.device || "all");
+    const isMobile = deviceType === "mobile";
+    const styles = getNavItemStyles(
+      item.type || "link",
+      active,
+      item.position || "left",
+      item.device || "all",
+      isMobile
+    );
 
     const isDropdownOpen = openDropdowns.includes(item.id);
     const Icon = item.icon;
@@ -47,10 +54,10 @@ export default function Header() {
       return (
         <div key={item.id} className="relative">
           <button onClick={() => toggleDropdown(item.id)} className={`${styles.container} ${headerColors.text}`}>
-            {Icon && <Icon className={`${styles.icon} ${headerColors.text}`} />}
+            {Icon && <Icon className={styles.icon} />}
             <span className={`${styles.text} ${headerColors.text}`}>{item.title}</span>
             <ChevronDown
-              size={26}
+              size={isMobile ? 20 : 26}
               className={`${headerColors.text} ${isDropdownOpen ? "rotate-180 transition-transform" : "transition-transform"}`}
             />
           </button>
@@ -60,7 +67,7 @@ export default function Header() {
               className={clsx(
                 `absolute left-0 mt-1 w-48 ${headerColors.dropdown.background} shadow-lg rounded-md z-10`,
                 {
-                  "static w-full": deviceType === "mobile",
+                  "static w-full": isMobile,
                 }
               )}
             >
@@ -70,7 +77,7 @@ export default function Header() {
                     key={child.id}
                     href={child.href}
                     className={clsx(
-                      "block px-4 py-3 text-2xl font-cursive",
+                      `block px-4 py-3 font-medium ${isMobile ? "text-xl" : "text-2xl"}`,
                       pathname === child.href
                         ? headerColors.dropdown.activeText
                         : `${headerColors.dropdown.text} ${headerColors.dropdown.hoverText}`
@@ -93,7 +100,7 @@ export default function Header() {
           variant={item.type === "button" ? "default" : "ghost"}
           className={`${styles.container} ${item.type !== "button" ? `${headerColors.text} ${styles.hover}` : ""}`}
         >
-          {Icon && <Icon className={`${styles.icon} ${item.type !== "button" ? headerColors.text : ""}`} />}
+          {Icon && <Icon className={styles.icon} />}
           <span className={`${styles.text} ${item.type !== "button" ? headerColors.text : ""}`}>{item.title}</span>
         </Button>
       </Link>
@@ -103,12 +110,14 @@ export default function Header() {
   // Función para renderizar el logo según el tipo
   function renderLogo(deviceType: "desktop" | "mobile" = "desktop") {
     const { logo } = navigationConfig;
+    const isMobile = deviceType === "mobile";
+    const scaleFactor = isMobile ? 0.75 : 1;
 
     if (logo.type === "component") {
-      const LogoComponent = deviceType === "mobile" && logo.mobile ? logo.mobile : logo.desktop;
+      const LogoComponent = isMobile && logo.mobile ? logo.mobile : logo.desktop;
 
       if (LogoComponent) {
-        return <LogoComponent width={logo.width} height={logo.height} />;
+        return <LogoComponent width={(logo.width || 180) * scaleFactor} height={(logo.height || 60) * scaleFactor} />;
       }
     }
 
@@ -116,15 +125,27 @@ export default function Header() {
       return (
         <>
           {logo.imageUrl && (
-            <Image src={logo.imageUrl} alt={logo.alt || "Logo"} width={logo.width || 40} height={logo.height || 40} />
+            <Image
+              src={logo.imageUrl}
+              alt={logo.alt || "Logo"}
+              width={(logo.width || 40) * scaleFactor}
+              height={(logo.height || 40) * scaleFactor}
+              className="w-auto h-auto"
+            />
           )}
-          {logo.type === "both" && <span className={`text-xl font-semibold ${headerColors.text}`}>{logo.text}</span>}
+          {logo.type === "both" && (
+            <span className={`${isMobile ? "text-lg" : "text-xl"} font-semibold ${headerColors.text}`}>
+              {logo.text}
+            </span>
+          )}
         </>
       );
     }
 
     if (logo.type === "text") {
-      return <span className={`text-xl font-semibold ${headerColors.text}`}>{logo.text}</span>;
+      return (
+        <span className={`${isMobile ? "text-lg" : "text-xl"} font-semibold ${headerColors.text}`}>{logo.text}</span>
+      );
     }
 
     return null;
@@ -132,13 +153,12 @@ export default function Header() {
 
   return (
     <header
-      className={clsx(
-        `fixed top-0 left-0 w-full z-50 ${headerColors.background} py-8 px-10 transition-all duration-300`,
-        {
-          "transform -translate-y-full": scrollDir === "down" && !mobileMenuOpen && navigationConfig.hideOnScroll,
-          "transform translate-y-0": scrollDir === "up" || mobileMenuOpen || !navigationConfig.hideOnScroll,
-        }
-      )}
+      className={clsx(`fixed top-0 left-0 w-full z-50 ${headerColors.background} transition-all duration-300`, {
+        "transform -translate-y-full": scrollDir === "down" && !mobileMenuOpen && navigationConfig.hideOnScroll,
+        "transform translate-y-0": scrollDir === "up" || mobileMenuOpen || !navigationConfig.hideOnScroll,
+        "py-8 px-10": true,
+        "sm:py-4 sm:px-4": true,
+      })}
     >
       <div className="container mx-auto flex items-center justify-between">
         {!navigationConfig.centerLogo && (
@@ -162,7 +182,10 @@ export default function Header() {
 
           {/* Center Logo (if enabled) */}
           {navigationConfig.centerLogo && (
-            <Link href="/" className="flex items-center justify-center mx-12 transform scale-140">
+            <Link
+              href="/"
+              className="flex items-center justify-center mx-12 transform scale-140 lg:scale-140 md:scale-125 sm:scale-100"
+            >
               {renderLogo("desktop")}
             </Link>
           )}
@@ -177,7 +200,7 @@ export default function Header() {
 
         {/* Mobile Logo (if center enabled) */}
         {navigationConfig.centerLogo && mobileMenuOpen === false && (
-          <Link href="/" className="md:hidden flex items-center justify-center scale-125">
+          <Link href="/" className="md:hidden flex items-center justify-center">
             {renderLogo("mobile")}
           </Link>
         )}
@@ -186,20 +209,20 @@ export default function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden h-16 w-16"
+          className="md:hidden h-10 w-10"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className={`${headerColors.text} h-12 w-12`} />
+            <X className={`${headerColors.text} h-6 w-6`} />
           ) : (
-            <Menu className={`${headerColors.text} h-12 w-12`} />
+            <Menu className={`${headerColors.text} h-6 w-6`} />
           )}
         </Button>
       </div>
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className={`md:hidden flex flex-col py-5 px-5 space-y-3 ${headerColors.mobileMenuBackground}`}>
+        <nav className={`md:hidden flex flex-col py-4 px-4 space-y-2 ${headerColors.mobileMenuBackground}`}>
           {navigationConfig.items
             .filter((item) => item.device === "mobile" || item.device === "all")
             .map((item) => renderNavItem(item, "mobile"))}
