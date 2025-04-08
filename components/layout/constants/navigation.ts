@@ -1,4 +1,4 @@
-import { Bed, CalendarCheck, Camera, Globe, Palmtree } from "lucide-react";
+import { Bike, Bus, CalendarDays, GalleryHorizontalEnd, Lamp } from "lucide-react";
 
 import { LogoAlmohadaRey } from "@/assets/icons/LogoAlmohadaRey";
 import { LogoAlmohadaReyMobile } from "@/assets/icons/LogoAlmohadaReyMobile";
@@ -11,7 +11,7 @@ export const navItems: NavItem[] = [
     id: "rooms",
     title: "Habitaciones",
     href: "/habitaciones",
-    icon: Bed,
+    icon: Lamp,
     type: "link",
     position: "left",
     device: "all",
@@ -20,7 +20,7 @@ export const navItems: NavItem[] = [
     id: "gallery",
     title: "Galería",
     href: "/galeria",
-    icon: Camera,
+    icon: GalleryHorizontalEnd,
     type: "link",
     position: "left",
     device: "all",
@@ -39,7 +39,7 @@ export const navItems: NavItem[] = [
     id: "experiences",
     title: "Experiencias",
     href: "/experiencias",
-    icon: Palmtree,
+    icon: Bike,
     type: "link",
     position: "right",
     device: "all",
@@ -48,7 +48,7 @@ export const navItems: NavItem[] = [
     id: "trips",
     title: "Viajes",
     href: "/viajes",
-    icon: Globe,
+    icon: Bus,
     type: "link",
     position: "right",
     device: "all",
@@ -57,7 +57,7 @@ export const navItems: NavItem[] = [
     id: "reservations",
     title: "Reservas",
     href: "/reservas",
-    icon: CalendarCheck,
+    icon: CalendarDays,
     type: "button",
     position: "right",
     device: "all",
