@@ -26,32 +26,33 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     inactive: "",
     mobile: {
       text: "text-xl font-medium",
+      container: "flex items-center justify-start gap-1",
     },
   },
   link: {
-    container: "flex items-center gap-3 px-4 py-2.5 rounded-md transition-colors",
+    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors",
     text: "text-2xl font-medium",
     icon: "[&>svg]:size-12",
     active: "text-primary",
     hover: "hover:text-primary/80",
     inactive: "text-foreground",
     mobile: {
-      container: "flex items-center gap-2 px-3 py-2 rounded-md transition-colors",
+      container: "flex items-center justify-start gap-1 pl-0 pr-2 py-1.5 rounded-md transition-colors",
       text: "text-xl font-medium",
-      icon: "[&>svg]:size-8",
+      icon: "[&>svg]:size-7",
     },
   },
   dropdown: {
-    container: "flex items-center gap-3 px-4 py-2.5 rounded-md transition-colors relative group",
+    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors relative group",
     text: "text-2xl font-medium",
     icon: "[&>svg]:size-12",
     active: "text-primary",
     hover: "hover:text-primary/80",
     inactive: "text-foreground",
     mobile: {
-      container: "flex items-center gap-2 px-3 py-2 rounded-md transition-colors relative group",
+      container: "flex items-center justify-start gap-1 pl-0 pr-2 py-1.5 rounded-md transition-colors relative group",
       text: "text-xl font-medium",
-      icon: "[&>svg]:size-8",
+      icon: "[&>svg]:size-7",
     },
   },
   button: {
@@ -62,9 +63,9 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     hover: "hover:bg-primary/90",
     inactive: "bg-primary text-primary-foreground",
     mobile: {
-      container: "flex items-center gap-2 px-4 py-2 rounded-md transition-colors",
+      container: "flex items-center justify-start gap-1 px-3 py-1.5 rounded-md transition-colors",
       text: "text-xl font-medium",
-      icon: "[&>svg]:size-8",
+      icon: "[&>svg]:size-7",
     },
   },
 };

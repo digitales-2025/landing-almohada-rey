@@ -111,13 +111,14 @@ export default function Header() {
   function renderLogo(deviceType: "desktop" | "mobile" = "desktop") {
     const { logo } = navigationConfig;
     const isMobile = deviceType === "mobile";
-    const scaleFactor = isMobile ? 0.75 : 1;
 
     if (logo.type === "component") {
       const LogoComponent = isMobile && logo.mobile ? logo.mobile : logo.desktop;
 
       if (LogoComponent) {
-        return <LogoComponent width={(logo.width || 180) * scaleFactor} height={(logo.height || 60) * scaleFactor} />;
+        const width = isMobile ? logo.mobileWidth || logo.width || 140 : logo.width || 180;
+        const height = isMobile ? logo.mobileHeight || logo.height || 45 : logo.height || 60;
+        return <LogoComponent width={width} height={height} />;
       }
     }
 
@@ -128,8 +129,8 @@ export default function Header() {
             <Image
               src={logo.imageUrl}
               alt={logo.alt || "Logo"}
-              width={(logo.width || 40) * scaleFactor}
-              height={(logo.height || 40) * scaleFactor}
+              width={isMobile ? logo.mobileWidth || logo.width || 40 : logo.width || 40}
+              height={isMobile ? logo.mobileHeight || logo.height || 40 : logo.height || 40}
               className="w-auto h-auto"
             />
           )}
@@ -156,8 +157,8 @@ export default function Header() {
       className={clsx(`fixed top-0 left-0 w-full z-50 ${headerColors.background} transition-all duration-300`, {
         "transform -translate-y-full": scrollDir === "down" && !mobileMenuOpen && navigationConfig.hideOnScroll,
         "transform translate-y-0": scrollDir === "up" || mobileMenuOpen || !navigationConfig.hideOnScroll,
-        "py-8 px-10": true,
-        "sm:py-4 sm:px-4": true,
+        "py-6 px-8 md:pt-14 md:pb-10": true,
+        "sm:py-3 sm:px-1": true,
       })}
     >
       <div className="container mx-auto flex items-center justify-between">
@@ -171,7 +172,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center justify-between flex-1">
           {/* Left Items */}
-          <nav className="flex items-center space-x-7 mx-7 flex-1 justify-end">
+          <nav className="flex items-center space-x-8 mx-8 flex-1 justify-end">
             {navigationConfig.items
               .filter(
                 (item) =>
@@ -184,14 +185,14 @@ export default function Header() {
           {navigationConfig.centerLogo && (
             <Link
               href="/"
-              className="flex items-center justify-center mx-12 transform scale-140 lg:scale-140 md:scale-125 sm:scale-100"
+              className="flex items-center justify-center mx-14 my-2 transform scale-140 lg:scale-140 md:scale-125 sm:scale-100"
             >
               {renderLogo("desktop")}
             </Link>
           )}
 
           {/* Right Items */}
-          <nav className="flex items-center space-x-7 mx-7 flex-1 justify-start">
+          <nav className="flex items-center space-x-8 mx-8 flex-1 justify-start">
             {navigationConfig.items
               .filter((item) => item.position === "right" && (item.device === "desktop" || item.device === "all"))
               .map((item) => renderNavItem(item, "desktop"))}
@@ -200,32 +201,39 @@ export default function Header() {
 
         {/* Mobile Logo (if center enabled) */}
         {navigationConfig.centerLogo && mobileMenuOpen === false && (
-          <Link href="/" className="md:hidden flex items-center justify-center">
-            {renderLogo("mobile")}
-          </Link>
+          <div className="flex-1 md:hidden">
+            <Link href="/" className="flex items-center justify-start ml-0 my-1">
+              {renderLogo("mobile")}
+            </Link>
+          </div>
         )}
 
         {/* Mobile Menu Button */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden h-10 w-10"
+          className="md:hidden h-8 w-8 p-0"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? (
-            <X className={`${headerColors.text} h-6 w-6`} />
+            <X className={`${headerColors.text} h-5 w-5`} />
           ) : (
-            <Menu className={`${headerColors.text} h-6 w-6`} />
+            <Menu className={`${headerColors.text} h-5 w-5`} />
           )}
         </Button>
       </div>
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className={`md:hidden flex flex-col py-4 px-4 space-y-2 ${headerColors.mobileMenuBackground}`}>
+        <nav className={`md:hidden flex flex-col py-3 px-0.5 space-y-2 ${headerColors.mobileMenuBackground}`}>
           {navigationConfig.items
             .filter((item) => item.device === "mobile" || item.device === "all")
-            .map((item) => renderNavItem(item, "mobile"))}
+            .map((item) => (
+              <div key={item.id} className="flex items-center justify-start pl-0.5">
+                {renderNavItem(item, "mobile")}
+                {item.type === "logo" && <div className="flex items-center justify-start">{renderLogo("mobile")}</div>}
+              </div>
+            ))}
         </nav>
       )}
     </header>

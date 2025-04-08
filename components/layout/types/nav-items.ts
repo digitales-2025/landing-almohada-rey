@@ -15,6 +15,8 @@ export type LogoConfig = {
   mobile?: ComponentType<any>;
   width?: number;
   height?: number;
+  mobileWidth?: number;
+  mobileHeight?: number;
   alt?: string;
 };
 

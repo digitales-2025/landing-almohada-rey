@@ -13,7 +13,7 @@ export const LogoAlmohadaRey = ({ width = 110, height = 25, color, ...props }: L
     width={width}
     height={height}
     viewBox="0 0 802.2 334.2"
-    style={{ width: "100%", height: "100%" }}
+    style={{ width: "100%", height: "100%", display: "block", overflow: "visible" }}
     preserveAspectRatio="xMidYMid meet"
     {...props}
   >
