@@ -165,13 +165,14 @@
 }
 
 .nav-link:hover {
-  animation: pulse-soft 1.5s infinite;
+  animation: none;
+  transform: scale(1.03);
 }
 
 .btn-reserva, .nav-link {
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .nav-link:hover, .btn-reserva:hover {
@@ -179,18 +180,22 @@
 }
 
 .nav-link:hover::before, .btn-reserva:hover::before {
-  animation: shine 2.5s ease-in-out infinite;
+  animation: shine 2.5s ease-in-out 1 forwards;
+  animation-delay: 0.1s;
 }
 
 .nav-link:hover svg, .nav-link:hover span {
-  animation: color-change 2.5s ease-in-out infinite;
+  animation: none;
+  color: hsl(var(--primary));
   text-shadow: 0 0 1px white;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
 }
 
 button[class*="btn-reserva"] span {
   color: white !important;
   animation: none !important;
   text-shadow: none;
+  transition: all 0.5s ease;
 }
 
 @keyframes shine {
@@ -198,14 +203,14 @@ button[class*="btn-reserva"] span {
     left: -100%;
     opacity: 0;
   }
-  20% {
+  15% {
+    opacity: 0.2;
+  }
+  40% {
     opacity: 0.3;
   }
-  50% {
-    opacity: 0.4;
-  }
-  80% {
-    opacity: 0.3;
+  70% {
+    opacity: 0.2;
   }
   100% {
     left: 100%;
@@ -258,7 +263,7 @@ button[class*="btn-reserva"] span {
 /* Efectos específicos para el botón de reservas */
 button[class*="btn-reserva"] {
   border: 1px solid transparent;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 button[class*="btn-reserva"]:hover {
@@ -268,6 +273,7 @@ button[class*="btn-reserva"]:hover {
 
 button[class*="btn-reserva"] svg {
   filter: none;
+  transition: all 0.5s ease;
 }
 
 button[class*="btn-reserva"]:hover svg {
@@ -276,7 +282,7 @@ button[class*="btn-reserva"]:hover svg {
 
 button[class*="btn-reserva"] span {
   text-shadow: none;
-  transition: text-shadow 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 button[class*="btn-reserva"]:hover span {
@@ -286,7 +292,7 @@ button[class*="btn-reserva"]:hover span {
 /* Contorno para el logo */
 .logo-container svg {
   filter: none;
-  transition: filter 0.4s ease;
+  transition: all 0.5s ease;
 }
 
 .logo-container:hover svg {
