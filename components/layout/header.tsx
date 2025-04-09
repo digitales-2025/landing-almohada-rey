@@ -118,7 +118,7 @@ export default function Header() {
       if (LogoComponent) {
         const width = isMobile ? logo.mobileWidth || logo.width || 140 : logo.width || 180;
         const height = isMobile ? logo.mobileHeight || logo.height || 45 : logo.height || 60;
-        return <LogoComponent width={width} height={height} />;
+        return <LogoComponent width={width} height={height} color="white" style={{ color: "white" }} />;
       }
     }
 
@@ -134,19 +134,13 @@ export default function Header() {
               className="w-auto h-auto"
             />
           )}
-          {logo.type === "both" && (
-            <span className={`${isMobile ? "text-lg" : "text-xl"} font-semibold ${headerColors.text}`}>
-              {logo.text}
-            </span>
-          )}
+          {logo.type === "both" && <span className="text-white font-semibold">{logo.text}</span>}
         </>
       );
     }
 
     if (logo.type === "text") {
-      return (
-        <span className={`${isMobile ? "text-lg" : "text-xl"} font-semibold ${headerColors.text}`}>{logo.text}</span>
-      );
+      return <span className="text-white font-semibold">{logo.text}</span>;
     }
 
     return null;

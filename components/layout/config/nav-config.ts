@@ -59,9 +59,9 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     container: "flex items-center gap-3 px-5 py-3 rounded-md transition-colors",
     text: "text-2xl font-medium font-playfair",
     icon: "[&>svg]:size-12",
-    active: "bg-primary text-primary-foreground",
+    active: "bg-primary text-white",
     hover: "hover:bg-primary/90",
-    inactive: "bg-primary text-primary-foreground",
+    inactive: "bg-primary text-white",
     mobile: {
       container: "flex items-center justify-start gap-1 px-3 py-1.5 rounded-md transition-colors",
       text: "text-xl font-medium font-playfair",
@@ -87,11 +87,11 @@ export const deviceVisibility: Record<NavItemDevice, string> = {
 // Colores del header
 export const headerColors = {
   background: "bg-transparent backdrop-blur-sm",
-  text: "text-foreground",
+  text: "text-white",
   mobileMenuBackground: "bg-background/70 backdrop-blur-md",
   dropdown: {
     background: "bg-background/70 backdrop-blur-md",
-    text: "text-foreground",
+    text: "text-white",
     activeText: "text-primary",
     hoverText: "hover:text-primary/80",
   },

@@ -19,7 +19,7 @@ export const navItems: NavItem[] = [
   {
     id: "gallery",
     title: "Galería",
-    href: "/galeria",
+    href: "/gallery",
     icon: GalleryHorizontalEnd,
     type: "link",
     position: "left",

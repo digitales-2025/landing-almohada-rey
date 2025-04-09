@@ -6,7 +6,7 @@ interface LogoAlmohadaReyProps extends SVGProps<SVGSVGElement> {
   color?: string;
 }
 
-export const LogoAlmohadaRey = ({ width = 110, height = 25, color, ...props }: LogoAlmohadaReyProps) => (
+export const LogoAlmohadaRey = ({ width = 110, height = 25, color = "white", ...props }: LogoAlmohadaReyProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="Capa_1"
@@ -18,7 +18,7 @@ export const LogoAlmohadaRey = ({ width = 110, height = 25, color, ...props }: L
     {...props}
   >
     <defs>
-      <style>{`.st0{fill:${color || "currentColor"}}`}</style>
+      <style>{`.st0{fill:${color}}`}</style>
     </defs>
     <path
       d="m81.2 125.4-.6-1c8.3-9.2 15-18 20.2-26.5 8.9-14.8 13.4-27.3 13.4-37.6s-2.7-11.2-8-11.2c-9.3 0-19.2 16-29.7 48l-3.1 9.3c-5.1 15.3-13.3 28.9-24.6 40.8h10.9c22.2 0 43.8 2.8 64.9 8.5l2.2-3.3.7 5.1c-3.6 3.6-7.3 7.5-11 11.7-10-3.1-18.4-5.3-25-6.6-13.4-2.6-26.7-3.9-39.8-3.9s-9.2.3-14.3.9c-9.1 5.3-18.4 8-27.8 8s-9.8-1-9.8-3 1.8-3 5.5-5l.6-1c2-3.3 5.1-5.5 9.3-6.7 5.3-1.4 15.9-2.9 32.1-4.3 2.3-3.5 4.6-10.1 6.9-19.8l2.3-9.7c2.5-10.3 4.1-16.8 4.9-19.7 2.1-7.4 4.5-13.6 7.2-18.5 6.3-11.8 15.6-21.5 27.9-29 9.7-5.9 17.2-8.9 22.6-8.9s10.5 4.4 10.5 13.3-5.4 23.4-16.2 36.9c-8.7 10.8-19.4 22-32.3 33.4Z"
