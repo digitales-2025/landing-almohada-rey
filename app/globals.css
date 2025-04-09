@@ -320,3 +320,59 @@ button[class*="btn-reserva"]:hover span {
   filter: none;
   transform: scale(1.03);
 }
+
+/* Estilos personalizados para el sidebar móvil */
+.sidebar-group-label {
+  color: #c9a55c !important;
+  font-family: var(--font-cursive);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-menu-button {
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu-button:hover {
+  transform: scale(1.03);
+  color: hsl(var(--primary));
+}
+
+.sidebar-menu-button[data-active="true"] {
+  color: hsl(var(--primary));
+  font-weight: 500;
+}
+
+/* Efecto de brillo para el botón de Reservas en el Sidebar */
+.sidebar .btn-reserva {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .btn-reserva:hover {
+  transform: scale(1.03);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .btn-reserva::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 80%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(25deg);
+}
+
+.sidebar .btn-reserva:hover::before {
+  animation: shine 3s ease-in-out infinite;
+}

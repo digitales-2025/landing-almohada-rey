@@ -7,7 +7,9 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { ChevronDown, Menu, X } from "lucide-react";
 
+import { AppSidebar } from "@/components/app-sidebar";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { getNavItemStyles, headerColors } from "./config/nav-config";
 import { navigationConfig } from "./constants/navigation";
@@ -15,6 +17,7 @@ import { NavItem } from "./types/nav-items";
 
 export default function Header() {
   const scrollDir = useScrollDirection();
+  const isMobile = useIsMobile();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState<string[]>([]);
@@ -228,18 +231,22 @@ export default function Header() {
         </Button>
       </div>
 
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <nav className={`md:hidden flex flex-col py-3 px-0.5 space-y-2 ${headerColors.mobileMenuBackground}`}>
-          {navigationConfig.items
-            .filter((item) => item.device === "mobile" || item.device === "all")
-            .map((item) => (
-              <div key={item.id} className="flex items-center justify-start pl-0.5">
-                {renderNavItem(item, "mobile")}
-                {item.type === "logo" && <div className="flex items-center justify-start">{renderLogo("mobile")}</div>}
-              </div>
-            ))}
-        </nav>
+      {/* Mobile Sidebar Navigation */}
+      {isMobile && mobileMenuOpen && (
+        <div
+          className={`fixed inset-0 z-40 flex ${mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"} 
+          transition-opacity duration-300 ease-in-out`}
+          style={{ marginTop: "64px" }}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+          <div
+            className={`relative w-4/5 max-w-xs h-full ${headerColors.mobileMenuBackground} transform 
+            ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out 
+            overflow-y-auto`}
+          >
+            <AppSidebar className="border-none h-full" />
+          </div>
+        </div>
       )}
     </header>
   );
