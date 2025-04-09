@@ -175,22 +175,22 @@
 }
 
 .nav-link:hover, .btn-reserva:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .nav-link:hover::before, .btn-reserva:hover::before {
-  animation: shine 1.5s ease-in-out infinite;
+  animation: shine 2.5s ease-in-out infinite;
 }
 
 .nav-link:hover svg, .nav-link:hover span {
-  animation: color-change 1.5s ease-in-out infinite;
-  text-shadow: 0 0 2px white, 0 0 4px white;
+  animation: color-change 2.5s ease-in-out infinite;
+  text-shadow: 0 0 1px white;
 }
 
 button[class*="btn-reserva"] span {
   color: white !important;
   animation: none !important;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 @keyframes shine {
@@ -199,13 +199,13 @@ button[class*="btn-reserva"] span {
     opacity: 0;
   }
   20% {
-    opacity: 0.5;
+    opacity: 0.3;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.4;
   }
   80% {
-    opacity: 0.5;
+    opacity: 0.3;
   }
   100% {
     left: 100%;
@@ -216,11 +216,11 @@ button[class*="btn-reserva"] span {
 @keyframes color-change {
   0%, 100% {
     color: white;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.3);
+    text-shadow: none;
   }
   50% {
     color: hsl(var(--primary));
-    text-shadow: 0 0 2px white, 0 0 4px white;
+    text-shadow: 0 0 1px white;
   }
 }
 
@@ -234,7 +234,7 @@ button[class*="btn-reserva"] span {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.2),
     transparent
   );
   transform: rotate(25deg);
@@ -242,51 +242,53 @@ button[class*="btn-reserva"] span {
 
 /* Efecto especial para el logo */
 .btn-reserva svg {
-  transition: filter 0.3s ease-in-out, transform 0.5s ease-in-out;
+  transition: filter 0.4s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .btn-reserva:hover svg {
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
-  transform: scale(1.05);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+  transform: scale(1.03);
 }
 
 /* Añadir contorno a los iconos en hover */
 .nav-link:hover svg, .btn-reserva:hover svg {
-  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 4px white);
+  filter: drop-shadow(0 0 1px white);
 }
 
 /* Efectos específicos para el botón de reservas */
 button[class*="btn-reserva"] {
   border: 1px solid transparent;
-  transition: border-color 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 button[class*="btn-reserva"]:hover {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
 }
 
 button[class*="btn-reserva"] svg {
-  filter: drop-shadow(0 0 1px white);
+  filter: none;
 }
 
 button[class*="btn-reserva"]:hover svg {
-  filter: drop-shadow(0 0 3px white);
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
 }
 
 button[class*="btn-reserva"] span {
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+  transition: text-shadow 0.4s ease;
 }
 
 button[class*="btn-reserva"]:hover span {
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7), 0 0 4px white;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.6);
 }
 
 /* Contorno para el logo */
 .logo-container svg {
-  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.7));
+  filter: none;
+  transition: filter 0.4s ease;
 }
 
 .logo-container:hover svg {
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
 }
