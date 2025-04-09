@@ -303,5 +303,6 @@ button[class*="btn-reserva"]:hover span {
 }
 
 .logo-container:hover svg {
-  filter: drop-shadow(0 0 1px white) drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  filter: none;
+  transform: scale(1.03);
 }
