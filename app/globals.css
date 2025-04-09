@@ -172,7 +172,7 @@
 .btn-reserva, .nav-link {
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .nav-link:hover, .btn-reserva:hover {
@@ -180,14 +180,17 @@
 }
 
 .nav-link:hover::before, .btn-reserva:hover::before {
-  animation: shine 2.5s ease-in-out 1 forwards;
+  animation: shine 3s ease-in-out infinite;
   animation-delay: 0.1s;
 }
 
-.nav-link:hover svg, .nav-link:hover span {
-  animation: color-fade 2.5s ease-in-out 1 forwards;
-  text-shadow: 0 0 1px white, 0 0 2px rgba(255, 255, 255, 0.6);
-  transition: text-shadow 0.5s ease;
+/* Separar efectos para SVG y texto */
+.nav-link:hover svg {
+  animation: icon-glow 3s ease-in-out infinite;
+}
+
+.nav-link:hover span {
+  animation: text-glow 3s ease-in-out infinite;
 }
 
 button[class*="btn-reserva"] span {
@@ -217,22 +220,33 @@ button[class*="btn-reserva"] span {
   }
 }
 
-@keyframes color-fade {
+/* Animación para los iconos */
+@keyframes icon-glow {
   0% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
     color: white;
-    text-shadow: 0 0 1px transparent;
   }
-  40% {
+  50% {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
     color: hsl(var(--primary));
-    text-shadow: 0 0 1px white, 0 0 2px rgba(255, 255, 255, 0.6);
-  }
-  60% {
-    color: hsl(var(--primary));
-    text-shadow: 0 0 1px white, 0 0 2px rgba(255, 255, 255, 0.6);
+    transform: scale(1.1);
   }
   100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
     color: white;
-    text-shadow: 0 0 1px white, 0 0 2px rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Animación para el texto - solo brillo, sin cambio de color */
+@keyframes text-glow {
+  0% {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 2px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 2px white, 0 0 10px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 2px rgba(255, 255, 255, 0.2);
   }
 }
 
