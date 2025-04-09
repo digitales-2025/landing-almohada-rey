@@ -168,45 +168,72 @@
   animation: pulse-soft 1.5s infinite;
 }
 
-.btn-reserva {
+.btn-reserva, .nav-link {
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.btn-reserva::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: opacity 0.3s;
+.nav-link:hover, .btn-reserva:hover {
+  transform: scale(1.05);
 }
 
-.btn-reserva:hover::after {
-  animation: shine 1.5s ease-in-out;
+.nav-link:hover::before, .btn-reserva:hover::before {
+  animation: shine 1.5s ease-in-out infinite;
+}
+
+.nav-link:hover svg, .nav-link:hover span {
+  animation: color-change 1.5s ease-in-out infinite;
+}
+
+button[class*="btn-reserva"] span {
+  color: white !important;
+  animation: none !important;
 }
 
 @keyframes shine {
   0% {
+    left: -100%;
     opacity: 0;
-    transform: translateX(-100%) rotate(45deg);
+  }
+  20% {
+    opacity: 0.5;
   }
   50% {
     opacity: 0.7;
   }
-  100% {
-    opacity: 0;
-    transform: translateX(100%) rotate(45deg);
+  80% {
+    opacity: 0.5;
   }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes color-change {
+  0%, 100% {
+    color: white;
+  }
+  50% {
+    color: hsl(var(--primary));
+  }
+}
+
+.nav-link::before, .btn-reserva::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 80%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(25deg);
 }
 
 /* Efecto especial para el logo */

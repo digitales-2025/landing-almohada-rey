@@ -98,10 +98,10 @@ export default function Header() {
       <Link key={item.id} href={item.href}>
         <Button
           variant={item.type === "button" ? "default" : "ghost"}
-          className={`${styles.container} ${item.type === "button" ? `btn-reserva ${styles.hover}` : `nav-link ${headerColors.text} ${styles.hover}`} group`}
+          className={`${styles.container} ${item.type === "button" ? `btn-reserva ${styles.hover}` : `nav-link ${headerColors.text} ${styles.hover}`}`}
         >
-          {Icon && <Icon className={`${styles.icon} transition-transform duration-300 group-hover:text-primary`} />}
-          <span className={`${styles.text} group-hover:text-primary`}>{item.title}</span>
+          {Icon && <Icon className={`${styles.icon} transition-transform duration-300`} />}
+          <span className={`${styles.text} ${item.type !== "button" ? headerColors.text : ""}`}>{item.title}</span>
         </Button>
       </Link>
     );
