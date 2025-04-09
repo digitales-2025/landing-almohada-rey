@@ -30,12 +30,12 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     },
   },
   link: {
-    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors",
+    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors duration-300",
     text: "text-2xl font-medium font-playfair",
     icon: "[&>svg]:size-12",
     active: "text-primary",
-    hover: "hover:text-primary/80",
-    inactive: "text-foreground",
+    hover: "hover:text-primary hover:scale-110 hover:bg-white/10 transition-all",
+    inactive: "text-white",
     mobile: {
       container: "flex items-center justify-start gap-1 pl-0 pr-2 py-1.5 rounded-md transition-colors",
       text: "text-xl font-medium font-playfair",
@@ -43,12 +43,12 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     },
   },
   dropdown: {
-    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors relative group",
+    container: "flex items-center gap-3 px-4 py-3 rounded-md transition-colors duration-300",
     text: "text-2xl font-medium font-playfair",
     icon: "[&>svg]:size-12",
     active: "text-primary",
-    hover: "hover:text-primary/80",
-    inactive: "text-foreground",
+    hover: "hover:text-primary hover:scale-110 hover:bg-white/10 transition-all",
+    inactive: "text-white",
     mobile: {
       container: "flex items-center justify-start gap-1 pl-0 pr-2 py-1.5 rounded-md transition-colors relative group",
       text: "text-xl font-medium font-playfair",
@@ -56,11 +56,11 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     },
   },
   button: {
-    container: "flex items-center gap-3 px-5 py-3 rounded-md transition-colors",
+    container: "flex items-center gap-3 px-5 py-3 rounded-md transition-all duration-300",
     text: "text-2xl font-medium font-playfair",
     icon: "[&>svg]:size-12",
     active: "bg-primary text-white",
-    hover: "hover:bg-primary/90",
+    hover: "hover:bg-primary/80 hover:scale-105 hover:shadow-lg transition-all",
     inactive: "bg-primary text-white",
     mobile: {
       container: "flex items-center justify-start gap-1 px-3 py-1.5 rounded-md transition-colors",
@@ -93,7 +93,7 @@ export const headerColors = {
     background: "bg-background/70 backdrop-blur-md",
     text: "text-white",
     activeText: "text-primary",
-    hoverText: "hover:text-primary/80",
+    hoverText: "hover:text-primary",
   },
 };
 
