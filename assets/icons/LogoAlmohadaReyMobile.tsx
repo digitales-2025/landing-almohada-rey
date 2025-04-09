@@ -19,11 +19,15 @@ export const LogoAlmohadaReyMobile = ({
     height={height}
     viewBox="0 0 504.5 437"
     preserveAspectRatio="xMidYMid meet"
-    style={{ display: "block", overflow: "visible" }}
+    style={{
+      display: "block",
+      overflow: "visible",
+      filter: "drop-shadow(0 0 1px rgba(255, 255, 255, 0.5))",
+    }}
     {...props}
   >
     <defs>
-      <style>{`.st0{fill:${color}}`}</style>
+      <style>{`.st0{fill:${color}; stroke:rgba(255,255,255,0.15); stroke-width:0.5px;}`}</style>
     </defs>
     <path
       d="M231 34h35l-28.3 20.6L248.5 88l-28.4-20.6L191.8 88l10.8-33.4L174.2 34h35.1L220.1.7 231 34zm161.9 0H428l-28.4 20.6L410.5 88l-28.4-20.6L353.7 88l10.9-33.4L336.2 34h35.1L382.1.7 392.9 34z"

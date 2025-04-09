@@ -60,7 +60,8 @@ export const navItemStyleConfig: Record<NavItemType, NavItemStyleConfig> = {
     text: "text-2xl font-medium font-playfair",
     icon: "[&>svg]:size-12",
     active: "bg-primary text-white",
-    hover: "hover:bg-primary/80 hover:scale-105 hover:shadow-lg transition-all",
+    hover:
+      "hover:bg-primary/80 hover:scale-105 hover:shadow-lg transition-all border border-transparent hover:border-white/50",
     inactive: "bg-primary text-white",
     mobile: {
       container: "flex items-center justify-start gap-1 px-3 py-1.5 rounded-md transition-colors",

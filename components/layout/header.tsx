@@ -98,7 +98,11 @@ export default function Header() {
       <Link key={item.id} href={item.href}>
         <Button
           variant={item.type === "button" ? "default" : "ghost"}
-          className={`${styles.container} ${item.type === "button" ? `btn-reserva ${styles.hover}` : `nav-link ${headerColors.text} ${styles.hover}`}`}
+          className={`${styles.container} ${
+            item.type === "button"
+              ? `btn-reserva ${styles.hover} shadow-sm shadow-white/10`
+              : `nav-link ${headerColors.text} ${styles.hover}`
+          }`}
         >
           {Icon && <Icon className={`${styles.icon} transition-transform duration-300`} />}
           <span className={`${styles.text} ${item.type !== "button" ? headerColors.text : ""}`}>{item.title}</span>
@@ -179,7 +183,7 @@ export default function Header() {
           {navigationConfig.centerLogo && (
             <Link
               href="/"
-              className="flex items-center justify-center mx-14 my-2 transform scale-140 lg:scale-140 md:scale-125 sm:scale-100 btn-reserva rounded-md overflow-hidden"
+              className="flex items-center justify-center mx-14 my-2 transform scale-140 lg:scale-140 md:scale-125 sm:scale-100 btn-reserva rounded-md overflow-hidden logo-container"
             >
               {renderLogo("desktop")}
             </Link>
@@ -196,7 +200,10 @@ export default function Header() {
         {/* Mobile Logo (if center enabled) */}
         {navigationConfig.centerLogo && mobileMenuOpen === false && (
           <div className="flex-1 md:hidden">
-            <Link href="/" className="flex items-center justify-start ml-0 my-1 btn-reserva rounded-md overflow-hidden">
+            <Link
+              href="/"
+              className="flex items-center justify-start ml-0 my-1 btn-reserva rounded-md overflow-hidden logo-container"
+            >
               {renderLogo("mobile")}
             </Link>
           </div>

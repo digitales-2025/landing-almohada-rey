@@ -184,11 +184,13 @@
 
 .nav-link:hover svg, .nav-link:hover span {
   animation: color-change 1.5s ease-in-out infinite;
+  text-shadow: 0 0 2px white, 0 0 4px white;
 }
 
 button[class*="btn-reserva"] span {
   color: white !important;
   animation: none !important;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes shine {
@@ -214,9 +216,11 @@ button[class*="btn-reserva"] span {
 @keyframes color-change {
   0%, 100% {
     color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 4px rgba(0, 0, 0, 0.3);
   }
   50% {
     color: hsl(var(--primary));
+    text-shadow: 0 0 2px white, 0 0 4px white;
   }
 }
 
@@ -244,4 +248,45 @@ button[class*="btn-reserva"] span {
 .btn-reserva:hover svg {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
   transform: scale(1.05);
+}
+
+/* Añadir contorno a los iconos en hover */
+.nav-link:hover svg, .btn-reserva:hover svg {
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 4px white);
+}
+
+/* Efectos específicos para el botón de reservas */
+button[class*="btn-reserva"] {
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+button[class*="btn-reserva"]:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+button[class*="btn-reserva"] svg {
+  filter: drop-shadow(0 0 1px white);
+}
+
+button[class*="btn-reserva"]:hover svg {
+  filter: drop-shadow(0 0 3px white);
+}
+
+button[class*="btn-reserva"] span {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+button[class*="btn-reserva"]:hover span {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.7), 0 0 4px white;
+}
+
+/* Contorno para el logo */
+.logo-container svg {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.7));
+}
+
+.logo-container:hover svg {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1));
 }
