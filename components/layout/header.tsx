@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { useScrollDirection } from "@/lib/hooks/use-scroll-direction";
+import { useScrollDirection } from "@/hooks/use-scroll-direction";
 import { getNavItemStyles, headerColors } from "./config/nav-config";
 import { navigationConfig } from "./constants/navigation";
 import { NavItem } from "./types/nav-items";
