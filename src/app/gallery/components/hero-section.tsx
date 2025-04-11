@@ -50,8 +50,8 @@ export default function HeroSection() {
                                 preset="fade-in-blur"
                                 speedSegment={0.3}
                                 as="h1"
-                                className="text-balance font-h1 text-h4 lg:text-h3 xl:text-h2">
-                                UNA EXPERIENCIA MEMORABLE
+                                className="text-balance text-4xl font-medium sm:text-5xl md:text-6xl">
+                                Your gateway to endless entertainment experiences
                             </TextEffect>
                             <TextEffect
                                 per="line"
