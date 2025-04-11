@@ -1,0 +1,30 @@
+{
+  "Error": {
+    "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
+    "title": "Algo salió mal"
+  },
+  "IndexPage": {
+    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+    "title": "Ejemplo de next-intl"
+  },
+  "IndexPageExperiences": {
+    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+    "title": "Experiencias"
+  },
+  "LocaleSwitcher": {
+    "label": "Cambia el idioma",
+    "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} otro {Desconocido}}"
+  },
+  "Manifest": {
+    "name": "La Almohada del Rey"
+  },
+  "Navigation": {
+    "home": "Inicio",
+    "experiences": "Experiencias",
+    "pathnames": "Rutas"
+  },
+  "NotFoundPage": {
+    "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
+    "title": "Página no encontrada"
+  }
+}

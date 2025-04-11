@@ -1,11 +1,6 @@
-import FooterSection from "@/components/layout/footer";
-import HeroSection from "@/app/gallery/components/hero-section";
+import {redirect} from 'next/navigation';
 
-export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <FooterSection />
-    </>
-  );
+// This page only renders when the app is built statically (output: 'export')
+export default function RootPage() {
+  redirect('/es');
 }
