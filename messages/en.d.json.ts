@@ -10,10 +10,22 @@ declare const messages: {
     "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
     "title": "next-intl example"
   },
-    "IndexPageExperiences": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Experiences"
-    },
+  "IndexPageExperiences": {
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+    "title": "Experiences"
+  },
+  "IndexPageGallery": {
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+    "title": "Gallery"
+  },
+  "IndexPageRooms": {
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+    "title": "Rooms"
+  },
+  "IndexPageTravelers": {
+    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+    "title": "Travelers"
+  },
   "LocaleSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}"
@@ -24,7 +36,9 @@ declare const messages: {
   "Navigation": {
     "home": "Home",
     "experiences": "Experiences",
-    "pathnames": "Pathnames"
+    "gallery": "Gallery",
+    "rooms": "Rooms",
+    "travelers": "Travelers"
   },
   "NotFoundPage": {
     "description": "Please double-check the browser address bar or use the navigation to go to a known page.",

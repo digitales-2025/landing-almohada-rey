@@ -36,3 +36,23 @@
 //     </div>
 //   );
 // }
+
+import React from "react";
+
+interface PageLayoutProps {
+    children: React.ReactNode;
+}
+
+export const PageLayout = ({
+    children
+}: PageLayoutProps) => {
+  return (
+    <main className="overflow-hidden animate-fade">
+      <article className="min-h-dvh">
+      {
+        children
+      }
+      </article>
+    </main>
+  );
+};

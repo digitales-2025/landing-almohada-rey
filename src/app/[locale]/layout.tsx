@@ -6,6 +6,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
+import FooterSection from "@/components/layout/footer";
+import { NavMenu } from "@/components/layout/header";
 
 const poppins = Poppins({
   variable: "--font-geist-sans",
@@ -48,14 +50,19 @@ export default async function RootLayout({
   setRequestLocale(locale);
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${poppins.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${poppins.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            {/* <HeroSection /> */}
+            <NavMenu />
+            {children}
+            <FooterSection />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

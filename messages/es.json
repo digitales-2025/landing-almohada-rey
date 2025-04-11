@@ -11,6 +11,18 @@
     "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
     "title": "Experiencias"
   },
+  "IndexPageGallery": {
+    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+    "title": "Galería"
+  },
+  "IndexPageRooms": {
+    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+    "title": "Habitaciones"
+  },
+  "IndexPageTravelers": {
+    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+    "title": "Viajeros"
+  },
   "LocaleSwitcher": {
     "label": "Cambia el idioma",
     "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
@@ -21,7 +33,9 @@
   "Navigation": {
     "home": "Inicio",
     "experiences": "Experiencias",
-    "pathnames": "Rutas"
+    "gallery": "Galería",
+    "rooms": "Habitaciones",
+    "travelers": "Viajeros"
   },
   "NotFoundPage": {
     "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",

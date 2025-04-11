@@ -1,8 +1,7 @@
-import FooterSection from "@/components/layout/footer";
-import HeroSection from "@/app/gallery/components/hero-section";
-
 import { Locale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { HomeHeroSection } from "./components/HomeHero";
  
 type Props = {
   params: Promise<{locale: Locale}>;
@@ -19,10 +18,8 @@ type Props = {
 
 export default function Home() {
   return (
-
-    <>
-      <HeroSection />
-      <FooterSection />
-    </>
+    <PageLayout>
+      <HomeHeroSection />
+    </PageLayout>
   );
 }

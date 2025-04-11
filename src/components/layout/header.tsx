@@ -5,27 +5,42 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import { ModeToggle } from '../mode-toggle'
 import { Logo } from './logo'
-import { defaultRoutes } from '@/i18n/routing'
+import { DefaultRoutes, defaultRoutes } from '@/i18n/routing'
 import { Link } from '@/i18n/navigation'
 import LocaleSwitcher from '../i18n/locale-switch/locale-switcher'
+import { useTranslations } from 'next-intl'
+
+// "home": "Inicio",
+// "experiences": "Experiencias",
+// "gallery": "Galería",
+// "rooms": "Habitaciones",
+// "travelers": "Viajeros"
+
+type NavItem = {
+    name: string
+    href: string
+    key: DefaultRoutes
+}
 
 // Nuevas opciones de menú divididas en dos grupos
-const leftMenuItems = [
-    { name: 'Habitaciones', href: '/habitaciones' },
-    { name: 'Galería', href: '/galeria' },
+const leftMenuItems: NavItem[] = [
+    { name: 'Habitaciones', href: defaultRoutes.rooms, key: "rooms" }, 
+    { name: 'Galería', href: defaultRoutes.gallery, key: "gallery" },
 ]
 
-const rightMenuItems = [
-    { name: 'Experiencias', href: defaultRoutes.experiences },
-    { name: 'Viajes', href: '/viajes' },
+const rightMenuItems: NavItem[] = [
+    { name: 'Experiencias', href: defaultRoutes.experiences, key: "experiences" },
+    { name: 'Viajes', href: defaultRoutes.travelers, key: "travelers" },
 ]
+
 
 // Para el menú móvil, combinamos ambos arrays
 const allMenuItems = [...leftMenuItems, ...rightMenuItems]
 
-export const HeroHeader = () => {
+export const NavMenu = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const t = useTranslations('Navigation')
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -37,7 +52,7 @@ export const HeroHeader = () => {
     return (
         <header>
             <nav
-                data-state={menuState && 'active'}
+                data-state={menuState ? 'active' : 'inactive'}
                 className="fixed z-20 w-full px-2">
                 <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -64,12 +79,12 @@ export const HeroHeader = () => {
                             {/* Columna izquierda - Menú izquierdo */}
                             <div className="flex items-center">
                                 <ul className="flex gap-8 text-sm">
-                                    {leftMenuItems.map((item, index) => (
-                                        <li key={index}>
+                                    {leftMenuItems.map((item) => (
+                                        <li key={item.key}>
                                             <Link
                                                 href={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
-                                                <span>{item.name}</span>
+                                                <span>{t(item.key)}</span>
                                             </Link>
                                         </li>
                                     ))}
@@ -89,12 +104,12 @@ export const HeroHeader = () => {
                             {/* Columna derecha - Menú derecho + botón */}
                             <div className="flex items-center gap-8">
                                 <ul className="flex gap-8 text-sm">
-                                    {rightMenuItems.map((item, index) => (
-                                        <li key={index}>
+                                    {rightMenuItems.map((item) => (
+                                        <li key={item.key}>
                                             <Link
                                                 href={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
-                                                <span>{item.name}</span>
+                                                <span>{t(item.key)}</span>
                                             </Link>
                                         </li>
                                     ))}
@@ -114,15 +129,15 @@ export const HeroHeader = () => {
                         </div>
 
                         {/* Menú móvil desplegable */}
-                        <div className="bg-background in-data-[state=active]:block lg:hidden mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 dark:shadow-none">
+                        <div className="bg-background in-data-[state=active]:block  in-data-[state=active]:animate-fade lg:hidden mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 dark:shadow-none in-data-[state=inactive]:animate-out ">
                             <div>
                                 <ul className="space-y-6 text-base">
-                                    {allMenuItems.map((item, index) => (
-                                        <li key={index}>
+                                    {allMenuItems.map((item) => (
+                                        <li key={item.key}>
                                             <Link
                                                 href={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
-                                                <span>{item.name}</span>
+                                                <span>{t(item.key)}</span>
                                             </Link>
                                         </li>
                                     ))}
