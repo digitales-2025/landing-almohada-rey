@@ -13,7 +13,7 @@
   },
   "LocaleSwitcher": {
     "label": "Cambia el idioma",
-    "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} otro {Desconocido}}"
+    "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
   },
   "Manifest": {
     "name": "La Almohada del Rey"

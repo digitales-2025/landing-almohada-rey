@@ -1,12 +1,13 @@
 'use client'
-import Link from 'next/link'
-
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { ModeToggle } from '../mode-toggle'
 import { Logo } from './logo'
+import { defaultRoutes } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
+import LocaleSwitcher from '../i18n/locale-switch/locale-switcher'
 
 // Nuevas opciones de menú divididas en dos grupos
 const leftMenuItems = [
@@ -15,7 +16,7 @@ const leftMenuItems = [
 ]
 
 const rightMenuItems = [
-    { name: 'Experiencias', href: '/experiencias' },
+    { name: 'Experiencias', href: defaultRoutes.experiences },
     { name: 'Viajes', href: '/viajes' },
 ]
 
@@ -136,6 +137,7 @@ export const HeroHeader = () => {
                                     </Link>
                                 </Button>
                                 <ModeToggle/>
+                                <LocaleSwitcher></LocaleSwitcher>
                             </div>
                         </div>
                     </div>
