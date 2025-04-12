@@ -1,18 +1,28 @@
 import { BaseHeroWrapper } from "@/components/layout/hero/base-hero";
 import { TextEffect } from "@/components/ui/text-effect";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 export const ExperiencesHeroSection = () => {
+  const t = useTranslations("IndexPageExperiences");
   return (
     <section>
-      <BaseHeroWrapper>
+      <BaseHeroWrapper image={{
+        src: "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        alt: "Experiencias Hero Image",
+        quality: 100,
+        placeholder: "blur",
+        blurDataURL:
+          "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        unoptimized: true,
+      }}>
         <TextEffect
           preset="fade-in-blur"
           speedSegment={0.3}
           as="h1"
-          className="text-balance text-h4 sm:text-h3 md:text-h3 lg:text-h2 xl:text-h1 font-h1"
+          className="text-balance text-h4 sm:text-h3 md:text-h3 lg:text-h2 xl:text-h1 text-background font-h1"
         >
-          Experiencias
+          {t("title")}
         </TextEffect>
         {/* <TextEffect
           per="line"
