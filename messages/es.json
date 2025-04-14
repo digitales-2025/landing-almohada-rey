@@ -9,7 +9,11 @@
   },
   "IndexPageExperiences": {
     "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Experiencias"
+    "title": "Experiencias",
+    "bentoSection": {
+      "title": "Ofertas especiales",
+      "description": "Vive tus mejores recuerdos aquí"
+    }
   },
   "IndexPageGallery": {
     "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",

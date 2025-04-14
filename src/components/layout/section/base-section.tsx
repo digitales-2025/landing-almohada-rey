@@ -9,7 +9,7 @@ interface BaseSectionProps extends React.DetailedHTMLProps<React.HTMLAttributes<
 
 export const SectionWrapper = ({children, className, imageProps, ...rest}: BaseSectionProps) => {
   return (
-    <section className={cn("relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-32", className)} {...rest}>
+    <section className={cn("relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-50 2xl:px-54 !space-y-4 sm:!space-y-6 md:!space-y-8 lg:!space-y-14", className)} {...rest}>
       {/* <div className="absolute inset-0 -z-10 transform-gpu overflow-hidden blur-3xl"></div */}
         {
             imageProps && (
