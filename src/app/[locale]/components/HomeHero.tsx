@@ -5,7 +5,14 @@ import React from "react";
 export const HomeHeroSection = () => {
   return (
     <section>
-      <BaseHeroWrapper>
+      <BaseHeroWrapper image={{
+        src: "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        alt: "Hero Image",
+        quality: 100,
+        placeholder: "blur",
+        blurDataURL:
+          "https://images.pexels.com/photos/1850595/pexels-photo-1850595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      }}>
         <TextEffect
           preset="fade-in-blur"
           speedSegment={0.3}
