@@ -130,7 +130,7 @@
         },
         "eventHallSection": {
             "title": "Events",
-            "Caption": "Conference Room",
+            "caption": "Conference Hall",
             "description": "Equipped with various lighting, 55\" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.",
             "slogan": "We adapt for all types of events.",
             "ctaButton": {

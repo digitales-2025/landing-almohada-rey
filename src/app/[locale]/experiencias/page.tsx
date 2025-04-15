@@ -6,6 +6,7 @@ import { BusinessPackageHero } from "./components/BusinessPackageHero";
 import { EventPackagesSection } from "./components/EventPackagesSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { KeepInTouchCTA } from "./components/KeepInTouchCTA";
+import { ConferenceHallSection } from "./components/ConferenceHallSection";
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
       <BentoSection></BentoSection>
       <BusinessPackageHero></BusinessPackageHero>
       <EventPackagesSection></EventPackagesSection>
+      <ConferenceHallSection></ConferenceHallSection>
       <ServicesSection></ServicesSection>
       <KeepInTouchCTA></KeepInTouchCTA>
     </PageLayout>

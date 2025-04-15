@@ -130,7 +130,7 @@
         },
         "eventHallSection": {
           "title": "Eventos",
-          "Caption": "Sala de Conferencias",
+          "caption": "Sala de Conferencias",
           "description": "Equipada con luces variadas, TV de 55”, punto eléctrico + 1 cortapico, ecram, equipo multimedia, internet ADSL y Wi-Fi, podio con micrófono, pizarra acrílica, mesas y un equipo de apoyo para tus reuniones.",
           "slogan": "Nos adaptamos para todo tipo de evento.",
           "ctaButton": {

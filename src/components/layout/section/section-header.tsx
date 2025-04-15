@@ -49,7 +49,7 @@ export const SectionHeader = ({
                 {!onlyTitle && (
                     <h2
                         className={cn(
-                            'font-h8 !text-h9 md:!text-h8 tracking-widest text-primary dark:text-secondary-foreground',
+                            'font-h8 !text-h9 md:!text-h8 font-light tracking-[0.25em] text-primary dark:text-secondary-foreground',
                             textAlign,
                             headerTitle.classname ?? ''
                         )}
