@@ -18,6 +18,7 @@ interface SectionHeaderProps
     > {
     children?: React.ReactNode;
     className?: string;
+    blockClassName?: string;
     headerTitle: TitleProps;
     alignment?: 'left' | 'center' | 'right';
     description?: DescriptionProps;
@@ -30,6 +31,7 @@ export const SectionHeader = ({
     headerTitle,
     description,
     onlyTitle = false,
+    blockClassName,
     ...rest
 }: SectionHeaderProps) => {
     const alignment = rest.alignment ?? 'center';
@@ -45,7 +47,7 @@ export const SectionHeader = ({
 
     return (
         <header {...rest} className={cn('w-full', className)}>
-            <div className='mx-auto space-y-2 md:space-y-3 lg:space-y-4 max-w-[900px]'>
+            <div className={cn('mx-auto space-y-2 md:space-y-3 lg:space-y-4 max-w-[900px]', blockClassName)}>
                 {!onlyTitle && (
                     <h2
                         className={cn(

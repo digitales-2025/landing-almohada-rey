@@ -20,6 +20,7 @@ export const ConferenceHallSection = () => {
                         description={{
                             text: t('eventHallSection.caption'),
                         }}
+                        blockClassName='max-w-none'
                     ></SectionHeader>
                     <p className="text-pretty text-base lg:text-lg font-light text-start w-full text-secondary dark:text-secondary-foreground">
                         {t('eventHallSection.description')}

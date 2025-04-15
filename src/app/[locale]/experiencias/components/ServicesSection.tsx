@@ -37,7 +37,7 @@ export const ServicesSection = () => {
                 text: t('description'),
             }}
         ></SectionHeader>
-        <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-14 list-disc ml-5'>
+        <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-2 gap-x-14 list-disc ml-5 pt-4'>
             {services.map((service) => (
             <li key={service.id}>
               <span className="break-words text-pretty truncate text-secondary dark:text-secondary-foreground">{service.name}</span>
