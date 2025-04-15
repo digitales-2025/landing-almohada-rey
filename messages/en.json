@@ -1,48 +1,114 @@
 {
-  "Error": {
-    "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
-    "title": "Something went wrong!"
-  },
-  "IndexPage": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "next-intl example"
-  },
-  "IndexPageExperiences": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "Experiences",
-    "bentoSection": {
-      "title": "Special offers",
-      "description": "Live your best memories here"
+    "Error": {
+        "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
+        "title": "Something went wrong!"
+    },
+    "IndexPage": {
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+        "title": "next-intl example"
+    },
+    "IndexPageExperiences": {
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+        "title": "Experiences",
+        "bentoSection": {
+            "title": "Special offers",
+            "description": "Live your best memories here",
+            "card1": {
+                "title": "More time, more savings",
+                "description": "Book a stay of at least 5 nights and get a 20% discount on your room price.",
+                "ctaButton": {
+                    "label": "Inquire",
+                    "link": "/en/experiencies"
+                }
+            },
+            "card2": {
+                "title": "Luxury Stay",
+                "description": "Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.",
+                "ctaButton": {
+                    "label": "Inquire",
+                    "link": "/en/experiencies"
+                }
+            },
+            "card3": {
+                "title": "Celebrate love, honeymoon",
+                "description": "Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.",
+                "details": {
+                    "item1": "2 - guests",
+                    "item2": "Dinner and Breakfast for 2",
+                    "item3": "Free amenities"
+                },
+                "pricing": {
+                    "label": "from",
+                    "currency": "USD",
+                    "price": "119",
+                    "sufix": "/night"
+                },
+                "ctaButton": {
+                    "label": "Inquire availability",
+                    "link": "/en/experiencies"
+                }
+            },
+            "card4": {
+                "title": "Standard Room",
+                "description": "Enjoy a unique experience in our standard room with sea view.",
+                "ctaButton": {
+                    "label": "Inquire",
+                    "link": "/en/experiencies"
+                }
+            },
+            "card5": {
+                "title": "Family Vacation",
+                "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
+                "ctaButton": {
+                    "label": "Inquire",
+                    "link": "/en/experiencies"
+                }
+            }
+        },
+        "businessPackageSection": {
+            "title": "Special offer",
+            "caption": "Business Stay Package",
+            "description": "Make your business trip a pleasure with this package that includes:",
+            "ctaButton": {
+                "label": "Inquire",
+                "link": "/en/experiencies"
+            },
+            "details": {
+                "item1": "Luxury suite, integrated living room",
+                "item2": "24/7 high-speed internet access",
+                "item3": "Work area and relaxation space",
+                "item4": "Includes free daily breakfast"
+            }
+        }
+    },
+    "IndexPageGallery": {
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+        "title": "Gallery"
+    },
+    "IndexPageRooms": {
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+        "title": "Rooms"
+    },
+    "IndexPageTravelers": {
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+        "title": "Travelers"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Manifest": {
+        "name": "La Almohada del Rey"
+    },
+    "Navigation": {
+        "home": "Home",
+        "experiences": "Experiences",
+        "gallery": "Gallery",
+        "rooms": "Rooms",
+        "travelers": "Travelers"
+    },
+    "NotFoundPage": {
+        "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
+        "title": "Page not found"
     }
-  },
-  "IndexPageGallery": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "Gallery"
-  },
-  "IndexPageRooms": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "Rooms"
-  },
-  "IndexPageTravelers": {
-    "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-    "title": "Travelers"
-  },
-  "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}"
-  },
-  "Manifest": {
-    "name": "La Almohada del Rey"
-  },
-  "Navigation": {
-    "home": "Home",
-    "experiences": "Experiences",
-    "gallery": "Gallery",
-    "rooms": "Rooms",
-    "travelers": "Travelers"
-  },
-  "NotFoundPage": {
-    "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-    "title": "Page not found"
-  }
 }

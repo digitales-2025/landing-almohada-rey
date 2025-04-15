@@ -41,7 +41,7 @@ export const SectionHeader = ({
             : 'text-center';
 
     const decriptionDefaultClassName =
-        'font-h3 !text-h6 sm:!text-h5 lg:!text-h3 !leading-8 sm:!leading-10 lg:!leading-16  text-balance text-secondary dark:text-secondary-foreground';
+        'font-h3 !text-h6 sm:!text-h5 lg:!text-h3 !leading-9 sm:!leading-12 lg:!leading-18  text-balance text-secondary dark:text-secondary-foreground';
 
     return (
         <header {...rest} className={cn('w-full', className)}>

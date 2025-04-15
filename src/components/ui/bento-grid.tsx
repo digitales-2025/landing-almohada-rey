@@ -26,6 +26,7 @@ type pricingProps = {
   caption:string
     price: string;
     currency: string;
+    sufix:string
 };
 
 export interface BentoCardProps extends ComponentPropsWithoutRef<'div'> {
@@ -76,14 +77,15 @@ const BentoCard = ({
             'bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]',
             // dark styles
             'transform-gpu dark:bg-background dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]',
-            className
+            className,
+            'border-none !shadow-none rounded-none'
         )}
         {...props}
     >
         <figure className="relative max-h-[40rem] min-h-[18rem] h-full">
             {background}
         </figure>
-        <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 pb-2 px-0 lg:pb-6 lg:transition-all lg:duration-200 lg:group-hover:-translate-y-15 lg:bg-primary-foreground relative space-y-2">
+        <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 pb-0 px-0 lg:pb-6 lg:transition-all lg:duration-200 lg:group-hover:-translate-y-15 lg:bg-primary-foreground relative space-y-2">
             {/* <div
                 className="absolute inset-0 lg:group-hover:bg-primary/[.05] lg:transform-gpu lg:transition-all lg:duration-300 lg:ease-in-out"
             ></div> */}
@@ -99,21 +101,21 @@ const BentoCard = ({
                 {cardTitle.text}
             </h3>
             {details && (
-                <div className="flex justify-start space-x-6 flex-wrap w-full">
+                <div className="flex justify-start space-x-6 flex-wrap w-full gap-x-2">
                     {details?.map((detail, index) => (
                         <div
                             key={index}
-                            className="flex items-center space-x-2"
+                            className="flex items-center space-x-2 mb-2"
                         >
-                            <detail.Icon className="h-4 w-4 text-primary dark:text-primary-foreground" />
-                            <span className="text-h8 text-secondary dark:text-secondary-foreground">
+                            <detail.Icon className="size-5 text-primary dark:text-primary-foreground" />
+                            <span className=" text-h9 lg:text-h8 text-secondary dark:text-secondary-foreground">
                                 {detail.caption}
                             </span>
                         </div>
                     ))}
                 </div>
             )}
-            <p className="max-w-lg font-light text-secondary dark:text-secondary-foreground ">
+            <p className="font-light text-secondary dark:text-secondary-foreground text-pretty w-full">
                 {description}
             </p>
         </div>
@@ -141,25 +143,30 @@ const BentoCard = ({
             {pricing && (
                 <div className="w-full space-y-2">
                     <Separator className="bg-secondary data-[orientation=horizontal]:!h-[1px]"></Separator>
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                            <span className="text-h8 text-secondary dark:text-secondary-foreground">
-                                {pricing.caption}
-                            </span>
-                        </div>
-                        <div className='flex space-x-2'>
-                          <span className="text-h5 text-primary font-serif dark:text-primary-foreground">
-                              {pricing.currency}
-                          </span>
-                          <span className="text-h5 text-primary font-serif dark:text-primary-foreground">
-                              {pricing.price}
-                          </span>
+                    <div className="flex items-center justify-between flex-wrap space-y-2">
+                        <div className='flex space-x-4'>
+                            <div className="flex items-center space-x-2">
+                                <span className="text-sm lg:text-h8 text-secondary dark:text-secondary-foreground">
+                                    {pricing.caption}
+                                </span>
+                            </div>
+                            <div className='flex space-x-1'>
+                              {/* <span className="text-h5 text-primary font-serif dark:text-primary-foreground">
+                                  {pricing.currency}
+                              </span> */}
+                              <span className="text-h7 lg:text-h5 text-primary font-serif dark:text-primary-foreground">
+                                  {pricing.price}
+                              </span>
+                              <span className="text-h7  lg:text-h5 text-primary font-serif dark:text-primary-foreground">
+                                  {pricing.sufix}
+                              </span>
+                            </div>
                         </div>
                         <Button
-                            variant="ghost"
+                            variant="default"
                             asChild
-                            size="sm"
-                            className="pointer-events-auto text-primary dark:text-primary-foreground hover:bg-white/50 hover:text-primary hover:dark:bg-primary/10 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-primary focus-visible:ring-offset-primary-foreground"
+                            size="lg"
+                            className="pointer-events-auto bg-secondary/80 hover:bg-secondary rounded-none dark:text-secondary hover:text-secondary-foreground hover:dark:bg-secondary-foreground/10 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:ring-primary focus-visible:ring-offset-primary-foreground"
                         >
                             <Link href={href}>
                                 {cta}

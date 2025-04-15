@@ -13,7 +13,7 @@ export const SectionWrapper = ({children, className, imageProps, ...rest}: BaseS
       {/* <div className="absolute inset-0 -z-10 transform-gpu overflow-hidden blur-3xl"></div */}
         {
             imageProps && (
-                <figure className="absolute inset-0 -z-20 to-transparent">
+                <figure className="absolute inset-0 -z-20 w-full h-full overflow-clip">
                     <Image 
                         src={imageProps.src}
                         alt={imageProps.alt}

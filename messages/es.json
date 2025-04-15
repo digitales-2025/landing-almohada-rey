@@ -1,48 +1,114 @@
 {
-  "Error": {
-    "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
-    "title": "Algo salió mal"
-  },
-  "IndexPage": {
-    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Ejemplo de next-intl"
-  },
-  "IndexPageExperiences": {
-    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Experiencias",
-    "bentoSection": {
-      "title": "Ofertas especiales",
-      "description": "Vive tus mejores recuerdos aquí"
+    "Error": {
+        "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
+        "title": "Algo salió mal"
+    },
+    "IndexPage": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Ejemplo de next-intl"
+    },
+    "IndexPageExperiences": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Experiencias",
+        "bentoSection": {
+            "title": "Ofertas especiales",
+            "description": "Viva tus mejores recuerdos aquí",
+            "card1": {
+                "title": "Más tiempo, más ahorro",
+                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/es/experiencias"
+                }
+            },
+            "card2": {
+                "title": "Estadía de Lujo",
+                "description": "Tome un descanso de la rutina diaria con esta oferta inigualable en nuestra suite con servicios exclusivos, consulta ahora y ahorra hasta un 20%.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/es/experiencias"
+                }
+            },
+            "card3": {
+                "title": "Celebra el amor, luna de miel",
+                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "details": {
+                    "item1": "2 - huéspedes",
+                    "item2": "Cena y desayuno para 2",
+                    "item3": "Amenidades de cortesía"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "350",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Consultar disponibilidad",
+                    "link": "/es/experiencias"
+                }
+            },
+            "card4": {
+                "title": "Habitación Estándar",
+                "description": "Disfruta de una experiencia única en nuestra habitación estándar con vista al mar.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/es/experiencias"
+                }
+            },
+            "card5": {
+                "title": "Vacaciones en Familia",
+                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/es/experiencias"
+                }
+            }
+        },
+        "businessPackageSection": {
+            "title": "Oferta especial",
+            "caption": "Paquete para estancia de Negocios",
+            "description": "Haga de su viaje de negocios un placer con este paquete que incluye:",
+            "ctaButton": {
+                "label": "Consultar",
+                "link": "/es/experiencias"
+            },
+            "details": {
+                "item1": "Suite de lujo, salón integrado",
+                "item2": "Acceso a internet de alta velocidad 24/7",
+                "item3": "Área de trabajo y espacio de descanso",
+                "item4": "Incluye desayuno gratuito diario"
+            }
+        }
+    },
+    "IndexPageGallery": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Galería"
+    },
+    "IndexPageRooms": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Habitaciones"
+    },
+    "IndexPageTravelers": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Viajeros"
+    },
+    "LocaleSwitcher": {
+        "label": "Cambia el idioma",
+        "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
+    },
+    "Manifest": {
+        "name": "La Almohada del Rey"
+    },
+    "Navigation": {
+        "home": "Inicio",
+        "experiences": "Experiencias",
+        "gallery": "Galería",
+        "rooms": "Habitaciones",
+        "travelers": "Viajeros"
+    },
+    "NotFoundPage": {
+        "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
+        "title": "Página no encontrada"
     }
-  },
-  "IndexPageGallery": {
-    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Galería"
-  },
-  "IndexPageRooms": {
-    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Habitaciones"
-  },
-  "IndexPageTravelers": {
-    "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-    "title": "Viajeros"
-  },
-  "LocaleSwitcher": {
-    "label": "Cambia el idioma",
-    "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
-  },
-  "Manifest": {
-    "name": "La Almohada del Rey"
-  },
-  "Navigation": {
-    "home": "Inicio",
-    "experiences": "Experiencias",
-    "gallery": "Galería",
-    "rooms": "Habitaciones",
-    "travelers": "Viajeros"
-  },
-  "NotFoundPage": {
-    "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
-    "title": "Página no encontrada"
-  }
 }
