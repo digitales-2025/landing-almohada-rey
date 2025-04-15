@@ -18,7 +18,7 @@
                 "description": "Book a stay of at least 5 nights and get a 20% discount on your room price.",
                 "ctaButton": {
                     "label": "Inquire",
-                    "link": "/en/experiencies"
+                    "link": "/experiences#contact"
                 }
             },
             "card2": {
@@ -26,7 +26,7 @@
                 "description": "Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.",
                 "ctaButton": {
                     "label": "Inquire",
-                    "link": "/en/experiencies"
+                    "link": "/experiences#contact"
                 }
             },
             "card3": {
@@ -45,7 +45,7 @@
                 },
                 "ctaButton": {
                     "label": "Inquire availability",
-                    "link": "/en/experiencies"
+                    "link": "/experiences#contact"
                 }
             },
             "card4": {
@@ -53,7 +53,7 @@
                 "description": "Enjoy a unique experience in our standard room with sea view.",
                 "ctaButton": {
                     "label": "Inquire",
-                    "link": "/en/experiencies"
+                    "link": "/experiences#contact"
                 }
             },
             "card5": {
@@ -61,7 +61,7 @@
                 "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
                 "ctaButton": {
                     "label": "Inquire",
-                    "link": "/en/experiencies"
+                    "link": "/experiences#contact"
                 }
             }
         },
@@ -71,13 +71,106 @@
             "description": "Make your business trip a pleasure with this package that includes:",
             "ctaButton": {
                 "label": "Inquire",
-                "link": "/en/experiencies"
+                "link": "/experiences#contact"
             },
             "details": {
                 "item1": "Luxury suite, integrated living room",
                 "item2": "24/7 high-speed internet access",
                 "item3": "Work area and relaxation space",
                 "item4": "Includes free daily breakfast"
+            }
+        },
+        "eventPackagesSection": {
+            "title": "Events",
+            "description": "Celebrate special moments in our conference room",
+            "packages": {
+                "item1": {
+                    "title": "Wedding Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "1500"
+                    }
+                },
+                "item2": {
+                    "title": "Corporate Conference Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "750"
+                    }
+                },
+                "item3": {
+                    "title": "Family Reunion Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "450"
+                    }
+                },
+                "item4": {
+                    "title": "Birthday Party Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "225"
+                    }
+                },
+                "item5": {
+                    "title": "Wedding Anniversary Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "150"
+                    }
+                },
+                "item6": {
+                    "title": "Holiday Package",
+                    "pricing": {
+                        "currency": "USD",
+                        "price": "300"
+                    }
+                }
+            }
+        },
+        "eventHallSection": {
+            "title": "Events",
+            "Caption": "Conference Room",
+            "description": "Equipped with various lighting, 55\" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.",
+            "slogan": "We adapt for all types of events.",
+            "ctaButton": {
+                "label": "Check availability",
+                "link": "/experiences#contact"
+            }
+        },
+        "servicesSection": {
+            "title": "Services",
+            "description": "We take care of the details",
+            "services": {
+                "item1": "24-hour Room Service",
+                "item2": "Carpeted rooms with private bathroom and hot water",
+                "item3": "Cable TV and intercoms",
+                "item4": "Free Wireless Internet access in public areas of the Hotel",
+                "item5": "Rest area",
+                "item6": "Waiting room",
+                "item7": "Free private parking",
+                "item8": "Terrace with 360º viewpoint",
+                "item9": "Luggage storage service",
+                "item10": "We accept credit cards",
+                "item11": "Free Wireless Internet access throughout the Hotel",
+                "item12": "Currency exchange (US Dollars)",
+                "item13": "Bilingual assistance",
+                "item14": "Tour assistance",
+                "item15": "24-hour wake-up service",
+                "item16": "Safety deposit box",
+                "item17": "Laundry service (additional cost)",
+                "item18": "Taxi service (additional cost)",
+                "item19": "Airport shuttle service (additional cost)"
+            }
+        },
+        "keepInTouchSection": {
+            "sectionName": "contact",
+            "title": "Contact",
+            "caption": "Any questions?",
+            "description": "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.",
+            "ctaInput": {
+                "placeholder": "Enter your inquiry...",
+                "buttonLabel": "WhatsApp"
             }
         }
     },

@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { CakeSlice, Users, UtensilsCrossed } from 'lucide-react';
+import { formatPrice } from '@/lib/i18n-formatPrice';
 
 export const BentoSection = () => {
     const t = useTranslations('IndexPageExperiences');
@@ -79,11 +80,10 @@ export const BentoSection = () => {
             ],
             pricing:{
                 caption: t('bentoSection.card3.pricing.label'),
-                price: isNaN(Number(t('bentoSection.card3.pricing.price'))) ? t('bentoSection.card3.pricing.price') : Number(t('bentoSection.card3.pricing.price')).toLocaleString(undefined, {
-                    style: 'currency',
-                    currency: t('bentoSection.card3.pricing.currency'),
-                    maximumFractionDigits: 2,
-                }),
+                price: formatPrice(
+                    t('bentoSection.card3.pricing.price'),
+                    t('bentoSection.card3.pricing.currency')
+                ),
                 currency: t('bentoSection.card3.pricing.currency'),
                 sufix: t('bentoSection.card3.pricing.sufix'),
             },
