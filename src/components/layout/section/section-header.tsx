@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
 import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 type TitleProps = {
     text: string;
@@ -39,15 +40,20 @@ export const SectionHeader = ({
         alignment === 'left'
             ? 'text-left'
             : alignment === 'right'
-            ? 'text-right'
-            : 'text-center';
+              ? 'text-right'
+              : 'text-center';
 
     const decriptionDefaultClassName =
         'font-h3 !text-h6 sm:!text-h5 lg:!text-h3 !leading-9 sm:!leading-12 lg:!leading-18  text-balance text-secondary dark:text-secondary-foreground';
 
     return (
         <header {...rest} className={cn('w-full', className)}>
-            <div className={cn('mx-auto space-y-2 md:space-y-3 lg:space-y-4 max-w-[900px]', blockClassName)}>
+            <div
+                className={cn(
+                    'mx-auto space-y-2 md:space-y-3 lg:space-y-4 max-w-[900px]',
+                    blockClassName
+                )}
+            >
                 {!onlyTitle && (
                     <h2
                         className={cn(

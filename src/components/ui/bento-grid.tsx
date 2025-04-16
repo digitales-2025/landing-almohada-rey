@@ -1,11 +1,11 @@
-import { ArrowRightIcon } from '@radix-ui/react-icons';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { ArrowRightIcon } from '@radix-ui/react-icons';
+import { LucideIcon } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
 import { Separator } from './separator';
-import { LucideIcon } from 'lucide-react';
 
 interface BentoGridProps extends ComponentPropsWithoutRef<'div'> {
     children: ReactNode;
@@ -23,10 +23,10 @@ type CardDetailProps = {
 };
 
 type pricingProps = {
-  caption:string
+    caption: string;
     price: string;
     currency: string;
-    sufix:string
+    sufix: string;
 };
 
 export interface BentoCardProps extends ComponentPropsWithoutRef<'div'> {
@@ -144,22 +144,22 @@ const BentoCard = ({
                 <div className="w-full space-y-2">
                     <Separator className="bg-secondary data-[orientation=horizontal]:!h-[1px]"></Separator>
                     <div className="flex items-center justify-between flex-wrap space-y-2">
-                        <div className='flex space-x-4'>
+                        <div className="flex space-x-4">
                             <div className="flex items-center space-x-2">
                                 <span className="text-sm lg:text-h8 text-secondary dark:text-secondary-foreground">
                                     {pricing.caption}
                                 </span>
                             </div>
-                            <div className='flex space-x-1'>
-                              {/* <span className="text-h5 text-primary font-serif dark:text-primary-foreground">
+                            <div className="flex space-x-1">
+                                {/* <span className="text-h5 text-primary font-serif dark:text-primary-foreground">
                                   {pricing.currency}
                               </span> */}
-                              <span className="text-h7 lg:text-h5 text-primary font-serif dark:text-primary-foreground">
-                                  {pricing.price}
-                              </span>
-                              <span className="text-h7  lg:text-h5 text-primary font-serif dark:text-primary-foreground">
-                                  {pricing.sufix}
-                              </span>
+                                <span className="text-h7 lg:text-h5 text-primary font-serif dark:text-primary-foreground">
+                                    {pricing.price}
+                                </span>
+                                <span className="text-h7  lg:text-h5 text-primary font-serif dark:text-primary-foreground">
+                                    {pricing.sufix}
+                                </span>
                             </div>
                         </div>
                         <Button

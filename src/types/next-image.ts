@@ -1,4 +1,4 @@
-type NextImageProps ={
+/* type NextImageProps = {
     className?: string;
     src: string;
     alt: string;
@@ -7,8 +7,8 @@ type NextImageProps ={
     fill?: boolean;
     quality?: number | `${number}`;
     priority?: boolean;
-    loading?: "eager" | "lazy" | undefined;
-    placeholder?: "empty" | "blur";
+    loading?: 'eager' | 'lazy' | undefined;
+    placeholder?: 'empty' | 'blur';
     blurDataURL?: string;
     unoptimized?: boolean;
     overrideSrc?: string;
@@ -18,4 +18,5 @@ type NextImageProps ={
     objectPosition?: string;
     lazyBoundary?: string;
     lazyRoot?: string;
-} //for next15.2.5
+}; //for next15.2.5
+ */

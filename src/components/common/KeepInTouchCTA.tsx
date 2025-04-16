@@ -1,23 +1,28 @@
 'use client';
+
+import React, { useTransition } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+import { FieldErrors, useForm } from 'react-hook-form';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { toast } from 'sonner';
+import { z } from 'zod';
+
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
 import { Button } from '@/components/ui/button';
 import { Form, FormMessage } from '@/components/ui/form';
-import React, { useTransition } from 'react';
-import { FieldErrors, useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { IoLogoWhatsapp } from 'react-icons/io';
 import { Textarea } from '@/components/ui/textarea';
-import { useTranslations } from 'next-intl';
-import { toast } from 'sonner';
 
 interface KeepInTouchCTAProps {
     className?: string;
     children?: React.ReactNode;
 }
 
-export const KeepInTouchCTA = ({ className, children }: KeepInTouchCTAProps) => {
+export const KeepInTouchCTA = ({
+    className,
+    children,
+}: KeepInTouchCTAProps) => {
     const whatssAppNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
     const whatssAppBaseUrl = process.env.NEXT_PUBLIC_BASE_WHATSSAPP_URL;
     const t = useTranslations('KeepInTouchSection');
@@ -65,7 +70,7 @@ export const KeepInTouchCTA = ({ className, children }: KeepInTouchCTAProps) => 
                 // Mostrar confirmación y reiniciar formulario
                 toast.success(t('ctaInput.successMessage'));
                 form.reset();
-            } catch (error) {
+            } catch {
                 toast.error(t('ctaInput.generalErrorMessage'));
             }
         });
@@ -79,7 +84,7 @@ export const KeepInTouchCTA = ({ className, children }: KeepInTouchCTAProps) => 
 
     return (
         <SectionWrapper id={t('sectionName')} className={className}>
-            { children }
+            {children}
             <div className="bg-primary/5 p-6 lg:p-10 space-y-8">
                 <SectionHeader
                     headerTitle={{

@@ -1,7 +1,8 @@
-import { SectionWrapper } from '@/components/layout/section/base-section';
-import { SectionHeader } from '@/components/layout/section/section-header';
 import { BedDouble, Users, Utensils, Wifi } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+
+import { SectionWrapper } from '@/components/layout/section/base-section';
+import { SectionHeader } from '@/components/layout/section/section-header';
 
 export const BusinessPackageHero = () => {
     const t = useTranslations('IndexPageExperiences');
@@ -31,7 +32,8 @@ export const BusinessPackageHero = () => {
                 alt: 'BusinessPackageWomanBooking',
                 quality: 100,
                 fill: true,
-                className: 'object-top-right lg:object-cover object-cover scale-200 lg:scale-100',
+                className:
+                    'object-top-right lg:object-cover object-cover scale-200 lg:scale-100',
                 priority: false,
                 loading: 'eager',
                 placeholder: 'blur',
@@ -49,7 +51,7 @@ export const BusinessPackageHero = () => {
                     description={{
                         text: t('businessPackageSection.caption'),
                     }}
-                    alignment='left'
+                    alignment="left"
                 ></SectionHeader>
                 <p className="text-pretty text-p1 text-start w-full text-secondary dark:text-secondary-foreground">
                     {t('businessPackageSection.description')}

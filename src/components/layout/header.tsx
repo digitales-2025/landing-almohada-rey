@@ -1,14 +1,16 @@
 'use client';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+
 import React from 'react';
+import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+
+import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
+import { DefaultRoutes, defaultRoutes } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import LocaleSwitcher from '../i18n/locale-switch/locale-switcher';
 import { ModeToggle } from '../mode-toggle';
 import { Logo } from './logo';
-import { DefaultRoutes, defaultRoutes } from '@/i18n/routing';
-import { Link } from '@/i18n/navigation';
-import LocaleSwitcher from '../i18n/locale-switch/locale-switcher';
-import { useTranslations } from 'next-intl';
 
 // "home": "Inicio",
 // "experiences": "Experiencias",

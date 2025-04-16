@@ -1,4 +1,10 @@
 {
+    "arrowParens": "avoid",
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "embeddedLanguageFormatting": "auto",
+    "endOfLine": "lf",
+    "htmlWhitespaceSensitivity": "css",
     "importOrder": [
         "^(react/(.*)$)|^(react$)",
         "^(next/(.*)$)|^(next$)",
@@ -8,23 +14,17 @@
         "^[./]"
     ],
     "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+    "jsxSingleQuote": false,
     "plugins": [
         "@ianvs/prettier-plugin-sort-imports",
         "prettier-plugin-sort-json"
     ],
     "printWidth": 80,
-    "tabWidth": 4,
-    "useTabs": false,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
     "semi": true,
     "singleQuote": true,
-    "quoteProps": "as-needed",
-    "jsxSingleQuote": false,
+    "tabWidth": 4,
     "trailingComma": "es5",
-    "bracketSpacing": true,
-    "bracketSameLine": false,
-    "arrowParens": "avoid",
-    "proseWrap": "preserve",
-    "htmlWhitespaceSensitivity": "css",
-    "endOfLine": "lf",
-    "embeddedLanguageFormatting": "auto"
+    "useTabs": false
 }

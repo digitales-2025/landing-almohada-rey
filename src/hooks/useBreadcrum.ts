@@ -1,21 +1,22 @@
-import { BreadcrumbItemType } from '@/types/breadcrum';
-import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
-import {
-    supportedLocales,
-    routes,
-    defaultRoutes,
-    SupportedLocales,
-    defaultLocale,
-} from '@/i18n/routing';
+/* import { usePathname } from 'next/navigation'; */
 import { useTranslations } from 'next-intl';
+
+import { usePathname } from '@/i18n/navigation';
+import {
+    defaultLocale,
+    defaultRoutes,
+    routes,
+    supportedLocales,
+    SupportedLocales,
+} from '@/i18n/routing';
+import { BreadcrumbItemType } from '@/types/breadcrum';
 
 export function useBreadcrumb() {
     const pathname = usePathname();
     const t = useTranslations('Navigation');
     const breadcrumbItems = useMemo(() => {
-        
-        const pathSegments = pathname.split('/').filter(Boolean);
+        const pathSegments = String(pathname).split('/').filter(Boolean);
 
         // Verificamos si el primer segmento es un locale soportado usando el objeto supportedLocales
         const firstSegment = pathSegments[0] || '';
@@ -36,7 +37,7 @@ export function useBreadcrumb() {
                 label: homeLabel,
                 href: hasLocalePrefix
                     ? `/${locale}`
-                    : defaultRoutes.home ?? '/',
+                    : (defaultRoutes.home ?? '/'),
             },
         ];
 
