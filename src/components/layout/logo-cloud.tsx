@@ -1,7 +1,5 @@
-
-import { InfiniteSlider } from '../ui/infinite-slider'
-import { ProgressiveBlur } from '../ui/progressive-blur'
-
+import { InfiniteSlider } from '../ui/infinite-slider';
+import { ProgressiveBlur } from '../ui/progressive-blur';
 
 export const LogoCloud = () => {
     return (
@@ -9,13 +7,12 @@ export const LogoCloud = () => {
             <div className="group relative m-auto max-w-6xl px-6">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="inline md:max-w-44 md:border-r md:pr-6">
-                        <p className="text-end text-sm">Powering the best teams</p>
+                        <p className="text-end text-sm">
+                            Powering the best teams
+                        </p>
                     </div>
                     <div className="relative py-6 md:w-[calc(100%-11rem)]">
-                        <InfiniteSlider
-                            speedOnHover={20}
-                            speed={40}
-                            gap={112}>
+                        <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
                             <div className="flex">
                                 <img
                                     className="mx-auto h-5 w-fit dark:invert"
@@ -108,5 +105,5 @@ export const LogoCloud = () => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
