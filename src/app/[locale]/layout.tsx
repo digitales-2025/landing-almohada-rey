@@ -49,9 +49,9 @@ export default async function RootLayout({
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
-
     // Enable static rendering
     setRequestLocale(locale);
+
     return (
         <html lang={locale} suppressHydrationWarning>
             <body

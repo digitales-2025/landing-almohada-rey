@@ -2,225 +2,234 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
-    "Error": {
-        "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
-        "title": "Something went wrong!"
-    },
-    "KeepInTouchSection": {
-        "sectionName": "contact",
-        "title": "Contact",
-        "caption": "Any questions?",
-        "description": "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.",
-        "ctaInput": {
-            "placeholder": "Enter your inquiry...",
-            "buttonLabel": "WhatsApp",
-            "generalErrorMessage": "There was an error, please try again later.",
-            "minErrorMessage": "Please enter at least {min} characters.",
-            "maxErrorMessage": "Please enter no more than {max} characters.",
-            "failureMessage": "It seems there was an error, the message was not sent.",
-            "successMessage": "Thank you for your inquiry!"
-        }
-    },
-    "IndexPage": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "next-intl example"
-    },
-    "IndexPageExperiences": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Experiences",
-        "bentoSection": {
-            "title": "Special offers",
-            "description": "Live your best memories here",
-            "card1": {
-                "title": "More time, more savings",
-                "description": "Book a stay of at least 5 nights and get a 20% discount on your room price.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card2": {
-                "title": "Luxury Stay",
-                "description": "Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card3": {
-                "title": "Celebrate love, honeymoon",
-                "description": "Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.",
-                "details": {
-                    "item1": "2 - guests",
-                    "item2": "Dinner and Breakfast for 2",
-                    "item3": "Free amenities"
-                },
-                "pricing": {
-                    "label": "from",
-                    "currency": "USD",
-                    "price": "119",
-                    "sufix": "/night"
-                },
-                "ctaButton": {
-                    "label": "Inquire availability",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card4": {
-                "title": "Standard Room",
-                "description": "Enjoy a unique experience in our standard room with sea view.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card5": {
-                "title": "Family Vacation",
-                "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            }
-        },
-        "businessPackageSection": {
-            "title": "Special offer",
-            "caption": "Business Stay Package",
-            "description": "Make your business trip a pleasure with this package that includes:",
-            "ctaButton": {
-                "label": "Inquire",
-                "link": "/experiences#contact"
-            },
-            "details": {
-                "item1": "Luxury suite, integrated living room",
-                "item2": "24/7 high-speed internet access",
-                "item3": "Work area and relaxation space",
-                "item4": "Includes free daily breakfast"
-            }
-        },
-        "eventPackagesSection": {
-            "title": "Events",
-            "description": "Celebrate special moments in our conference room",
-            "packages": {
-                "item1": {
-                    "title": "Wedding Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "1500"
-                    }
-                },
-                "item2": {
-                    "title": "Corporate Conference Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "750"
-                    }
-                },
-                "item3": {
-                    "title": "Family Reunion Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "450"
-                    }
-                },
-                "item4": {
-                    "title": "Birthday Party Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "225"
-                    }
-                },
-                "item5": {
-                    "title": "Wedding Anniversary Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "150"
-                    }
-                },
-                "item6": {
-                    "title": "Holiday Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "300"
-                    }
-                }
-            }
-        },
-        "eventHallSection": {
-            "title": "Events",
-            "caption": "Conference Hall",
-            "description": "Equipped with various lighting, 55\" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.",
-            "slogan": "We adapt for all types of events.",
-            "ctaButton": {
-                "label": "Check availability",
-                "link": "/experiences#contact"
-            }
-        },
-        "servicesSection": {
-            "title": "Services",
-            "description": "We take care of the details",
-            "services": {
-                "item1": "24-hour Room Service",
-                "item2": "Carpeted rooms with private bathroom and hot water",
-                "item3": "Cable TV and intercoms",
-                "item4": "Free Wireless Internet access in public areas of the Hotel",
-                "item5": "Rest area",
-                "item6": "Waiting room",
-                "item7": "Free private parking",
-                "item8": "Terrace with 360º viewpoint",
-                "item9": "Luggage storage service",
-                "item10": "We accept credit cards",
-                "item11": "Free Wireless Internet access throughout the Hotel",
-                "item12": "Currency exchange (US Dollars)",
-                "item13": "Bilingual assistance",
-                "item14": "Tour assistance",
-                "item15": "24-hour wake-up service",
-                "item16": "Safety deposit box",
-                "item17": "Laundry service (additional cost)",
-                "item18": "Taxi service (additional cost)",
-                "item19": "Airport shuttle service (additional cost)"
-            }
-        },
-        "keepInTouchSection": {
-            "sectionName": "contact",
-            "title": "Contact",
-            "caption": "Any questions?",
-            "description": "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.",
-            "ctaInput": {
-                "placeholder": "Enter your inquiry...",
-                "buttonLabel": "WhatsApp"
-            }
-        }
-    },
-    "IndexPageGallery": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Gallery"
-    },
-    "IndexPageRooms": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Rooms"
-    },
-    "IndexPageTravelers": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Travelers"
-    },
-    "LocaleSwitcher": {
-        "label": "Change language",
-        "locale": "{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}"
-    },
-    "Manifest": {
-        "name": "La Almohada del Rey"
-    },
-    "Navigation": {
-        "home": "Home",
-        "experiences": "Experiences",
-        "gallery": "Gallery",
-        "rooms": "Rooms",
-        "travelers": "Travelers"
-    },
-    "NotFoundPage": {
-        "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-        "title": "Page not found"
-    }
+    Error: {
+        description: "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>";
+        title: 'Something went wrong!';
+    };
+    KeepInTouchSection: {
+        sectionName: 'contact';
+        title: 'Contact';
+        caption: 'Any questions?';
+        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+        ctaInput: {
+            placeholder: 'Enter your inquiry...';
+            buttonLabel: 'WhatsApp';
+            generalErrorMessage: 'There was an error, please try again later.';
+            minErrorMessage: 'Please enter at least {min} characters.';
+            maxErrorMessage: 'Please enter no more than {max} characters.';
+            failureMessage: 'It seems there was an error, the message was not sent.';
+            successMessage: 'Thank you for your inquiry!';
+        };
+    };
+    IndexPage: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'next-intl example';
+    };
+    IndexPageExperiences: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Experiences';
+        bentoSection: {
+            title: 'Special offers';
+            description: 'Live your best memories here';
+            card1: {
+                title: 'More time, more savings';
+                description: 'Book a stay of at least 5 nights and get a 20% discount on your room price.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card2: {
+                title: 'Luxury Stay';
+                description: 'Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card3: {
+                title: 'Celebrate love, honeymoon';
+                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                details: {
+                    item1: '2 - guests';
+                    item2: 'Dinner and Breakfast for 2';
+                    item3: 'Free amenities';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '119';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Inquire availability';
+                    link: '/experiences#contact';
+                };
+            };
+            card4: {
+                title: 'Standard Room';
+                description: 'Enjoy a unique experience in our standard room with sea view.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card5: {
+                title: 'Family Vacation';
+                description: 'Book two or more rooms for your family vacation and receive a 50% discount on the second room.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+        };
+        businessPackageSection: {
+            title: 'Special offer';
+            caption: 'Business Stay Package';
+            description: 'Make your business trip a pleasure with this package that includes:';
+            ctaButton: {
+                label: 'Inquire';
+                link: '/experiences#contact';
+            };
+            details: {
+                item1: 'Luxury suite, integrated living room';
+                item2: '24/7 high-speed internet access';
+                item3: 'Work area and relaxation space';
+                item4: 'Includes free daily breakfast';
+            };
+        };
+        eventPackagesSection: {
+            title: 'Events';
+            description: 'Celebrate special moments in our conference room';
+            packages: {
+                item1: {
+                    title: 'Wedding Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '1500';
+                    };
+                };
+                item2: {
+                    title: 'Corporate Conference Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '750';
+                    };
+                };
+                item3: {
+                    title: 'Family Reunion Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '450';
+                    };
+                };
+                item4: {
+                    title: 'Birthday Party Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '225';
+                    };
+                };
+                item5: {
+                    title: 'Wedding Anniversary Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '150';
+                    };
+                };
+                item6: {
+                    title: 'Holiday Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '300';
+                    };
+                };
+            };
+        };
+        eventHallSection: {
+            title: 'Events';
+            caption: 'Conference Hall';
+            description: 'Equipped with various lighting, 55" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.';
+            slogan: 'We adapt for all types of events.';
+            ctaButton: {
+                label: 'Check availability';
+                link: '/experiences#contact';
+            };
+        };
+        servicesSection: {
+            title: 'Services';
+            description: 'We take care of the details';
+            services: {
+                item1: '24-hour Room Service';
+                item2: 'Carpeted rooms with private bathroom and hot water';
+                item3: 'Cable TV and intercoms';
+                item4: 'Free Wireless Internet access in public areas of the Hotel';
+                item5: 'Rest area';
+                item6: 'Waiting room';
+                item7: 'Free private parking';
+                item8: 'Terrace with 360º viewpoint';
+                item9: 'Luggage storage service';
+                item10: 'We accept credit cards';
+                item11: 'Free Wireless Internet access throughout the Hotel';
+                item12: 'Currency exchange (US Dollars)';
+                item13: 'Bilingual assistance';
+                item14: 'Tour assistance';
+                item15: '24-hour wake-up service';
+                item16: 'Safety deposit box';
+                item17: 'Laundry service (additional cost)';
+                item18: 'Taxi service (additional cost)';
+                item19: 'Airport shuttle service (additional cost)';
+            };
+        };
+        keepInTouchSection: {
+            sectionName: 'contact';
+            title: 'Contact';
+            caption: 'Any questions?';
+            description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+            ctaInput: {
+                placeholder: 'Enter your inquiry...';
+                buttonLabel: 'WhatsApp';
+            };
+        };
+    };
+    IndexPageGallery: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Gallery';
+    };
+    IndexPageRooms: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Rooms';
+    };
+    IndexPageTravelers: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Travelers';
+    };
+    LocaleSwitcher: {
+        label: 'Change language';
+        locale: '{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}';
+    };
+    Manifest: {
+        name: 'La Almohada del Rey';
+    };
+    Navigation: {
+        home: 'Home';
+        experiences: 'Experiences';
+        gallery: 'Gallery';
+        rooms: 'Rooms';
+        travelers: 'Travelers';
+        booking: 'Reservation';
+        headquarters: {
+            address: 'Mollendo St. #37 - Urb. Municipal';
+            link: '/';
+        };
+        reservationButton: {
+            label: 'Book Now';
+            link: '/booking';
+        };
+    };
+    NotFoundPage: {
+        description: 'Please double-check the browser address bar or use the navigation to go to a known page.';
+        title: 'Page not found';
+    };
 };
 export default messages;

@@ -213,7 +213,16 @@
         "experiences": "Experiencias",
         "gallery": "Galería",
         "rooms": "Habitaciones",
-        "travelers": "Viajeros"
+        "travelers": "Viajeros",
+        "booking": "Reservación",
+        "headquarters": {
+            "address": "Calle Mollendo N° 37 – Urb. Municipal",
+            "link": "/"
+        },
+        "reservationButton": {
+            "label": "Reservar",
+            "link": "/reservacion"
+        }
     },
     "NotFoundPage": {
         "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",

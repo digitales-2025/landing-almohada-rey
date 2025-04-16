@@ -25,7 +25,7 @@ export const Logo = ({ className }: { className?: string }) => {
 
             {/* Logo para escritorio (lg+) */}
             <div className="hidden lg:block">
-                <LogoAlmohadaRey width={110} height={25} color="currentColor" />
+                <LogoAlmohadaRey width={200} height={45} color="currentColor" />
             </div>
         </div>
     );
