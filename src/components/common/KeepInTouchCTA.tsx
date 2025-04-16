@@ -14,9 +14,10 @@ import { toast } from 'sonner';
 
 interface KeepInTouchCTAProps {
     className?: string;
+    children?: React.ReactNode;
 }
 
-export const KeepInTouchCTA = ( { className }:KeepInTouchCTAProps ) => {
+export const KeepInTouchCTA = ({ className, children }: KeepInTouchCTAProps) => {
     const whatssAppNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
     const whatssAppBaseUrl = process.env.NEXT_PUBLIC_BASE_WHATSSAPP_URL;
     const t = useTranslations('KeepInTouchSection');
@@ -50,9 +51,7 @@ export const KeepInTouchCTA = ( { className }:KeepInTouchCTAProps ) => {
         startTransition(() => {
             try {
                 if (!whatssAppNumber) {
-                    toast.error(
-                        t('ctaInput.generalErrorMessage')
-                    );
+                    toast.error(t('ctaInput.generalErrorMessage'));
                     return;
                 }
 
@@ -67,9 +66,7 @@ export const KeepInTouchCTA = ( { className }:KeepInTouchCTAProps ) => {
                 toast.success(t('ctaInput.successMessage'));
                 form.reset();
             } catch (error) {
-                toast.error(
-                    t('ctaInput.generalErrorMessage')
-                );
+                toast.error(t('ctaInput.generalErrorMessage'));
             }
         });
     };
@@ -82,6 +79,7 @@ export const KeepInTouchCTA = ( { className }:KeepInTouchCTAProps ) => {
 
     return (
         <SectionWrapper id={t('sectionName')} className={className}>
+            { children }
             <div className="bg-primary/5 p-6 lg:p-10 space-y-8">
                 <SectionHeader
                     headerTitle={{
@@ -117,11 +115,11 @@ export const KeepInTouchCTA = ( { className }:KeepInTouchCTAProps ) => {
                                 <span>{t('ctaInput.buttonLabel')}</span>
                             </Button>
                         </div>
-                        {
-                            errors.introductionComment?.message && <FormMessage className='text-destructive'>
+                        {errors.introductionComment?.message && (
+                            <FormMessage className="text-destructive">
                                 {errors.introductionComment.message}
                             </FormMessage>
-                        }
+                        )}
                     </form>
                 </Form>
             </div>
