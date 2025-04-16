@@ -37,22 +37,18 @@
 //   );
 // }
 
-import React from "react";
+import React from 'react';
 
 interface PageLayoutProps {
     children: React.ReactNode;
 }
 
-export const PageLayout = ({
-    children
-}: PageLayoutProps) => {
-  return (
-    <main className="overflow-hidden animate-fade">
-      <article className="min-h-dvh space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 pb-8">
-      {
-        children
-      }
-      </article>
-    </main>
-  );
+export const PageLayout = ({ children }: PageLayoutProps) => {
+    return (
+        <main className="overflow-hidden animate-fade">
+            <article className="min-h-dvh space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 pb-8">
+                {children}
+            </article>
+        </main>
+    );
 };

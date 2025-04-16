@@ -1,22 +1,22 @@
-import { PageLayout } from "@/components/layout/PageLayout";
-import { ExperiencesHeroSection } from "./components/ExperiencesHero";
-import { BentoSection } from "./components/BentoSection";
-import { BusinessPackageHero } from "./components/BusinessPackageHero";
-import { EventPackagesSection } from "./components/EventPackagesSection";
-import { ServicesSection } from "./components/ServicesSection";
-import { KeepInTouchCTA } from "../../../components/common/KeepInTouchCTA";
-import { ConferenceHallSection } from "./components/ConferenceHallSection";
+import { PageLayout } from '@/components/layout/PageLayout';
+import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA';
+import { BentoSection } from './components/BentoSection';
+import { BusinessPackageHero } from './components/BusinessPackageHero';
+import { ConferenceHallSection } from './components/ConferenceHallSection';
+import { EventPackagesSection } from './components/EventPackagesSection';
+import { ExperiencesHeroSection } from './components/ExperiencesHero';
+import { ServicesSection } from './components/ServicesSection';
 
 export default function page() {
-  return (
-    <PageLayout>
-      <ExperiencesHeroSection />
-      <BentoSection></BentoSection>
-      <BusinessPackageHero></BusinessPackageHero>
-      <EventPackagesSection></EventPackagesSection>
-      <ConferenceHallSection></ConferenceHallSection>
-      <ServicesSection></ServicesSection>
-      <KeepInTouchCTA></KeepInTouchCTA>
-    </PageLayout>
-  );
+    return (
+        <PageLayout>
+            <ExperiencesHeroSection />
+            <BentoSection></BentoSection>
+            <BusinessPackageHero></BusinessPackageHero>
+            <EventPackagesSection></EventPackagesSection>
+            <ConferenceHallSection></ConferenceHallSection>
+            <ServicesSection></ServicesSection>
+            <KeepInTouchCTA></KeepInTouchCTA>
+        </PageLayout>
+    );
 }
