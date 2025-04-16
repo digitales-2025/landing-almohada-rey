@@ -1,10 +1,6 @@
 import '../../envConfig'
 import { z } from "zod";
 
-// dotenv.config({ path: `.env` });
-
-// type NODE_ENV = 'development' | 'production' | 'test';
-
 type GeneralEnvVars = {
   // NODE_ENV: NODE_ENV;
   // PORT: string;
@@ -57,8 +53,12 @@ const result = schema.safeParse({
 if (!result.success) {
   throw new Error(`Config validation error: ${result.error.message}`);
 }
+
 const envVars = result.data;
 
+/**
+ * IMPORTANTE: SOLO USAR PARA VARIABLES QUE NO TENGAN EL PREFIJO: "NEXT_PUBLIC"
+ */
 export const envs: GeneralEnvVars = {
   // NODE_ENV: envVars.NODE_ENV,
   // PORT: envVars.PORT,
