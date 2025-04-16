@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { PageLayout } from '@/components/layout/PageLayout';
-import { GalleryHeroSection } from './components/GalleryHero';
+
+/* import { GalleryHeroSection } from './components/GalleryHero'; */
 
 export default function page() {
     // const transitionVariants = {
@@ -25,7 +26,7 @@ export default function page() {
     // }
     return (
         <PageLayout>
-            <GalleryHeroSection />
+            <div>Hola</div>
         </PageLayout>
     );
 }

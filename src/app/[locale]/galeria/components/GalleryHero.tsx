@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 
 import { BaseHeroWrapper } from '@/components/layout/hero/base-hero';
 import { TextEffect } from '@/components/ui/text-effect';
@@ -31,3 +31,4 @@ export const GalleryHeroSection = () => {
         </section>
     );
 };
+ */
