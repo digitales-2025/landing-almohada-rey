@@ -1,11 +1,6 @@
-import HeroSection from "@/app/gallery/components/hero-section";
-import FooterSection from "@/components/layout/footer";
+import { redirect } from '@/i18n/navigation';
 
-export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <FooterSection />
-    </>
-  );
+// This page only renders when the app is built statically (output: 'export')
+export default function RootPage() {
+    redirect({ locale: 'es', href: '/' });
 }

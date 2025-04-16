@@ -1,0 +1,222 @@
+{
+    "Error": {
+        "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
+        "title": "Algo salió mal"
+    },
+    "IndexPage": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Ejemplo de next-intl"
+    },
+    "KeepInTouchSection": {
+        "sectionName": "contacto",
+        "title": "Contacto",
+        "caption": "¿Alguna consulta?",
+        "description": "¡Nos encantaría saber de usted! Si tiene alguna pregunta sobre nuestro alojamiento, servicios o eventos, o simplemente quiere saber más sobre La Almohada del Rey, nuestro personal está siempre dispuesto a ayudarle. Puede ponerse en contacto con nosotros por WhatsApp y hablaremos con usted lo antes posible.",
+        "ctaInput": {
+            "placeholder": "Ingrese una consulta...",
+            "buttonLabel": "WhatsApp",
+            "generalErrorMessage": "Parece que ocurrió un error, por favor intente nuevamente más tarde.",
+            "minErrorMessage": "Por favor, ingrese al menos {min} caracteres.",
+            "maxErrorMessage": "Por favor, ingrese no más de {max} caracteres.",
+            "failureMessage": "Parece que ocurrió un error, no se envió el mensaje.",
+            "successMessage": "¡Gracias por su consulta!"
+        }
+    },
+    "IndexPageExperiences": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Experiencias",
+        "bentoSection": {
+            "title": "Ofertas especiales",
+            "description": "Viva tus mejores recuerdos aquí",
+            "card1": {
+                "title": "Más tiempo, más ahorro",
+                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/experiencias#contacto"
+                }
+            },
+            "card2": {
+                "title": "Estadía de Lujo",
+                "description": "Tome un descanso de la rutina diaria con esta oferta inigualable en nuestra suite con servicios exclusivos, consulta ahora y ahorra hasta un 20%.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/experiencias#contacto"
+                }
+            },
+            "card3": {
+                "title": "Celebra el amor, luna de miel",
+                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "details": {
+                    "item1": "2 - huéspedes",
+                    "item2": "Cena y desayuno para 2",
+                    "item3": "Amenidades de cortesía"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "350",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Consultar disponibilidad",
+                    "link": "/experiencias#contacto"
+                }
+            },
+            "card4": {
+                "title": "Habitación Estándar",
+                "description": "Disfruta de una experiencia única en nuestra habitación estándar con vista al mar.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/experiencias#contacto"
+                }
+            },
+            "card5": {
+                "title": "Vacaciones en Familia",
+                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/experiencias#contacto"
+                }
+            }
+        },
+        "businessPackageSection": {
+            "title": "Oferta especial",
+            "caption": "Paquete para estancia de Negocios",
+            "description": "Haga de su viaje de negocios un placer con este paquete que incluye:",
+            "ctaButton": {
+                "label": "Consultar",
+                "link": "/experiencias#contacto"
+            },
+            "details": {
+                "item1": "Suite de lujo, salón integrado",
+                "item2": "Acceso a internet de alta velocidad 24/7",
+                "item3": "Área de trabajo y espacio de descanso",
+                "item4": "Incluye desayuno gratuito diario"
+            }
+        },
+        "eventPackagesSection": {
+            "title": "Eventos",
+            "description": "Celebra momentos especiales en nuestra sala de conferencias",
+            "packages": {
+                "item1": {
+                    "title": "Paquete de Boda",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "5000"
+                    }
+                },
+                "item2": {
+                    "title": "Paquete de Conferencia Corporativa",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "2500"
+                    }
+                },
+                "item3": {
+                    "title": "Paquete de Reunión Familiar",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "1500"
+                    }
+                },
+                "item4": {
+                    "title": "Paquete de Fiesta de Cumpleaños",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "750"
+                    }
+                },
+                "item5": {
+                    "title": "Paquete de Aniversario de Bodas",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "500"
+                    }
+                },
+                "item6": {
+                    "title": "Paquete de Día Festivo",
+                    "pricing": {
+                        "currency": "PEN",
+                        "price": "1000"
+                    }
+                }
+            }
+        },
+        "eventHallSection": {
+            "title": "Eventos",
+            "caption": "Sala de Conferencias",
+            "description": "Equipada con luces variadas, TV de 55”, punto eléctrico + 1 cortapico, ecram, equipo multimedia, internet ADSL y Wi-Fi, podio con micrófono, pizarra acrílica, mesas y un equipo de apoyo para tus reuniones.",
+            "slogan": "Nos adaptamos para todo tipo de evento.",
+            "ctaButton": {
+                "label": "Consultar disponibilidad",
+                "link": "/experiencias#contacto"
+            }
+        },
+        "servicesSection": {
+            "title": "Servicios",
+            "description": "Nosotros nos encargamos de los detalles",
+            "services": {
+                "item1": "Servicio de Habitación las 24 hrs",
+                "item2": "Habitaciones alfombradas con baño privado y agua caliente",
+                "item3": "TV cable e intercomunicadores",
+                "item4": "Acceso gratuito a Internet Inalámbrico también áreas públicas del Hotel",
+                "item5": "Área de descanso",
+                "item6": "Sala de espera",
+                "item7": "Aparcamiento privado gratuito",
+                "item8": "Terraza con mirador de 360º",
+                "item9": "Servicio de custodia de equipaje",
+                "item10": "Aceptamos tarjetas de crédito",
+                "item11": "Acceso gratuito a Internet Inalámbrico en todo el Hotel",
+                "item12": "Cambio de moneda (US Dólares)",
+                "item13": "Asesoría Bilingüe",
+                "item14": "Asistencia para tours",
+                "item15": "Servicio despertador las 24 horas",
+                "item16": "Caja de seguridad",
+                "item17": "Lavandería (costo adicional)",
+                "item18": "Servicio de taxi (costo adicional)",
+                "item19": "Servicio de transporte de ida y vuelta al aeropuerto (costo adicional)"
+            }
+        },
+        "keepInTouchSection": {
+            "sectionName": "contacto",
+            "title": "Contacto",
+            "caption": "¿Alguna consulta?",
+            "description": "¡Nos encantaría saber de usted! Si tiene alguna pregunta sobre nuestro alojamiento, servicios o eventos, o simplemente quiere saber más sobre La Almohada del Rey, nuestro personal está siempre dispuesto a ayudarle. Puede ponerse en contacto con nosotros por WhatsApp y hablaremos con usted lo antes posible.",
+            "ctaInput": {
+                "placeholder": "Ingrese una consulta...",
+                "buttonLabel": "WhatsApp"
+            }
+        }
+    },
+    "IndexPageGallery": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Galería"
+    },
+    "IndexPageRooms": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Habitaciones"
+    },
+    "IndexPageTravelers": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Viajeros"
+    },
+    "LocaleSwitcher": {
+        "label": "Cambia el idioma",
+        "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
+    },
+    "Manifest": {
+        "name": "La Almohada del Rey"
+    },
+    "Navigation": {
+        "home": "Inicio",
+        "experiences": "Experiencias",
+        "gallery": "Galería",
+        "rooms": "Habitaciones",
+        "travelers": "Viajeros"
+    },
+    "NotFoundPage": {
+        "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
+        "title": "Página no encontrada"
+    }
+}

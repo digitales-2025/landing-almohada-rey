@@ -1,75 +1,90 @@
-/* eslint-disable import/no-anonymous-default-export */
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import typescriptEslintEslintPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import prettier from "eslint-plugin-prettier";
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all,
 });
 
-// Configuración base
-const baseConfig = [
-  ...compat.extends("next", "next/core-web-vitals", "prettier"),
-  {
+// Configuraciones base de Next.js
+const nextConfigs = compat.extends('next', 'next/core-web-vitals', 'prettier');
+
+// Configuración global para todos los archivos
+const globalConfig = {
+    ignores: ['node_modules/**', '.next/**', 'out/**', 'public/**'],
     plugins: {
-      prettier,
+        prettier: prettierPlugin,
     },
     rules: {
-      "prettier/prettier": "error",
-      camelcase: "off",
-      "import/prefer-default-export": "off",
-      "react/jsx-filename-extension": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/no-unused-prop-types": "off",
-      "react/require-default-props": "off",
-      "react/no-unescaped-entities": "off",
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          ts: "never",
-          tsx: "never",
-          js: "never",
-          jsx: "never",
-        },
-      ],
+        'prettier/prettier': 'error',
+        camelcase: 'off',
+        'import/prefer-default-export': 'off',
+        'react/jsx-filename-extension': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'react/no-unused-prop-types': 'off',
+        'react/require-default-props': 'off',
+        'react/no-unescaped-entities': 'off',
+        'import/extensions': [
+            'error',
+            'ignorePackages',
+            {
+                ts: 'never',
+                tsx: 'never',
+                js: 'never',
+                jsx: 'never',
+            },
+        ],
+        'no-restricted-imports': [
+            'error',
+            {
+                name: 'next/link',
+                message: 'Please import from `@/i18n/navigation` instead.',
+            },
+            {
+                name: 'next/navigation',
+                importNames: [
+                    'redirect',
+                    'permanentRedirect',
+                    'useRouter',
+                    'usePathname',
+                ],
+                message: 'Please import from `@/i18n/navigation` instead.',
+            },
+        ],
     },
-  },
-];
-
-// Configuración para TypeScript
-const tsConfig = {
-  files: ["**/*.+(ts|tsx)"],
-  plugins: {
-    "@typescript-eslint": typescriptEslintEslintPlugin,
-  },
-  languageOptions: {
-    parser: tsParser,
-  },
-  rules: {
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-use-before-define": [0],
-    "@typescript-eslint/no-use-before-define": [1],
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-var-requires": "off",
-  },
 };
 
-// Importar reglas recomendadas de TypeScript sin redefinir el plugin
-const tsExtendedRules = compat.extends("plugin:@typescript-eslint/recommended", "prettier").map((config) => ({
-  ...config,
-  files: ["**/*.+(ts|tsx)"],
-  // Eliminamos la definición del plugin para evitar la duplicación
-  plugins: Object.fromEntries(Object.entries(config.plugins || {}).filter(([key]) => key !== "@typescript-eslint")),
-}));
+// Configuración específica para archivos TypeScript
+const tsConfig = {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+        parser: tsParser,
+        parserOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            ecmaFeatures: {
+                jsx: true,
+            },
+        },
+    },
+    rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+    },
+};
 
-export default [...baseConfig, ...tsExtendedRules, tsConfig];
+// Usa las configuraciones de TypeScript de Next.js
+const nextTsConfigs = compat.extends('next/typescript');
+
+export default [globalConfig, ...nextConfigs, ...nextTsConfigs, tsConfig];
