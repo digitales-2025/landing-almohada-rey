@@ -2,7 +2,6 @@ import { BreadcrumbNav } from "@/components/layout/breadcrumb/BreadcrumbNav";
 import { BaseHeroWrapper } from "@/components/layout/hero/base-hero";
 import { TextEffect } from "@/components/ui/text-effect";
 import { useTranslations } from "next-intl";
-import React from "react";
 
 export const ExperiencesHeroSection = () => {
   const t = useTranslations("IndexPageExperiences");

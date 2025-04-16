@@ -1,7 +1,6 @@
 import { SectionWrapper } from '@/components/layout/section/base-section'
 import { SectionHeader } from '@/components/layout/section/section-header'
 import { useTranslations } from 'next-intl'
-import React from 'react'
 
 export const ServicesSection = () => {
     const t = useTranslations('IndexPageExperiences.servicesSection')

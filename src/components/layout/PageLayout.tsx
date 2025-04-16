@@ -48,7 +48,7 @@ export const PageLayout = ({
 }: PageLayoutProps) => {
   return (
     <main className="overflow-hidden animate-fade">
-      <article className="min-h-dvh space-y-8 sm:space-y-12 md:space-y-16 lg:space-y-28 pb-8">
+      <article className="min-h-dvh space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 pb-8">
       {
         children
       }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BentoCard, BentoCardProps, BentoGrid } from '@/components/ui/bento-grid';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';

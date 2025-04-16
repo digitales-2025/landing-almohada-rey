@@ -4,7 +4,6 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { formatPrice } from '@/lib/i18n-formatPrice'
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
-import React from 'react'
 
 export const EventPackagesSection = () => {
   const t = useTranslations('IndexPageExperiences')

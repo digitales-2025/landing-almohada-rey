@@ -1,7 +1,6 @@
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
 import { useTranslations } from 'next-intl';
-import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
@@ -11,7 +10,7 @@ export const ConferenceHallSection = () => {
     return (
         <SectionWrapper className="w-full">
             <div className="relative w-full flex flex-col lg:flex-row items-center justify-center">
-                <div className="relative lg:absolute z-10 lg:right-10 top-0 lg:top-40 xl:top-60 p-20 w-full lg:max-w-3/5 bg-white space-y-6">
+                <div className="relative lg:absolute z-10 lg:right-10 top-0 lg:top-40 xl:top-60 p-10 sm:p-14 lg:p-20 w-full lg:max-w-3/5 bg-white space-y-6">
                     <SectionHeader
                         alignment="left"
                         headerTitle={{

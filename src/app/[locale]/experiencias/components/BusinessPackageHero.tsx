@@ -2,7 +2,6 @@ import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
 import { BedDouble, Users, Utensils, Wifi } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import React from 'react';
 
 export const BusinessPackageHero = () => {
     const t = useTranslations('IndexPageExperiences');

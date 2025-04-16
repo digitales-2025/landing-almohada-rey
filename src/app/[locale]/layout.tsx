@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { setRequestLocale } from "next-intl/server";
 import FooterSection from "@/components/layout/footer";
 import { NavMenu } from "@/components/layout/header";
+import { Toaster } from "@/components/ui/sonner";
 
 const poppins = Poppins({
   variable: "--font-geist-sans",
@@ -62,6 +63,7 @@ export default async function RootLayout({
             <NavMenu />
             {children}
             <FooterSection />
+            <Toaster />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

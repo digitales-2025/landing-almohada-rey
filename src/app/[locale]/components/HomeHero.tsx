@@ -1,6 +1,5 @@
 import { BaseHeroWrapper } from "@/components/layout/hero/base-hero";
 import { TextEffect } from "@/components/ui/text-effect";
-import React from "react";
 
 export const HomeHeroSection = () => {
   return (
