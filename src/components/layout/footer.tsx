@@ -1,7 +1,8 @@
 import { ChevronsUpDown } from 'lucide-react';
 
-import { Logo } from '@/components/layout/logo';
+import { FooterLogo } from '@/components/layout/logo';
 import { Link } from '@/i18n/navigation';
+import { Separator } from '../ui/separator';
 
 // Enlaces personalizados para Almohada Rey
 const links = [
@@ -22,10 +23,10 @@ const links = [
 
 export default function FooterSection() {
     return (
-        <footer className="bg-[#1e2122] text-white pt-20 pb-8 font-poppins">
-            <div className="mx-auto max-w-5xl px-6">
+        <footer className="bg-secondary text-primary-foreground pt-20 pb-8 font-serif">
+            <div className="mx-auto max-w-[1473px] px-6 lg:px-3 xl:px-0">
                 {/* Top section with logo and social icons */}
-                <div className="mb-8 border-b border-[#323637] md:mb-12">
+                <div className="mb-8 border-b border-secondary md:mb-12">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6 pb-8">
                         {/* Logo con las versiones responsivas */}
                         <Link
@@ -33,7 +34,7 @@ export default function FooterSection() {
                             aria-label="go home"
                             className="mb-4 md:mb-0"
                         >
-                            <Logo className="[&_svg]:text-white [&_svg_path]:fill-white" />
+                            <FooterLogo className="text-primary-foreground" />
                         </Link>
 
                         {/* Social icons */}
@@ -43,7 +44,7 @@ export default function FooterSection() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Facebook"
-                                className="bg-[#323637] hover:bg-[#c9a55c]/30 transition-colors rounded-full p-2 flex items-center justify-center w-10 h-10"
+                                className="bg-secondary hover:bg-primary/30 transition-colors rounded-full p-2 flex items-center justify-center w-10 h-10"
                             >
                                 <svg
                                     className="size-5"
@@ -125,67 +126,68 @@ export default function FooterSection() {
                 {/* Middle section with address and phone */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-8">
                     <div>
-                        <h3 className="text-[#c9a55c] text-sm font-medium mb-2">
+                        <h3 className="text-primary text-sm lg:text-h8 font-medium mb-2 font-sans">
                             Dirección
                         </h3>
-                        <p className="text-xl md:text-2xl font-medium">
+                        <p className="text-h7 lg:text-h5 xl:text-h4">
                             Calle Mollendo N° 37 - Urb. Municipal
                         </p>
                     </div>
-                    <div className="md:text-right">
-                        <h3 className="text-[#c9a55c] text-sm font-medium mb-2">
+                    <div className="md:text-left">
+                        <h3 className="text-primary text-sm lg:text-h8 font-medium mb-2 font-sans">
                             Teléfono
                         </h3>
-                        <p className="text-xl md:text-2xl font-medium">
+                        <p className="text-h7 lg:text-h5 xl:text-h4">
                             +51 958 959 958
                         </p>
                     </div>
                 </div>
 
-                {/* Links section */}
-                <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 mb-8">
-                    {links.map((link, index) => (
-                        <div key={index} className="space-y-4 text-sm">
-                            <span className="block font-medium text-[#c9a55c]">
-                                {link.group}
-                            </span>
-                            {link.items.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    href={item.href}
-                                    className="text-gray-300 hover:text-[#c9a55c] block duration-150"
-                                >
-                                    <span>{item.title}</span>
-                                </Link>
-                            ))}
-                        </div>
-                    ))}
-                </div>
-
                 {/* Divider */}
                 <div className="border-t border-[#323637] my-6"></div>
 
-                {/* Bottom section with copyright and language selector */}
-                <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
-                    <small className="order-last block text-center text-sm text-gray-400 md:order-first">
-                        © {new Date().getFullYear()} Almohada del Rey. Todos
-                        los derechos reservados.
-                    </small>
-                    <form action="">
-                        <div className="relative">
-                            <ChevronsUpDown
-                                className="pointer-events-none absolute inset-y-0 right-2 my-auto opacity-75"
-                                size="0.75rem"
-                            />
-                            <select
-                                className="border-[#323637] bg-[#1e2122] text-white h-9 w-full min-w-32 appearance-none rounded-md border px-3 py-1 text-base outline-none"
-                                name="language"
-                            >
-                                <option value="1">Español</option>
-                                <option value="2">English</option>
-                            </select>
+                <div className="flex flex-col gap-2 justify-between lg:flex-row">
+                    <div className="flex flex-col items-start gap-2 w-full font-sans">
+                        <Separator></Separator>
+                        {/* Bottom section with copyright and language selector */}
+                        <div className="flex flex-wrap items-end justify-between gap-6">
+                            <small className="order-last block text-center text-sm text-gray-400 md:order-first">
+                                © {new Date().getFullYear()} Almohada del Rey.
+                                Todos los derechos reservados.
+                            </small>
+                            <form action="">
+                                <div className="relative">
+                                    <ChevronsUpDown
+                                        className="pointer-events-none absolute inset-y-0 right-2 my-auto opacity-75"
+                                        size="0.75rem"
+                                    />
+                                    <select
+                                        className="border-[#323637] bg-[#1e2122] text-white h-9 w-full min-w-32 appearance-none rounded-md border px-3 py-1 text-base outline-none"
+                                        name="language"
+                                    >
+                                        <option value="1">Español</option>
+                                        <option value="2">English</option>
+                                    </select>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                    {/* Links section */}
+                    <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 mb-8">
+                        {links.map((link, index) => (
+                            <div key={index} className="gap-2 text-sm">
+                                {link.items.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        href={item.href}
+                                        className="text-primary-foreground hover:text-primary block duration-150"
+                                    >
+                                        <span>{item.title}</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </footer>

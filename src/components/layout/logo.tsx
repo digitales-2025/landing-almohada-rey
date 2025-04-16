@@ -31,6 +31,42 @@ export const Logo = ({ className }: { className?: string }) => {
     );
 };
 
+export const FooterLogo = ({ className }: { className?: string }) => {
+    return (
+        <div className={cn('flex items-center', className)}>
+            {/* Logo para móvil (xs a md) */}
+            <div className="block md:hidden">
+                <LogoAlmohadaReyMobile
+                    width={30}
+                    height={(30 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para tablet (md a lg) */}
+            <div className="hidden md:block lg:hidden">
+                <LogoAlmohadaReyMobile
+                    width={40}
+                    height={(40 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para escritorio (lg+) */}
+            <div className="hidden lg:block">
+                <LogoAlmohadaRey
+                    width={300}
+                    height={145}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+        </div>
+    );
+};
+
 // Mantenemos el LogoStroke por si lo necesitas en algún otro lugar
 export const LogoStroke = ({ className }: { className?: string }) => {
     // Código original del LogoStroke...
