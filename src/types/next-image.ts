@@ -1,4 +1,4 @@
-/* type NextImageProps = {
+export type NextImageProps = {
     className?: string;
     src: string;
     alt: string;
@@ -19,4 +19,3 @@
     lazyBoundary?: string;
     lazyRoot?: string;
 }; //for next15.2.5
- */
