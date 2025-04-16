@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { ChevronsUpDown } from 'lucide-react';
 
 import { Logo } from '@/components/layout/logo';
+import { Link } from '@/i18n/navigation';
 
 // Enlaces personalizados para Almohada Rey
 const links = [
