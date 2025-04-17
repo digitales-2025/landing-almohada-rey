@@ -224,6 +224,25 @@
             "link": "/reservacion"
         }
     },
+    "Footer":{
+        "addressSection": {
+            "title": "Dirección",
+            "address": "Calle Mollendo N° 37 – Urb. Municipal"
+        },
+        "phoneSection": {
+            "title": "Teléfono",
+            "phone": "+51 958 959 958"
+        },
+        "copyrightSection": {
+            "title": "Derechos Reservados",
+            "description": "La Almohada del Rey © {year}. Todos los derechos reservados."
+        },
+        "legalSection": {
+            "title": "Legal",
+            "privacyPolicy": "Política de privacidad.",
+            "termsAndConditions": "Términos y condiciones."
+        }
+    },
     "NotFoundPage": {
         "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
         "title": "Página no encontrada"

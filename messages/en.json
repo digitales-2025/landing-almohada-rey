@@ -224,6 +224,25 @@
             "link": "/booking"
         }
     },
+    "Footer":{
+        "addressSection": {
+            "title": "Address",
+            "address": "Mollendo Street #37 - Urb. Municipal"
+        },
+        "phoneSection": {
+            "title": "Phone",
+            "phone": "+51 958 959 958"
+        },
+        "copyrightSection": {
+            "title": "Copyright",
+            "description": "La Almohada del Rey © {year}. All rights reserved."
+        },
+        "legalSection": {
+            "title": "Legal",
+            "privacyPolicy": "Privacy policy.",
+            "termsAndConditions": "Terms and conditions."
+        }
+    },
     "NotFoundPage": {
         "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
         "title": "Page not found"
