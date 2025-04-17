@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-import FooterSection from '@/components/layout/footer';
+import FooterSection from '@/components/layout/footer/footer';
 import { NavMenu } from '@/components/layout/header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';

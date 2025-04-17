@@ -37,8 +37,8 @@ export const FooterLogo = ({ className }: { className?: string }) => {
             {/* Logo para móvil (xs a md) */}
             <div className="block md:hidden">
                 <LogoAlmohadaReyMobile
-                    width={30}
-                    height={(30 * 218.5) / 252.2}
+                    width={50}
+                    height={(50 * 218.5) / 252.2}
                     color="currentColor"
                     className="opacity-80 hover:opacity-100 transition-opacity"
                 />
@@ -46,9 +46,9 @@ export const FooterLogo = ({ className }: { className?: string }) => {
 
             {/* Logo para tablet (md a lg) */}
             <div className="hidden md:block lg:hidden">
-                <LogoAlmohadaReyMobile
-                    width={40}
-                    height={(40 * 218.5) / 252.2}
+                <LogoAlmohadaRey
+                    width={150}
+                    height={80}
                     color="currentColor"
                     className="opacity-80 hover:opacity-100 transition-opacity"
                 />

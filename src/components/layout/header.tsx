@@ -60,7 +60,7 @@ export const NavMenu = () => {
 
     const scrolledClassname = cn(
         isScrolled &&
-            'mx-auto transition-all duration-300 bg-background/50 rounded-2xl border backdrop-blur-lg lg:rounded-none lg:border-none'
+            'mx-auto transition-all duration-300 bg-background/50 rounded-lg border backdrop-blur-lg lg:rounded-none lg:border-none'
     );
 
     const textCommonClassnames = cn(
@@ -92,8 +92,9 @@ export const NavMenu = () => {
                             <div
                                 className={cn(
                                     layoutClassnames,
-                                    'flex w-full justify-between lg:w-auto lg:hidden px-6 lg:px-12',
-                                    scrolledClassname
+                                    'flex w-full justify-between lg:w-auto lg:hidden px-4 lg:px-12',
+                                    scrolledClassname,
+                                    'py-1'
                                 )}
                             >
                                 <Link

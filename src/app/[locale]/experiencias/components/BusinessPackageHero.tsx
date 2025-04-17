@@ -63,7 +63,7 @@ export const BusinessPackageHero = () => {
                             className="flex items-center gap-2 text-secondary dark:text-secondary-foreground "
                         >
                             <feature.icon className="text-secondary size-6 stroke-1" />
-                            <span className="text-p1 truncate font-medium">
+                            <span className="text-p1 truncate font-medium text-wrap">
                                 {feature.text}
                             </span>
                         </li>
