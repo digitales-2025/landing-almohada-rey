@@ -1,32 +1,26 @@
-import React from 'react';
-
 import { PageLayout } from '@/components/layout/PageLayout';
-
-/* import { GalleryHeroSection } from './components/GalleryHero'; */
+import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA';
+import { GalleryHero } from './components/GalleryHero';
+import { GallerySection1 } from './components/GallerySection1';
+import { GallerySection2 } from './components/GallerySection2';
+import { GallerySection3 } from './components/GallerySection3';
+import { GallerySection4 } from './components/GallerySection4';
+import { GallerySection5 } from './components/GallerySection5';
+import { GallerySection6 } from './components/GallerySection6';
+import { GallerySection7 } from './components/GallerySection7';
 
 export default function page() {
-    // const transitionVariants = {
-    //     item: {
-    //         hidden: {
-    //             opacity: 0,
-    //             filter: 'blur(12px)',
-    //             y: 12,
-    //         },
-    //         visible: {
-    //             opacity: 1,
-    //             filter: 'blur(0px)',
-    //             y: 0,
-    //             transition: {
-    //                 type: 'spring',
-    //                 bounce: 0.3,
-    //                 duration: 1.5,
-    //             },
-    //         },
-    //     },
-    // }
     return (
         <PageLayout>
-            <div>Hola</div>
+            <GalleryHero />
+            <GallerySection1 />
+            <GallerySection2 />
+            <GallerySection3 />
+            <GallerySection4 />
+            <GallerySection5 />
+            <GallerySection6 />
+            <GallerySection7 />
+            <KeepInTouchCTA />
         </PageLayout>
     );
 }

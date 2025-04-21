@@ -190,9 +190,44 @@
         }
     },
     "IndexPageGallery": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Gallery"
-    },
+        "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.",
+        "title": "Gallery",
+        "heroSection": {
+          "title": "The hotel in photos",
+          "subtitle": "Explore our hotel gallery",
+          "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us."
+        },
+        "sections": {
+          "section1": {
+            "title": "Rest & Comfort",
+            "description": "Experience the ultimate comfort in our carefully designed rooms."
+          },
+          "section2": {
+            "title": "Our Terrace",
+            "description": "Enjoy breathtaking views from our spacious terrace."
+          },
+          "section3": {
+            "title": "Hotel",
+            "description": "Discover the charm and elegance of La Almohada del Rey."
+          },
+          "section4": {
+            "title": "Ideal Location",
+            "description": "Perfectly situated for both business and leisure travelers."
+          },
+          "section5": {
+            "title": "Spaces to Enjoy",
+            "description": "Relax and unwind in our thoughtfully designed common areas."
+          },
+          "section6": {
+            "title": "Services & Amenities",
+            "description": "We offer a range of services to make your stay comfortable and memorable."
+          },
+          "section7": {
+            "title": "Events & Experiences",
+            "description": "Perfect spaces for your special occasions and business meetings."
+          }
+        }
+      },
     "IndexPageRooms": {
         "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
         "title": "Rooms"
