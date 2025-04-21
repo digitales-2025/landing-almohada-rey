@@ -2,6 +2,8 @@
 import { getTranslations } from 'next-intl/server'; */
 
 import { PageLayout } from '@/components/layout/PageLayout';
+import { resetPageClassnames } from '@/components/layout/reset-page-classnames';
+import { ConfortableRoomsSection } from './components/ConfortableRoomsSection';
 import { HomeHeroSection } from './components/HomeHero';
 import { SafeHostSection } from './components/SafeHostSection';
 
@@ -20,9 +22,10 @@ import { SafeHostSection } from './components/SafeHostSection';
 
 export default function Home() {
     return (
-        <PageLayout>
+        <PageLayout classname={resetPageClassnames}>
             <HomeHeroSection />
             <SafeHostSection></SafeHostSection>
+            <ConfortableRoomsSection></ConfortableRoomsSection>
         </PageLayout>
     );
 }

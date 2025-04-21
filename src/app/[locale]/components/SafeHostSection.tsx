@@ -1,14 +1,17 @@
-import React from 'react';
 import { useTranslations } from 'next-intl';
 
 import { OnlyMobileLogo } from '@/components/layout/logo';
+import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 export const SafeHostSection = () => {
     const t = useTranslations('IndexPage');
     return (
-        <SectionWrapper>
+        <SectionWrapper
+            className={cn(sectionLayoutClassnames, 'bg-primary/15')}
+        >
             <div className="space-y-6 md:space-y-8 lg:space-y-10 lg:px-10 overflow-clip flex flex-col items-center">
                 <div className="text-primary flex justify-center">
                     <OnlyMobileLogo></OnlyMobileLogo>
