@@ -3,23 +3,194 @@
         "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
         "title": "Algo salió mal"
     },
-    "IndexPage": {
-        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-        "title": "Ejemplo de next-intl"
+    "Footer": {
+        "addressSection": {
+            "title": "Dirección",
+            "address": "Calle Mollendo N° 37 – Urb. Municipal"
+        },
+        "phoneSection": {
+            "title": "Teléfono",
+            "phone": "+51 958 959 958"
+        },
+        "copyrightSection": {
+            "title": "Derechos Reservados",
+            "description": "La Almohada del Rey © {year}. Todos los derechos reservados."
+        },
+        "legalSection": {
+            "title": "Legal",
+            "privacyPolicy": "Política de privacidad.",
+            "termsAndConditions": "Términos y condiciones."
+        }
     },
-    "KeepInTouchSection": {
-        "sectionName": "contacto",
-        "title": "Contacto",
-        "caption": "¿Alguna consulta?",
-        "description": "¡Nos encantaría saber de usted! Si tiene alguna pregunta sobre nuestro alojamiento, servicios o eventos, o simplemente quiere saber más sobre La Almohada del Rey, nuestro personal está siempre dispuesto a ayudarle. Puede ponerse en contacto con nosotros por WhatsApp y hablaremos con usted lo antes posible.",
-        "ctaInput": {
-            "placeholder": "Ingrese una consulta...",
-            "buttonLabel": "WhatsApp",
-            "generalErrorMessage": "Parece que ocurrió un error, por favor intente nuevamente más tarde.",
-            "minErrorMessage": "Por favor, ingrese al menos {min} caracteres.",
-            "maxErrorMessage": "Por favor, ingrese no más de {max} caracteres.",
-            "failureMessage": "Parece que ocurrió un error, no se envió el mensaje.",
-            "successMessage": "¡Gracias por su consulta!"
+    "IndexPage": {
+        "titleFirstSpan": "Una Experiencia",
+        "titleSecondSpan": "Memorable",
+        "slogan": "Disfrute de su estancia con la mayor comodidad y confort.",
+        "safeHostSection": {
+            "title": "Descansa en un entorno limpio y seguro",
+            "description": "Convierte cada momento en una experiencia inolvidable. Disfrutando de comodidad y elegancia, donde la excelencia en el servicio es nuestra prioridad. Aquí, en Hotel La Almohada del Rey, le ofrecemos mucho más que un simple alojamiento; le brindamos la oportunidad de pasar momentos de calidad junto a sus seres queridos.",
+            "ctaButton": {
+                "label": "Saber más",
+                "link": "/reservacion"
+            }
+        },
+        "confortableRoomsSection": {
+            "title": "Conoce nuestra habitaciones",
+            "caption": "Habitaciones cómodas para usted",
+            "description": "Elija entre nuestras habitaciones donde el confort y comodidad son nuestra máxima prioridad.",
+            "ctaButton": {
+                "label": "Ver todas las habitaciones",
+                "link": "/habitaciones"
+            },
+            "carousel": {
+                "item1": {
+                    "title": "Habitación Matrimonial",
+                    "pricing": {
+                        "label": "desde",
+                        "currency": "PEN",
+                        "price": "170",
+                        "sufix": "/noche"
+                    },
+                    "ctaButton": {
+                        "label": "Consultar",
+                        "link": "/habitaciones#contacto"
+                    }
+                },
+                "item2": {
+                    "title": "Habitación Doble",
+                    "pricing": {
+                        "label": "desde",
+                        "currency": "PEN",
+                        "price": "100",
+                        "sufix": "/noche"
+                    },
+                    "ctaButton": {
+                        "label": "Consultar",
+                        "link": "/habitaciones#contacto"
+                    }
+                },
+                "item3": {
+                    "title": "Habitación Suite",
+                    "pricing": {
+                        "label": "desde",
+                        "currency": "PEN",
+                        "price": "250",
+                        "sufix": "/noche"
+                    },
+                    "ctaButton": {
+                        "label": "Consultar",
+                        "link": "/habitaciones#contacto"
+                    }
+                }
+            }
+        },
+        "goodQualitySection": {
+            "title": "Calidad de primera",
+            "caption": "¿Por qué elegirnos?",
+            "description": "Diseñado para satisfacer las necesidades de familias, grupos turísticos y viajeros de negocios, nuestro hotel ofrece un concepto de alojamiento único, fusionando lo moderno con lo acogedor.",
+            "ctaButton": {
+                "label": "Reserve ahora",
+                "link": "/experiencias"
+            },
+            "gallery": {
+                "item1": {
+                    "title": "Máximo confort"
+                },
+                "item2": {
+                    "title": "Servicio de excelencia"
+                },
+                "item3": {
+                    "title": "Ubicación ideal"
+                },
+                "item4": {
+                    "title": "Atenciones especiales"
+                },
+                "item5": {
+                    "title": "Experiencias únicas"
+                },
+                "item6": {
+                    "title": "Instalaciones cuidadas"
+                }
+            }
+        },
+        "isoCertificationSection": {
+            "title": "Certificación",
+            "slogan": "Lo mejor para usted",
+            "caption": "Comprometidos con la calidad",
+            "description": "Sistema de Gestión de Calidad"
+        },
+        "gallerySection": {
+            "title": "Galería",
+            "caption": "El hotel en fotos",
+            "description": "Eche un vistazo a nuestro hermoso hotel e instalaciones en nuestra galería de fotos. ¡Esperamos que pueda tener más recuerdos aquí!",
+            "ctaButton": {
+                "label": "Ver más",
+                "link": "/galeria"
+            }
+        },
+        "makeReservationSection":{
+            "title": "Reserve su estancia",
+            "caption": "¿Listo para reservar?",
+            "description": "Viva una experiencia inolvidable en La Almohada del Rey, sea para negocios o vacaciones lo estamos esperando.",
+            "ctaButton": {
+                "label": "Reserve ahora",
+                "link": "/reservacion"
+            }
+        },
+        "travelersSection":{
+            "title": "Viajeros",
+            "caption": "Lugares que puede visitar",
+            "ctaButton": {
+                "label": "Ver todos los lugares",
+                "link": "/viajeros"
+            },
+            "carousel": {
+                "item1": {
+                    "title": "Destinos Urbanos",
+                    "name": "Catedral de la ciudad de Arequipa y museo"
+                },
+                "item2": {
+                    "title": "Destinos Urbanos",
+                    "name": "El hotel es hermoso y el personal es muy amable. Definitivamente volveré."
+                },
+                "item3": {
+                    "title": "Paisajes Cercanos",
+                    "name": "Campiña de Arequipa"
+                },
+                "item4": {
+                    "title": "Paisajes Cercanos",
+                    "name": "Cañon del Colca"
+                }
+            }
+        },
+        "FAQSection": {
+            "title": "Preguntas Frecuentes",
+            "questions": {
+                "item1": {
+                    "question": "¿Cuáles son las horas para check-in & check-out?",
+                    "answer": "La hora para Check-in es a partir de las {checkinTime} y la hora de check-out es a las {checkoutTime}. Para consultas adicionales sobre el horario, contáctese con nosotros."
+                },
+                "item2": {
+                    "question": "¿Ofrecen servicio de transporte?",
+                    "answer": "Sí, ofrecemos servicio de transporte al aeropuerto por un costo adicional."
+                },
+                "item3": {
+                    "question": "¿Cómo puedo cancelar mi reserva?",
+                    "answer": "Puede cancelar su reserva a través de nuestro sitio web o contactando a nuestro servicio al cliente."
+                },
+                "item4": {
+                    "question": "¿Aceptan mascotas en el hotel?",
+                    "answer": "No, lamentablemente no aceptamos mascotas en el hotel."
+                },
+                "item5": {
+                    "question": "¿Ofrecen servicio de lavandería?",
+                    "answer": "Sí, ofrecemos servicio de lavandería por un costo adicional."
+                },
+                "item6": {
+                    "question": "¿Hay estacionamiento disponible?",
+                    "answer": "Sí, ofrecemos estacionamiento gratuito para nuestros huéspedes."
+                }
+            }
         }
     },
     "IndexPageExperiences": {
@@ -201,6 +372,21 @@
         "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
         "title": "Viajeros"
     },
+    "KeepInTouchSection": {
+        "sectionName": "contacto",
+        "title": "Contacto",
+        "caption": "¿Alguna consulta?",
+        "description": "¡Nos encantaría saber de usted! Si tiene alguna pregunta sobre nuestro alojamiento, servicios o eventos, o simplemente quiere saber más sobre La Almohada del Rey, nuestro personal está siempre dispuesto a ayudarle. Puede ponerse en contacto con nosotros por WhatsApp y hablaremos con usted lo antes posible.",
+        "ctaInput": {
+            "placeholder": "Ingrese una consulta...",
+            "buttonLabel": "WhatsApp",
+            "generalErrorMessage": "Parece que ocurrió un error, por favor intente nuevamente más tarde.",
+            "minErrorMessage": "Por favor, ingrese al menos {min} caracteres.",
+            "maxErrorMessage": "Por favor, ingrese no más de {max} caracteres.",
+            "failureMessage": "Parece que ocurrió un error, no se envió el mensaje.",
+            "successMessage": "¡Gracias por su consulta!"
+        }
+    },
     "LocaleSwitcher": {
         "label": "Cambia el idioma",
         "locale": "{locale, select, es {🇵🇪 Español} en {🇺🇸 Inglés} other {Desconocido}}"
@@ -222,25 +408,6 @@
         "reservationButton": {
             "label": "Reservar",
             "link": "/reservacion"
-        }
-    },
-    "Footer":{
-        "addressSection": {
-            "title": "Dirección",
-            "address": "Calle Mollendo N° 37 – Urb. Municipal"
-        },
-        "phoneSection": {
-            "title": "Teléfono",
-            "phone": "+51 958 959 958"
-        },
-        "copyrightSection": {
-            "title": "Derechos Reservados",
-            "description": "La Almohada del Rey © {year}. Todos los derechos reservados."
-        },
-        "legalSection": {
-            "title": "Legal",
-            "privacyPolicy": "Política de privacidad.",
-            "termsAndConditions": "Términos y condiciones."
         }
     },
     "NotFoundPage": {

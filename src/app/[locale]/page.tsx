@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'; */
 
 import { PageLayout } from '@/components/layout/PageLayout';
 import { HomeHeroSection } from './components/HomeHero';
+import { SafeHostSection } from './components/SafeHostSection';
 
 /* type Props = {
     params: Promise<{ locale: Locale }>;
@@ -21,6 +22,7 @@ export default function Home() {
     return (
         <PageLayout>
             <HomeHeroSection />
+            <SafeHostSection></SafeHostSection>
         </PageLayout>
     );
 }
