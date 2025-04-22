@@ -54,6 +54,11 @@ declare const messages: {
                         label: 'Inquire';
                         link: '/rooms#contact';
                     };
+                    features: {
+                        item1: '17 m²';
+                        item2: '2 guests';
+                        item3: 'Work area';
+                    };
                 };
                 item2: {
                     title: 'Twin Room';
@@ -67,6 +72,11 @@ declare const messages: {
                         label: 'Inquire';
                         link: '/rooms#contact';
                     };
+                    features: {
+                        item1: '38 m²';
+                        item2: '2 guests';
+                        item3: 'Exclusive equipment';
+                    };
                 };
                 item3: {
                     title: 'Suite Room';
@@ -79,6 +89,11 @@ declare const messages: {
                     ctaButton: {
                         label: 'Inquire';
                         link: '/rooms#contact';
+                    };
+                    features: {
+                        item1: '50 m²';
+                        item2: '2 guests';
+                        item3: 'Integrated living room';
                     };
                 };
             };

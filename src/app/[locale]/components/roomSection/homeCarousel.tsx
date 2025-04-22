@@ -23,6 +23,7 @@ export type CarouselItemProps = {
     pricing: {
         label: string;
         price: string;
+        sufix: string;
     };
     features: {
         label: string;
@@ -49,11 +50,12 @@ export function HomeCarousel() {
                     t('carousel.item1.pricing.currency'),
                     locale
                 ),
+                sufix: t('carousel.item1.pricing.sufix'),
             },
             features: [
-                { label: 'Feature 1' },
-                { label: 'Feature 2' },
-                { label: 'Feature 3' },
+                { label: t('carousel.item1.features.item1') },
+                { label: t('carousel.item1.features.item2') },
+                { label: t('carousel.item1.features.item3') },
             ],
         },
         {
@@ -66,11 +68,12 @@ export function HomeCarousel() {
                     t('carousel.item2.pricing.currency'),
                     locale
                 ),
+                sufix: t('carousel.item2.pricing.sufix'),
             },
             features: [
-                { label: 'Feature 1' },
-                { label: 'Feature 2' },
-                { label: 'Feature 3' },
+                { label: t('carousel.item2.features.item1') },
+                { label: t('carousel.item2.features.item2') },
+                { label: t('carousel.item2.features.item3') },
             ],
         },
         {
@@ -83,11 +86,12 @@ export function HomeCarousel() {
                     t('carousel.item3.pricing.currency'),
                     locale
                 ),
+                sufix: t('carousel.item3.pricing.sufix'),
             },
             features: [
-                { label: 'Feature 1' },
-                { label: 'Feature 2' },
-                { label: 'Feature 3' },
+                { label: t('carousel.item3.features.item1') },
+                { label: t('carousel.item3.features.item2') },
+                { label: t('carousel.item3.features.item3') },
             ],
         },
     ];
@@ -113,24 +117,23 @@ export function HomeCarousel() {
                             <CustomCard
                                 cardTitle={{
                                     text: item.title,
-                                    className: 'text-lg font-bold',
+                                    className: 'text-lg font-bold truncate',
                                 }}
                                 cardImage={{
                                     src: item.image,
                                     alt: item.title,
                                 }}
-                                description={{
-                                    text: `${item.title} description`,
-                                    className: 'text-sm',
-                                }}
                                 pricing={{
                                     caption: item.pricing.label,
                                     price: item.pricing.price,
-                                    sufix: '/night',
+                                    sufix: item.pricing.sufix,
                                 }}
+                                features={item.features.map(feature => ({
+                                    caption: feature.label,
+                                }))}
                                 hasSeparator={false}
-                                headerClassname="px-5 lg:px-8"
-                                contentClassname="px-5 pb-5 lg:px-8 lg:pb-8"
+                                headerClassname="px-5 lg:px-8 truncate"
+                                contentClassname="px-5 pb-5 lg:px-8 lg:pb-8 truncate"
                             ></CustomCard>
                         </CarouselItem>
                     ))}

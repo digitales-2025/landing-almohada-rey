@@ -54,6 +54,11 @@
                     "ctaButton": {
                         "label": "Consultar",
                         "link": "/habitaciones#contacto"
+                    },
+                    "features": {
+                        "item1": "38 m²",
+                        "item2": "2 huéspedes",
+                        "item3": "Equipamiento exclusivo"
                     }
                 },
                 "item2": {
@@ -67,6 +72,11 @@
                     "ctaButton": {
                         "label": "Consultar",
                         "link": "/habitaciones#contacto"
+                    },
+                    "features": {
+                        "item1": "17 m²",
+                        "item2": "2 huéspedes",
+                        "item3": "Área de trabajo"
                     }
                 },
                 "item3": {
@@ -80,6 +90,11 @@
                     "ctaButton": {
                         "label": "Consultar",
                         "link": "/habitaciones#contacto"
+                    },
+                    "features": {
+                        "item1": "50 m²",
+                        "item2": "2 huéspedes",
+                        "item3": "Salón integrado"
                     }
                 }
             }

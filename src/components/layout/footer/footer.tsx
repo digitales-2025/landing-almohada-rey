@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '../../ui/button';
 import { Separator } from '../../ui/separator';
+import { basePageHorizontalPadding } from '../section/base-section';
 import FacebookLink from './social-media/facebook';
 import InstagramLink from './social-media/instagram';
 import TiktokLink from './social-media/tiktok';
@@ -41,7 +42,7 @@ export default function FooterSection() {
         'bg-primary-foreground/20 hover:bg-primary-foreground text-primary-foreground hover:text-secondary transition-colors duration-100 rounded-full p-2 flex items-center justify-center size-10 lg:size-16';
     return (
         <footer className="bg-secondary text-primary-foreground pt-20 pb-8 font-serif">
-            <div className="mx-auto max-w-[1473px] px-6 lg:px-3 xl:px-0">
+            <div className={cn('w-full', basePageHorizontalPadding)}>
                 {/* Top section with logo and social icons */}
                 <div className="mb-8 border-b border-secondary md:mb-12">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-6 pb-8">

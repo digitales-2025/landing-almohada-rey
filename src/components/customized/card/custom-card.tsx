@@ -55,12 +55,12 @@ type Pricing = {
     actionButton?: ActionButton;
 };
 
-type Feature = {
+export type Feature = {
     Icon?: LucideIcon | React.ElementType;
     caption: string;
 };
 
-type IconFeature = {
+export type IconFeature = {
     Icon: LucideIcon | React.ElementType;
     tooltip: string;
 };
@@ -95,7 +95,7 @@ export const CardImage = ({ src, alt, className }: CardImage) => {
                 src={src}
                 alt={alt}
                 className={cn(
-                    'rounded-t-none object-cover w-full aspect-3/2',
+                    'rounded-t-none object-cover max-w-full w-full aspect-3/2',
                     className
                 )}
             />
@@ -105,9 +105,9 @@ export const CardImage = ({ src, alt, className }: CardImage) => {
 
 const CardFeature = ({ caption, Icon }: Feature) => {
     return (
-        <div className="flex items-center space-x-2">
-            {Icon && <Icon className="size-4 text-primary" />}
-            <span className="text-sm font-medium text-secondary dark:text-secondary-foreground">
+        <div className="flex items-center space-x-2 text-secondary/50">
+            {Icon && <Icon className="size-4" />}
+            <span className="text-sm lg:text-base font-normal text-secondary/50 dark:text-secondary-foreground leading-4 lg:leading-5">
                 {caption}
             </span>
         </div>
@@ -118,12 +118,12 @@ const IconCardFeature = ({ Icon, tooltip }: IconFeature) => {
     return (
         <TooltipProvider>
             <Tooltip>
-                <TooltipTrigger className='"flex items-center space-x-2"'>
+                <TooltipTrigger className="flex items-center space-x-2">
                     <Icon className="size-4 text-primary" />
                 </TooltipTrigger>
-                <TooltipContent className='"flex items-center space-x-2 text-secondary dark:text-secondary-foreground"'>
+                <TooltipContent className="flex items-center space-x-2 font-normal text-secondary/50 dark:text-secondary-foreground">
                     <Icon className="size-4" />
-                    <span className="text-sm font-medium">{tooltip}</span>
+                    <span className="text-sm lg:text-base">{tooltip}</span>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
@@ -228,7 +228,7 @@ export const CustomCard = ({
                                 {index > 0 && (
                                     <Separator
                                         orientation="vertical"
-                                        className="bg-secondary data-[orientation=vertical]:!w-[1px]"
+                                        className="bg-secondary/50 data-[orientation=vertical]:!w-[1px] data-[orientation=vertical]:!h-auto"
                                     />
                                 )}
                                 {feature}
@@ -239,7 +239,7 @@ export const CustomCard = ({
                 {(pricing || actionButton) && hasSeparator && (
                     <Separator className="bg-secondary data-[orientation=horizontal]:!h-[1px]"></Separator>
                 )}
-                <CardFooter className="p-0 m-0">
+                <CardFooter className="p-0 m-0 mt-2 lg:mt-3 w-full">
                     {pricing && (
                         <div className="flex items-center justify-between flex-wrap space-y-2">
                             <div className="flex space-x-4">

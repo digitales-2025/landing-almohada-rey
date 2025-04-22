@@ -3,7 +3,9 @@ import { useTranslations } from 'next-intl';
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
+import { defaultRoutes } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { HomeCarousel } from './roomSection/homeCarousel';
 
@@ -28,13 +30,18 @@ export const ConfortableRoomsSection = () => {
                     <p className="text-balance text-primary-foreground font-light max-w-[500px]">
                         {t('confortableRoomsSection.description')}
                     </p>
-                    <Button
-                        variant={'link'}
-                        className="text-primary-foreground px-0 mx-0"
-                        size={'lg'}
+                    <Link
+                        href={defaultRoutes.rooms}
+                        className={cn(
+                            buttonVariants({
+                                variant: 'link',
+                                size: 'lg',
+                            }),
+                            'text-primary-foreground px-0 mx-0'
+                        )}
                     >
                         {t('confortableRoomsSection.ctaButton.label')}
-                    </Button>
+                    </Link>
                 </div>
             </div>
 
