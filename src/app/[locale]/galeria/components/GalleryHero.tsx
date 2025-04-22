@@ -12,7 +12,7 @@ export const GalleryHero = () => {
         <section>
             <BaseHeroWrapper
                 image={{
-                    src: '/gallery/header/ImgHeader.jpg',
+                    src: '/gallery/header/ImgHeader.webp',
                     alt: 'Gallery Hero Image',
                     quality: 100,
                     placeholder: 'blur',

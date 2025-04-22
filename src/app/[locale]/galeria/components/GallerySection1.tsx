@@ -9,23 +9,18 @@ export const GallerySection1 = () => {
     const [isInView, setIsInView] = useState(false);
 
     useEffect(() => {
-        // Configurar el Intersection Observer para detectar cuando el video está en el viewport
         const observer = new IntersectionObserver(
             entries => {
                 const [entry] = entries;
                 setIsInView(entry.isIntersecting);
             },
-            {
-                threshold: 0.4,
-            }
+            { threshold: 0.2 }
         );
 
-        // Observar el elemento del video
         if (videoRef.current) {
             observer.observe(videoRef.current);
         }
 
-        // Limpiar el observer cuando el componente se desmonte
         return () => {
             if (videoRef.current) {
                 observer.unobserve(videoRef.current);
@@ -34,22 +29,25 @@ export const GallerySection1 = () => {
     }, []);
 
     // Construir la URL del video con autoplay cuando está en vista
-    const videoSrc = `https://www.youtube.com/embed/4_lzrprot5U?${isInView ? 'autoplay=1&mute=1' : ''}`;
+    const videoSrc = `https://www.youtube.com/embed/4_lzrprot5U?${
+        isInView ? 'autoplay=1&mute=1&loop=1&playlist=4_lzrprot5U' : ''
+    }`;
 
     return (
         <SectionWrapper>
-            <div
-                ref={videoRef}
-                className="w-full aspect-video"
-                style={{ maxWidth: '95%' }}
-            >
-                <iframe
-                    src={videoSrc}
-                    title="La Almohada del Rey Hotel Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="w-full h-full"
-                ></iframe>
+            <div className="container mx-auto">
+                <div
+                    ref={videoRef}
+                    className="w-full aspect-video overflow-hidden shadow-md"
+                >
+                    <iframe
+                        src={videoSrc}
+                        title="La Almohada del Rey Hotel Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        className="w-full h-full border-0"
+                    ></iframe>
+                </div>
             </div>
         </SectionWrapper>
     );

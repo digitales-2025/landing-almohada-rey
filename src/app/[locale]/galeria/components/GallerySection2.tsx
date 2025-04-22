@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useTranslations } from 'next-intl';
@@ -22,7 +23,7 @@ export const GallerySection2 = () => {
                     <div className="w-full md:w-1/2 relative">
                         <div className="aspect-[4/3] w-full overflow-hidden">
                             <img
-                                src="/gallery/seccion2/ImgMeson.jpg"
+                                src="/gallery/seccion2/ImgMeson.webp"
                                 alt={'Mesón'}
                                 className="object-cover"
                             />

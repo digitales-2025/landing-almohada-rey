@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { SectionWrapper } from '@/components/layout/section/base-section';
@@ -11,49 +11,45 @@ export const GallerySection6 = () => {
     return (
         <SectionWrapper>
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-center">
-                    {/* Imagen grande a la izquierda */}
-                    <div className="relative h-[400px] md:h-[600px] w-full">
-                        <Image
-                            src="/gallery/seccion6/ImgLateralIzquierdo.jpg"
-                            alt={t('imageAlt1')}
-                            fill
-                            className="object-cover rounded-md"
-                            quality={95}
-                            priority
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    {/* Imagen grande a la izquierda (doble de altura) */}
+                    <div className="relative h-[800px] md:h-[1200px] w-full">
+                        <img
+                            src="/gallery/seccion6/ImgLateralIzquierdo.webp"
+                            alt="frachada holel lateral"
+                            className="object-cover w-full h-full"
                         />
                     </div>
 
                     {/* Columna derecha con dos imágenes y título */}
-                    <div className="flex flex-col space-y-4">
-                        {/* Imagen superior derecha */}
-                        <div className="relative h-[200px] md:h-[250px] w-full">
-                            <Image
-                                src="/gallery/seccion6/ImgLateralDerechoSuperior.jpg"
-                                alt={t('imageAlt2')}
-                                fill
-                                className="object-cover rounded-md"
-                                quality={95}
-                            />
-                        </div>
+                    <div className="flex flex-col h-[800px] md:h-[1200px] justify-between">
+                        {/* Contenedor de imágenes */}
+                        <div className="space-y-6 md:space-y-8 flex-grow">
+                            {/* Imagen superior derecha */}
+                            <div className="relative h-[320px] md:h-[480px] w-full">
+                                <img
+                                    src="/gallery/seccion6/ImgLateralDerechoSuperior.webp"
+                                    alt="fachada hotel defrente"
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
 
-                        {/* Imagen inferior derecha */}
-                        <div className="relative h-[200px] md:h-[250px] w-full">
-                            <Image
-                                src="/gallery/seccion6/ImgLateralDerechoInferior.png"
-                                alt={t('imageAlt3')}
-                                fill
-                                className="object-cover rounded-md"
-                                quality={95}
-                            />
+                            {/* Imagen inferior derecha */}
+                            <div className="relative h-[320px] md:h-[480px] w-full">
+                                <img
+                                    src="/gallery/seccion6/ImgLateralDerechoInferior.webp"
+                                    alt=" fachada hotel defrente"
+                                    className="object-cover w-full h-full"
+                                />
+                            </div>
                         </div>
 
                         {/* Título grande */}
-                        <div className="pt-4 md:pt-8 text-right">
-                            <h3 className="text-2xl md:text-3xl font-serif text-secondary dark:text-secondary-foreground">
+                        <div className="mt-auto text-right pb-4">
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-secondary dark:text-secondary-foreground">
                                 {t('subtitle')}
                             </h3>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-secondary dark:text-secondary-foreground">
                                 {t('title')}
                             </h2>
                         </div>
