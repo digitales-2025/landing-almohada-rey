@@ -13,22 +13,29 @@ export const GallerySection7 = () => {
             <div className="container mx-auto">
                 <div className="flex flex-col gap-6">
                     {/* Imagen grande superior (altura reducida) */}
-                    <div className="relative w-full h-[450px] md:h-[600px] lg:h-[750px] overflow-hidden ">
+                    <div className="relative w-full min-h-[450px] md:min-h-[600px] lg:min-h-[750px] overflow-hidden rounded-md">
                         <img
                             src="/gallery/seccion7/ImgSuperior.webp"
-                            alt="comedor interior sillas y mesa"
+                            alt={t('imageAlt1')}
                             className="object-cover w-full h-full"
                         />
                     </div>
 
                     {/* Contenedor para título e imágenes inferiores */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
-                        {/* Título a la izquierda */}
-                        <div className="space-y-3">
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-secondary dark:text-secondary-foreground">
+                        {/* Título a la izquierda - versión móvil */}
+                        <div className="space-y-3 block md:hidden">
+                            <h2 className="text-h5 font-serif text-secondary dark:text-secondary-foreground">
+                                {t('subtitle')} {t('title')}
+                            </h2>
+                        </div>
+
+                        {/* Título a la izquierda - versión desktop */}
+                        <div className="space-y-3 hidden md:block">
+                            <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('subtitle')}
                             </h3>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-h3 lg:text-h2 xl:text-h1 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('title')}
                             </h2>
                         </div>
@@ -36,19 +43,19 @@ export const GallerySection7 = () => {
                         {/* Imágenes inferiores a la derecha */}
                         <div className="grid grid-cols-2 gap-4 md:gap-6">
                             {/* Imagen inferior izquierda */}
-                            <div className="relative h-[190px] md:h-[250px] lg:h-[315px] w-full overflow-hidden ">
+                            <div className="relative aspect-[3/4] w-full overflow-hidden ">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorIzquierdo.webp"
-                                    alt="desayuno interior sillas y mesa"
+                                    alt={t('imageAlt2')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
 
                             {/* Imagen inferior derecha */}
-                            <div className="relative h-[190px] md:h-[250px] lg:h-[315px] w-full overflow-hidden ">
+                            <div className="relative aspect-[3/4] w-full overflow-hidden ">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorDerecho.webp"
-                                    alt=" desayuno interior sillas mesas personas "
+                                    alt={t('imageAlt3')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>

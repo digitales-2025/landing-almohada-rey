@@ -203,15 +203,15 @@
             "imageAlt": "Recepción del hotel"
           },
           "section3": {
-            "title": "Nuestra Terraza",
-            "description": "Disfrute de vistas impresionantes desde nuestra espaciosa terraza.",
+            "title": "Nuestra",
+            "description": "Terraza",
             "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
             "imageAlt2": "Terraza con sillas rojas y mesa",
             "imageAlt3": "Terraza al atardecer con iluminación"
           },
           "section4": {
-            "title": "Descanso & Confort",
-            "description": "Experimente el máximo confort en nuestras habitaciones cuidadosamente diseñadas.",
+            "title": "Descanso &",
+            "description": "Confort",
             "imageAlt1": "Habitación con dos camas individuales con colchas moradas",
             "imageAlt2": "Detalle arquitectónico interior con barandilla de madera",
             "imageAlt3": "Habitación individual con colcha a cuadros y lámpara de noche"

@@ -16,7 +16,7 @@ export const GallerySection6 = () => {
                     <div className="relative h-[800px] md:h-[1200px] w-full">
                         <img
                             src="/gallery/seccion6/ImgLateralIzquierdo.webp"
-                            alt="frachada holel lateral"
+                            alt={t('imageAlt1')}
                             className="object-cover w-full h-full"
                         />
                     </div>
@@ -29,7 +29,7 @@ export const GallerySection6 = () => {
                             <div className="relative h-[320px] md:h-[480px] w-full">
                                 <img
                                     src="/gallery/seccion6/ImgLateralDerechoSuperior.webp"
-                                    alt="fachada hotel defrente"
+                                    alt={t('imageAlt2')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
@@ -38,18 +38,25 @@ export const GallerySection6 = () => {
                             <div className="relative h-[320px] md:h-[480px] w-full">
                                 <img
                                     src="/gallery/seccion6/ImgLateralDerechoInferior.webp"
-                                    alt=" fachada hotel defrente"
+                                    alt={t('imageAlt3')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
                         </div>
 
-                        {/* Título grande */}
-                        <div className="mt-auto text-right pb-4">
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-secondary dark:text-secondary-foreground">
+                        {/* Versión móvil: título y subtítulo en línea única */}
+                        <div className="mt-4 block md:hidden text-right pb-4">
+                            <h2 className="text-h5 font-serif text-secondary dark:text-secondary-foreground">
+                                {t('subtitle')} {t('title')}
+                            </h2>
+                        </div>
+
+                        {/* Versión desktop: título y subtítulo separados */}
+                        <div className="mt-auto hidden md:block text-right pb-4">
+                            <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground line-clamp-1">
                                 {t('subtitle')}
                             </h3>
-                            <h2 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-h3 lg:text-h2 xl:text-h1 2xl:text-h1 font-serif text-secondary dark:text-secondary-foreground line-clamp-2">
                                 {t('title')}
                             </h2>
                         </div>

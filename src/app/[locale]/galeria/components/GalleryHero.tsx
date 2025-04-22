@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 
 import { BreadcrumbNav } from '@/components/layout/breadcrumb/BreadcrumbNav';
@@ -16,7 +14,7 @@ export const GalleryHero = () => {
                     alt: 'Gallery Hero Image',
                     quality: 100,
                     placeholder: 'blur',
-                    blurDataURL: '/gallery/header/imgHead.jpg',
+                    blurDataURL: '/gallery/header/imgHeader.webp',
                     unoptimized: true,
                 }}
             >

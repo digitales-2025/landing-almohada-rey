@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
 
 import { SectionWrapper } from '@/components/layout/section/base-section';
 
