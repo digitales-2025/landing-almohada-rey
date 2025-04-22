@@ -195,39 +195,50 @@ declare const messages: {
     IndexPageGallery: {
         description: 'Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.';
         title: 'Gallery';
-        heroSection: {
-            title: 'The hotel in photos';
-            subtitle: 'Explore our hotel gallery';
-            description: 'Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.';
-        };
         sections: {
             section1: {
                 title: 'Rest & Comfort';
                 description: 'Experience the ultimate comfort in our carefully designed rooms.';
             };
             section2: {
-                title: 'Our Terrace';
-                description: 'Enjoy breathtaking views from our spacious terrace.';
+                title: 'The hotel in photos';
+                description: 'Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.';
+                imageAlt: 'Hotel reception';
             };
             section3: {
-                title: 'Hotel';
-                description: 'Discover the charm and elegance of La Almohada del Rey.';
+                title: 'Our Terrace';
+                description: 'Enjoy breathtaking views from our spacious terrace.';
+                imageAlt1: 'Terrace with white loungers and red chairs with umbrellas';
+                imageAlt2: 'Terrace with red chairs and table';
+                imageAlt3: 'Terrace at sunset with lighting';
             };
             section4: {
-                title: 'Ideal Location';
-                description: 'Perfectly situated for both business and leisure travelers.';
+                title: 'Rest & Comfort';
+                description: 'Experience the ultimate comfort in our carefully designed rooms.';
+                imageAlt1: 'Room with two single beds with purple bedspreads';
+                imageAlt2: 'Interior architectural detail with wooden railing';
+                imageAlt3: 'Single room with checkered bedspread and night lamp';
             };
             section5: {
                 title: 'Spaces to Enjoy';
                 description: 'Relax and unwind in our thoughtfully designed common areas.';
+                imageAlt: 'Hotel lobby with comfortable seating area and reception desk';
             };
             section6: {
-                title: 'Services & Amenities';
-                description: 'We offer a range of services to make your stay comfortable and memorable.';
+                title: 'Ideal';
+                subtitle: 'Location';
+                description: 'Perfectly situated for both business and leisure travelers.';
+                imageAlt1: 'Hotel facade at night with lighting';
+                imageAlt2: 'Hotel facade during the day';
+                imageAlt3: 'Close-up of the hotel sign with number 37';
             };
             section7: {
-                title: 'Events & Experiences';
-                description: 'Perfect spaces for your special occasions and business meetings.';
+                title: 'Enjoy';
+                subtitle: 'Spaces to';
+                description: 'Enjoy our elegant dining spaces and exquisite cuisine.';
+                imageAlt1: 'Restaurant dining area with elegant tables and chairs';
+                imageAlt2: 'Buffet table with breakfast and drinks';
+                imageAlt3: 'Guests enjoying a meal in the restaurant';
             };
         };
     };
