@@ -6,9 +6,9 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint \"./**/*.+(ts|tsx)\"",
+        "lint": "eslint \"./src/**/*.+(ts|tsx)\"",
         "prepare": "husky",
-        "lint:fix": "eslint \"./**/*.+(ts|tsx)\" --fix",
+        "lint:fix": "eslint \"./src/**/*.+(ts|tsx)\" --fix",
         "format": "prettier . --write",
         "format:check": "prettier . --check"
     },
