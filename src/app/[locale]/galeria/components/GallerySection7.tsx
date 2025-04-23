@@ -25,10 +25,10 @@ export const GallerySection7 = () => {
                     <div className="hidden md:grid md:grid-cols-2 gap-3 md:gap-4 lg:gap-8 items-start">
                         {/* Título a la izquierda */}
                         <div className="md:space-y-2 lg:space-y-3">
-                            <h3 className="text-h5 md:text-h5 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
+                            <h3 className="text-h5 md:text-h5  lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('subtitle')}
                             </h3>
-                            <h2 className="text-h4 md:text-h4 lg:text-h2 xl:text-h2 font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-h4 md:text-h4 lg:text-h2 xl:text-[8rem] font-serif text-secondary dark:text-secondary-foreground truncate 3xl:text-h1">
                                 {t('title')}
                             </h2>
                         </div>

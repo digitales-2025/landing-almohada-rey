@@ -56,7 +56,7 @@ export const GallerySection6 = () => {
                             <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground line-clamp-1">
                                 {t('subtitle')}
                             </h3>
-                            <h2 className="text-h3 lg:text-h2 xl:text-h1 2xl:text-h1 font-serif text-secondary dark:text-secondary-foreground line-clamp-2">
+                            <h2 className="text-h3 lg:text-h2 xl:text-h3 2xl:text-[8rem] 3xl:text-h1 font-serif text-secondary dark:text-secondary-foreground line-clamp-2">
                                 {t('title')}
                             </h2>
                         </div>
