@@ -16,6 +16,7 @@ pipeline {
 			steps {
 				sh 'npm i -g pnpm'
 				sh 'pnpm i'
+				sh 'pnpm lint'
 				sh 'pnpm run build'
 			}
 		}

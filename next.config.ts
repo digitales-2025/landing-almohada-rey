@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
             },
         ],
     },
-    output: "standalone",
+    output: 'standalone',
 };
 
 const withNextIntl = createNextIntlPlugin({
