@@ -37,18 +37,18 @@ export const GallerySection4 = () => {
                         </div>
 
                         {/* Versión desktop: título y descripción separados */}
-                        <div className="mt-4">
+                        <div>
                             <h3 className="text-h4 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('title')}
                             </h3>
-                            <h2 className="text-h2  3xl:text-h1 xl:text-[8rem] font-serif text-secondary dark:text-secondary-foreground truncate">
+                            <h2 className="text-h2  3xl:text-h1 2xl:text-[8rem] font-serif text-secondary dark:text-secondary-foreground truncate">
                                 {t('description')}
                             </h2>
                         </div>
                     </div>
 
                     {/* Imagen grande a la derecha */}
-                    <div className="relative aspect-[3/5] w-full">
+                    <div className="relative aspect-[3/4.5] w-full">
                         <img
                             src="/gallery/seccion4/ImgLateralDerecho.webp"
                             alt={t('imageAlt3')}
