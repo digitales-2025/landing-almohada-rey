@@ -5,6 +5,7 @@ import { MapPin, Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { Button, buttonVariants } from '@/components/ui/button';
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { Link } from '@/i18n/navigation';
 import { DefaultRoutes, defaultRoutes } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
@@ -52,6 +53,7 @@ const allMenuItems = [homeMenuItems, ...leftMenuItems, ...rightMenuItems];
 export const NavMenu = () => {
     const [menuState, setMenuState] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
+    const scrollDir = useScrollDirection();
     const t = useTranslations('Navigation');
 
     const layoutClassnames = cn(
@@ -83,7 +85,15 @@ export const NavMenu = () => {
         <header>
             <nav
                 data-state={menuState ? 'active' : 'inactive'}
-                className="fixed z-20 w-full"
+                className={cn(
+                    'fixed z-20 w-full transition-transform duration-300',
+                    {
+                        'transform -translate-y-full':
+                            scrollDir === 'down' && !menuState && isScrolled,
+                        'transform translate-y-0':
+                            scrollDir === 'up' || menuState || !isScrolled,
+                    }
+                )}
             >
                 <div>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 pb-3 lg:pb-4">
