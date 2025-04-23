@@ -190,8 +190,54 @@
         }
     },
     "IndexPageGallery": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Gallery"
+        "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.",
+        "title": "Gallery",
+        "sections": {
+            "section1": {
+                "title": "Rest & Comfort",
+                "description": "Experience the ultimate comfort in our carefully designed rooms."
+            },
+            "section2": {
+                "title": "The hotel in photos",
+                "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.",
+                "imageAlt": "Hotel reception"
+            },
+            "section3": {
+                "title": "Our ",
+                "description": "Terrace",
+                "imageAlt1": "Terrace with white loungers and red chairs with umbrellas",
+                "imageAlt2": "Terrace with red chairs and table",
+                "imageAlt3": "Terrace at sunset with lighting"
+            },
+            "section4": {
+                "title": "Rest &",
+                "description": "Comfort",
+                "imageAlt1": "Room with two single beds with purple bedspreads",
+                "imageAlt2": "Interior architectural detail with wooden railing",
+                "imageAlt3": "Single room with checkered bedspread and night lamp"
+            },
+            "section5": {
+                "title": "Spaces to Enjoy",
+                "description": "Relax and unwind in our thoughtfully designed common areas.",
+                "imageAlt": "Hotel lobby with comfortable seating area and reception desk"
+            },
+            "section6": {
+                "title": "Ideal",
+                "subtitle": "Location",
+                "description": "Perfectly situated for both business and leisure travelers.",
+                "imageAlt1": "Hotel facade at night with lighting",
+                "imageAlt2": "Hotel facade during the day",
+                "imageAlt3": "Close-up of the hotel sign with number 37"
+            },
+            "section7": {
+                "title": "Enjoy",
+                "subtitle": "Spaces to",
+                "description": "Enjoy our elegant dining spaces and exquisite cuisine.",
+                "imageAlt1": "Restaurant dining area with elegant tables and chairs",
+                "imageAlt2": "Buffet table with breakfast and drinks",
+                "imageAlt3": "Guests enjoying a meal in the restaurant"
+            }
+        }
     },
     "IndexPageRooms": {
         "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",

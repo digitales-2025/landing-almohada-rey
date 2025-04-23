@@ -190,9 +190,55 @@
         }
     },
     "IndexPageGallery": {
-        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-        "title": "Galería"
-    },
+        "description": "Explore cada detalle de nuestro hotel a través de nuestra galería de fotos. Visualice su próxima estancia y comience a crear recuerdos inolvidables con nosotros.",
+        "title": "Galería",
+        "sections": {
+          "section1": {
+            "title": "Descanso & Confort",
+            "description": "Experimente el máximo confort en nuestras habitaciones cuidadosamente diseñadas."
+          },
+          "section2": {
+            "title": "El hotel en fotos",
+            "description": "Explore cada detalle de nuestro hotel a través de nuestra galería de fotos. Visualice su próxima estancia y comience a crear recuerdos inolvidables con nosotros.",
+            "imageAlt": "Recepción del hotel"
+          },
+          "section3": {
+            "title": "Nuestra",
+            "description": "Terraza",
+            "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
+            "imageAlt2": "Terraza con sillas rojas y mesa",
+            "imageAlt3": "Terraza al atardecer con iluminación"
+          },
+          "section4": {
+            "title": "Descanso &",
+            "description": "Confort",
+            "imageAlt1": "Habitación con dos camas individuales con colchas moradas",
+            "imageAlt2": "Detalle arquitectónico interior con barandilla de madera",
+            "imageAlt3": "Habitación individual con colcha a cuadros y lámpara de noche"
+          },
+          "section5": {
+            "title": "Espacios para Disfrutar",
+            "description": "Relájese y descanse en nuestras áreas comunes cuidadosamente diseñadas.",
+            "imageAlt": "Lobby del hotel con área de estar cómoda y mostrador de recepción"
+          },
+          "section6": {
+            "title": "Ideal",
+            "subtitle": "Ubicación",
+            "description": "Perfectamente situado tanto para viajeros de negocios como de placer.",
+            "imageAlt1": "Fachada del hotel por la noche con iluminación",
+            "imageAlt2": "Fachada del hotel durante el día",
+            "imageAlt3": "Primer plano del letrero del hotel con número 37"
+          },
+          "section7": {
+            "title": "Disfrutar",
+            "subtitle": "Espacios para",
+            "description": "Disfrute de nuestros elegantes espacios gastronómicos y exquisita cocina.",
+            "imageAlt1": "Área de comedor del restaurante con mesas y sillas elegantes",
+            "imageAlt2": "Mesa de buffet con desayuno y bebidas",
+            "imageAlt3": "Huéspedes disfrutando de una comida en el restaurante"
+          }
+        }
+      },
     "IndexPageRooms": {
         "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
         "title": "Habitaciones"
