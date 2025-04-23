@@ -12,7 +12,7 @@ export const MakeReservationSection = () => {
     return (
         <SectionWrapper className={cn('relative bg-primary/15 overflow-clip')}>
             <img
-                className="w-full inset-0 absolute object-top"
+                className="w-full inset-0 absolute object-top h-full object-cover"
                 src="/Background_Pattern.png"
                 alt="bg-pattern"
             />
