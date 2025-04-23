@@ -6,19 +6,23 @@ declare const messages: {
         description: "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>";
         title: 'Something went wrong!';
     };
-    KeepInTouchSection: {
-        sectionName: 'contact';
-        title: 'Contact';
-        caption: 'Any questions?';
-        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
-        ctaInput: {
-            placeholder: 'Enter your inquiry...';
-            buttonLabel: 'WhatsApp';
-            generalErrorMessage: 'There was an error, please try again later.';
-            minErrorMessage: 'Please enter at least {min} characters.';
-            maxErrorMessage: 'Please enter no more than {max} characters.';
-            failureMessage: 'It seems there was an error, the message was not sent.';
-            successMessage: 'Thank you for your inquiry!';
+    Footer: {
+        addressSection: {
+            title: 'Address';
+            address: 'Mollendo Street #37 - Urb. Municipal';
+        };
+        phoneSection: {
+            title: 'Phone';
+            phone: '+51 958 959 958';
+        };
+        copyrightSection: {
+            title: 'Copyright';
+            description: 'La Almohada del Rey © {year}. All rights reserved.';
+        };
+        legalSection: {
+            title: 'Legal';
+            privacyPolicy: 'Privacy policy.';
+            termsAndConditions: 'Terms and conditions.';
         };
     };
     IndexPage: {
@@ -425,12 +429,204 @@ declare const messages: {
         };
     };
     IndexPageRooms: {
-        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
         title: 'Rooms';
+        roomsSection: {
+            title: 'Rooms and suite';
+            description: 'Unmatched rest';
+            room1: {
+                title: 'Master Suite';
+                description: 'Spacious, comfortable and modern room with integrated living room, work area, rest space, safe, minibar and complete bathroom with bathtub.';
+                features: {
+                    item1: '38 m²';
+                    item2: '2 guests';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '45';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/booking';
+                };
+            };
+            room2: {
+                title: 'Master Room';
+                description: 'Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '16 m²';
+                    item2: '2 guests';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '25';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/booking';
+                };
+            };
+            room3: {
+                title: 'Family Room';
+                description: 'Beautiful and functional room with a double bed and a twin bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '32 m²';
+                    item2: '3 guests';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '35';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/booking';
+                };
+            };
+            room4: {
+                title: 'Twin Room';
+                description: 'Beautiful and spacious room with two twin beds, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '17 m²';
+                    item2: '2 guests';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '30';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/booking';
+                };
+            };
+            room5: {
+                title: 'Single Room';
+                description: 'Beautiful and functional room with one twin bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '11 m²';
+                    item2: '1 guest';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '20';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/booking';
+                };
+            };
+        };
+        environmentsSection: {
+            title: 'Facilities';
+            description: 'Spaces at your disposal';
+            gallery: {
+                item1: {
+                    title: 'Reception';
+                    description: "The ideal starting point for your stay. With a cozy atmosphere, you'll feel at home from the first moment.";
+                };
+                item2: {
+                    title: 'Parking';
+                    description: 'Easy and secure access. Designed for your convenience with ample spaces and easy access.';
+                };
+                item3: {
+                    title: 'Conference room';
+                    description: 'The ideal space for your events. It adapts to your needs, from small meetings to large presentations.';
+                };
+                item4: {
+                    title: 'Café';
+                    description: 'Enjoy a moment of tranquility and calm before exploring everything Arequipa has to offer.';
+                };
+                item5: {
+                    title: 'Living room';
+                    description: 'The space to relax and connect. You can enjoy reading, a conversation, or simply a moment of relaxation.';
+                };
+                item6: {
+                    title: 'Rest area';
+                    description: 'We offer you a cozy place to relax and feel at home.';
+                };
+            };
+        };
+        offersSection: {
+            title: 'Special offers';
+            description: 'Live your best memories here';
+            card1: {
+                title: 'More time, more savings';
+                description: 'Book a stay of at least 5 nights and get a 20% discount on your room price.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+            card2: {
+                title: 'Celebrate love, Honeymoon';
+                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+            card3: {
+                title: 'Family vacation';
+                description: 'Book two or more rooms for your family vacation and receive a 50% discount on the second room.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+        };
+        bookingSection: {
+            title: 'Book now';
+            caption: 'Book your stay';
+            description: 'Comfort and convenience are our highest priority. Here, every detail is designed to provide you with an unmatched lodging experience.';
+            reservationForm: {
+                checkInInput: {
+                    label: 'Check In';
+                    placeholder: 'Enter your arrival date';
+                };
+                checkOutInput: {
+                    label: 'Check Out';
+                    placeholder: 'Enter your departure date';
+                };
+                hostsInput: {
+                    label: 'Guests';
+                    placeholder: 'Enter the number of guests';
+                };
+                roomInput: {
+                    label: 'Room';
+                    placeholder: 'Enter the type of room';
+                };
+                submitButton: {
+                    label: 'Book';
+                };
+            };
+        };
     };
     IndexPageTravelers: {
         description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
         title: 'Travelers';
+    };
+    KeepInTouchSection: {
+        sectionName: 'contact';
+        title: 'Contact';
+        caption: 'Any questions?';
+        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+        ctaInput: {
+            placeholder: 'Enter your inquiry...';
+            buttonLabel: 'WhatsApp';
+            generalErrorMessage: 'There was an error, please try again later.';
+            minErrorMessage: 'Please enter at least {min} characters.';
+            maxErrorMessage: 'Please enter no more than {max} characters.';
+            failureMessage: 'It seems there was an error, the message was not sent.';
+            successMessage: 'Thank you for your inquiry!';
+        };
     };
     LocaleSwitcher: {
         label: 'Change language';
@@ -453,25 +649,6 @@ declare const messages: {
         reservationButton: {
             label: 'Book Now';
             link: '/booking';
-        };
-    };
-    Footer: {
-        addressSection: {
-            title: 'Address';
-            address: 'Mollendo Street #37 - Urb. Municipal';
-        };
-        phoneSection: {
-            title: 'Phone';
-            phone: '+51 958 959 958';
-        };
-        copyrightSection: {
-            title: 'Copyright';
-            description: 'La Almohada del Rey © {year}. All rights reserved.';
-        };
-        legalSection: {
-            title: 'Legal';
-            privacyPolicy: 'Privacy policy.';
-            termsAndConditions: 'Terms and conditions.';
         };
     };
     NotFoundPage: {

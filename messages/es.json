@@ -143,7 +143,7 @@
                 "link": "/galeria"
             }
         },
-        "makeReservationSection":{
+        "makeReservationSection": {
             "title": "Reserve su estancia",
             "caption": "¿Listo para reservar?",
             "description": "Viva una experiencia inolvidable en La Almohada del Rey, sea para negocios o vacaciones lo estamos esperando.",
@@ -152,7 +152,7 @@
                 "link": "/reservacion"
             }
         },
-        "travelersSection":{
+        "travelersSection": {
             "title": "Viajeros",
             "caption": "Lugares que puede visitar",
             "ctaButton": {
@@ -379,55 +379,232 @@
         "description": "Explore cada detalle de nuestro hotel a través de nuestra galería de fotos. Visualice su próxima estancia y comience a crear recuerdos inolvidables con nosotros.",
         "title": "Galería",
         "sections": {
-          "section1": {
-            "title": "Descanso & Confort",
-            "description": "Experimente el máximo confort en nuestras habitaciones cuidadosamente diseñadas."
-          },
-          "section2": {
-            "title": "El hotel en fotos",
-            "description": "Explore cada detalle de nuestro hotel a través de nuestra galería de fotos. Visualice su próxima estancia y comience a crear recuerdos inolvidables con nosotros.",
-            "imageAlt": "Recepción del hotel"
-          },
-          "section3": {
-            "title": "Nuestra",
-            "description": "Terraza",
-            "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
-            "imageAlt2": "Terraza con sillas rojas y mesa",
-            "imageAlt3": "Terraza al atardecer con iluminación"
-          },
-          "section4": {
-            "title": "Descanso &",
-            "description": "Confort",
-            "imageAlt1": "Habitación con dos camas individuales con colchas moradas",
-            "imageAlt2": "Detalle arquitectónico interior con barandilla de madera",
-            "imageAlt3": "Habitación individual con colcha a cuadros y lámpara de noche"
-          },
-          "section5": {
-            "title": "Espacios para Disfrutar",
-            "description": "Relájese y descanse en nuestras áreas comunes cuidadosamente diseñadas.",
-            "imageAlt": "Lobby del hotel con área de estar cómoda y mostrador de recepción"
-          },
-          "section6": {
-            "title": "Ideal",
-            "subtitle": "Ubicación",
-            "description": "Perfectamente situado tanto para viajeros de negocios como de placer.",
-            "imageAlt1": "Fachada del hotel por la noche con iluminación",
-            "imageAlt2": "Fachada del hotel durante el día",
-            "imageAlt3": "Primer plano del letrero del hotel con número 37"
-          },
-          "section7": {
-            "title": "Disfrutar",
-            "subtitle": "Espacios para",
-            "description": "Disfrute de nuestros elegantes espacios gastronómicos y exquisita cocina.",
-            "imageAlt1": "Área de comedor del restaurante con mesas y sillas elegantes",
-            "imageAlt2": "Mesa de buffet con desayuno y bebidas",
-            "imageAlt3": "Huéspedes disfrutando de una comida en el restaurante"
-          }
+            "section1": {
+                "title": "Descanso & Confort",
+                "description": "Experimente el máximo confort en nuestras habitaciones cuidadosamente diseñadas."
+            },
+            "section2": {
+                "title": "El hotel en fotos",
+                "description": "Explore cada detalle de nuestro hotel a través de nuestra galería de fotos. Visualice su próxima estancia y comience a crear recuerdos inolvidables con nosotros.",
+                "imageAlt": "Recepción del hotel"
+            },
+            "section3": {
+                "title": "Nuestra",
+                "description": "Terraza",
+                "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
+                "imageAlt2": "Terraza con sillas rojas y mesa",
+                "imageAlt3": "Terraza al atardecer con iluminación"
+            },
+            "section4": {
+                "title": "Descanso &",
+                "description": "Confort",
+                "imageAlt1": "Habitación con dos camas individuales con colchas moradas",
+                "imageAlt2": "Detalle arquitectónico interior con barandilla de madera",
+                "imageAlt3": "Habitación individual con colcha a cuadros y lámpara de noche"
+            },
+            "section5": {
+                "title": "Espacios para Disfrutar",
+                "description": "Relájese y descanse en nuestras áreas comunes cuidadosamente diseñadas.",
+                "imageAlt": "Lobby del hotel con área de estar cómoda y mostrador de recepción"
+            },
+            "section6": {
+                "title": "Ideal",
+                "subtitle": "Ubicación",
+                "description": "Perfectamente situado tanto para viajeros de negocios como de placer.",
+                "imageAlt1": "Fachada del hotel por la noche con iluminación",
+                "imageAlt2": "Fachada del hotel durante el día",
+                "imageAlt3": "Primer plano del letrero del hotel con número 37"
+            },
+            "section7": {
+                "title": "Disfrutar",
+                "subtitle": "Espacios para",
+                "description": "Disfrute de nuestros elegantes espacios gastronómicos y exquisita cocina.",
+                "imageAlt1": "Área de comedor del restaurante con mesas y sillas elegantes",
+                "imageAlt2": "Mesa de buffet con desayuno y bebidas",
+                "imageAlt3": "Huéspedes disfrutando de una comida en el restaurante"
+            }
         }
-      },
+    },
     "IndexPageRooms": {
-        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-        "title": "Habitaciones"
+        "title": "Habitaciones",
+        "roomsSection": {
+            "title": "Habitaciones y suite",
+            "description": "Un descanso inigualable",
+            "room1": {
+                "title": "Suite Matrimonial",
+                "description": "Espaciosa, confortable y moderna habitación con salón integrado, área de trabajo, espacio de descanso, caja fuerte, minibar y baño completo con bañera o tina.",
+                "features": {
+                    "item1": "38 m²",
+                    "item2": "2 huéspedes"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "170",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/reservar"
+                }
+            },
+            "room2": {
+                "title": "Habitación Matrimonial",
+                "description": "Bonita y espaciosa habitación con cama matrimonial, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "16 m²",
+                    "item2": "2 huéspedes"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "80",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/reservar"
+                }
+            },
+            "room3": {
+                "title": "Habitación Familiar",
+                "description": "Bonita y funcional habitación con cama de matrimonio de dos plazas y una cama de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "32 m²",
+                    "item2": "3 huéspedes"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "120",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/reservar"
+                }
+            },
+            "room4": {
+                "title": "Habitación Doble",
+                "description": "Bonita y espaciosa habitación con dos camas de tamaño plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "17 m²",
+                    "item2": "2 huéspedes"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "100",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/reservar"
+                }
+            },
+            "room5": {
+                "title": "Habitación Simple",
+                "description": "Bonita y funcional habitación con una cama de tamaño de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "11 m²",
+                    "item2": "1 huéspedes"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "60",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/reservar"
+                }
+            }
+        },
+        "environmentsSection": {
+            "title": "Instalaciones",
+            "description": "Espacios a su disposición",
+            "gallery": {
+                "item1": {
+                    "title": "Recepción",
+                    "description": "El punto de partida ideal para tu estancia. Con un ambiente acogedor, te sentirás como en casa desde el primer momento."
+                },
+                "item2": {
+                    "title": "Estacionamiento",
+                    "description": "Acceso fácil y seguro. Diseñado para su comodidad con amplios espacios y fácil acceso."
+                },
+                "item3": {
+                    "title": "Sala de conferencias",
+                    "description": "El espacio ideal para tus eventos. Se adapta a tus necesidades, desde pequeñas reuniones hasta grandes presentaciones."
+                },
+                "item4": {
+                    "title": "Cafetería",
+                    "description": "Disfrute de un momento de tranquilidad y calma antes de explorar todo lo que Arequipa tiene para ofrecer."
+                },
+                "item5": {
+                    "title": "Sala de estar",
+                    "description": "El espacio para relajarse y conectar. Puede disfrutar de una lectura, una conversación o simplemente un momento de relax."
+                },
+                "item6": {
+                    "title": "Sala de descanso",
+                    "description": "Le ofrecemos un lugar acogedor para relajarse y sentirse como en casa."
+                }
+            }
+        },
+        "offersSection": {
+            "title": "Ofertas especiales",
+            "description": "Vive tus mejores recuerdos aquí",
+            "card1": {
+                "title": "Más tiempo, más ahorro",
+                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            },
+            "card2": {
+                "title": "Celebra el amor, Luna de miel",
+                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            },
+            "card3": {
+                "title": "Vacaciones en familia",
+                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            }
+        },
+        "bookingSection": {
+            "title": "Reserve ahora",
+            "caption": "Reserve su estadía",
+            "description": "El confort y la comodidad son nuestra máxima prioridad. Aquí, cada detalle está diseñado para brindarle una experiencia de alojamiento inigualable.",
+            "reservationForm":{
+                "checkInInput": {
+                    "label": "Check In",
+                    "placeholder": "Ingrese su fecha de llegada"
+                },
+                "checkOutInput": {
+                    "label": "Check Out",
+                    "placeholder": "Ingrese su fecha de salida"
+                },
+                "hostsInput": {
+                    "label": "Huéspedes",
+                    "placeholder": "Ingrese el número de huéspedes"
+                },
+                "roomInput": {
+                    "label": "Habitación",
+                    "placeholder": "Ingrese el tipo de habitación"
+                },
+                "submitButton": {
+                    "label": "Reservar"
+                }
+            }
+        }
     },
     "IndexPageTravelers": {
         "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
