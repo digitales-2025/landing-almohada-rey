@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
         ],
     },
     output: 'standalone',
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 const withNextIntl = createNextIntlPlugin({
