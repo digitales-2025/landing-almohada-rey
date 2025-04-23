@@ -85,7 +85,7 @@ export const KeepInTouchCTA = ({
     return (
         <SectionWrapper id={t('sectionName')} className={className}>
             {children}
-            <div className="bg-primary/5 p-6 lg:p-10 space-y-8">
+            <div className="bg-primary/5 p-6 lg:p-10 xl:p-24 space-y-8">
                 <SectionHeader
                     headerTitle={{
                         text: t('title').toUpperCase(),
@@ -100,7 +100,7 @@ export const KeepInTouchCTA = ({
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit, onError)}
-                        className="w-full flex flex-col gap-4"
+                        className="w-full flex flex-col gap-4 max-w-[1024px] mx-auto"
                     >
                         <div className="border border-secondary dark:border-secondary-foreground p-4 flex flex-col space-y-4 md:space-y-0 md:flex-row gap-4 md:justify-between items-end bg-white">
                             <Textarea

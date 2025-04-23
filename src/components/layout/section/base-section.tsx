@@ -13,6 +13,15 @@ interface BaseSectionProps
     imageProps?: NextImageProps;
 }
 
+export const basePageHorizontalPadding =
+    'px-4 sm:px-6 lg:px-8 xl:px-50 2xl:px-54';
+export const resetPageHorizontalPadding =
+    'px-0 sm:px-0 lg:px-0 xl:px-0 2xl:px-0';
+export const onlyLeftPageHorizontalPadding =
+    'pl-4 sm:pl-6 lg:pl-8 xl:pl-50 2xl:pl-54';
+export const onlyRightPageHorizontalPadding =
+    'pr-4 sm:pr-6 lg:pr-8 xl:pr-50 2xl:pr-54';
+
 export const SectionWrapper = ({
     children,
     className,
@@ -22,7 +31,8 @@ export const SectionWrapper = ({
     return (
         <section
             className={cn(
-                'relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-50 2xl:px-54 !space-y-4 sm:!space-y-6 md:!space-y-8 lg:!space-y-14',
+                'relative z-10 mx-auto w-full !space-y-4 sm:!space-y-6 md:!space-y-8 lg:!space-y-14',
+                basePageHorizontalPadding,
                 className
             )}
             {...rest}

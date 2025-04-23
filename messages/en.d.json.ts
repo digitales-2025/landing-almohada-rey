@@ -22,8 +22,190 @@ declare const messages: {
         };
     };
     IndexPage: {
-        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
-        title: 'next-intl example';
+        titleFirstSpan: 'A Memorable';
+        titleSecondSpan: 'Experience';
+        slogan: 'Enjoy your stay with the utmost comfort and convenience.';
+        safeHostSection: {
+            title: 'Rest in a clean and safe environment';
+            description: 'Turn every moment into an unforgettable experience. Enjoying comfort and elegance, where excellence in service is our priority. Here, at Hotel La Almohada del Rey, we offer you much more than simple accommodation; we provide you with the opportunity to spend quality time with your loved ones.';
+            ctaButton: {
+                label: 'Learn more';
+                link: '/booking';
+            };
+        };
+        confortableRoomsSection: {
+            title: 'Discover our rooms';
+            caption: 'Comfortable rooms for you';
+            description: 'Choose from our rooms where comfort and convenience are our highest priority.';
+            ctaButton: {
+                label: 'View all rooms';
+                link: '/rooms';
+            };
+            carousel: {
+                item1: {
+                    title: 'Double Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '45';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#contact';
+                    };
+                    features: {
+                        item1: '17 m²';
+                        item2: '2 guests';
+                        item3: 'Work area';
+                    };
+                };
+                item2: {
+                    title: 'Twin Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '26';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#contact';
+                    };
+                    features: {
+                        item1: '38 m²';
+                        item2: '2 guests';
+                        item3: 'Exclusive equipment';
+                    };
+                };
+                item3: {
+                    title: 'Suite Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '65';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#contact';
+                    };
+                    features: {
+                        item1: '50 m²';
+                        item2: '2 guests';
+                        item3: 'Integrated living room';
+                    };
+                };
+            };
+        };
+        goodQualitySection: {
+            title: 'Premium quality';
+            caption: 'Why choose us?';
+            description: 'Designed to meet the needs of families, tour groups, and business travelers, our hotel offers a unique lodging concept, blending modern with cozy.';
+            ctaButton: {
+                label: 'Book now';
+                link: '/experiences';
+            };
+            gallery: {
+                item1: {
+                    title: 'Maximum comfort';
+                };
+                item2: {
+                    title: 'Excellent service';
+                };
+                item3: {
+                    title: 'Ideal location';
+                };
+                item4: {
+                    title: 'Special attentions';
+                };
+                item5: {
+                    title: 'Unique experiences';
+                };
+                item6: {
+                    title: 'Well-maintained facilities';
+                };
+            };
+        };
+        isoCertificationSection: {
+            title: 'Certification';
+            slogan: 'The best for you';
+            caption: 'Committed to quality';
+            description: 'Quality Management System';
+        };
+        gallerySection: {
+            title: 'Gallery';
+            caption: 'The hotel in photos';
+            description: 'Take a look at our beautiful hotel and facilities in our photo gallery. We hope you can make more memories here!';
+            ctaButton: {
+                label: 'See more';
+                link: '/gallery';
+            };
+        };
+        makeReservationSection: {
+            title: 'Book your stay';
+            caption: 'Ready to book?';
+            description: "Experience an unforgettable stay at La Almohada del Rey, whether for business or vacation, we're waiting for you.";
+            ctaButton: {
+                label: 'Book now';
+                link: '/booking';
+            };
+        };
+        travelersSection: {
+            title: 'Travelers';
+            caption: 'Places you can visit';
+            ctaButton: {
+                label: 'See all places';
+                link: '/travelers';
+            };
+            carousel: {
+                item1: {
+                    title: 'Urban Destinations';
+                    name: 'Arequipa Cathedral and museum';
+                };
+                item2: {
+                    title: 'Urban Destinations';
+                    name: 'The hotel is beautiful and the staff is very friendly. I will definitely come back.';
+                };
+                item3: {
+                    title: 'Nearby Landscapes';
+                    name: 'Arequipa Countryside';
+                };
+                item4: {
+                    title: 'Nearby Landscapes';
+                    name: 'Colca Canyon';
+                };
+            };
+        };
+        FAQSection: {
+            title: 'Frequently Asked Questions';
+            questions: {
+                item1: {
+                    question: 'What are the check-in & check-out times?';
+                    answer: 'Check-in time is from {checkinTime} and check-out time is at {checkoutTime}. For additional inquiries about the schedule, please contact us.';
+                };
+                item2: {
+                    question: 'Do you offer transportation service?';
+                    answer: 'Yes, we offer airport transportation service for an additional fee.';
+                };
+                item3: {
+                    question: 'How can I cancel my reservation?';
+                    answer: 'You can cancel your reservation through our website or by contacting our customer service.';
+                };
+                item4: {
+                    question: 'Do you accept pets at the hotel?';
+                    answer: 'No, unfortunately we do not accept pets at the hotel.';
+                };
+                item5: {
+                    question: 'Do you offer laundry service?';
+                    answer: 'Yes, we offer laundry service for an additional fee.';
+                };
+                item6: {
+                    question: 'Is parking available?';
+                    answer: 'Yes, we offer free parking for our guests.';
+                };
+            };
+        };
     };
     IndexPageExperiences: {
         description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
@@ -263,6 +445,34 @@ declare const messages: {
         gallery: 'Gallery';
         rooms: 'Rooms';
         travelers: 'Travelers';
+        booking: 'Reservation';
+        headquarters: {
+            address: 'Mollendo St. #37 - Urb. Municipal';
+            link: '/';
+        };
+        reservationButton: {
+            label: 'Book Now';
+            link: '/booking';
+        };
+    };
+    Footer: {
+        addressSection: {
+            title: 'Address';
+            address: 'Mollendo Street #37 - Urb. Municipal';
+        };
+        phoneSection: {
+            title: 'Phone';
+            phone: '+51 958 959 958';
+        };
+        copyrightSection: {
+            title: 'Copyright';
+            description: 'La Almohada del Rey © {year}. All rights reserved.';
+        };
+        legalSection: {
+            title: 'Legal';
+            privacyPolicy: 'Privacy policy.';
+            termsAndConditions: 'Terms and conditions.';
+        };
     };
     NotFoundPage: {
         description: 'Please double-check the browser address bar or use the navigation to go to a known page.';

@@ -25,7 +25,79 @@ export const Logo = ({ className }: { className?: string }) => {
 
             {/* Logo para escritorio (lg+) */}
             <div className="hidden lg:block">
-                <LogoAlmohadaRey width={110} height={25} color="currentColor" />
+                <LogoAlmohadaRey width={200} height={45} color="currentColor" />
+            </div>
+        </div>
+    );
+};
+
+export const FooterLogo = ({ className }: { className?: string }) => {
+    return (
+        <div className={cn('flex items-center', className)}>
+            {/* Logo para móvil (xs a md) */}
+            <div className="block md:hidden">
+                <LogoAlmohadaReyMobile
+                    width={50}
+                    height={(50 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para tablet (md a lg) */}
+            <div className="hidden md:block lg:hidden">
+                <LogoAlmohadaRey
+                    width={150}
+                    height={80}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para escritorio (lg+) */}
+            <div className="hidden lg:block">
+                <LogoAlmohadaRey
+                    width={300}
+                    height={145}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+        </div>
+    );
+};
+
+export const OnlyMobileLogo = ({ className }: { className?: string }) => {
+    return (
+        <div className={cn('flex items-center', className)}>
+            {/* Logo para móvil (xs a md) */}
+            <div className="block md:hidden">
+                <LogoAlmohadaReyMobile
+                    width={60}
+                    height={(60 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para tablet (md a lg) */}
+            <div className="hidden md:block lg:hidden">
+                <LogoAlmohadaReyMobile
+                    width={80}
+                    height={(80 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
+            </div>
+
+            {/* Logo para escritorio (lg+) */}
+            <div className="hidden lg:block">
+                <LogoAlmohadaReyMobile
+                    width={100}
+                    height={(100 * 218.5) / 252.2}
+                    color="currentColor"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                />
             </div>
         </div>
     );

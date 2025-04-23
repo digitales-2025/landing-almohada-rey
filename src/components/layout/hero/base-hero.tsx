@@ -18,15 +18,26 @@ type NextImageConfig = {
     alt?: string;
 };
 
+/**
+ * Props for the BaseHeroWrapper component
+ * @interface BaseHeroWrapperProps
+ * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * @property {React.ReactNode} children - The content to be rendered inside the hero section
+ * @property {NextImageConfig} image - The configuration object for the hero background image
+ * @property {string} [gradientEffectClassname] - Optional CSS class name for applying a gradient effect over the hero image
+ Tailwind default classnames: "from-black/20 to-black/80"
+ */
 interface BaseHeroWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
     image: NextImageConfig;
+    gradientEffectClassname?: string;
 }
 
 export const BaseHeroWrapper = ({
     children,
     className,
     image,
+    gradientEffectClassname,
     ...rest
 }: BaseHeroWrapperProps) => {
     return (
@@ -37,7 +48,12 @@ export const BaseHeroWrapper = ({
             )}
             {...rest}
         >
-            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/20 to-black/80" />
+            <div
+                className={cn(
+                    'absolute inset-0 -z-10 bg-gradient-to-t from-black/20 to-black/80',
+                    gradientEffectClassname ?? ''
+                )}
+            />
             <figure className="absolute inset-0 -z-20 to-transparent">
                 <Image
                     src={

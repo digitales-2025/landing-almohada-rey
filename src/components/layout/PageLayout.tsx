@@ -39,14 +39,22 @@
 
 import React from 'react';
 
+import { cn } from '@/lib/utils';
+
 interface PageLayoutProps {
     children: React.ReactNode;
+    classname?: string;
 }
 
-export const PageLayout = ({ children }: PageLayoutProps) => {
+export const PageLayout = ({ children, classname }: PageLayoutProps) => {
     return (
         <main className="overflow-hidden animate-fade">
-            <article className="min-h-dvh space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 pb-8">
+            <article
+                className={cn(
+                    'min-h-dvh space-y-16 sm:space-y-20 md:space-y-24 lg:space-y-28 pb-8',
+                    classname
+                )}
+            >
                 {children}
             </article>
         </main>

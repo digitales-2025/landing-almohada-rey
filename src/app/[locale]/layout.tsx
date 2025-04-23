@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 
-import FooterSection from '@/components/layout/footer';
+import FooterSection from '@/components/layout/footer/footer';
 import { NavMenu } from '@/components/layout/header';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
@@ -49,9 +49,9 @@ export default async function RootLayout({
     if (!hasLocale(routing.locales, locale)) {
         notFound();
     }
-
     // Enable static rendering
     setRequestLocale(locale);
+
     return (
         <html lang={locale} suppressHydrationWarning>
             <body
@@ -59,8 +59,8 @@ export default async function RootLayout({
             >
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
-                    enableSystem
+                    defaultTheme="light"
+                    // enableSystem
                     disableTransitionOnChange
                 >
                     <NextIntlClientProvider>

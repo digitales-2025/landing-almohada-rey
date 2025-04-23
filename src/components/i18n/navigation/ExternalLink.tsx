@@ -1,21 +1,27 @@
-type Props = {
-    title: string;
-    description: string;
-    href: string;
-};
+import { cn } from '@/lib/utils';
 
-export default function ExternalLink({ description, href, title }: Props) {
+interface Props extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+    href: string;
+}
+
+export default function ExternalLink({
+    href,
+    children,
+    className,
+    ...rest
+}: Props) {
     return (
         <a
-            className="inline-block rounded-md border border-gray-700 p-8 transition-colors hover:border-gray-400"
+            {...rest}
+            className={cn(
+                'inline-block text-secondary cursor-pointer',
+                className ?? ''
+            )}
             href={href}
             rel="noreferrer"
             target="_blank"
         >
-            <p className="text-xl font-semibold text-white">
-                {title} <span className="ml-2 inline-block">→</span>
-            </p>
-            <p className="mt-2 max-w-[250px] text-gray-400">{description}</p>
+            {children}
         </a>
     );
 }
