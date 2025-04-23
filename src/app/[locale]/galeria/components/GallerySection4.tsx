@@ -47,7 +47,7 @@ export const GallerySection4 = () => {
                             <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('title')}
                             </h3>
-                            <h2 className="text-h3 lg:text-h2 xl:text-h1 font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-h3 lg:text-h2 xl:text-h1 font-serif text-secondary dark:text-secondary-foreground truncate">
                                 {t('description')}
                             </h2>
                         </div>

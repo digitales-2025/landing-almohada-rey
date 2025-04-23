@@ -53,10 +53,10 @@ export const GallerySection3 = () => {
 
                         {/* Versión desktop: título y descripción separados */}
                         <div className="mt-6 hidden md:block text-right pb-4">
-                            <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
+                            <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground ">
                                 {t('title')}
                             </h3>
-                            <h2 className="text-h3 lg:text-h2 xl:text-h1 font-serif text-secondary dark:text-secondary-foreground">
+                            <h2 className="text-h3 lg:text-h3  2xl:text-h2 xl:text-h3 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('description')}
                             </h2>
                         </div>
