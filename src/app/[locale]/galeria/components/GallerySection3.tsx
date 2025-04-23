@@ -11,7 +11,7 @@ export const GallerySection3 = () => {
     return (
         <SectionWrapper>
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 ">
                     {/* Imagen grande a la izquierda que ocupa toda la altura */}
                     <div className="relative min-h-[400px] md:min-h-[800px] w-full">
                         <img

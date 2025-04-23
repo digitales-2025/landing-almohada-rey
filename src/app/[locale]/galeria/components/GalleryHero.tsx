@@ -7,7 +7,7 @@ import { TextEffect } from '@/components/ui/text-effect';
 export const GalleryHero = () => {
     const t = useTranslations('IndexPageGallery');
     return (
-        <section>
+        <section className="overflow-hidden">
             <BaseHeroWrapper
                 image={{
                     src: '/gallery/header/ImgHeader.webp',
@@ -17,6 +17,7 @@ export const GalleryHero = () => {
                     blurDataURL: '/gallery/header/imgHeader.webp',
                     unoptimized: true,
                 }}
+                className="image-zoom-effect"
             >
                 <div className="w-full animate-fade">
                     <BreadcrumbNav className="mx-auto w-fit"></BreadcrumbNav>

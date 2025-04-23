@@ -22,9 +22,9 @@ export const GallerySection6 = () => {
                     </div>
 
                     {/* Columna derecha con dos imágenes y título */}
-                    <div className="flex flex-col h-[800px] md:h-[1200px] justify-between">
+                    <div className="flex flex-col lg:h-[800px] md:h-[1200px] lg:justify-between">
                         {/* Contenedor de imágenes */}
-                        <div className="space-y-6 md:space-y-8 flex-grow">
+                        <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:flex-grow">
                             {/* Imagen superior derecha */}
                             <div className="relative h-[320px] md:h-[480px] w-full">
                                 <img
