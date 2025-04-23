@@ -22,9 +22,9 @@ export const GallerySection7 = () => {
                     </div>
 
                     {/* Estructura para desktop (2 columnas con título e imágenes) - oculto en móvil */}
-                    <div className="hidden md:grid md:grid-cols-2 gap-8 items-center grid-flow-row auto-rows-min">
+                    <div className="hidden md:grid md:grid-cols-2 gap-8 items-start grid-flow-row auto-rows-min">
                         {/* Título a la izquierda solo visible en desktop */}
-                        <div className="space-y-3">
+                        <div className="space-y-3 pt-2">
                             <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground">
                                 {t('subtitle')}
                             </h3>
@@ -35,14 +35,14 @@ export const GallerySection7 = () => {
 
                         {/* Imágenes inferiores solo para desktop */}
                         <div className="grid grid-cols-2 gap-6 grid-flow-row auto-rows-min">
-                            <div className="relative aspect-[3/4] w-full overflow-hidden">
+                            <div className="relative aspect-[4/3] w-full overflow-hidden">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorIzquierdo.webp"
                                     alt={t('imageAlt2')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <div className="relative aspect-[3/4] w-full overflow-hidden">
+                            <div className="relative aspect-[4/3] w-full overflow-hidden">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorDerecho.webp"
                                     alt={t('imageAlt3')}
@@ -56,14 +56,14 @@ export const GallerySection7 = () => {
                     <div className="block md:hidden">
                         {/* Solo imágenes en grid - sin div para título */}
                         <div className="grid grid-cols-2 gap-4 grid-flow-row auto-rows-min">
-                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md">
+                            <div className="relative aspect-[4/3] w-full overflow-hidden ">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorIzquierdo.webp"
                                     alt={t('imageAlt2')}
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md">
+                            <div className="relative aspect-[4/3] w-full overflow-hidden ">
                                 <img
                                     src="/gallery/seccion7/ImgInferiorDerecho.webp"
                                     alt={t('imageAlt3')}

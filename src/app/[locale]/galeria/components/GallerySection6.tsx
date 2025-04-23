@@ -22,11 +22,11 @@ export const GallerySection6 = () => {
                     </div>
 
                     {/* Columna derecha con dos imágenes y título */}
-                    <div className="flex flex-col lg:h-[800px] md:h-[1200px] lg:justify-between">
+                    <div className="flex flex-col lg:h-[800px] md:h-[1200px]">
                         {/* Contenedor de imágenes */}
-                        <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:flex-grow">
+                        <div className="flex flex-col space-y-4 sm:space-y-6 md:space-y-8 flex-grow">
                             {/* Imagen superior derecha */}
-                            <div className="relative h-[320px] md:h-[480px] w-full">
+                            <div className="relative h-[300px] md:h-[450px] w-full">
                                 <img
                                     src="/gallery/seccion6/ImgLateralDerechoSuperior.webp"
                                     alt={t('imageAlt2')}
@@ -35,7 +35,7 @@ export const GallerySection6 = () => {
                             </div>
 
                             {/* Imagen inferior derecha */}
-                            <div className="relative h-[320px] md:h-[480px] w-full">
+                            <div className="relative h-[300px] md:h-[450px] w-full">
                                 <img
                                     src="/gallery/seccion6/ImgLateralDerechoInferior.webp"
                                     alt={t('imageAlt3')}
@@ -52,7 +52,7 @@ export const GallerySection6 = () => {
                         </div>
 
                         {/* Versión desktop: título y subtítulo separados */}
-                        <div className="mt-auto hidden md:block text-right pb-4">
+                        <div className="hidden md:block text-right pb-4 mt-6 md:mt-10 lg:mt-16">
                             <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground line-clamp-1">
                                 {t('subtitle')}
                             </h3>
