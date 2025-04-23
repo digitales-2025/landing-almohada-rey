@@ -90,7 +90,7 @@ interface CardProps
 
 export const CardImage = ({ src, alt, className }: CardImage) => {
     return (
-        <figure className="w-full mb-2">
+        <figure className="w-full max-w-full mb-2">
             <img
                 src={src}
                 alt={alt}
@@ -187,7 +187,7 @@ export const CustomCard = ({
                     )}
                     <CardTitle
                         className={cn(
-                            'text-secondary dark:text-secondary-foreground font-serif text-h7 lg:text-h4 !font-normal',
+                            'w-full text-secondary dark:text-secondary-foreground font-serif text-h7 lg:text-h4 !font-normal !text-ellipsis',
                             cardTitle.className
                         )}
                     >
@@ -196,7 +196,8 @@ export const CustomCard = ({
                                 href={href}
                                 className={cn(
                                     buttonVariants({ variant: 'link' }),
-                                    'text-inherit p-0 m-0'
+                                    'w-full max-w-full text-start justify-start text-inherit text-h7 lg:text-h4 !font-normal p-0 m-0 h-fit',
+                                    cardTitle.className
                                 )}
                             >
                                 {cardTitle.text}

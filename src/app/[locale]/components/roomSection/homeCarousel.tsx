@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { CustomCard } from '@/components/customized/card/custom-card';
@@ -96,18 +96,18 @@ export function HomeCarousel() {
         },
     ];
 
-    useEffect(() => {
-        if (!api) {
-            return;
-        }
+    // useEffect(() => {
+    //     if (!api) {
+    //         return;
+    //     }
 
-        // setCount(api.scrollSnapList().length);
-        // setCurrent(api.selectedScrollSnap() + 1);
+    //     // setCount(api.scrollSnapList().length);
+    //     // setCurrent(api.selectedScrollSnap() + 1);
 
-        // api.on('select', () => {
-        //     setCurrent(api.selectedScrollSnap() + 1);
-        // });
-    }, [api]);
+    //     // api.on('select', () => {
+    //     //     setCurrent(api.selectedScrollSnap() + 1);
+    //     // });
+    // }, [api]);
     return (
         <div className="px-6 lg:px-12 relative h-fit">
             <Carousel setApi={setApi}>
@@ -117,7 +117,7 @@ export function HomeCarousel() {
                             <CustomCard
                                 cardTitle={{
                                     text: item.title,
-                                    className: 'text-lg font-bold truncate',
+                                    className: 'text-lg font-bold',
                                 }}
                                 cardImage={{
                                     src: item.image,
@@ -132,8 +132,8 @@ export function HomeCarousel() {
                                     caption: feature.label,
                                 }))}
                                 hasSeparator={false}
-                                headerClassname="px-5 lg:px-8 truncate"
-                                contentClassname="px-5 pb-5 lg:px-8 lg:pb-8 truncate"
+                                headerClassname="px-5 lg:px-8 pb-3"
+                                contentClassname="px-5 pb-5 lg:px-8 lg:pb-8"
                             ></CustomCard>
                         </CarouselItem>
                     ))}

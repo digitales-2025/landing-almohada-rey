@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 export const MakeReservationSection = () => {
     const t = useTranslations('IndexPage.makeReservationSection');
     return (
-        <SectionWrapper className={cn('relative bg-primary/20 overflow-clip')}>
+        <SectionWrapper className={cn('relative bg-primary/15 overflow-clip')}>
             <img
                 className="w-full inset-0 absolute object-top"
                 src="/Background_Pattern.png"

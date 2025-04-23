@@ -12,7 +12,7 @@ export const GallerySection = () => {
     const t = useTranslations('IndexPage.gallerySection');
     return (
         <SectionWrapper className={sectionLayoutClassnames}>
-            <div className="grid grid-rows-4 auto-rows-min grid-cols-[minmax(0,0.33fr)_minmax(0,1.66fr)_minmax(0,1.66fr)_minmax(0,0.33fr)] lg:grid-cols-[minmax(0,1.66fr)_minmax(0,0.08fr)_minmax(0,0.33fr)_minmax(0,1.66fr)] gap-4 lg:gap-6">
+            <div className="grid grid-flow-row auto-rows-min grid-cols-[minmax(0,0.33fr)_minmax(0,1.66fr)_minmax(0,1.66fr)_minmax(0,0.33fr)] lg:grid-cols-[minmax(0,1.66fr)_minmax(0,0.08fr)_minmax(0,0.33fr)_minmax(0,1.66fr)] gap-4 lg:gap-6">
                 <div className="row-start-1 col-start-1 col-span-3 row-span-1 lg:row-start-1 lg:col-start-1 lg:col-span-2 lg:row-span-2">
                     <SectionHeader
                         headerTitle={{
