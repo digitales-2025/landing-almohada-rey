@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { LineClampParagraph } from '../paragraph/LineClampParagraph';
 
 type ActionButton = {
     label: string;
@@ -45,6 +46,9 @@ type Caption = {
 type Description = {
     text: string;
     className?: string;
+    collapsible?: {
+        lineClamp: 1 | 2 | 3 | 4 | 5 | 6;
+    };
 };
 
 type Pricing = {
@@ -53,6 +57,7 @@ type Pricing = {
     currency?: string;
     sufix: string;
     actionButton?: ActionButton;
+    className?: string;
 };
 
 export type Feature = {
@@ -69,11 +74,7 @@ type IconFeatures = IconFeature[];
 
 type Features = (Feature | IconFeatures)[];
 
-interface CardProps
-    extends React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLDivElement>,
-        HTMLDivElement
-    > {
+export type CustomCardProps = {
     cardTitle: Title;
     cardImage?: CardImage;
     caption?: Caption;
@@ -86,8 +87,13 @@ interface CardProps
     href?: string;
     actionButton?: ActionButton;
     hasSeparator?: boolean;
-}
+};
 
+type CardProps = React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+> &
+    CustomCardProps;
 export const CardImage = ({ src, alt, className }: CardImage) => {
     return (
         <figure className="w-full max-w-full mb-2">
@@ -119,9 +125,9 @@ const IconCardFeature = ({ Icon, tooltip }: IconFeature) => {
         <TooltipProvider>
             <Tooltip>
                 <TooltipTrigger className="flex items-center space-x-2">
-                    <Icon className="size-4 text-primary" />
+                    <Icon className="size-5 text-primary" />
                 </TooltipTrigger>
-                <TooltipContent className="flex items-center space-x-2 font-normal text-secondary/50 dark:text-secondary-foreground">
+                <TooltipContent className="flex items-center space-x-2 font-normal bg-primary-foreground text-secondary/50 dark:text-secondary-foreground">
                     <Icon className="size-4" />
                     <span className="text-sm lg:text-base">{tooltip}</span>
                 </TooltipContent>
@@ -206,15 +212,26 @@ export const CustomCard = ({
                             cardTitle.text
                         )}
                     </CardTitle>
-                    {description && (
+                    {description && !description.collapsible && (
                         <CardDescription
                             className={cn(
-                                'font-light text-secondary dark:text-secondary-foreground text-pretty w-full text-base lg:text-p mt-2',
+                                'font-light text-secondary dark:text-secondary-foreground text-pretty w-full text-base lg:text-p lg:tracking-normal mt-2',
                                 description?.className
                             )}
                         >
                             {description?.text}
                         </CardDescription>
+                    )}
+                    {description && description.collapsible && (
+                        <LineClampParagraph
+                            lineClamp={description.collapsible.lineClamp}
+                            inlineButton={true}
+                            text={description?.text}
+                            className={cn(
+                                'font-light text-secondary dark:text-secondary-foreground text-pretty w-full text-base lg:text-p lg:tracking-normal mt-2',
+                                description?.className
+                            )}
+                        ></LineClampParagraph>
                     )}
                 </div>
             </CardHeader>
@@ -223,7 +240,12 @@ export const CustomCard = ({
                     <Separator className="bg-secondary data-[orientation=horizontal]:!h-[1px]"></Separator>
                 )}
                 {features && (
-                    <CardContent className="flex flex-wrap gap-2 p-0">
+                    <CardContent
+                        className={cn(
+                            'flex flex-wrap gap-2 p-0',
+                            hasSeparator ? 'py-4' : 'pt-0'
+                        )}
+                    >
                         {featureList?.map((feature, index) => (
                             <React.Fragment key={index}>
                                 {index > 0 && (
@@ -242,7 +264,7 @@ export const CustomCard = ({
                 )}
                 <CardFooter className="p-0 m-0 mt-2 lg:mt-3 w-full">
                     {pricing && (
-                        <div className="flex items-center justify-between flex-wrap space-y-2">
+                        <div className="flex items-center justify-between flex-wrap space-y-2 w-full">
                             <div className="flex space-x-4">
                                 <div className="flex items-center space-x-2">
                                     <span className="text-sm lg:text-h8 text-secondary dark:text-secondary-foreground">
@@ -250,10 +272,20 @@ export const CustomCard = ({
                                     </span>
                                 </div>
                                 <div className="flex space-x-1 font-serif">
-                                    <span className="text-h7 lg:text-h5 xl:text-h4 text-primary dark:text-primary-foreground">
+                                    <span
+                                        className={cn(
+                                            'text-h7 lg:text-h5 xl:text-h4 text-primary dark:text-primary-foreground',
+                                            pricing.className
+                                        )}
+                                    >
                                         {pricing.price}
                                     </span>
-                                    <span className="text-h7 lg:text-h5 xl:text-h4 text-primary dark:text-primary-foreground">
+                                    <span
+                                        className={cn(
+                                            'text-h7 lg:text-h5 xl:text-h4 text-primary dark:text-primary-foreground',
+                                            pricing.className
+                                        )}
+                                    >
                                         {pricing.sufix}
                                     </span>
                                 </div>

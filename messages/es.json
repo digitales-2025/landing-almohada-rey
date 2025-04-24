@@ -1,4 +1,8 @@
 {
+    "CollapseParragraph": {
+        "expand": "Leer más",
+        "collapse": "Leer menos"
+    },
     "Error": {
         "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
         "title": "Algo salió mal"
@@ -435,7 +439,14 @@
                 "description": "Espaciosa, confortable y moderna habitación con salón integrado, área de trabajo, espacio de descanso, caja fuerte, minibar y baño completo con bañera o tina.",
                 "features": {
                     "item1": "38 m²",
-                    "item2": "2 huéspedes"
+                    "item2": "2 huéspedes",
+                    "item3": "Bañera",
+                    "item4": "Mobiliario adicional",
+                    "item5": "Wifi gratuito",
+                    "item6": "TV full HD con cable",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio",
+                    "item9": "Minibar"
                 },
                 "pricing": {
                     "label": "desde",
@@ -453,7 +464,13 @@
                 "description": "Bonita y espaciosa habitación con cama matrimonial, TV de alta definición con canales por cable y área de trabajo.",
                 "features": {
                     "item1": "16 m²",
-                    "item2": "2 huéspedes"
+                    "item2": "2 huéspedes",
+                    "item3": "Ducha",
+                    "item4": "Wifi gratuito",
+                    "item5": "Cable",
+                    "item6": "TV full HD",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio"
                 },
                 "pricing": {
                     "label": "desde",
@@ -471,7 +488,14 @@
                 "description": "Bonita y funcional habitación con cama de matrimonio de dos plazas y una cama de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
                 "features": {
                     "item1": "32 m²",
-                    "item2": "3 huéspedes"
+                    "item2": "3 huéspedes",
+                    "item3": "2 camas",
+                    "item4": "Ducha",
+                    "item5": "Wifi gratuito",
+                    "item6": "Cable",
+                    "item7": "TV full HD",
+                    "item8": "Intercomunicador",
+                    "item9": "Escritorio"
                 },
                 "pricing": {
                     "label": "desde",
@@ -489,7 +513,14 @@
                 "description": "Bonita y espaciosa habitación con dos camas de tamaño plaza y media, TV de alta definición con canales por cable y área de trabajo.",
                 "features": {
                     "item1": "17 m²",
-                    "item2": "2 huéspedes"
+                    "item2": "2 huéspedes",
+                    "item3": "2 camas",
+                    "item4": "Ducha",
+                    "item5": "Wifi gratuito",
+                    "item6": "Cable",
+                    "item7": "TV full HD",
+                    "item8": "Intercomunicador",
+                    "item9": "Escritorio"
                 },
                 "pricing": {
                     "label": "desde",
@@ -507,7 +538,13 @@
                 "description": "Bonita y funcional habitación con una cama de tamaño de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
                 "features": {
                     "item1": "11 m²",
-                    "item2": "1 huéspedes"
+                    "item2": "1 huéspedes",
+                    "item3": "Ducha",
+                    "item4": "Wifi gratuito",
+                    "item5": "Cable",
+                    "item6": "TV full HD",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio"
                 },
                 "pricing": {
                     "label": "desde",

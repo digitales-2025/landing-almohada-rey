@@ -6,7 +6,7 @@ import { SectionHeader } from '@/components/layout/section/section-header';
 export const BookingSection = () => {
     const t = useTranslations('IndexPageRooms.bookingSection');
     return (
-        <SectionWrapper>
+        <SectionWrapper className="relative bg-primary/15 overflow-clip">
             <SectionHeader
                 headerTitle={{
                     text: t('title').toUpperCase(),

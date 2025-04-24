@@ -1,8 +1,10 @@
 import { useTranslations } from 'next-intl';
 
 import { CustomCard } from '@/components/customized/card/custom-card';
+import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
+import { cn } from '@/lib/utils';
 
 type CardProps = {
     image: string;
@@ -77,7 +79,7 @@ export const EnvironmentsSection = () => {
         },
     ];
     return (
-        <SectionWrapper>
+        <SectionWrapper className={cn(sectionLayoutClassnames)}>
             <SectionHeader
                 headerTitle={{
                     text: t('title').toUpperCase(),

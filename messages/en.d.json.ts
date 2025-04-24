@@ -2,6 +2,10 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
+    CollapseParragraph: {
+        expand: 'Read more';
+        collapse: 'Read less';
+    };
     Error: {
         description: "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>";
         title: 'Something went wrong!';
@@ -439,6 +443,13 @@ declare const messages: {
                 features: {
                     item1: '38 m²';
                     item2: '2 guests';
+                    item3: 'Bathtub';
+                    item4: 'Additional furniture';
+                    item5: 'Free WiFi';
+                    item6: 'Full HD TV with cable';
+                    item7: 'Intercom';
+                    item8: 'Desk';
+                    item9: 'Minibar';
                 };
                 pricing: {
                     label: 'from';
@@ -457,6 +468,12 @@ declare const messages: {
                 features: {
                     item1: '16 m²';
                     item2: '2 guests';
+                    item3: 'Shower';
+                    item4: 'Free WiFi';
+                    item5: 'Cable TV';
+                    item6: 'Full HD TV';
+                    item7: 'Intercom';
+                    item8: 'Desk';
                 };
                 pricing: {
                     label: 'from';
@@ -475,6 +492,13 @@ declare const messages: {
                 features: {
                     item1: '32 m²';
                     item2: '3 guests';
+                    item3: '2 beds';
+                    item4: 'Shower';
+                    item5: 'Free WiFi';
+                    item6: 'Cable TV';
+                    item7: 'Full HD TV';
+                    item8: 'Intercom';
+                    item9: 'Desk';
                 };
                 pricing: {
                     label: 'from';
@@ -493,6 +517,13 @@ declare const messages: {
                 features: {
                     item1: '17 m²';
                     item2: '2 guests';
+                    item3: '2 beds';
+                    item4: 'Shower';
+                    item5: 'Free WiFi';
+                    item6: 'Cable TV';
+                    item7: 'Full HD TV';
+                    item8: 'Intercom';
+                    item9: 'Desk';
                 };
                 pricing: {
                     label: 'from';
@@ -511,6 +542,12 @@ declare const messages: {
                 features: {
                     item1: '11 m²';
                     item2: '1 guest';
+                    item3: 'Shower';
+                    item4: 'Free WiFi';
+                    item5: 'Cable TV';
+                    item6: 'Full HD TV';
+                    item7: 'Intercom';
+                    item8: 'Desk';
                 };
                 pricing: {
                     label: 'from';

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { PageLayout } from '@/components/layout/PageLayout';
+import { resetPageClassnames } from '@/components/layout/reset-page-classnames';
 import { BookingSection } from './components/BookingSection';
 import { EnvironmentsSection } from './components/EnvironmentsSection';
 import { RoomsHeroSection } from './components/RoomsHero';
@@ -9,7 +10,7 @@ import { SpecialOffersSection } from './components/SpecialOffersSection';
 
 export default function HabitacionesPage() {
     return (
-        <PageLayout>
+        <PageLayout classname={resetPageClassnames}>
             <RoomsHeroSection></RoomsHeroSection>
             <RoomsSection></RoomsSection>
             <EnvironmentsSection></EnvironmentsSection>
