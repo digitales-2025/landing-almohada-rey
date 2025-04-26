@@ -337,11 +337,6 @@ export const RoomsSection = () => {
     ];
     return (
         <SectionWrapper className={cn(sectionLayoutClassnames)}>
-            <img
-                className="w-full inset-0 absolute object-top h-full object-cover"
-                src="/rooms/bookingSectionPlaceholder.webp"
-                alt="bg-pattern"
-            />
             <SectionHeader
                 headerTitle={{
                     text: t('title').toUpperCase(),
@@ -350,7 +345,7 @@ export const RoomsSection = () => {
                     text: t('description'),
                 }}
             ></SectionHeader>
-            <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-x-4 gap-y-8 lg:gap-x-6 lg:gap-y-10">
                 {cards.map((card, index) => (
                     <CustomCard
                         key={index}

@@ -4,12 +4,12 @@ import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
-type TitleProps = {
+export type TitleProps = {
     text: string;
     classname?: string;
 };
 
-type DescriptionProps = {
+export type DescriptionProps = {
     text: string;
     className?: string;
 };

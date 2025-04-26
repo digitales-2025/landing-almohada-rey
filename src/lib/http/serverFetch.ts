@@ -153,6 +153,30 @@ export const http = {
     },
 
     /**
+     * Perform a complex HTTP GET operation by sending a POST request with a body
+     *
+     * @template T - The expected return type from the server
+     * @param {string} url - The endpoint URL
+     * @param {BodyInit | object} [body] - Optional request body
+     * @param {RequestInit} [config] - Optional fetch configuration
+     * @returns {Promise<Result<T, ServerFetchError>>} A Result containing either the successful response data or an error
+     */
+    getComplex<T>(
+        url: string,
+        body?: BodyInit | object,
+        config?: RequestInit
+    ): Promise<Result<T, ServerFetchError>> {
+        return serverFetch<T>(url, {
+            ...config,
+            method: 'POST',
+            body: processBody(body),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    },
+
+    /**
      * Realiza una petición POST
      * @param url - La URL a la que se realizará la petición
      * @param body - El cuerpo de la petición, puede ser un objeto o BodyInit

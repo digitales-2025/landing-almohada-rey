@@ -2,6 +2,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import tsParser from '@typescript-eslint/parser';
 import prettierPlugin from 'eslint-plugin-prettier';
 
@@ -87,4 +88,4 @@ const tsConfig = {
 // Usa las configuraciones de TypeScript de Next.js
 const nextTsConfigs = compat.extends('next/typescript');
 
-export default [globalConfig, ...nextConfigs, ...nextTsConfigs, tsConfig];
+export default [globalConfig, ...nextConfigs, ...nextTsConfigs, tsConfig, ...pluginQuery.configs['flat/recommended'],];

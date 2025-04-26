@@ -88,6 +88,35 @@ export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
         }
     }
 
+    async getComplex<V = T>(
+        uri: RequestUri,
+        dto?: BodyInit | object
+    ): Promise<GetResponse<V>> {
+        try {
+            const [data, error] = await http.getComplex<GetResponse<V>>(
+                uri,
+                dto
+            );
+
+            if (error) {
+                return {
+                    error: `Error al traer registros: ${error.message}`,
+                };
+            }
+
+            return data;
+        } catch (error) {
+            if (error instanceof Error) {
+                return {
+                    error: error.message,
+                };
+            }
+            return {
+                error: 'Error desconocido',
+            };
+        }
+    }
+
     async create<V = T>(
         uri: RequestUri,
         dto?: BodyInit | object

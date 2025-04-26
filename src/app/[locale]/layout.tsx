@@ -9,6 +9,7 @@ import { setRequestLocale } from 'next-intl/server';
 
 import FooterSection from '@/components/layout/footer/footer';
 import { NavMenu } from '@/components/layout/header';
+import QueryProvider from '@/components/tanstack/QueryProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { routing } from '@/i18n/routing';
@@ -57,20 +58,22 @@ export default async function RootLayout({
             <body
                 className={`${poppins.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}
             >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="light"
-                    // enableSystem
-                    disableTransitionOnChange
-                >
-                    <NextIntlClientProvider>
-                        {/* <HeroSection /> */}
-                        <NavMenu />
-                        {children}
-                        <FooterSection />
-                        <Toaster />
-                    </NextIntlClientProvider>
-                </ThemeProvider>
+                <QueryProvider>
+                    <ThemeProvider
+                        attribute="class"
+                        defaultTheme="light"
+                        // enableSystem
+                        disableTransitionOnChange
+                    >
+                        <NextIntlClientProvider>
+                            {/* <HeroSection /> */}
+                            <NavMenu />
+                            {children}
+                            <FooterSection />
+                            <Toaster />
+                        </NextIntlClientProvider>
+                    </ThemeProvider>
+                </QueryProvider>
             </body>
         </html>
     );

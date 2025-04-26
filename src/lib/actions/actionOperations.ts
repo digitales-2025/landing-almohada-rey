@@ -13,6 +13,11 @@ export interface ServerActionOperation<T> {
 
     getOne<V = T>(uri: RequestUri): Promise<GetOneResponse<V>>;
 
+    getComplex<V = T>(
+        uri: RequestUri,
+        dto?: BodyInit | object
+    ): Promise<GetResponse<V>>;
+
     searchByFieldCoincidence<V = T>(
         uri: RequestUri,
         field: keyof V,
