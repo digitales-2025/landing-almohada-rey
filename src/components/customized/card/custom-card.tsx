@@ -1,7 +1,7 @@
 import React from 'react';
 import { LucideIcon } from 'lucide-react';
 
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import {
     Card,
     CardContent,
@@ -291,13 +291,18 @@ export const CustomCard = ({
                                 </div>
                             </div>
                             {pricing.actionButton && (
-                                <Button
-                                    variant={'outline'}
-                                    size={'lg'}
-                                    className="w-full sm:w-fit rounded-none border-primary dark:border-primary-foreground text-primary"
+                                <Link
+                                    href={pricing.actionButton.href}
+                                    className={cn(
+                                        buttonVariants({
+                                            variant: 'outline',
+                                            size: 'lg',
+                                        }),
+                                        'w-full sm:w-fit rounded-none border-primary dark:border-primary-foreground text-primary'
+                                    )}
                                 >
                                     {pricing.actionButton.label}
-                                </Button>
+                                </Link>
                             )}
                         </div>
                     )}

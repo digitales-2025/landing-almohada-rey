@@ -29,6 +29,61 @@ declare const messages: {
             termsAndConditions: 'Terms and conditions.';
         };
     };
+    Forms: {
+        reserveBookingSummary: {
+            formName: 'booking';
+            input1: {
+                label: 'Number of guests';
+                placeholder: 'Enter the number of guests';
+                description: 'Maximum {guestNumber} guests';
+                errors: {
+                    required: 'This field is required';
+                };
+            };
+            input2: {
+                label: 'Room';
+                placeholder: 'Select a room';
+                description: {
+                    noAvailable: 'No rooms available';
+                    available: 'Available rooms: {availableRooms}';
+                };
+                errors: {
+                    required: 'This field is required';
+                    noAvailable: 'No rooms available';
+                };
+            };
+            input3: {
+                label: 'Check In';
+                placeholder: 'Enter your arrival date';
+                description: 'Maximum until {maxDate}';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be before check-out date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input4: {
+                label: 'Check Out';
+                placeholder: 'Enter your departure date';
+                description: 'Your departure date';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be before check-out date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            submitButton: {
+                label: 'Book';
+                href: '/booking';
+            };
+        };
+    };
     IndexPage: {
         titleFirstSpan: 'A Memorable';
         titleSecondSpan: 'Experience';
@@ -60,7 +115,7 @@ declare const messages: {
                     };
                     ctaButton: {
                         label: 'Inquire';
-                        link: '/rooms#contact';
+                        link: '/rooms#booking';
                     };
                     features: {
                         item1: '17 m²';
@@ -78,7 +133,7 @@ declare const messages: {
                     };
                     ctaButton: {
                         label: 'Inquire';
-                        link: '/rooms#contact';
+                        link: '/rooms#booking';
                     };
                     features: {
                         item1: '38 m²';
@@ -96,7 +151,7 @@ declare const messages: {
                     };
                     ctaButton: {
                         label: 'Inquire';
-                        link: '/rooms#contact';
+                        link: '/rooms#booking';
                     };
                     features: {
                         item1: '50 m²';
@@ -459,7 +514,7 @@ declare const messages: {
                 };
                 ctaButton: {
                     label: 'Book now';
-                    link: '/booking';
+                    link: '/rooms#booking';
                 };
             };
             room2: {
@@ -483,7 +538,7 @@ declare const messages: {
                 };
                 ctaButton: {
                     label: 'Book now';
-                    link: '/booking';
+                    link: '/rooms#booking';
                 };
             };
             room3: {
@@ -508,7 +563,7 @@ declare const messages: {
                 };
                 ctaButton: {
                     label: 'Book now';
-                    link: '/booking';
+                    link: '/rooms#booking';
                 };
             };
             room4: {
@@ -533,7 +588,7 @@ declare const messages: {
                 };
                 ctaButton: {
                     label: 'Book now';
-                    link: '/booking';
+                    link: '/rooms#booking';
                 };
             };
             room5: {
@@ -557,7 +612,7 @@ declare const messages: {
                 };
                 ctaButton: {
                     label: 'Book now';
-                    link: '/booking';
+                    link: '/rooms#booking';
                 };
             };
         };

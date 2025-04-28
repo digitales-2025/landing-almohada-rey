@@ -1,8 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
+import { Button } from '@/components/ui/button';
 import { DatePicker } from '@/components/ui/date-picker';
 import {
     Form,
@@ -22,6 +24,11 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
+import {
+    formatDateToLimaTimezone,
+    getLimaTime,
+} from '@/lib/timedate/peru-datetime';
+import { cn } from '@/lib/utils';
 import { SmallFormError } from '../Errors/FormErrors';
 import { OneRowLoadingFormSkeleton } from './LoadingFormSkeleton';
 import { useSummaryBookingForm } from './summary-booking.hook';
@@ -32,6 +39,8 @@ type SelectOption = {
 };
 
 export const BookingSummaryForm = () => {
+    const t = useTranslations('Forms.reserveBookingSummary');
+    const locale = useLocale();
     const {
         form,
         onSubmit,
@@ -41,7 +50,7 @@ export const BookingSummaryForm = () => {
     const defaultAvailabilityDataRef = useRef<CheckRoomAvailabilityDto>({
         checkInDate: values.checkInDate.toISOString(),
         checkOutDate: values.checkOutDate.toISOString(),
-        numberOfGuests: values.numberOfGuests,
+        guestNumber: values.guestNumber,
         roomId: values.roomId,
     });
 
@@ -53,18 +62,32 @@ export const BookingSummaryForm = () => {
         const newParams: CheckRoomAvailabilityDto = {
             checkInDate: values.checkInDate.toISOString(),
             checkOutDate: values.checkOutDate.toISOString(),
-            numberOfGuests: values.numberOfGuests,
+            guestNumber: values.guestNumber,
             roomId: values.roomId,
         };
         checkAvailability(newParams);
-    }, [checkAvailability, values]);
+    }, [
+        checkAvailability,
+        values.checkInDate,
+        values.checkOutDate,
+        values.guestNumber,
+        values.roomId,
+    ]);
 
     useEffect(() => {
-        if (form.formState.isDirty || values) {
+        // Solo hacer la comprobación inicial o cuando los valores relevantes cambien
+        // y no en cada renderizado
+        if (form.formState.isDirty) {
             handleCheckAvailability();
         }
+    }, [handleCheckAvailability, form.formState.isDirty]);
+
+    // Primera carga de datos
+    useEffect(() => {
+        // Una sola vez al montar el componente
+        handleCheckAvailability();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [checkAvailability]);
+    }, []); // array de dependencias vacío para ejecutar solo al montar
 
     if (query.isLoading) {
         return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
@@ -78,31 +101,72 @@ export const BookingSummaryForm = () => {
         return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
     }
 
-    const roomOptions: SelectOption[] = query.data.map(room => {
+    const roomsAvailable = query.data;
+
+    const roomOptions: SelectOption[] = roomsAvailable.map(room => {
         return {
             value: room.id,
             label: `${room.number}(${room.RoomTypes.name}) - 🧍(${room.RoomTypes.guests})`,
         };
     });
+
+    const dayBeforeCheckOutDate = new Date(values.checkOutDate);
+    dayBeforeCheckOutDate.setDate(dayBeforeCheckOutDate.getDate() - 1);
+
+    const maxDate = getLimaTime(
+        new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    );
+
+    const maxGuests =
+        roomsAvailable.map(room => room.RoomTypes.guests).length == 0
+            ? 0
+            : Math.max(...roomsAvailable.map(room => room.RoomTypes.guests));
+
+    const textColor = 'text-secondary';
+    const labelClassname = cn(
+        textColor,
+        'uppercase text-sm md:text-base lg:text-p font-light tracking-normal'
+    );
+    const fieldClassname = cn(
+        textColor,
+        'text-sm md:text-base lg:text-p font-normal tracking-normal'
+    );
+    const inputCommonClassnames = cn(
+        'rounded-none border-t-0 border-x-0 border-b-[1px] border-b-secondary shadow-none w-full',
+        fieldClassname
+    );
+
     return (
-        <div>
+        <div className="p-6 bg-primary-foreground">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="grid md:grid-cols-2 2xl:grid-cols-5 gap-2 gap-y-4 md:gap-3 lg:gap-4"
+                >
                     <FormField
                         control={form.control}
-                        name="numberOfGuests"
+                        name="guestNumber"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Number of guests</FormLabel>
+                                <FormLabel className={labelClassname}>
+                                    {t('input1.label')}
+                                </FormLabel>
                                 <FormControl>
                                     <Input
+                                        className={inputCommonClassnames}
                                         placeholder="Name"
                                         {...field}
                                         type="number"
                                     />
                                 </FormControl>
                                 <FormDescription>
-                                    Number of guests
+                                    {t('input1.description', {
+                                        guestNumber: (
+                                            maxGuests ??
+                                            field.value ??
+                                            0
+                                        ).toString(),
+                                    })}
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -114,14 +178,25 @@ export const BookingSummaryForm = () => {
                         name="roomId"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Habitación</FormLabel>
+                                <FormLabel className={labelClassname}>
+                                    {t('input2.label')}
+                                </FormLabel>
                                 <Select
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
+                                    disabled={query.data.length === 0}
                                 >
                                     <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a room">
+                                        <SelectTrigger
+                                            className={cn(
+                                                inputCommonClassnames,
+                                                'w-full'
+                                            )}
+                                        >
+                                            <SelectValue
+                                                className={fieldClassname}
+                                                placeholder="Select a room"
+                                            >
                                                 {field.value &&
                                                     roomOptions.find(
                                                         option =>
@@ -143,7 +218,12 @@ export const BookingSummaryForm = () => {
                                     </SelectContent>
                                 </Select>
                                 <FormDescription>
-                                    You can manage email addresses in your
+                                    {query.data.length > 0
+                                        ? t('input2.description.available', {
+                                              availableRooms:
+                                                  query.data.length.toString(),
+                                          })
+                                        : t('input2.description.noAvailable')}
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -155,14 +235,22 @@ export const BookingSummaryForm = () => {
                         name="checkInDate"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Check In</FormLabel>
+                                <FormLabel className={labelClassname}>
+                                    {t('input3.label')}
+                                </FormLabel>
                                 <DatePicker
                                     date={field.value}
                                     onChange={field.onChange}
                                     controlled={true}
+                                    className={inputCommonClassnames}
                                 ></DatePicker>
                                 <FormDescription>
-                                    This is your public display name.
+                                    {t('input3.description', {
+                                        maxDate: formatDateToLimaTimezone(
+                                            maxDate,
+                                            locale
+                                        ).short,
+                                    })}
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
@@ -174,19 +262,32 @@ export const BookingSummaryForm = () => {
                         name="checkOutDate"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Check In</FormLabel>
+                                <FormLabel className={labelClassname}>
+                                    {t('input4.label')}
+                                </FormLabel>
                                 <DatePicker
                                     date={field.value}
                                     onChange={field.onChange}
                                     controlled={true}
+                                    className={inputCommonClassnames}
                                 ></DatePicker>
                                 <FormDescription>
-                                    This is your public display name.
+                                    {t('input4.description')}
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
+
+                    <div className="w-full h-full flex items-center md:col-span-2 2xl:col-span-1">
+                        <Button
+                            className="rounded-none text-sm md:text-base lg:text-p tracking-normal w-full leading-14 lg:leading-16 h-fit "
+                            size={'lg'}
+                            type="submit"
+                        >
+                            {t('submitButton.label')}
+                        </Button>
+                    </div>
                 </form>
             </Form>
         </div>

@@ -1,9 +1,10 @@
 import { cookies } from 'next/headers';
 
+import { envs } from '@/config/envs';
 import { Result } from './result';
 
 // Configuración extendida para las peticiones
-interface ServerFetchConfig extends RequestInit {
+export interface ServerFetchConfig extends RequestInit {
     body?: BodyInit;
     params?: Record<string, string | number>;
     headers?: Record<string, string>;
@@ -72,12 +73,13 @@ function processBody(
  */
 export async function serverFetch<Success>(
     url: string,
-    options?: RequestInit
+    options?: ServerFetchConfig,
+    publicRequest: boolean = false
 ): Promise<Result<Success, ServerFetchError>> {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token')?.value;
 
-    if (!accessToken) {
+    if (!accessToken && !publicRequest) {
         if (process.env.NODE_ENV !== 'production') {
             console.error(
                 'DEBUG: Intentando user serverFetch sin una cookie `access_token valida`'
@@ -86,16 +88,13 @@ export async function serverFetch<Success>(
     }
 
     try {
-        const response = await fetch(
-            `${process.env.INTERNAL_BACKEND_URL}${url}`,
-            {
-                ...options,
-                headers: {
-                    ...options?.headers,
-                    Cookie: `access_token=${accessToken}`,
-                },
-            }
-        );
+        const response = await fetch(`${envs.BACKEND_URL}${url}`, {
+            ...options,
+            headers: {
+                ...options?.headers,
+                Cookie: `access_token=${accessToken}`,
+            },
+        });
 
         if (!response.ok) {
             const data = (await response.json()) as Partial<ServerFetchError>;
@@ -148,7 +147,7 @@ export const http = {
      * const [data, err] = await http.get<User>("/users/");
      * ```
      */
-    get<T>(url: string, config?: RequestInit) {
+    get<T>(url: string, config?: Omit<ServerFetchConfig, 'body'>) {
         return serverFetch<T>(url, config);
     },
 

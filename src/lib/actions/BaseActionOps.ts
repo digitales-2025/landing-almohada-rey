@@ -5,13 +5,16 @@ import {
     MutationResponse,
     SearchByField,
 } from '@/types/api/actions-crud';
-import { http } from '../http/serverFetch';
+import { http, ServerFetchConfig } from '../http/serverFetch';
 import { RequestUri, ServerActionOperation } from './actionOperations';
 
 export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
-    async get<V = T>(uri: RequestUri): Promise<GetResponse<V>> {
+    async get<V = T>(
+        uri: RequestUri,
+        config?: ServerFetchConfig
+    ): Promise<GetResponse<V>> {
         try {
-            const [data, error] = await http.get<GetResponse<V>>(uri);
+            const [data, error] = await http.get<GetResponse<V>>(uri, config);
             if (error) {
                 return {
                     error:
@@ -35,9 +38,15 @@ export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
         }
     }
 
-    async getOne<V = T>(uri: RequestUri): Promise<GetOneResponse<V>> {
+    async getOne<V = T>(
+        uri: RequestUri,
+        config?: ServerFetchConfig
+    ): Promise<GetOneResponse<V>> {
         try {
-            const [data, error] = await http.get<GetOneResponse<V>>(uri);
+            const [data, error] = await http.get<GetOneResponse<V>>(
+                uri,
+                config
+            );
             if (error) {
                 return {
                     error:

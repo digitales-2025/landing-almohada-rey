@@ -1,10 +1,11 @@
-import { useTransition } from 'react';
+// import { useTransition } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
 import { z } from 'zod';
 
-import { bookingOps } from '@/actions/action-setup';
-import { processError } from '@/lib/errors';
+import { useBooking } from '@/hooks/queries/booking/useBooking';
+// import { bookingOps } from '@/actions/action-setup';
+// import { processError } from '@/lib/errors';
 import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
 
 const today = getCheckInDate();
@@ -20,7 +21,7 @@ export const schema = z.object({
     checkOutDate: z
         .date()
         .min(tomorrow, { message: 'Check-out date must be tomorrow or later' }),
-    numberOfGuests: z
+    guestNumber: z.coerce
         .number()
         .min(1, { message: 'Number of guests is required' }),
     roomId: z.string().min(1, { message: 'Room ID is required' }),
@@ -29,7 +30,8 @@ export const schema = z.object({
 export type BookingSummaryFormValues = z.infer<typeof schema>;
 
 export function useSummaryBookingForm() {
-    const [isPending, startTransition] = useTransition();
+    // const [isPending, startTransition] = useTransition();
+    const { useCreateBooking } = useBooking();
     const form = useForm<BookingSummaryFormValues>({
         defaultValues: {
             // name: '',
@@ -37,7 +39,7 @@ export function useSummaryBookingForm() {
             // phone: '',
             checkInDate: today,
             checkOutDate: tomorrow,
-            numberOfGuests: 1,
+            guestNumber: 1,
             roomId: undefined,
             // specialRequests: '',
         },
@@ -45,19 +47,22 @@ export function useSummaryBookingForm() {
         reValidateMode: 'onChange',
     });
 
+    const mutation = useCreateBooking();
+
     const onSubmit = async (data: BookingSummaryFormValues) => {
-        startTransition(async () => {
-            try {
-                await bookingOps.create('/', data);
-                // Aquí puedes manejar el envío del formulario, como enviar los datos a una API
-            } catch (error) {
-                toast.error(
-                    'Error al enviar el formulario: ' + processError(error)
-                );
-                // Aquí puedes manejar errores, como mostrar notificaciones
-            }
-        });
+        mutation.mutate(data);
+        // startTransition(async () => {
+        //     try {
+        //         await bookingOps.create('/', data);
+        //         // Aquí puedes manejar el envío del formulario, como enviar los datos a una API
+        //     } catch (error) {
+        //         toast.error(
+        //             'Error al enviar el formulario: ' + processError(error)
+        //         );
+        //         // Aquí puedes manejar errores, como mostrar notificaciones
+        //     }
+        // });
     };
 
-    return { form, onSubmit, isPending };
+    return { form, onSubmit, mutation };
 }

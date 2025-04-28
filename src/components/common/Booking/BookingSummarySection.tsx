@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { sectionVerticalSpacing } from '@/components/layout/section/base-section';
 import {
@@ -6,6 +8,7 @@ import {
     TitleProps,
 } from '@/components/layout/section/section-header';
 import { cn } from '@/lib/utils';
+import { KeepInTouchCTAForm } from '../KeepInTouchCTA/KeepInTouchCTAForm';
 import { BookingSummaryForm } from './BookingSummaryForm';
 
 type BookingSummaryDescriptionProps = {
@@ -26,14 +29,16 @@ export const BookingSummarySection = ({
     title,
     className,
 }: BookingSumamryProps) => {
+    const t = useTranslations('Forms.reserveBookingSummary');
     return (
         <div
             className={cn(
                 sectionLayoutClassnames,
                 sectionVerticalSpacing,
-                'bg-primary-foreground',
+                'bg-primary-foreground !pb-0',
                 className
             )}
+            id={t('formName')}
         >
             <SectionHeader
                 headerTitle={title}
@@ -48,6 +53,11 @@ export const BookingSummarySection = ({
                 {description.text}
             </p>
             <BookingSummaryForm></BookingSummaryForm>
+            <div className="bg-primary-foreground">
+                <KeepInTouchCTAForm
+                    className={sectionLayoutClassnames}
+                ></KeepInTouchCTAForm>
+            </div>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { PageLayout } from '@/components/layout/PageLayout';
-import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA';
+import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA/KeepInTouchCTA';
 import { BentoSection } from './components/BentoSection';
 import { BusinessPackageHero } from './components/BusinessPackageHero';
 import { ConferenceHallSection } from './components/ConferenceHallSection';

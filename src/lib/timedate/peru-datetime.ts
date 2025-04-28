@@ -45,6 +45,22 @@ export function getCurrentLimaDate(): Date {
     );
 }
 
+export function getBeginningOfDayLimaDate(date?: Date): Date {
+    // Get current date in UTC
+    const limaTime = getLimaTime(date);
+
+    // Set the time to beginning of the day in Lima timezone
+    return new Date(
+        limaTime.getFullYear(),
+        limaTime.getMonth(),
+        limaTime.getDate(),
+        0,
+        0,
+        0,
+        0
+    );
+}
+
 export function calculateStayNights(
     checkInDate: string,
     checkOutDate: string

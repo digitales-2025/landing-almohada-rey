@@ -93,6 +93,7 @@ export function DatePicker({
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
+                    className="w-full"
                     mode="single"
                     selected={localDate}
                     onSelect={date => handleOnSelect(date)}

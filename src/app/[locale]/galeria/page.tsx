@@ -1,5 +1,5 @@
 import { PageLayout } from '@/components/layout/PageLayout';
-import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA';
+import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA/KeepInTouchCTA';
 import { GalleryHero } from './components/GalleryHero';
 import { GallerySection1 } from './components/GallerySection1';
 import { GallerySection2 } from './components/GallerySection2';
