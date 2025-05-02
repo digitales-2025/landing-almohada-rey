@@ -412,6 +412,7 @@ declare const messages: {
                     invalid: 'The card number is not valid';
                     minLength: 'The card number cannot have less than {minLength} characters';
                     maxLength: 'The card number cannot have more than {maxLength} characters';
+                    invalidLength: 'The card number cannot have less than {minLength} or more than {maxLength} characters';
                 };
             };
             input2: {
@@ -430,6 +431,9 @@ declare const messages: {
                 errors: {
                     required: 'This field is required';
                     invalid: 'The expiration date is not valid';
+                    invalidMonth: 'Invalid month (1-12)';
+                    expiratedDate: 'The card has expired';
+                    incomplete: 'Please enter the complete date (MM/YY)';
                 };
             };
             input4: {

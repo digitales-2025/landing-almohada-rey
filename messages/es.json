@@ -408,7 +408,8 @@
                     "required": "Este campo es obligatorio",
                     "invalid": "El número de tarjeta no es válido",
                     "minLength": "El número de tarjeta no puede tener menos de {minLength} caracteres",
-                    "maxLength": "El número de tarjeta no puede tener más de {maxLength} caracteres"
+                    "maxLength": "El número de tarjeta no puede tener más de {maxLength} caracteres",
+                    "invalidLength": "El número de tarjeta no puede tener menos de {minLength} o más de {maxLength} caracteres"
                 }
             },
             "input2": {
@@ -426,7 +427,10 @@
                 "description": "Obligatorio",
                 "errors": {
                     "required": "Este campo es obligatorio",
-                    "invalid": "La fecha de caducidad no es válida"
+                    "invalid": "La fecha de caducidad no es válida",
+                    "invalidMonth": "Mes inválido (1-12)",
+                    "expiratedDate": "La tarjeta ha caducado",
+                    "incomplete": "Porfavor ingrese la fecha completa (MM/AA)"
                 }
             },
             "input4": {
