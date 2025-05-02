@@ -30,7 +30,7 @@ import {
 } from '@/lib/timedate/peru-datetime';
 import { cn } from '@/lib/utils';
 import { SmallFormError } from '../Errors/FormErrors';
-import { OneRowLoadingFormSkeleton } from './LoadingFormSkeleton';
+import { OneRowLoadingFormSkeleton } from '../loading/LoadingFormSkeleton';
 import { useSummaryBookingForm } from './summary-booking.hook';
 
 type SelectOption = {

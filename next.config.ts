@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import webpack from 'webpack';
 
 const nextConfig: NextConfig = {
     /* config options here */
@@ -14,6 +15,19 @@ const nextConfig: NextConfig = {
                 protocol: 'https',
             },
         ],
+    },
+    //Configutacion de webpack para la compilacion de inversify
+    webpack: (config, { isServer }) => {
+        if (isServer) {
+            config.plugins.push(
+                new webpack.BannerPlugin({
+                    banner: 'require("reflect-metadata")',
+                    raw: true,
+                    entryOnly: true,
+                })
+            );
+        }
+        return config;
     },
 };
 

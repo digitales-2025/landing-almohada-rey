@@ -1,7 +1,7 @@
 import { Container } from 'inversify';
 
 import { envs } from '@/config/envs';
-import { BookingOps } from './booking/booking';
+import { BookingOps } from './booking/booking.di';
 import { RoomOps, RoomTypeOps } from './rooms/rooms';
 
 const container: Container = new Container();

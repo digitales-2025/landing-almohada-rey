@@ -1,7 +1,13 @@
 'use server';
 
 import { bookingOps } from '../action-setup';
-import { CheckRoomAvailabilityDto } from './booking';
+import {
+    CheckRoomAvailabilityDto,
+    ConfirmBookingDto,
+    ConfirmBookingDtoForSchema,
+    ReservationUpdateDto,
+    ReservationUpdateDtoForSchema,
+} from './booking';
 
 export async function createBookingSummary(data: any) {
     return bookingOps.create('/booking', data);
@@ -9,4 +15,35 @@ export async function createBookingSummary(data: any) {
 
 export async function getAvailableRooms(dto: CheckRoomAvailabilityDto) {
     return bookingOps.getAvailableRooms(dto);
+}
+
+export async function updateBooking(
+    id: string,
+    data: ReservationUpdateDtoForSchema
+) {
+    const dtoToSend: ReservationUpdateDto = {
+        ...data,
+        checkInDate: data.checkInDate.toISOString(),
+        checkOutDate: data.checkOutDate.toISOString(),
+    };
+    return bookingOps.updateBooking(id, dtoToSend);
+}
+
+export async function confirmBookingAndPay(
+    id: string,
+    data: ConfirmBookingDtoForSchema
+) {
+    const dtoToSend: ConfirmBookingDto = {
+        customer: data.customer,
+        reservation: {
+            ...data.reservation,
+            checkInDate: data.reservation.checkInDate.toISOString(),
+            checkOutDate: data.reservation.checkOutDate.toISOString(),
+        },
+        payment: data.payment,
+        observations: data.observations,
+        didAcceptExtraServices: data.didAcceptExtraServices,
+        didAcceptTermsAndConditions: data.didAcceptTermsAndConditions,
+    };
+    return bookingOps.confirmBookingAndPay(id, dtoToSend);
 }

@@ -270,6 +270,205 @@ declare const messages: {
             };
         };
     };
+    IndexPageBooking: {
+        title: 'Booking';
+        generalError: {
+            message: 'Sorry. It seems an error has occurred.';
+            actionButton: {
+                label: 'Return to Home';
+            };
+        };
+        updateReservationDates: {
+            input1: {
+                label: 'Check In';
+                placeholder: 'Enter your arrival date';
+                description: 'Maximum until {maxDate}';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'Check-in date must be today or later';
+                        after: 'Check-out date must be after check-in date';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input2: {
+                label: 'Check Out';
+                placeholder: 'Enter your departure date';
+                description: 'Your departure date';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'Check-out date must be tomorrow or later';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input3: {
+                label: 'Number of guests';
+                placeholder: 'Enter the number of guests';
+                description: 'Maximum {guestNumber} guests';
+                errors: {
+                    required: 'This field is required';
+                    min: 'The number of guests cannot be less than {min}';
+                };
+            };
+            input4: {
+                label: 'Room';
+                placeholder: 'Select a room';
+                description: {
+                    noAvailable: 'No rooms available';
+                    available: 'Available rooms: {availableRooms}';
+                };
+                errors: {
+                    required: 'This field is required';
+                    noAvailable: 'No rooms available';
+                };
+            };
+        };
+        moreReservationDetailsSection: {
+            title: 'Book with us';
+            description: 'One step away from the perfect stay';
+            input1: {
+                label: 'Identity Document';
+                docTypeField: {
+                    placeholder: 'Document type';
+                    values: {
+                        dni: 'DNI';
+                        passport: 'Passport';
+                        carnetExtranjeria: 'Foreign ID card';
+                    };
+                    selected: '{docType, select, dni {DNI} passport {Passport} carnetExtranjeria {Foreign ID card} other {Unknown}}';
+                    errors: {
+                        required: 'This field is required';
+                        invalid: 'The document type is not valid';
+                    };
+                };
+                placeholder: 'Enter your ID document number';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The document number is not valid';
+                    maxLength: 'The document number cannot have more than {maxLength} characters';
+                    minLength: 'The document number cannot have less than {minLength} characters';
+                };
+            };
+            input2: {
+                label: 'First Name';
+                placeholder: 'Enter your first name(s)';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The name cannot have less than {minLength} characters';
+                };
+            };
+            input3: {
+                label: 'Last Name';
+                placeholder: 'Enter your full last name(s)';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The last name cannot have less than {minLength} characters';
+                };
+            };
+            input4: {
+                label: 'Email';
+                placeholder: 'Enter your email address';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The email address is not valid';
+                    minLength: 'The email cannot have less than {minLength} characters';
+                };
+            };
+            input5: {
+                label: 'Phone Number';
+                placeholder: 'Enter your phone number';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The phone number is not valid';
+                    minLength: 'The phone number cannot have less than {minLength} characters';
+                    maxLength: 'The phone number cannot have more than {maxLength} characters';
+                };
+            };
+            input6: {
+                label: 'Include breakfast ({amount} additional - Payment made at check-in)';
+                description: 'Optional';
+            };
+            updateButton: {
+                label: 'Modify';
+            };
+        };
+        paymentDetailsSection: {
+            title: 'Payment method details';
+            description: 'Amount to pay for reservation: {amount}';
+            input1: {
+                label: 'Card number';
+                placeholder: 'XXXX XXXX XXXX XXXX';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The card number is not valid';
+                    minLength: 'The card number cannot have less than {minLength} characters';
+                    maxLength: 'The card number cannot have more than {maxLength} characters';
+                };
+            };
+            input2: {
+                label: 'Cardholder name';
+                placeholder: "Enter the cardholder's name";
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The cardholder name cannot have less than {minLength} characters';
+                };
+            };
+            input3: {
+                label: 'Expiration date';
+                placeholder: 'MM/YY';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The expiration date is not valid';
+                };
+            };
+            input4: {
+                label: 'Security code (CVV)';
+                placeholder: '***';
+                description: '(3 digits)';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The security code cannot have less than {minLength} characters';
+                    maxLength: 'The security code cannot have more than {maxLength} characters';
+                };
+            };
+            safePaymentAdvertisement: {
+                title: 'Secure and encrypted payment.';
+            };
+        };
+        AdditionalInfoSection: {
+            input1: {
+                label: 'Additional comments';
+                placeholder: 'You can enter any questions or comments...';
+                description: 'Optional';
+            };
+        };
+        submitSection: {
+            input1: {
+                label1: 'I accept the';
+                label2: 'and the';
+                termsAndConditions: 'Terms and conditions';
+                privacyPolicy: 'Privacy policy';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                };
+            };
+            submitButton: {
+                label: 'Book';
+            };
+        };
+    };
     IndexPageExperiences: {
         description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
         title: 'Experiences';

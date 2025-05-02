@@ -1,10 +1,16 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
 import {
+    CheckRoomAvailabilityDto,
+    ConfirmBookingDtoForSchema,
+    ReservationUpdateDtoForSchema,
+} from '@/actions/booking/booking';
+import {
+    confirmBookingAndPay,
     createBookingSummary,
     getAvailableRooms,
+    updateBooking,
 } from '@/actions/booking/booking.actions';
 
 export const useBooking = () => {
@@ -46,6 +52,41 @@ export const useBooking = () => {
         });
     };
 
+    const useUpdateBooking = (reservationId: string) => {
+        return useMutation({
+            mutationFn: async (bookingData: ReservationUpdateDtoForSchema) => {
+                const response = await updateBooking(
+                    reservationId,
+                    bookingData
+                );
+                if ('error' in response) {
+                    throw new Error(response.error);
+                }
+                return response;
+            },
+        });
+    };
+
+    const useConfirmBooking = (reservationId: string) => {
+        return useMutation({
+            mutationFn: async (bookingData: ConfirmBookingDtoForSchema) => {
+                const response = await confirmBookingAndPay(
+                    reservationId,
+                    bookingData
+                );
+                if ('error' in response) {
+                    throw new Error(response.error);
+                }
+                return response;
+            },
+            onSuccess: () => {
+                toast.success('Booking confirmed successfully');
+            },
+            onError: (error: any) => {
+                toast.error(error.message || 'Failed to confirm booking');
+            },
+        });
+    };
     // // Mutación para crear producto
     // const createMutation = useMutation<
     //     BaseApiResponse<Product>,
@@ -85,5 +126,7 @@ export const useBooking = () => {
     return {
         useRoomAvailabilityQuery,
         useCreateBooking,
+        useUpdateBooking,
+        useConfirmBooking,
     };
 };

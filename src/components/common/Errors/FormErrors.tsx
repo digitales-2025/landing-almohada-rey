@@ -8,12 +8,14 @@ interface FormErrorProps extends React.HTMLAttributes<HTMLDivElement> {
     title?: string;
     message?: string;
     onRetry?: () => void;
+    retryButtonLabel?: string;
 }
 
 export const SmallFormError = ({
     title = 'Ha ocurrido un error',
     message = 'No se pudo procesar el formulario. Por favor, inténtalo de nuevo.',
     onRetry,
+    retryButtonLabel = 'Reintentar',
     className,
     ...props
 }: FormErrorProps) => {
@@ -42,7 +44,7 @@ export const SmallFormError = ({
                             className="hover:bg-destructive/20"
                         >
                             <RefreshCw className="mr-2 h-4 w-4" />
-                            Reintentar
+                            {retryButtonLabel}
                         </Button>
                     </div>
                 )}
@@ -55,6 +57,7 @@ export const LargeFormError = ({
     title = 'Ha ocurrido un error',
     message = 'No se pudo procesar el formulario. Por favor, verifica los datos e inténtalo de nuevo.',
     onRetry,
+    retryButtonLabel = 'Reintentar',
     className,
     ...props
 }: FormErrorProps) => {
@@ -88,7 +91,7 @@ export const LargeFormError = ({
                             className="border-destructive text-destructive hover:bg-destructive/10"
                         >
                             <RefreshCw className="mr-2 h-4 w-4" />
-                            Reintentar
+                            {retryButtonLabel}
                         </Button>
                     </div>
                 )}
