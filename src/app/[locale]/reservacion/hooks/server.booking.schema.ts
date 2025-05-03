@@ -8,10 +8,12 @@ import {
     PaymentData,
     ReservationUpdateDtoForSchema,
 } from '@/actions/booking/booking';
-import { getCheckInDate } from '@/lib/timedate/peru-datetime';
+import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
 
 const today = getCheckInDate();
-const tomorrow = getCheckInDate(new Date(today.setDate(today.getDate() + 1)));
+const tomorrowDate = new Date(today.getTime()); // Crear una copia
+tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+const tomorrow = getCheckOutDate(tomorrowDate);
 const t = await getTranslations('IndexPageBooking');
 const reservationSchema = z.object({
     checkInDate: z.date().min(today, {

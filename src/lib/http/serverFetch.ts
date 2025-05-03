@@ -88,7 +88,22 @@ export async function serverFetch<Success>(
     }
 
     try {
-        const response = await fetch(`${envs.BACKEND_URL}${url}`, {
+        let fullUrl = `${envs.BACKEND_URL}${url}`;
+
+        if (options?.params) {
+            const queryParams = new URLSearchParams();
+            Object.entries(options.params).forEach(([key, value]) => {
+                queryParams.append(key, String(value));
+            });
+
+            // Agregar los parámetros a la URL
+            const queryString = queryParams.toString();
+            if (queryString) {
+                fullUrl += (url.includes('?') ? '&' : '?') + queryString;
+            }
+        }
+
+        const response = await fetch(fullUrl, {
             ...options,
             headers: {
                 ...options?.headers,
@@ -119,8 +134,7 @@ export async function serverFetch<Success>(
                 null,
             ];
         }
-    } catch (error) {
-        console.error(error);
+    } catch {
         return [
             // @ts-expect-error allowing null
             null,
@@ -147,8 +161,15 @@ export const http = {
      * const [data, err] = await http.get<User>("/users/");
      * ```
      */
-    get<T>(url: string, config?: Omit<ServerFetchConfig, 'body'>) {
-        return serverFetch<T>(url, config);
+    get<T>(
+        url: string,
+        config?: Omit<ServerFetchConfig, 'body'>,
+        publicRequest?: boolean
+    ) {
+        if (publicRequest) {
+            return serverFetch<T>(url, { ...config }, true);
+        }
+        return serverFetch<T>(url, { ...config });
     },
 
     /**

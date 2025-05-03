@@ -1326,13 +1326,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1387,13 +1387,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1436,13 +1436,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /**
@@ -1485,13 +1485,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /**
@@ -1580,13 +1580,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1629,8 +1629,23 @@ export interface components {
             reason: string;
             /** @description JSON list of companions/guests */
             guests?: string;
+            /**
+             * @description Number of guests requested by the landing page
+             * @default 1
+             */
+            requestedGuestNumber: number;
             /** @description Additional notes or observations */
             observations?: string;
+            /**
+             * @description Whether the customer accepted extra services
+             * @default false
+             */
+            didAcceptExtraServices: boolean;
+            /**
+             * @description Whether the customer accepted terms and conditions
+             * @default false
+             */
+            didAcceptTerms: boolean;
             /** @description Customer associated with the reservation */
             customer: components['schemas']['Customer'];
             /** @description User associated with the reservation */
@@ -1759,13 +1774,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1808,8 +1823,23 @@ export interface components {
             reason: string;
             /** @description JSON list of companions/guests */
             guests?: string;
+            /**
+             * @description Number of guests requested by the landing page
+             * @default 1
+             */
+            requestedGuestNumber: number;
             /** @description Additional notes or observations */
             observations?: string;
+            /**
+             * @description Whether the customer accepted extra services
+             * @default false
+             */
+            didAcceptExtraServices: boolean;
+            /**
+             * @description Whether the customer accepted terms and conditions
+             * @default false
+             */
+            didAcceptTerms: boolean;
         };
         UpdateManyDto: {
             /**
@@ -2018,13 +2048,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /**
@@ -2489,13 +2519,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             name: string;
@@ -2658,13 +2688,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-04-25T16:47:09.196Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-04-25T16:47:09.197Z
+             * @example 2025-05-02T20:40:46.491Z
              */
             updatedAt: string;
             /**

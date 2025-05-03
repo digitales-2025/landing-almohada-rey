@@ -5,6 +5,7 @@ import {
     CheckRoomAvailabilityDto,
     ConfirmBookingDto,
     ConfirmBookingDtoForSchema,
+    LandingRequestDto,
     ReservationUpdateDto,
     ReservationUpdateDtoForSchema,
 } from './booking';
@@ -13,7 +14,9 @@ export async function createBookingSummary(data: any) {
     return bookingOps.create('/booking', data);
 }
 
-export async function getAvailableRooms(dto: CheckRoomAvailabilityDto) {
+export async function getAvailableRooms(
+    dto: LandingRequestDto<CheckRoomAvailabilityDto>
+) {
     return bookingOps.getAvailableRooms(dto);
 }
 

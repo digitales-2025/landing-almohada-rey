@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { useLocale } from 'next-intl';
 import { toast } from 'sonner';
 
 import {
@@ -15,6 +16,7 @@ import {
 
 export const useBooking = () => {
     // const queryClient = useQueryClient();
+    const locale = useLocale();
     const useRoomAvailabilityQuery = (
         availabityDto: CheckRoomAvailabilityDto
     ) => {
@@ -22,9 +24,14 @@ export const useBooking = () => {
             queryKey: [
                 'availableRooms',
                 availabityDto.checkInDate + availabityDto.checkOutDate,
+                ,
+                locale,
             ],
             queryFn: async () => {
-                const response = await getAvailableRooms(availabityDto);
+                const response = await getAvailableRooms({
+                    ...availabityDto,
+                    locale,
+                });
                 if ('error' in response) {
                     toast.error(response.error);
                     return [];

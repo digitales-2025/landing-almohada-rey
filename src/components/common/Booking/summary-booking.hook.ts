@@ -9,7 +9,9 @@ import { useBooking } from '@/hooks/queries/booking/useBooking';
 import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
 
 const today = getCheckInDate();
-const tomorrow = getCheckOutDate(new Date(today.setDate(today.getDate() + 1)));
+const tomorrowDate = new Date(today.getTime()); // Crear una copia
+tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+const tomorrow = getCheckOutDate(tomorrowDate);
 
 export const schema = z.object({
     // name: z.string().min(1, { message: 'Name is required' }),

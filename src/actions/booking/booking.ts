@@ -1,8 +1,10 @@
+import { SupportedLocales } from '@/i18n/routing';
 import { components } from '@/types/api';
 
 // import { getTranslations } from 'next-intl/server';
 
 // const t = await getTranslations('IndexPageBooking.moreReservationDetailsSection');
+export type Reservation = components['schemas']['Reservation'];
 export type DetailedReservation = components['schemas']['DetailedReservation'];
 
 export type CustomerDocumentType = 'DNI' | 'PASSPORT' | 'FOREIGNER_CARD';
@@ -35,6 +37,11 @@ export type CheckRoomAvailabilityDto = {
     checkOutDate: string;
     guestNumber: number;
     roomId?: string;
+};
+
+export type LandingRequestDto<T> = T & {
+    //This should be in a higher level type file
+    locale: SupportedLocales;
 };
 
 export type CheckRoomAvailabilityFormValues = {

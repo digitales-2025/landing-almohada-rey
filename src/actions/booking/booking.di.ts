@@ -7,6 +7,7 @@ import {
     CheckRoomAvailabilityDto,
     ConfirmBookingDto,
     DetailedReservation,
+    LandingRequestDto,
     ReservationUpdateDto,
     SummaryBooking,
 } from './booking';
@@ -14,11 +15,14 @@ import {
 @injectable()
 export class BookingOps extends BaseActionOps<SummaryBooking> {
     async getAvailableRooms(
-        dto: CheckRoomAvailabilityDto
+        dto: LandingRequestDto<CheckRoomAvailabilityDto>
     ): Promise<GetResponse<DetailedRoom>> {
-        const response = await this.get<DetailedRoom>('/landing-reservation', {
-            params: dto,
-        });
+        const response = await this.get<DetailedRoom>(
+            '/landing-reservation/check-available-rooms',
+            {
+                params: dto,
+            }
+        );
         return response;
     }
 

@@ -14,7 +14,11 @@ export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
         config?: ServerFetchConfig
     ): Promise<GetResponse<V>> {
         try {
-            const [data, error] = await http.get<GetResponse<V>>(uri, config);
+            const [data, error] = await http.get<GetResponse<V>>(
+                uri,
+                config,
+                true
+            ); //configured as a public request
             if (error) {
                 return {
                     error:

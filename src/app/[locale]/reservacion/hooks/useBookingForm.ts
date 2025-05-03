@@ -13,10 +13,12 @@ import {
 } from '@/actions/booking/booking';
 import { useBooking } from '@/hooks/queries/booking/useBooking';
 import { defaultLocale, type SupportedLocales } from '@/i18n/routing';
-import { getCheckInDate } from '@/lib/timedate/peru-datetime';
+import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
 
 const today = getCheckInDate();
-const tomorrow = getCheckInDate(new Date(today.setDate(today.getDate() + 1)));
+const tomorrowDate = new Date(today.getTime()); // Crear una copia
+tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+const tomorrow = getCheckOutDate(tomorrowDate);
 
 export function useBookingForm(id?: string, locale?: SupportedLocales) {
     const t = useTranslations('IndexPageBooking');
