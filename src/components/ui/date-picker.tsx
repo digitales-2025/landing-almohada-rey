@@ -37,11 +37,16 @@ export function DatePicker({
     controlled = false,
 }: DatePickerProps) {
     // const t = useTranslations()
-    const [localDate, localSetDate] = React.useState<Date | undefined>(date);
+    // const [localDate, localSetDate] = React.useState<Date | undefined>(date);
     const locale = useLocale();
 
+    // React.useEffect(() => {
+    //     localSetDate(date);
+    // }, [date]);
+
     const handleOnSelect = (date: Date | undefined) => {
-        localSetDate(date);
+        // localSetDate(date);
+
         onChange(date);
     };
 
@@ -60,13 +65,13 @@ export function DatePicker({
                             variant={'outline'}
                             className={cn(
                                 'w-[240px] justify-start text-left font-normal',
-                                !localDate && 'text-muted-foreground',
+                                !date && 'text-muted-foreground',
                                 className
                             )}
                         >
                             <CalendarIcon />
-                            {localDate ? (
-                                formatDateToLimaTimezone(localDate, locale)
+                            {date ? (
+                                formatDateToLimaTimezone(date, locale, true)
                                     .short
                             ) : (
                                 <span>Pick a date</span>
@@ -78,13 +83,13 @@ export function DatePicker({
                         variant={'outline'}
                         className={cn(
                             'w-[240px] justify-start text-left font-normal',
-                            !localDate && 'text-muted-foreground',
+                            !date && 'text-muted-foreground',
                             className
                         )}
                     >
                         <CalendarIcon />
-                        {localDate ? (
-                            formatDateToLimaTimezone(localDate, locale).short
+                        {date ? (
+                            formatDateToLimaTimezone(date, locale, true).short
                         ) : (
                             <span>Pick a date</span>
                         )}
@@ -95,7 +100,7 @@ export function DatePicker({
                 <Calendar
                     className="w-full"
                     mode="single"
-                    selected={localDate}
+                    selected={date}
                     onSelect={date => handleOnSelect(date)}
                     disabled={disabled ?? defaultDayPickerDisabled}
                     initialFocus

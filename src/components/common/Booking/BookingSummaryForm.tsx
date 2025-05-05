@@ -1,7 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useRef } from 'react';
+import { addDays, startOfDay } from 'date-fns';
 import { useLocale, useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
 import { Button } from '@/components/ui/button';
@@ -27,6 +29,8 @@ import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
 import {
     formatDateToLimaTimezone,
     getLimaTime,
+    setCheckInTime,
+    setCheckOutTime,
 } from '@/lib/timedate/peru-datetime';
 import { cn } from '@/lib/utils';
 import { SmallFormError } from '../Errors/FormErrors';
@@ -58,36 +62,37 @@ export const BookingSummaryForm = () => {
         defaultAvailabilityDataRef.current
     );
 
-    const handleCheckAvailability = useCallback(() => {
-        const newParams: CheckRoomAvailabilityDto = {
-            checkInDate: values.checkInDate.toISOString(),
-            checkOutDate: values.checkOutDate.toISOString(),
-            guestNumber: values.guestNumber,
-            roomId: values.roomId,
-        };
-        checkAvailability(newParams);
+    // 1. handleCheckAvailability solo depende de checkAvailability
+    const handleCheckAvailability = useCallback(
+        (formValues: typeof values) => {
+            const newParams: CheckRoomAvailabilityDto = {
+                checkInDate: formValues.checkInDate.toISOString(),
+                checkOutDate: formValues.checkOutDate.toISOString(),
+                guestNumber: formValues.guestNumber,
+                roomId: formValues.roomId,
+            };
+            checkAvailability(newParams);
+        },
+        [checkAvailability]
+    );
+
+    // 2. useEffect depende de los valores del formulario
+    useEffect(() => {
+        handleCheckAvailability(values);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
-        checkAvailability,
         values.checkInDate,
         values.checkOutDate,
         values.guestNumber,
         values.roomId,
     ]);
 
-    useEffect(() => {
-        // Solo hacer la comprobación inicial o cuando los valores relevantes cambien
-        // y no en cada renderizado
-        if (form.formState.isDirty) {
-            handleCheckAvailability();
-        }
-    }, [handleCheckAvailability, form.formState.isDirty]);
-
-    // Primera carga de datos
-    useEffect(() => {
-        // Una sola vez al montar el componente
-        handleCheckAvailability();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); // array de dependencias vacío para ejecutar solo al montar
+    // // Primera carga de datos
+    // useEffect(() => {
+    //     // Una sola vez al montar el componente
+    //     handleCheckAvailability();
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []); // array de dependencias vacío para ejecutar solo al montar
 
     if (query.isLoading) {
         return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
@@ -106,7 +111,7 @@ export const BookingSummaryForm = () => {
     const roomOptions: SelectOption[] = roomsAvailable.map(room => {
         return {
             value: room.id,
-            label: `${room.number}(${room.RoomTypes.name}) - 🧍(${room.RoomTypes.guests})`,
+            label: `${room.number}(${room.RoomTypes.name.toUpperCase()}) - 🧍(${room.RoomTypes.guests})`,
         };
     });
 
@@ -154,20 +159,27 @@ export const BookingSummaryForm = () => {
                                 <FormControl>
                                     <Input
                                         className={inputCommonClassnames}
-                                        placeholder="Name"
+                                        placeholder={t('input1.placeholder')}
+                                        max={maxGuests ?? field.value ?? 0}
                                         {...field}
                                         type="number"
                                     />
                                 </FormControl>
-                                <FormDescription>
-                                    {t('input1.description', {
-                                        guestNumber: (
-                                            maxGuests ??
-                                            field.value ??
-                                            0
-                                        ).toString(),
-                                    })}
-                                </FormDescription>
+                                {values.roomId ? (
+                                    <FormDescription>
+                                        {t('input1.description', {
+                                            guestNumber: (
+                                                maxGuests ??
+                                                field.value ??
+                                                0
+                                            ).toString(),
+                                        })}
+                                    </FormDescription>
+                                ) : (
+                                    <FormDescription>
+                                        {t('input1.placeholderDescription')}
+                                    </FormDescription>
+                                )}
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -190,14 +202,16 @@ export const BookingSummaryForm = () => {
                                         <SelectTrigger
                                             className={cn(
                                                 inputCommonClassnames,
-                                                'w-full'
+                                                'w-full max-w-full truncate'
                                             )}
                                         >
                                             <SelectValue
                                                 className={fieldClassname}
-                                                placeholder="Select a room"
+                                                placeholder={t(
+                                                    'input2.placeholder'
+                                                )}
                                             >
-                                                {field.value &&
+                                                {field.value !== undefined &&
                                                     roomOptions.find(
                                                         option =>
                                                             option.value ===
@@ -240,7 +254,24 @@ export const BookingSummaryForm = () => {
                                 </FormLabel>
                                 <DatePicker
                                     date={field.value}
-                                    onChange={field.onChange}
+                                    onChange={date => {
+                                        const newDate = setCheckInTime(date);
+                                        if (
+                                            date &&
+                                            date >=
+                                                startOfDay(values.checkOutDate)
+                                        ) {
+                                            const oneDayAfterSelectedCheckedInDate =
+                                                setCheckOutTime(
+                                                    addDays(date, 1)
+                                                );
+                                            form.setValue(
+                                                'checkOutDate',
+                                                oneDayAfterSelectedCheckedInDate
+                                            );
+                                        }
+                                        field.onChange(newDate);
+                                    }}
                                     controlled={true}
                                     className={inputCommonClassnames}
                                 ></DatePicker>
@@ -267,7 +298,22 @@ export const BookingSummaryForm = () => {
                                 </FormLabel>
                                 <DatePicker
                                     date={field.value}
-                                    onChange={field.onChange}
+                                    onChange={date => {
+                                        const newDate = setCheckOutTime(date);
+                                        if (
+                                            date &&
+                                            date <=
+                                                startOfDay(values.checkInDate)
+                                        ) {
+                                            toast.error(
+                                                t(
+                                                    'input4.errors.dateError.before'
+                                                )
+                                            );
+                                            return;
+                                        }
+                                        field.onChange(newDate);
+                                    }}
                                     controlled={true}
                                     className={inputCommonClassnames}
                                 ></DatePicker>

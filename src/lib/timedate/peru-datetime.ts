@@ -98,6 +98,22 @@ export const getCheckInDate = (date?: Date): Date => {
     return checkInDate;
 };
 
+export const setCheckInTime = (date?: Date): Date => {
+    if (!date) {
+        return getCheckInDate();
+    }
+    const checkInDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        parseInt(standarCheckInTime.split(':')[0]),
+        parseInt(standarCheckInTime.split(':')[1]),
+        0,
+        0
+    );
+    return checkInDate;
+};
+
 /**
  * Calcula la fecha y hora de check-out basada en la hora estándar de check-out.
  *
@@ -125,6 +141,22 @@ export const getCheckOutDate = (date?: Date): Date => {
     return checkOutDate;
 };
 
+export const setCheckOutTime = (date?: Date): Date => {
+    if (!date) {
+        return getCheckOutDate();
+    }
+    const checkOutDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate(),
+        parseInt(standarCheckOutTime.split(':')[0]),
+        parseInt(standarCheckOutTime.split(':')[1]),
+        0,
+        0
+    );
+    return checkOutDate;
+};
+
 type DateFormatOptions = {
     short: string;
     long: string;
@@ -132,10 +164,9 @@ type DateFormatOptions = {
 
 export function formatDateToLimaTimezone(
     date: Date,
-    locale?: SupportedLocales
+    locale?: SupportedLocales,
+    alreadyConverted: boolean = false
 ): DateFormatOptions {
-    // Convert to Lima, Peru timezone (UTC-5)
-    const limaTime = getLimaTime(date);
     let localScopeLocale: SupportedLocales | 'es-PE' | undefined;
 
     if (!locale) {
@@ -145,6 +176,25 @@ export function formatDateToLimaTimezone(
         // Handle locale conversion if locale exists
         localScopeLocale = locale === 'es' ? 'es-PE' : locale;
     }
+
+    if (alreadyConverted) {
+        return {
+            short: date.toLocaleDateString(locale, {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+            }),
+            long: date.toLocaleDateString(locale, {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                weekday: 'narrow',
+            }),
+        };
+    }
+
+    // Convert to Lima, Peru timezone (UTC-5)
+    const limaTime = getLimaTime(date);
 
     // Format the date to a readable string
     const shortFormat = limaTime.toLocaleDateString(localScopeLocale, {

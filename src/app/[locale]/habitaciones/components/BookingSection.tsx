@@ -11,7 +11,7 @@ export const BookingSection = () => {
     const t = useTranslations('IndexPageRooms.bookingSection');
 
     const bookingSummary: BookingSumamryProps = {
-        className: 'bg-transparent relative z-10 px-4 sm:px-6 lg:px-8 xl:px-20',
+        className: 'bg-transparent relative z-10',
         title: {
             text: t('title').toUpperCase(),
         },

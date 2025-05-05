@@ -33,6 +33,7 @@
                 "label": "Número de huéspedes",
                 "placeholder": "Ingrese el número de huéspedes",
                 "description": "Máximo {guestNumber} huéspedes",
+                "placeholderDescription": "Escoja habitación para saber el max. de huéspedes",
                 "errors": {
                     "required": "Este campo es obligatorio"
                 }
@@ -69,7 +70,7 @@
                 "errors": {
                     "required": "Este campo es obligatorio",
                     "dateError": {
-                        "before": "La fecha debe ser anterior a la fecha de salida",
+                        "before": "La fecha debe ser posterior a la fecha de check-in",
                         "after": "La fecha debe ser posterior a hoy",
                         "invalid": "La fecha no es válida"
                     }
@@ -692,6 +693,13 @@
         "roomsSection": {
             "title": "Habitaciones y suite",
             "description": "Un descanso inigualable",
+            "commonFeatures": {
+                "item1": "WiFi gratuito",
+                "item2": "TV con cable",
+                "item3": "Servicio a la habitación",
+                "item4": "Ducha con agua caliente",
+                "item5": "Escritorio y armario"
+            },
             "room1": {
                 "title": "Suite Matrimonial",
                 "description": "Espaciosa, confortable y moderna habitación con salón integrado, área de trabajo, espacio de descanso, caja fuerte, minibar y baño completo con bañera o tina.",

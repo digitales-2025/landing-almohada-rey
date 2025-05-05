@@ -36,6 +36,7 @@ declare const messages: {
                 label: 'Number of guests';
                 placeholder: 'Enter the number of guests';
                 description: 'Maximum {guestNumber} guests';
+                placeholderDescription: 'Choose a room to know the max. number of guests';
                 errors: {
                     required: 'This field is required';
                 };
@@ -72,7 +73,7 @@ declare const messages: {
                 errors: {
                     required: 'This field is required';
                     dateError: {
-                        before: 'The date must be before check-out date';
+                        before: 'The date must be after check-in date';
                         after: 'The date must be after today';
                         invalid: 'The date entered is invalid';
                     };
@@ -695,6 +696,13 @@ declare const messages: {
         roomsSection: {
             title: 'Rooms and suite';
             description: 'Unmatched rest';
+            commonFeatures: {
+                item1: 'Free WiFi';
+                item2: 'TV with cable';
+                item3: 'Intercom service';
+                item4: 'Warm-water Shower';
+                item5: 'Desk & wardrobe';
+            };
             room1: {
                 title: 'Master Suite';
                 description: 'Spacious, comfortable and modern room with integrated living room, work area, rest space, safe, minibar and complete bathroom with bathtub.';

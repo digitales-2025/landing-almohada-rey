@@ -1,14 +1,18 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { FaPhoneVolume, FaShower } from 'react-icons/fa';
-import { GiBathtub, GiSofa } from 'react-icons/gi';
+// import { GiBathtub, GiSofa } from 'react-icons/gi';
+// import { IoBedSharp, IoTvSharp } from 'react-icons/io5';
 import { IoIosWifi } from 'react-icons/io';
-import { IoBedSharp, IoTvSharp } from 'react-icons/io5';
-import { MdCountertops, MdResetTv } from 'react-icons/md';
+import {
+    //MdCountertops,
+    MdResetTv,
+} from 'react-icons/md';
 import { PiDeskFill } from 'react-icons/pi';
 
 import {
     CustomCard,
     CustomCardProps,
+    IconFeature,
 } from '@/components/customized/card/custom-card';
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
@@ -21,6 +25,28 @@ export const RoomsSection = () => {
     const t = useTranslations('IndexPageRooms.roomsSection');
     const princingClassnames =
         '!text-h7 lg:!text-h6 xl:!text-h6 2xl:!text-h6 text-primary';
+    const commonFeatures: IconFeature[] = [
+        {
+            Icon: IoIosWifi,
+            tooltip: t('commonFeatures.item1'),
+        },
+        {
+            Icon: MdResetTv,
+            tooltip: t('commonFeatures.item2'),
+        },
+        {
+            Icon: FaPhoneVolume,
+            tooltip: t('commonFeatures.item3'),
+        },
+        {
+            Icon: FaShower,
+            tooltip: t('commonFeatures.item4'),
+        },
+        {
+            Icon: PiDeskFill,
+            tooltip: t('commonFeatures.item5'),
+        },
+    ];
     const cards: CustomCardProps[] = [
         {
             cardImage: {
@@ -40,36 +66,7 @@ export const RoomsSection = () => {
                 {
                     caption: t('room1.features.item2'),
                 },
-                [
-                    {
-                        Icon: GiBathtub,
-                        tooltip: t('room1.features.item3'),
-                    },
-                    {
-                        Icon: GiSofa,
-                        tooltip: t('room1.features.item4'),
-                    },
-                    {
-                        Icon: IoIosWifi,
-                        tooltip: t('room1.features.item5'),
-                    },
-                    {
-                        Icon: IoTvSharp,
-                        tooltip: t('room1.features.item6'),
-                    },
-                    {
-                        Icon: FaPhoneVolume,
-                        tooltip: t('room1.features.item7'),
-                    },
-                    {
-                        Icon: PiDeskFill,
-                        tooltip: t('room1.features.item8'),
-                    },
-                    {
-                        Icon: MdCountertops,
-                        tooltip: t('room1.features.item9'),
-                    },
-                ],
+                [...commonFeatures],
             ],
             pricing: {
                 price: formatPrice(
@@ -104,32 +101,7 @@ export const RoomsSection = () => {
                 {
                     caption: t('room2.features.item2'),
                 },
-                [
-                    {
-                        Icon: FaShower,
-                        tooltip: t('room2.features.item3'),
-                    },
-                    {
-                        Icon: IoIosWifi,
-                        tooltip: t('room2.features.item4'),
-                    },
-                    {
-                        Icon: MdResetTv,
-                        tooltip: t('room2.features.item5'),
-                    },
-                    {
-                        Icon: IoTvSharp,
-                        tooltip: t('room2.features.item6'),
-                    },
-                    {
-                        Icon: FaPhoneVolume,
-                        tooltip: t('room2.features.item7'),
-                    },
-                    {
-                        Icon: PiDeskFill,
-                        tooltip: t('room2.features.item8'),
-                    },
-                ],
+                [...commonFeatures],
             ],
             pricing: {
                 price: formatPrice(
@@ -164,36 +136,7 @@ export const RoomsSection = () => {
                 {
                     caption: t('room3.features.item2'),
                 },
-                [
-                    {
-                        Icon: IoBedSharp,
-                        tooltip: t('room3.features.item3'),
-                    },
-                    {
-                        Icon: FaShower,
-                        tooltip: t('room3.features.item4'),
-                    },
-                    {
-                        Icon: IoIosWifi,
-                        tooltip: t('room3.features.item5'),
-                    },
-                    {
-                        Icon: MdResetTv,
-                        tooltip: t('room3.features.item6'),
-                    },
-                    {
-                        Icon: IoTvSharp,
-                        tooltip: t('room3.features.item7'),
-                    },
-                    {
-                        Icon: FaPhoneVolume,
-                        tooltip: t('room3.features.item8'),
-                    },
-                    {
-                        Icon: PiDeskFill,
-                        tooltip: t('room3.features.item9'),
-                    },
-                ],
+                [...commonFeatures],
             ],
             pricing: {
                 price: formatPrice(
@@ -228,36 +171,7 @@ export const RoomsSection = () => {
                 {
                     caption: t('room4.features.item2'),
                 },
-                [
-                    {
-                        Icon: IoBedSharp,
-                        tooltip: t('room4.features.item3'),
-                    },
-                    {
-                        Icon: FaShower,
-                        tooltip: t('room4.features.item4'),
-                    },
-                    {
-                        Icon: IoIosWifi,
-                        tooltip: t('room4.features.item5'),
-                    },
-                    {
-                        Icon: MdResetTv,
-                        tooltip: t('room4.features.item6'),
-                    },
-                    {
-                        Icon: IoTvSharp,
-                        tooltip: t('room4.features.item7'),
-                    },
-                    {
-                        Icon: FaPhoneVolume,
-                        tooltip: t('room4.features.item8'),
-                    },
-                    {
-                        Icon: PiDeskFill,
-                        tooltip: t('room4.features.item9'),
-                    },
-                ],
+                [...commonFeatures],
             ],
             pricing: {
                 price: formatPrice(
@@ -292,32 +206,7 @@ export const RoomsSection = () => {
                 {
                     caption: t('room5.features.item2'),
                 },
-                [
-                    {
-                        Icon: FaShower,
-                        tooltip: t('room5.features.item3'),
-                    },
-                    {
-                        Icon: IoIosWifi,
-                        tooltip: t('room5.features.item4'),
-                    },
-                    {
-                        Icon: MdResetTv,
-                        tooltip: t('room5.features.item5'),
-                    },
-                    {
-                        Icon: IoTvSharp,
-                        tooltip: t('room5.features.item6'),
-                    },
-                    {
-                        Icon: FaPhoneVolume,
-                        tooltip: t('room5.features.item7'),
-                    },
-                    {
-                        Icon: PiDeskFill,
-                        tooltip: t('room5.features.item8'),
-                    },
-                ],
+                [...commonFeatures],
             ],
             pricing: {
                 price: formatPrice(
