@@ -2,7 +2,7 @@ import { Container } from 'inversify';
 
 import { envs } from '@/config/envs';
 import { BookingOps } from './booking/booking.di';
-import { RoomOps, RoomTypeOps } from './rooms/rooms';
+import { RoomOps, RoomTypeOps } from './rooms/room.di';
 
 const container: Container = new Container();
 container.bind(BookingOps).toSelf().inSingletonScope();

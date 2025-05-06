@@ -2,7 +2,7 @@ import { injectable } from 'inversify';
 
 import { BaseActionOps } from '@/lib/actions/BaseActionOps';
 import { GetResponse, MutationResponse } from '@/types/api/actions-crud';
-import { DetailedRoom } from '../rooms/rooms';
+import { DetailedRoom } from '../rooms/room';
 import {
     CheckRoomAvailabilityDto,
     ConfirmBookingDto,

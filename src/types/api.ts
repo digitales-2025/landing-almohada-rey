@@ -1207,6 +1207,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/landing-reservation/check-available-rooms': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Check available rooms for reservation */
+        get: operations['ReservationController_checkAvailableRooms_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1326,13 +1343,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1371,6 +1388,11 @@ export interface components {
             ruc?: string;
             /** @description Customer company address */
             companyAddress?: string;
+            /**
+             * @description Customer created by landing page
+             * @default false
+             */
+            createdByLandingPage: boolean;
         };
         User: {
             /**
@@ -1387,13 +1409,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1436,13 +1458,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /**
@@ -1450,6 +1472,11 @@ export interface components {
              * @example Habitación doble
              */
             name: string;
+            /**
+             * @description Nombre del tipo de habitación en inglés
+             * @example Double Room
+             */
+            nameEn: string;
             /**
              * @description Capacidad máxima de huéspedes
              * @example 2
@@ -1466,10 +1493,20 @@ export interface components {
              */
             description: string;
             /**
+             * @description Descripción del tipo de habitación en inglés
+             * @example Room with sea view and private balcony
+             */
+            descriptionEn: string;
+            /**
              * @description Descripción de la cama
              * @example Cama matrimonial king size
              */
             bed: string;
+            /**
+             * @description Descripción de la cama en inglés
+             * @example King size bed
+             */
+            bedEn: string;
         };
         DetailedRoom: {
             /**
@@ -1485,13 +1522,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /**
@@ -1580,13 +1617,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1646,6 +1683,11 @@ export interface components {
              * @default false
              */
             didAcceptTerms: boolean;
+            /**
+             * @description Customer created by landing page
+             * @default false
+             */
+            createdByLandingPage: boolean;
             /** @description Customer associated with the reservation */
             customer: components['schemas']['Customer'];
             /** @description User associated with the reservation */
@@ -1774,13 +1816,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1840,6 +1882,11 @@ export interface components {
              * @default false
              */
             didAcceptTerms: boolean;
+            /**
+             * @description Customer created by landing page
+             * @default false
+             */
+            createdByLandingPage: boolean;
         };
         UpdateManyDto: {
             /**
@@ -2048,13 +2095,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /**
@@ -2208,6 +2255,11 @@ export interface components {
              */
             name: string;
             /**
+             * @description Nombre del tipo de habitación en inglés
+             * @example Double Room
+             */
+            nameEn?: string;
+            /**
              * @description Capacidad máxima de huéspedes
              * @example 2
              */
@@ -2223,10 +2275,20 @@ export interface components {
              */
             description: string;
             /**
+             * @description Descripción del tipo de habitación en inglés
+             * @example Room with private balcony
+             */
+            descriptionEn: string;
+            /**
              * @description Descripción de la cama
              * @example Cama matrimonial king size
              */
             bed: string;
+            /**
+             * @description Descripción de la cama en inglés
+             * @example King size bed
+             */
+            bedEn?: string;
             /** @description Imágenes del tipo de habitación (exactamente 5 requeridas) */
             images: string[];
         };
@@ -2254,6 +2316,11 @@ export interface components {
              */
             name?: string;
             /**
+             * @description Nombre del tipo de habitación en inglés
+             * @example Double Room
+             */
+            nameEn?: string;
+            /**
              * @description Capacidad máxima de huéspedes
              * @example 2
              */
@@ -2269,10 +2336,20 @@ export interface components {
              */
             description?: string;
             /**
+             * @description Descripción del tipo de habitación en inglés
+             * @example Room with private balcony
+             */
+            descriptionEn?: string;
+            /**
              * @description Descripción de la cama
              * @example Cama matrimonial king size
              */
             bed?: string;
+            /**
+             * @description Descripción de la cama en inglés
+             * @example King size bed
+             */
+            bedEn?: string;
             /**
              * Format: binary
              * @description Nueva imagen para agregar o reemplazar
@@ -2519,13 +2596,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             name: string;
@@ -2688,13 +2765,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-02T20:40:46.491Z
+             * @example 2025-05-06T16:05:57.178Z
              */
             updatedAt: string;
             /**
@@ -2723,12 +2800,21 @@ export interface components {
              */
             observations?: string | null;
         };
-        LandRoomTypeMainImg: {
+        BaseQueryDto: {
+            /**
+             * @description The locale for the response data
+             * @example en
+             * @enum {string}
+             */
+            locale?: 'es' | 'en';
+        };
+        BaseRoomTypeMainImg: {
             id: string;
             name: string;
             description: string;
             price: number;
             guests: number;
+            bed: string;
             mainImageUrl: string;
         };
         LandImageRoomType: {
@@ -6088,7 +6174,10 @@ export interface operations {
     };
     LandRoomTypeController_findAllLandingRoomTypes_v1: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description The locale for the response data */
+                locale?: 'es' | 'en';
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -6101,7 +6190,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    'application/json': components['schemas']['LandRoomTypeMainImg'][];
+                    'application/json': components['schemas']['BaseRoomTypeMainImg'][];
                 };
             };
         };
@@ -6126,6 +6215,44 @@ export interface operations {
                 content: {
                     'application/json': components['schemas']['LandRoomTypeAllImg'];
                 };
+            };
+        };
+    };
+    ReservationController_checkAvailableRooms_v1: {
+        parameters: {
+            query: {
+                /** @description The locale for the response data */
+                locale?: 'es' | 'en';
+                /** @description Check-in date (YYYY-MM-DD) */
+                checkInDate: string;
+                /** @description Check-out date (YYYY-MM-DD) */
+                checkOutDate: string;
+                /** @description Number of guests */
+                guestNumber: number;
+                /** @description Optional room ID */
+                roomId?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description List of available rooms */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['DetailedRoom'][];
+                };
+            };
+            /** @description Invalid input parameters */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

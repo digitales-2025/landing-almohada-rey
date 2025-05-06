@@ -101,6 +101,15 @@ declare const messages: {
             title: 'Discover our rooms';
             caption: 'Comfortable rooms for you';
             description: 'Choose from our rooms where comfort and convenience are our highest priority.';
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+            commonFeatures: {
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+            };
             ctaButton: {
                 label: 'View all rooms';
                 link: '/rooms';
@@ -696,12 +705,19 @@ declare const messages: {
         roomsSection: {
             title: 'Rooms and suite';
             description: 'Unmatched rest';
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
             commonFeatures: {
                 item1: 'Free WiFi';
                 item2: 'TV with cable';
                 item3: 'Intercom service';
                 item4: 'Warm-water Shower';
                 item5: 'Desk & wardrobe';
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
             };
             room1: {
                 title: 'Master Suite';

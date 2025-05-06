@@ -1,21 +1,28 @@
-// import { bookingOps } from "@/actions/action-setup";
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
+import { useLocale } from 'next-intl';
+import { toast } from 'sonner';
 
-// export const useRooms = () => {
-//     const availableRoomsQuery = useQuery({
-//         queryKey: ["rooms"],
-//         queryFn: async () => {
-//             const response = await bookingOps.getAvailableRooms({
-//                 checkInDate
-//             });
-//             if (!response.ok) {
-//                 throw new Error("Network response was not ok");
-//             }
-//             return response.json();
-//         },
-//     });
-//     return {
-//         ...query,
-//         rooms: query.data,
-//     };
-// };
+import { getAllRoomTypes } from '@/actions/rooms/room.actions';
+
+export const useRooms = () => {
+    const locale = useLocale();
+    const useRoomTypeQuery = () => {
+        return useQuery({
+            queryKey: ['roomTypes', locale],
+            queryFn: async () => {
+                const response = await getAllRoomTypes({
+                    locale,
+                });
+                if ('error' in response) {
+                    toast.error(response.error);
+                    return [];
+                }
+                return response;
+            },
+        });
+    };
+
+    return {
+        useRoomTypeQuery,
+    };
+};

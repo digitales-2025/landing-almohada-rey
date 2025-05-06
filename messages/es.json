@@ -98,6 +98,15 @@
             "title": "Conoce nuestra habitaciones",
             "caption": "Habitaciones cómodas para usted",
             "description": "Elija entre nuestras habitaciones donde el confort y comodidad son nuestra máxima prioridad.",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
+            "commonFeatures": {
+                "guest": "{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}"
+            },
             "ctaButton": {
                 "label": "Ver todas las habitaciones",
                 "link": "/habitaciones"
@@ -693,12 +702,19 @@
         "roomsSection": {
             "title": "Habitaciones y suite",
             "description": "Un descanso inigualable",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
             "commonFeatures": {
                 "item1": "WiFi gratuito",
                 "item2": "TV con cable",
                 "item3": "Servicio a la habitación",
                 "item4": "Ducha con agua caliente",
-                "item5": "Escritorio y armario"
+                "item5": "Escritorio y armario",
+                "guest": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}"
             },
             "room1": {
                 "title": "Suite Matrimonial",

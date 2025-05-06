@@ -1,14 +1,15 @@
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { FaPhoneVolume, FaShower } from 'react-icons/fa';
-// import { GiBathtub, GiSofa } from 'react-icons/gi';
-// import { IoBedSharp, IoTvSharp } from 'react-icons/io5';
 import { IoIosWifi } from 'react-icons/io';
-import {
-    //MdCountertops,
-    MdResetTv,
-} from 'react-icons/md';
+import { IoBed } from 'react-icons/io5';
+import { MdResetTv } from 'react-icons/md';
 import { PiDeskFill } from 'react-icons/pi';
 
+import { RoomTypeWithMainImg } from '@/actions/rooms/room';
+import { getAllRoomTypes } from '@/actions/rooms/room.actions';
+import { FetchingError } from '@/components/common/Errors/FetchingErrors';
+import { LoadingCardSkeleton } from '@/components/common/loading/LoadingCardSkeleton';
 import {
     CustomCard,
     CustomCardProps,
@@ -17,14 +18,24 @@ import {
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
+// import { useRooms } from '@/hooks/queries/rooms/useRooms';
 import { formatPrice } from '@/lib/i18n-formatPrice';
 import { cn } from '@/lib/utils';
 
-export const RoomsSection = () => {
-    const locale = useLocale();
-    const t = useTranslations('IndexPageRooms.roomsSection');
-    const princingClassnames =
+export async function RoomsSection() {
+    const locale = await getLocale();
+    const t = await getTranslations('IndexPageRooms.roomsSection');
+    const pricingClassnames =
         '!text-h7 lg:!text-h6 xl:!text-h6 2xl:!text-h6 text-primary';
+
+    // const { useRoomTypeQuery } = useRooms();
+    // const {
+    //     data: roomTypes,
+    //     isLoading,
+    //     isError,
+    //     error,
+    //     refetch,
+    // } = useRoomTypeQuery();
     const commonFeatures: IconFeature[] = [
         {
             Icon: IoIosWifi,
@@ -47,183 +58,133 @@ export const RoomsSection = () => {
             tooltip: t('commonFeatures.item5'),
         },
     ];
-    const cards: CustomCardProps[] = [
-        {
+
+    let roomTypes: RoomTypeWithMainImg[];
+
+    try {
+        const response = await getAllRoomTypes({
+            locale,
+        });
+        if ('error' in response) {
+            throw new Error(response.error);
+        }
+        roomTypes = response; // ajusta según tu API
+    } catch (error) {
+        // Renderiza el error aquí si no usas ErrorBoundary
+        return (
+            <SectionWrapper className={cn(sectionLayoutClassnames)}>
+                <SectionHeader
+                    headerTitle={{ text: t('title').toUpperCase() }}
+                    description={{ text: t('description') }}
+                />
+                <FetchingError
+                    title="Error"
+                    message={
+                        t('fetchingError.message') +
+                        ' ' +
+                        (error instanceof Error ? error.message : '')
+                    }
+                    onRefetch={() => {
+                        /* No hay refetch en server, solo recarga la página */ window.location.reload();
+                    }}
+                    refetchButtonLabel={t('fetchingError.actionButton.label')}
+                />
+            </SectionWrapper>
+        );
+    }
+
+    if (!roomTypes) {
+        return (
+            <SectionWrapper className={cn(sectionLayoutClassnames)}>
+                <SectionHeader
+                    headerTitle={{
+                        text: t('title').toUpperCase(),
+                    }}
+                    description={{
+                        text: t('description'),
+                    }}
+                ></SectionHeader>
+                <LoadingCardSkeleton />
+            </SectionWrapper>
+        );
+    }
+
+    // if (isLoading) {
+    //     return (
+    //         <SectionWrapper className={cn(sectionLayoutClassnames)}>
+    //             <SectionHeader
+    //                 headerTitle={{
+    //                     text: t('title').toUpperCase(),
+    //                 }}
+    //                 description={{
+    //                     text: t('description'),
+    //                 }}
+    //             ></SectionHeader>
+    //             <LoadingCardSkeleton />
+    //         </SectionWrapper>
+    //     );
+    // }
+    // if (isError) {
+    //     return (
+    //         <SectionWrapper className={cn(sectionLayoutClassnames)}>
+    //             <SectionHeader
+    //                 headerTitle={{
+    //                     text: t('title').toUpperCase(),
+    //                 }}
+    //                 description={{
+    //                     text: t('description'),
+    //                 }}
+    //             ></SectionHeader>
+    //             <FetchingError
+    //                 title={'Error'}
+    //                 message={t('fetchingError.message') + ' ' + error.message}
+    //                 onRefetch={() => {
+    //                     refetch();
+    //                 }}
+    //                 refetchButtonLabel={t('fetchingError.actionButton.label')}
+    //             ></FetchingError>
+    //         </SectionWrapper>
+    //     );
+    // }
+
+    const rooms: CustomCardProps[] = roomTypes.map(roomType => {
+        return {
             cardImage: {
-                alt: t('room1.title'),
-                src: '/rooms/rooms_section/master_suite.webp',
+                alt: roomType.name,
+                src: roomType.mainImageUrl,
             },
             cardTitle: {
-                text: t('room1.title'),
+                text: roomType.name,
             },
             description: {
-                text: t('room1.description'),
+                text: roomType.description,
             },
             features: [
                 {
-                    caption: t('room1.features.item1'),
+                    caption: t('commonFeatures.guest', {
+                        count: roomType.guests,
+                    }),
                 },
-                {
-                    caption: t('room1.features.item2'),
-                },
-                [...commonFeatures],
+                [
+                    {
+                        tooltip: roomType.bed,
+                        Icon: IoBed,
+                    },
+                    ...commonFeatures,
+                ],
             ],
             pricing: {
-                price: formatPrice(
-                    t('room1.pricing.price'),
-                    t('room1.pricing.currency'),
-                    locale
-                ),
+                price: formatPrice(String(roomType.price), 'PEN', locale),
                 caption: t('room1.pricing.label'),
                 sufix: t('room1.pricing.sufix'),
                 actionButton: {
                     label: t('room1.ctaButton.label'),
                     href: t('room1.ctaButton.link'),
                 },
-                className: princingClassnames,
+                className: pricingClassnames,
             },
-        },
-        {
-            cardImage: {
-                alt: t('room2.title'),
-                src: '/rooms/rooms_section/master_room.webp',
-            },
-            cardTitle: {
-                text: t('room2.title'),
-            },
-            description: {
-                text: t('room2.description'),
-            },
-            features: [
-                {
-                    caption: t('room2.features.item1'),
-                },
-                {
-                    caption: t('room2.features.item2'),
-                },
-                [...commonFeatures],
-            ],
-            pricing: {
-                price: formatPrice(
-                    t('room2.pricing.price'),
-                    t('room2.pricing.currency'),
-                    locale
-                ),
-                caption: t('room2.pricing.label'),
-                sufix: t('room2.pricing.sufix'),
-                actionButton: {
-                    label: t('room2.ctaButton.label'),
-                    href: t('room2.ctaButton.link'),
-                },
-                className: princingClassnames,
-            },
-        },
-        {
-            cardImage: {
-                alt: t('room3.title'),
-                src: '/rooms/rooms_section/family_room.webp',
-            },
-            cardTitle: {
-                text: t('room3.title'),
-            },
-            description: {
-                text: t('room3.description'),
-            },
-            features: [
-                {
-                    caption: t('room3.features.item1'),
-                },
-                {
-                    caption: t('room3.features.item2'),
-                },
-                [...commonFeatures],
-            ],
-            pricing: {
-                price: formatPrice(
-                    t('room3.pricing.price'),
-                    t('room3.pricing.currency'),
-                    locale
-                ),
-                caption: t('room3.pricing.label'),
-                sufix: t('room3.pricing.sufix'),
-                actionButton: {
-                    label: t('room3.ctaButton.label'),
-                    href: t('room3.ctaButton.link'),
-                },
-                className: princingClassnames,
-            },
-        },
-        {
-            cardImage: {
-                alt: t('room4.title'),
-                src: '/rooms/rooms_section/double_room.webp',
-            },
-            cardTitle: {
-                text: t('room4.title'),
-            },
-            description: {
-                text: t('room4.description'),
-            },
-            features: [
-                {
-                    caption: t('room4.features.item1'),
-                },
-                {
-                    caption: t('room4.features.item2'),
-                },
-                [...commonFeatures],
-            ],
-            pricing: {
-                price: formatPrice(
-                    t('room4.pricing.price'),
-                    t('room4.pricing.currency'),
-                    locale
-                ),
-                caption: t('room4.pricing.label'),
-                sufix: t('room4.pricing.sufix'),
-                actionButton: {
-                    label: t('room4.ctaButton.label'),
-                    href: t('room4.ctaButton.link'),
-                },
-                className: princingClassnames,
-            },
-        },
-        {
-            cardImage: {
-                alt: t('room5.title'),
-                src: '/rooms/rooms_section/simple_room.webp',
-            },
-            cardTitle: {
-                text: t('room5.title'),
-            },
-            description: {
-                text: t('room5.description'),
-            },
-            features: [
-                {
-                    caption: t('room5.features.item1'),
-                },
-                {
-                    caption: t('room5.features.item2'),
-                },
-                [...commonFeatures],
-            ],
-            pricing: {
-                price: formatPrice(
-                    t('room5.pricing.price'),
-                    t('room5.pricing.currency'),
-                    locale
-                ),
-                caption: t('room5.pricing.label'),
-                sufix: t('room5.pricing.sufix'),
-                actionButton: {
-                    label: t('room5.ctaButton.label'),
-                    href: t('room5.ctaButton.link'),
-                },
-                className: princingClassnames,
-            },
-        },
-    ];
+        };
+    });
     return (
         <SectionWrapper className={cn(sectionLayoutClassnames)}>
             <SectionHeader
@@ -235,13 +196,16 @@ export const RoomsSection = () => {
                 }}
             ></SectionHeader>
             <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-x-4 gap-y-8 lg:gap-x-6 lg:gap-y-10">
-                {cards.map((card, index) => (
+                {rooms.map((card, index) => (
                     <CustomCard
                         key={index}
                         cardImage={card.cardImage}
                         cardTitle={{
                             text: card.cardTitle.text,
-                            className: cn('', card.cardTitle.className),
+                            className: cn(
+                                'capitalize',
+                                card.cardTitle.className
+                            ),
                         }}
                         description={{
                             text: card.description!.text,
@@ -255,6 +219,23 @@ export const RoomsSection = () => {
                     />
                 ))}
             </div>
+        </SectionWrapper>
+    );
+}
+
+export const LoadingRoomSection = () => {
+    const t = useTranslations('IndexPageRooms.roomsSection');
+    return (
+        <SectionWrapper className={cn(sectionLayoutClassnames)}>
+            <SectionHeader
+                headerTitle={{
+                    text: t('title').toUpperCase(),
+                }}
+                description={{
+                    text: t('description'),
+                }}
+            ></SectionHeader>
+            <LoadingCardSkeleton classNameSkeletonItems="bg-primary/10" />
         </SectionWrapper>
     );
 };
