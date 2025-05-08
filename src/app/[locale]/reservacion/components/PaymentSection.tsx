@@ -28,6 +28,7 @@ import {
 import { cn } from '@/lib/utils';
 import { BaseApiResponse } from '@/types/api/types';
 import { FormValues } from '../hooks/server.booking.schema';
+import { BookingWebSocketHookReturnType } from '../hooks/useBookingWs';
 import { FormGrid, labelClassname } from './MoreBookingDetailsSection';
 
 interface Props {
@@ -38,8 +39,10 @@ interface Props {
         ConfirmBookingDtoForSchema,
         unknown
     >;
+    wsConnectionResult: BookingWebSocketHookReturnType;
+    disabled?: boolean;
 }
-export const PaymentSection = ({ form, mutatioResult }: Props) => {
+export const PaymentSection = ({ form, mutatioResult, disabled }: Props) => {
     const t = useTranslations('IndexPageBooking.paymentDetailsSection');
     const textClassname =
         'text-secondary text-sm md:text-base lg:text-p tracking-normal';
@@ -65,7 +68,7 @@ export const PaymentSection = ({ form, mutatioResult }: Props) => {
                                 type="text"
                                 placeholder={t('input1.placeholder')}
                                 className={paymentInpuClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                                 maxLength={19} // 16 digits + 3 spaces
                                 onChange={e => {
                                     // Remove all non-digit characters
@@ -157,7 +160,7 @@ export const PaymentSection = ({ form, mutatioResult }: Props) => {
                                 {...field}
                                 type="text"
                                 className={paymentInpuClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -312,7 +315,7 @@ export const PaymentSection = ({ form, mutatioResult }: Props) => {
                                 maxLength={3}
                                 {...field}
                                 pattern={REGEXP_ONLY_DIGITS}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             >
                                 <InputOTPGroup className="w-full">
                                     {[0, 1, 2].map(index => (

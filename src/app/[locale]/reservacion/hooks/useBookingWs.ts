@@ -3,6 +3,7 @@ import { io, Socket } from 'socket.io-client';
 import { toast } from 'sonner';
 
 import { useRouter } from '@/i18n/navigation';
+import { defaultLocale } from '@/i18n/routing';
 import { useChronometer } from './useWsChronemeter';
 
 // Eventos que el CLIENTE EMITE hacia el servidor
@@ -32,14 +33,15 @@ export function useBookingWebSocket(locale: string) {
     const fakeId = 'Hola';
 
     const router = useRouter();
+    const chronometer = useChronometer();
     const {
-        isRunning,
+        // isRunning,
+        // timeLeft,
         startChronometer,
         stopChronometer,
         pauseChronometer,
         resumeChronometer,
-        timeLeft,
-    } = useChronometer();
+    } = chronometer;
 
     // Inicializar conexión
     useEffect(() => {
@@ -146,7 +148,11 @@ export function useBookingWebSocket(locale: string) {
             });
         }
 
-        router.push('/'); // Redirigir a la página de inicio
+        const route =
+            locale !== defaultLocale
+                ? `/rooms#booking`
+                : '/habitaciones#reservar';
+        router.replace(route); // Redirigir a la página de inicio
     }, [clientId, locale, stopChronometer, router]);
 
     // Completar la reserva
@@ -221,11 +227,10 @@ export function useBookingWebSocket(locale: string) {
         completeBookingPayment,
         notifyBookingError,
         tryReconnection,
-        chronometer: {
-            isRunning,
-            timeLeft,
-            startChronometer,
-            stopChronometer,
-        },
+        chronometer,
     };
 }
+
+export type BookingWebSocketHookReturnType = ReturnType<
+    typeof useBookingWebSocket
+>;

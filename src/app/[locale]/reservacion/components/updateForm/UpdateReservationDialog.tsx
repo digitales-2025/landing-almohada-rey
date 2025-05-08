@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
 import { LargeFormError } from '@/components/common/Errors/FormErrors';
@@ -26,9 +26,6 @@ import {
 // import { useBooking } from '@/hooks/queries/booking/useBooking';
 import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { useRouter } from '@/i18n/navigation';
-// import { UpdateReservationForm } from './UpdateReservationForm';
-import { defaultLocale } from '@/i18n/routing';
 import {
     ReservationUpdateDto,
     useUpdateBookingForm,
@@ -36,18 +33,17 @@ import {
 
 interface Props {
     reservationData?: ReservationUpdateDto;
+    onUpdateBookingData: () => void;
 }
 
-export const UpdateReservationDialog = (
-    {
-        //reservationData
-    }: Props
-) => {
+export const UpdateReservationDialog = ({
+    //reservationData
+    onUpdateBookingData,
+}: Props) => {
     // console.log('reservationData', reservationData);
     const t = useTranslations('IndexPageBooking');
     const isDesktop = useMediaQuery('(min-width: 640px)');
-    const router = useRouter();
-    const locale = useLocale();
+    // const locale = useLocale();
     const [open, setOpen] = useState(false);
 
     // const handleOpen = () => {
@@ -60,11 +56,8 @@ export const UpdateReservationDialog = (
     const handleUpdate = () => {
         handleClose();
         // aqui el metodo para cancelar el temporizador y la reserva
-        const route =
-            locale !== defaultLocale
-                ? `/rooms#booking`
-                : '/habitaciones#reservar';
-        router.push(route);
+        // router.push(route);
+        onUpdateBookingData();
     };
 
     const fakeReservation: ReservationUpdateDto = {
@@ -133,7 +126,7 @@ export const UpdateReservationDialog = (
     if (query.isError) {
         return (
             <LargeFormError
-                onRetry={() => router.push('/')}
+                onRetry={onUpdateBookingData}
                 retryButtonLabel={t(
                     'updateReservationDates.generalError.actionButton.label'
                 )} //Cambiar el mensaje

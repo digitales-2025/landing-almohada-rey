@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CheckIcon, ChevronsUpDown } from 'lucide-react';
 import * as RPNInput from 'react-phone-number-input';
+import { Country } from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
 import en from 'react-phone-number-input/locale/en.json';
 import es from 'react-phone-number-input/locale/es.json';
@@ -239,4 +240,71 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
     );
 PhoneInput.displayName = 'PhoneInput';
 
-export { PhoneInput };
+interface MemoizedPhoneInputProps {
+    value: string;
+    onChange: (value: string) => void;
+    defaultCountry: Country;
+    placeholder: string;
+    locale: SupportedLocales;
+    className?: string;
+    inputClassname?: string;
+    countrySelectClassname?: string;
+    flagSize?: 'small' | 'medium' | 'large';
+    disabled?: boolean;
+}
+// Componente memorizado con comparación profunda
+const MemoizedPhoneInput = React.memo(
+    ({
+        value,
+        onChange,
+        defaultCountry,
+        placeholder,
+        locale,
+        className,
+        inputClassname,
+        countrySelectClassname,
+        flagSize,
+        disabled,
+    }: MemoizedPhoneInputProps) => {
+        // Memoizar el handler de cambio para prevenir recreaciones
+        const handleChange = React.useCallback(
+            (newValue: string) => {
+                onChange(newValue);
+            },
+            [onChange]
+        );
+
+        // Elimina este console.log en producción
+        // console.log("Rendering MemoizedPhoneInput with value:", value);
+
+        return (
+            <PhoneInput
+                defaultCountry={defaultCountry}
+                placeholder={placeholder}
+                value={value}
+                onChange={handleChange}
+                locale={locale}
+                className={className}
+                inputClassname={inputClassname}
+                countrySelectClassname={countrySelectClassname}
+                flagSize={flagSize}
+                disabled={disabled}
+            />
+        );
+    },
+    // Función de comparación más adecuada que permite actualizaciones del valor
+    (prevProps, nextProps) => {
+        // Importante: NO comparar el value aquí, ya que necesitamos que se actualice
+        // Sólo evitar renderizados si cambian estas props menos frecuentes
+        return (
+            prevProps.disabled === nextProps.disabled &&
+            prevProps.defaultCountry === nextProps.defaultCountry &&
+            prevProps.locale === nextProps.locale &&
+            prevProps.placeholder === nextProps.placeholder
+        );
+    }
+);
+
+MemoizedPhoneInput.displayName = 'MemoizedPhoneInput';
+
+export { PhoneInput, MemoizedPhoneInput };

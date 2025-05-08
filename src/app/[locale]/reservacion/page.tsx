@@ -19,7 +19,6 @@ import {
     FormItem,
     FormLabel,
 } from '@/components/ui/form';
-import { useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { AdditionalInfoSection } from './components/AdditionalInfoSection';
 import { BookingHeroSection } from './components/bookingHeroSection';
@@ -27,31 +26,66 @@ import { AditionalDataReservationSection } from './components/MoreBookingDetails
 import { PaymentSection } from './components/PaymentSection';
 import { useBookingForm } from './hooks/useBookingForm';
 import { useBookingWebSocket } from './hooks/useBookingWs';
-import { formatTimeLeft } from './hooks/useWsChronemeter';
+import {
+    ChronometerHookReturnType,
+    formatTimeLeft,
+} from './hooks/useWsChronemeter';
 
 export const Chronometer = ({
-    timeLeft,
     warningWhen,
+    chronometer,
 }: {
-    timeLeft: number;
+    chronometer: ChronometerHookReturnType;
     warningWhen: number;
 }) => {
     const t = useTranslations('IndexPageBooking.chronometer');
-    return (
-        <div className="fixed z-20 bottom-0 right-0 p-4 w-full flex justify-center bg-none h-fit">
-            <div
-                className={cn(
-                    'bg-primary-foreground text-secondary px-4 py-2 rounded shadow-lg max-w-fit text-xl',
-                    timeLeft <= warningWhen &&
-                        'text-destructive scale-105 animate-shake animate-thrice animate-duration-300 animate-ease-linear'
-                )}
-            >
-                <span>
-                    {t('timeLeftLabel', { timeLeft: formatTimeLeft(timeLeft) })}
-                </span>
+    // Usamos useRef para rastrear si ya se mostró la animación de advertencia
+    const hasShownWarning = React.useRef(false);
+
+    // Usamos useState para controlar el estado de la animación
+    const [showWarningAnimation, setShowWarningAnimation] =
+        React.useState(false);
+
+    // Efecto para controlar cuándo activar la animación
+    React.useEffect(() => {
+        if (chronometer.timeLeft <= warningWhen && !hasShownWarning.current) {
+            // Primera vez que llega al umbral de advertencia
+            setShowWarningAnimation(true);
+            hasShownWarning.current = true;
+
+            // Configurar un temporizador para desactivar la animación después de completarse
+            // (la duración debe coincidir con la de tu animación)
+            const animationTimer = setTimeout(() => {
+                setShowWarningAnimation(false);
+            }, 900); // 300ms x 3 (animate-thrice)
+
+            return () => clearTimeout(animationTimer);
+        }
+    }, [chronometer.timeLeft, warningWhen]);
+
+    const TimerDisplay = React.memo(({ timeLeft }: { timeLeft: number }) => {
+        return (
+            <div className="fixed z-20 bottom-0 right-0 p-4 w-full flex justify-center bg-none h-fit">
+                <div
+                    className={cn(
+                        'bg-primary-foreground text-secondary px-4 py-2 rounded shadow-lg max-w-fit text-xl',
+                        timeLeft <= warningWhen && 'text-destructive', // Color siempre rojo bajo el umbral
+                        showWarningAnimation &&
+                            'scale-105 animate-shake animate-thrice animate-duration-300 animate-ease-linear' // Animación solo cuando se activa
+                    )}
+                >
+                    <span>
+                        {t('timeLeftLabel', {
+                            timeLeft: formatTimeLeft(timeLeft),
+                        })}
+                    </span>
+                </div>
             </div>
-        </div>
-    );
+        );
+    });
+    TimerDisplay.displayName = 'Chronometer';
+
+    return <TimerDisplay timeLeft={chronometer.timeLeft} />;
 };
 
 export default function Page() {
@@ -61,11 +95,11 @@ export default function Page() {
         undefined,
         locale
     );
-    const router = useRouter();
     const firstRender = React.useRef(true);
     // const { timeLeft, isRunning, startChronometer, stopChronometer } =
     //     useChronometer();
 
+    const wsConnectionResult = useBookingWebSocket(locale);
     const {
         isConnected,
         isConnecting,
@@ -75,7 +109,7 @@ export default function Page() {
         // notifyBookingError,
         tryReconnection,
         chronometer,
-    } = useBookingWebSocket(locale);
+    } = wsConnectionResult;
 
     const {
         timeLeft,
@@ -83,6 +117,13 @@ export default function Page() {
         // startChronometer,
         // stopChronometer
     } = chronometer;
+
+    const generalDisabled = !isConnected || isConnecting;
+
+    // const handleRedirection = () => {
+    //     cancelBookingPayment();
+    //     router.replace('/');
+    // }
 
     // const firstRender = React.useRef(true);
     // const handleCancelReservation = () => {
@@ -180,7 +221,7 @@ export default function Page() {
             <PageLayout>
                 <BookingHeroSection></BookingHeroSection>
                 <LargeFormError
-                    onRetry={() => router.push('/')}
+                    onRetry={() => cancelBookingPayment()}
                     retryButtonLabel={t('generalError.actionButton.label')}
                 ></LargeFormError>
             </PageLayout>
@@ -189,7 +230,9 @@ export default function Page() {
 
     return (
         <PageLayout classname={resetPageClassnames}>
-            {isRunning && <Chronometer timeLeft={timeLeft} warningWhen={45} />}
+            {isRunning && (
+                <Chronometer chronometer={chronometer} warningWhen={45} />
+            )}
             <BookingHeroSection></BookingHeroSection>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -197,14 +240,21 @@ export default function Page() {
                     <AditionalDataReservationSection
                         form={form}
                         mutatioResult={confirmBookingResult}
+                        onUpdateBookingData={cancelBookingPayment}
+                        // wsConnectionResult={wsConnectionResult}
+                        disabled={generalDisabled}
                     ></AditionalDataReservationSection>
                     <PaymentSection
                         form={form}
                         mutatioResult={confirmBookingResult}
+                        wsConnectionResult={wsConnectionResult}
+                        disabled={generalDisabled}
                     ></PaymentSection>
                     <AdditionalInfoSection
                         form={form}
                         mutatioResult={confirmBookingResult}
+                        wsConnectionResult={wsConnectionResult}
+                        disabled={generalDisabled}
                     >
                         <div className="flex flex-col gap-2 justify-center items-center md:flex-row md:justify-between">
                             <FormField
@@ -216,6 +266,7 @@ export default function Page() {
                                             <Checkbox
                                                 checked={field.value}
                                                 onCheckedChange={field.onChange}
+                                                disabled={generalDisabled}
                                             />
                                         </FormControl>
                                         <div className="space-y-1 leading-none">
@@ -255,6 +306,7 @@ export default function Page() {
                                 type="submit"
                                 size={'lg'}
                                 className="rounded-none text-base md:text-xl h-fit"
+                                disabled={generalDisabled}
                             >
                                 <span className="mx-3 !my-2 ">
                                     {t('submitSection.submitButton.label')}

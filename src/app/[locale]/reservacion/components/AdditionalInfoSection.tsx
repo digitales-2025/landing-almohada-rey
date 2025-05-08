@@ -21,6 +21,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import { BaseApiResponse } from '@/types/api/types';
 import { FormValues } from '../hooks/server.booking.schema';
+import { BookingWebSocketHookReturnType } from '../hooks/useBookingWs';
 import {
     inputCommonClassnames,
     labelClassname,
@@ -34,13 +35,16 @@ interface Props {
         ConfirmBookingDtoForSchema,
         unknown
     >;
+    wsConnectionResult: BookingWebSocketHookReturnType;
     children?: React.ReactNode;
+    disabled?: boolean;
 }
 
 export const AdditionalInfoSection = ({
     form,
     mutatioResult,
     children,
+    disabled,
 }: Props) => {
     const t = useTranslations('IndexPageBooking.AdditionalInfoSection');
     return (
@@ -59,7 +63,7 @@ export const AdditionalInfoSection = ({
                             <Textarea
                                 {...field}
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>

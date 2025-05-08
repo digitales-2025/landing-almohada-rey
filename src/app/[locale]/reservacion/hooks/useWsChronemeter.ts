@@ -66,3 +66,5 @@ export const formatTimeLeft = (timeLeft: number) => {
     const seconds = timeLeft % 60;
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 };
+
+export type ChronometerHookReturnType = ReturnType<typeof useChronometer>;

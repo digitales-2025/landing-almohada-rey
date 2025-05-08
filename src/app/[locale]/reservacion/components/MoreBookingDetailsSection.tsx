@@ -22,7 +22,7 @@ import {
     FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { PhoneInput } from '@/components/ui/phone-input';
+import { MemoizedPhoneInput } from '@/components/ui/phone-input';
 import {
     Select,
     SelectContent,
@@ -42,6 +42,7 @@ import { formatPrice } from '@/lib/i18n-formatPrice';
 import { cn } from '@/lib/utils';
 import { BaseApiResponse } from '@/types/api/types';
 import { FormValues } from '../hooks/server.booking.schema';
+// import { BookingWebSocketHookReturnType } from '../hooks/useBookingWs';
 import { UpdateReservationDialog } from './updateForm/UpdateReservationDialog';
 
 type FormGridClassnames = Record<
@@ -73,6 +74,9 @@ interface Props {
         ConfirmBookingDtoForSchema,
         unknown
     >;
+    onUpdateBookingData: () => void;
+    // wsConnectionResult: BookingWebSocketHookReturnType;
+    disabled?: boolean;
 }
 
 export const textColor = 'text-secondary';
@@ -92,6 +96,9 @@ export const inputCommonClassnames = cn(
 export const AditionalDataReservationSection = ({
     form,
     mutatioResult,
+    onUpdateBookingData,
+    // wsConnectionResult,
+    disabled,
 }: Props) => {
     const t = useTranslations('IndexPageBooking.moreReservationDetailsSection');
     const locale = useLocale();
@@ -189,7 +196,8 @@ export const AditionalDataReservationSection = ({
                         showUpdateDialog && 
                     } */}
                     <UpdateReservationDialog
-                    // reservationData={}
+                        onUpdateBookingData={onUpdateBookingData}
+                        // reservationData={}
                     ></UpdateReservationDialog>
                 </div>
                 <FormField
@@ -199,6 +207,7 @@ export const AditionalDataReservationSection = ({
                         <FormItem className="flex flex-row items-start space-x-2 space-y-0 rounded-none w-full">
                             <FormControl>
                                 <Checkbox
+                                    disabled={disabled}
                                     checked={field.value}
                                     onCheckedChange={field.onChange}
                                 />
@@ -241,6 +250,7 @@ export const AditionalDataReservationSection = ({
                                     <Select
                                         onValueChange={field.onChange}
                                         defaultValue={field.value}
+                                        disabled={disabled}
                                     >
                                         <SelectTrigger
                                             className={inputCommonClassnames}
@@ -285,7 +295,9 @@ export const AditionalDataReservationSection = ({
                                         {...field}
                                         type="text"
                                         className={inputCommonClassnames}
-                                        disabled={mutatioResult.isPending}
+                                        disabled={
+                                            mutatioResult.isPending || disabled
+                                        }
                                     />
                                 </FormControl>
                                 <FormDescription>
@@ -311,7 +323,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="text"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -335,7 +347,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="text"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -359,7 +371,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="email"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -369,6 +381,22 @@ export const AditionalDataReservationSection = ({
                     </FormItem>
                 )}
             />,
+            // <FormField
+            //     key={'formItem6'}
+            //     control={form.control}
+            //     name="customer.phone"
+            //     render={({ field }) => (
+            //         <MemoizedPhoneInputField
+            //             field={field}
+            //             label={t('input5.label')}
+            //             description={t('input5.description')}
+            //             defaultCountry={defaultTelCode}
+            //             placeholder={defaultTelNumberPlaceholder}
+            //             locale={locale}
+            //             disabled={mutatioResult.isPending || disabled || false}
+            //         />
+            //     )}
+            // />,
             <FormField
                 key={'formItem6'}
                 control={form.control}
@@ -379,7 +407,7 @@ export const AditionalDataReservationSection = ({
                             {t('input5.label')}
                         </FormLabel>
                         <FormControl>
-                            <PhoneInput
+                            <MemoizedPhoneInput
                                 defaultCountry={defaultTelCode}
                                 placeholder={defaultTelNumberPlaceholder}
                                 value={field.value}
@@ -395,7 +423,7 @@ export const AditionalDataReservationSection = ({
                                     'w-fit md:min-w-[80px]'
                                 )}
                                 flagSize="medium"
-                                disabled={mutatioResult.isPending}
+                                disabled={mutatioResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
