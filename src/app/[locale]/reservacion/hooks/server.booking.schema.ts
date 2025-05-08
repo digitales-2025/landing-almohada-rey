@@ -17,17 +17,17 @@ const tomorrow = getCheckOutDate(tomorrowDate);
 const t = await getTranslations('IndexPageBooking');
 const reservationSchema = z.object({
     checkInDate: z.date().min(today, {
-        message: t('updateReservationDates.input1.errors.dateError.before'),
+        message: t('updateReservationDates.input3.errors.dateError.before'),
     }),
     checkOutDate: z.date().min(tomorrow, {
-        message: t('updateReservationDates.input2.errors.dateError.before'),
+        message: t('updateReservationDates.input4.errors.dateError.before'),
     }),
     guestNumber: z.coerce
         .number({
             required_error: t('updateReservationDates.input3.errors.required'),
         })
         .min(1, {
-            message: t('updateReservationDates.input3.errors.min', {
+            message: t('updateReservationDates.input1.errors.min', {
                 min: String(1),
             }),
         }),
@@ -36,7 +36,7 @@ const reservationSchema = z.object({
             required_error: t('updateReservationDates.input4.errors.required'),
         })
         .uuid({
-            message: t('updateReservationDates.input4.errors.noAvailable'),
+            message: t('updateReservationDates.input2.errors.noAvailable'),
         }),
 }) satisfies z.ZodType<ReservationUpdateDtoForSchema>;
 
@@ -185,7 +185,7 @@ export const formSchema = z
             return checkInDate < checkOutDate;
         },
         {
-            message: t('updateReservationDates.input1.errors.dateError.after'),
+            message: t('updateReservationDates.input4.errors.dateError.after'),
 
             path: ['checkOutDate'],
         }

@@ -285,42 +285,35 @@
                 "label": "Regresar a Inicio"
             }
         },
+        "chronometer":{
+            "timeLeftLabel": "Tiempo restante: {timeLeft}"
+        },
         "updateReservationDates": {
+            "title": "¿Estas seguro de que deseas actualizar la reserva?",
+            "description": "Al actualizar la reserva, se eliminará la reserva actual y tendrá que crear una nueva reserva.",
+            "submitButton": {
+                "label": "Actualizar"
+            },
+            "cancelButton": {
+                "label": "Cancelar"
+            },
+            "generalError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Regresar a Inicio"
+                }
+            },
             "input1": {
-                "label": "Check In",
-                "placeholder": "Ingrese su fecha de llegada",
-                "description": "Máximo hasta {maxDate}",
-                "errors": {
-                    "required": "Este campo es obligatorio",
-                    "dateError": {
-                        "before": "La fecha de check-in debe ser hoy o posterior",
-                        "after": "La fecha de check-out debe ser posterior al check-in",
-                        "invalid": "La fecha ingresada no es válida"
-                    }
-                }
-            },
-            "input2": {
-                "label": "Check Out",
-                "placeholder": "Ingrese su fecha de salida",
-                "description": "Su fecha de salida",
-                "errors": {
-                    "required": "Este campo es obligatorio",
-                    "dateError": {
-                        "before": "La fecha de check-out debe ser mañana o posterior",
-                        "invalid": "La fecha ingresada no es válida"
-                    }
-                }
-            },
-            "input3": {
                 "label": "Número de huéspedes",
                 "placeholder": "Ingrese el número de huéspedes",
                 "description": "Máximo {guestNumber} huéspedes",
+                "placeholderDescription": "Escoja habitación para saber el max. de huéspedes",
                 "errors": {
                     "required": "Este campo es obligatorio",
-                    "min": "El número de huéspedes no puede ser menor a {min}"
+                    "min": "Mínimo nro. de huéspedes {min}"
                 }
             },
-            "input4": {
+            "input2": {
                 "label": "Habitación",
                 "placeholder": "Seleccione una habitación",
                 "description": {
@@ -331,11 +324,40 @@
                     "required": "Este campo es obligatorio",
                     "noAvailable": "No hay habitaciones disponibles"
                 }
+            },
+            "input3": {
+                "label": "Check In",
+                "placeholder": "Ingrese su fecha de llegada",
+                "description": "Máximo hasta {maxDate}",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser anterior a la fecha de salida",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
+            },
+            "input4": {
+                "label": "Check Out",
+                "placeholder": "Ingrese su fecha de salida",
+                "description": "Su fecha de salida",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser posterior a la fecha de check-in",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
             }
         },
         "moreReservationDetailsSection": {
             "title": "Reserve con nosotros",
             "description": "A un paso de la estancia perfecta",
+            "triggerButton": {
+                "label": "Modificar"
+            },
             "input1": {
                 "label": "Documento de Identidad",
                 "docTypeField": {
@@ -468,7 +490,7 @@
             "input1": {
                 "label1": "Acepto los",
                 "label2": "y la",
-                "termsAndConditions": "Terminos y condiciones",
+                "termsAndConditions": "Términos y condiciones",
                 "privacyPolicy": "Política de privacidad",
                 "description": "Obligatorio",
                 "errors": {

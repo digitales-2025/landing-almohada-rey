@@ -18,7 +18,6 @@ import {
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
 import { SectionHeader } from '@/components/layout/section/section-header';
-// import { useRooms } from '@/hooks/queries/rooms/useRooms';
 import { formatPrice } from '@/lib/i18n-formatPrice';
 import { cn } from '@/lib/utils';
 
@@ -84,10 +83,10 @@ export async function RoomsSection() {
                         ' ' +
                         (error instanceof Error ? error.message : '')
                     }
-                    onRefetch={() => {
-                        /* No hay refetch en server, solo recarga la página */ window.location.reload();
-                    }}
-                    refetchButtonLabel={t('fetchingError.actionButton.label')}
+                    // onRefetch={() => {
+                    //     /* No hay refetch en server, solo recarga la página */ window.location.reload();
+                    // }}
+                    // refetchButtonLabel={t('fetchingError.actionButton.label')}
                 />
             </SectionWrapper>
         );

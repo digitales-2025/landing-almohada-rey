@@ -34,9 +34,14 @@ interface Props {
         ConfirmBookingDtoForSchema,
         unknown
     >;
+    children?: React.ReactNode;
 }
 
-export const AdditionalInfoSection = ({ form, mutatioResult }: Props) => {
+export const AdditionalInfoSection = ({
+    form,
+    mutatioResult,
+    children,
+}: Props) => {
     const t = useTranslations('IndexPageBooking.AdditionalInfoSection');
     return (
         <SectionWrapper
@@ -64,6 +69,8 @@ export const AdditionalInfoSection = ({ form, mutatioResult }: Props) => {
                     </FormItem>
                 )}
             />
+
+            {children}
         </SectionWrapper>
     );
 };

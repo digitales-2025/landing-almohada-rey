@@ -27,10 +27,10 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
 
     const reservationSchema = z.object({
         checkInDate: z.date().min(today, {
-            message: t('updateReservationDates.input1.errors.dateError.before'),
+            message: t('updateReservationDates.input3.errors.dateError.before'),
         }),
         checkOutDate: z.date().min(tomorrow, {
-            message: t('updateReservationDates.input2.errors.dateError.before'),
+            message: t('updateReservationDates.input4.errors.dateError.before'),
         }),
         guestNumber: z.coerce
             .number({
@@ -39,7 +39,7 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
                 ),
             })
             .min(1, {
-                message: t('updateReservationDates.input3.errors.min', {
+                message: t('updateReservationDates.input1.errors.min', {
                     min: String(1),
                 }),
             }),
@@ -50,7 +50,7 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
                 ),
             })
             .uuid({
-                message: t('updateReservationDates.input4.errors.noAvailable'),
+                message: t('updateReservationDates.input2.errors.noAvailable'),
             }),
     }) satisfies z.ZodType<ReservationUpdateDtoForSchema>;
 
@@ -211,7 +211,7 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
             },
             {
                 message: t(
-                    'updateReservationDates.input1.errors.dateError.after'
+                    'updateReservationDates.input3.errors.dateError.after'
                 ),
 
                 path: ['checkOutDate'],

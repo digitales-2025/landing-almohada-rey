@@ -30,10 +30,19 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@/components/ui/table';
 import { formatPrice } from '@/lib/i18n-formatPrice';
 import { cn } from '@/lib/utils';
 import { BaseApiResponse } from '@/types/api/types';
 import { FormValues } from '../hooks/server.booking.schema';
+import { UpdateReservationDialog } from './updateForm/UpdateReservationDialog';
 
 type FormGridClassnames = Record<
     string,
@@ -129,20 +138,73 @@ export const AditionalDataReservationSection = ({
 
     const formGrid: FormGrid = {
         items: [
-            <div key={'formItem1'}>
+            <div
+                key={'formItem1'}
+                className="col-span-2 lg:col-span-1 space-y-4 w-full"
+            >
+                <div className="flex space-x-2 items-end">
+                    <Table>
+                        <TableHeader className="pl-0">
+                            <TableRow className="text-lg font-semibold">
+                                <TableHead
+                                    className="pl-0 capitalize"
+                                    colSpan={2}
+                                >
+                                    <div className="flex flex-col">
+                                        <span>{'suite'}</span>
+                                        <span className="text-sm font-normal opacity-80">
+                                            {'todas la noches y los huespedes'}
+                                        </span>
+                                    </div>
+                                </TableHead>
+                                <TableHead className="flex items-start">
+                                    <span className="h-fit">
+                                        {'Total en numeros'}
+                                    </span>
+                                </TableHead>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                            {/* <TableRow>
+                                <TableCell className='pl-0 text-wrap capitalize' colSpan={2}>todas la noches y los huespedes</TableCell>
+                            </TableRow> */}
+                            <TableRow className="capitalize">
+                                <TableCell colSpan={2} className="pl-0">
+                                    {'check in'}
+                                </TableCell>
+                                <TableCell>{'total check in'}</TableCell>
+                            </TableRow>
+                            <TableRow className="capitalize">
+                                <TableCell colSpan={2} className="pl-0">
+                                    {'check out'}
+                                </TableCell>
+                                <TableCell>{'total check out'}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                    {/* <Button type='button' variant={'secondary'} onClick={()=> setShowUpdateDialog(true)} className='rounded-none h-fit my-3' size={'lg'}>
+                        <span className='mx-3 !my-2 text-sm md:text-lg lg:text-xl'>{t('triggerButton.label')}</span>
+                    </Button>
+                    {
+                        showUpdateDialog && 
+                    } */}
+                    <UpdateReservationDialog
+                    // reservationData={}
+                    ></UpdateReservationDialog>
+                </div>
                 <FormField
                     control={form.control}
                     name="didAcceptExtraServices"
                     render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-none p-4">
+                        <FormItem className="flex flex-row items-start space-x-2 space-y-0 rounded-none w-full">
                             <FormControl>
                                 <Checkbox
                                     checked={field.value}
                                     onCheckedChange={field.onChange}
                                 />
                             </FormControl>
-                            <div className="space-y-1 leading-none">
-                                <FormLabel>
+                            <div className="space-y-1 leading-none text-sm opacity-80 hover:opacity-100 text-secondary font-light">
+                                <FormLabel className="text-sm">
                                     {t('input6.label', {
                                         amount: formatPrice(
                                             provisionalAmount.amount.toString(),
@@ -240,7 +302,7 @@ export const AditionalDataReservationSection = ({
                 control={form.control}
                 name="customer.name"
                 render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                         <FormLabel className={labelClassname}>
                             {t('input2.label')}
                         </FormLabel>
@@ -264,7 +326,7 @@ export const AditionalDataReservationSection = ({
                 control={form.control}
                 name="customer.lastname"
                 render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                         <FormLabel className={labelClassname}>
                             {t('input3.label')}
                         </FormLabel>
@@ -288,7 +350,7 @@ export const AditionalDataReservationSection = ({
                 control={form.control}
                 name="customer.email"
                 render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                         <FormLabel className={labelClassname}>
                             {t('input4.label')}
                         </FormLabel>
@@ -312,7 +374,7 @@ export const AditionalDataReservationSection = ({
                 control={form.control}
                 name="customer.phone"
                 render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="w-full">
                         <FormLabel className={labelClassname}>
                             {t('input5.label')}
                         </FormLabel>
@@ -364,7 +426,8 @@ export const AditionalDataReservationSection = ({
             <div
                 className={cn(
                     formGridClassnames.generalGrid.base,
-                    formGridClassnames.generalGrid.md
+                    formGridClassnames.generalGrid.md,
+                    'place-items-start'
                 )}
             >
                 {formGrid.items.map((item, index) => (

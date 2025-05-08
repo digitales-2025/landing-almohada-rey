@@ -1,0 +1,68 @@
+import { useCallback, useRef, useState } from 'react';
+
+export const useChronometer = () => {
+    const [timeLeft, setTimeLeft] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const startChronometer = useCallback((duration: number) => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        setTimeLeft(duration);
+        setIsRunning(true);
+        intervalRef.current = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(intervalRef.current!);
+                    setIsRunning(false);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+    }, []);
+    const stopChronometer = useCallback(() => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
+        setIsRunning(false);
+    }, []);
+
+    const pauseChronometer = useCallback(() => {
+        if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+        }
+        setIsRunning(false);
+    }, []);
+
+    const resumeChronometer = useCallback(() => {
+        if (intervalRef.current) return;
+        setIsRunning(true);
+        intervalRef.current = setInterval(() => {
+            setTimeLeft(prev => {
+                if (prev <= 1) {
+                    clearInterval(intervalRef.current!);
+                    setIsRunning(false);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+    }, []);
+
+    return {
+        timeLeft,
+        isRunning,
+        startChronometer,
+        stopChronometer,
+        resumeChronometer,
+        pauseChronometer,
+    };
+};
+
+export const formatTimeLeft = (timeLeft: number) => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+};

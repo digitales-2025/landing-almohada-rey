@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
@@ -9,6 +9,7 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -17,13 +18,17 @@ import {
     Drawer,
     DrawerContent,
     DrawerDescription,
+    DrawerFooter,
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
 } from '@/components/ui/drawer';
+// import { useBooking } from '@/hooks/queries/booking/useBooking';
 import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useRouter } from '@/i18n/navigation';
+// import { UpdateReservationForm } from './UpdateReservationForm';
+import { defaultLocale } from '@/i18n/routing';
 import {
     ReservationUpdateDto,
     useUpdateBookingForm,
@@ -33,17 +38,38 @@ interface Props {
     reservationData?: ReservationUpdateDto;
 }
 
-export const UpdateReservationDialog = ({ reservationData }: Props) => {
-    console.log('reservationData', reservationData);
-    const t = useTranslations('IndexPageBooking.updateReservationDates');
+export const UpdateReservationDialog = (
+    {
+        //reservationData
+    }: Props
+) => {
+    // console.log('reservationData', reservationData);
+    const t = useTranslations('IndexPageBooking');
     const isDesktop = useMediaQuery('(min-width: 640px)');
-
     const router = useRouter();
     const locale = useLocale();
-    console.log('locale', locale);
+    const [open, setOpen] = useState(false);
+
+    // const handleOpen = () => {
+    //     setOpen(true);
+    // };
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleUpdate = () => {
+        handleClose();
+        // aqui el metodo para cancelar el temporizador y la reserva
+        const route =
+            locale !== defaultLocale
+                ? `/rooms#booking`
+                : '/habitaciones#reservar';
+        router.push(route);
+    };
+
     const fakeReservation: ReservationUpdateDto = {
-        checkInDate: new Date('2024-05-15T15:00:00Z').toISOString(),
-        checkOutDate: new Date('2024-05-18T11:00:00Z').toISOString(),
+        checkInDate: new Date('2025-05-15T15:00:00Z').toISOString(),
+        checkOutDate: new Date('2025-05-18T11:00:00Z').toISOString(),
         id: '550e8400-e29b-41d4-a716-446655440000',
         roomId: '550e8400-e29b-41d4-a716-446655440500',
         guestNumber: 2,
@@ -54,6 +80,9 @@ export const UpdateReservationDialog = ({ reservationData }: Props) => {
         //onSubmit,
         //mutation
     } = useUpdateBookingForm(fakeReservation);
+
+    // const { useUpdateBooking } = useBooking();
+    // const updateBookingResult = useUpdateBooking(fakeReservation.id);
     const values = form.watch();
     const defaultAvailabilityDataRef = useRef<CheckRoomAvailabilityDto>({
         checkInDate: values.checkInDate.toISOString(),
@@ -97,7 +126,7 @@ export const UpdateReservationDialog = ({ reservationData }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); // array de dependencias vacío para ejecutar solo al montar
 
-    if (query.isLoading) {
+    if (query.isLoading || !query.data) {
         return <LargeLoadingFormSkeleton></LargeLoadingFormSkeleton>;
     }
 
@@ -105,7 +134,9 @@ export const UpdateReservationDialog = ({ reservationData }: Props) => {
         return (
             <LargeFormError
                 onRetry={() => router.push('/')}
-                retryButtonLabel={t('input1.errors.dateError.invalid')} //Cambiar el mensaje
+                retryButtonLabel={t(
+                    'updateReservationDates.generalError.actionButton.label'
+                )} //Cambiar el mensaje
             ></LargeFormError>
         );
     }
@@ -116,38 +147,126 @@ export const UpdateReservationDialog = ({ reservationData }: Props) => {
 
     if (isDesktop) {
         return (
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button variant="outline">Update</Button>
+                    <Button
+                        type="button"
+                        variant={'secondary'}
+                        className="rounded-none h-fit my-3"
+                        size={'lg'}
+                    >
+                        <span className="mx-3 !my-2 text-sm md:text-lg lg:text-xl">
+                            {t(
+                                'moreReservationDetailsSection.updateButton.label'
+                            )}
+                        </span>
+                    </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] md:max-w-[600px] lg:max-w-[800px] xl:max-w-[1000px]">
                     <DialogHeader>
-                        <DialogTitle>Are you sure?</DialogTitle>
+                        <DialogTitle className="text-secondary">
+                            {t('updateReservationDates.title')}
+                        </DialogTitle>
                         <DialogDescription>
-                            This action cannot be undone. This will permanently
-                            delete your account and remove your data from our
-                            servers.
+                            {t('updateReservationDates.description')}
                         </DialogDescription>
                     </DialogHeader>
+                    {/* <UpdateReservationForm
+                        form={form}
+                        onSubmit={async data => {
+                            // Aquí puedes manejar el envío del formulario
+                            console.log('Form data:', data);
+                            // await mutation.mutateAsync(data);
+                            // handleClose();
+                        }}
+                        updateMutationResult={updateBookingResult}
+                        roomsAvailable={query.data}
+                        handleCheckAvailability={handleCheckAvailability}
+                    ></UpdateReservationForm> */}
+                    <DialogFooter>
+                        <Button
+                            variant={'outline'}
+                            type="button"
+                            onClick={handleClose}
+                            className="rounded-none text-base h-fit"
+                        >
+                            <span>
+                                {t('updateReservationDates.cancelButton.label')}
+                            </span>
+                        </Button>
+                        <Button
+                            variant={'default'}
+                            type="submit"
+                            onClick={handleUpdate}
+                            className="rounded-none text-base h-fit"
+                        >
+                            <span>
+                                {t('updateReservationDates.submitButton.label')}
+                            </span>
+                        </Button>
+                    </DialogFooter>
                 </DialogContent>
             </Dialog>
         );
     }
 
     return (
-        <Drawer>
+        <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-                <Button variant="outline">Update</Button>
+                <Button
+                    type="button"
+                    variant={'outline'}
+                    className="rounded-none h-fit my-3"
+                    size={'lg'}
+                >
+                    <span className="mx-3 !my-2 text-sm md:text-lg lg:text-xl">
+                        {t('moreReservationDetailsSection.updateButton.label')}
+                    </span>
+                </Button>
             </DrawerTrigger>
             <DrawerContent className="sm:max-w-[425px]">
                 <DrawerHeader>
-                    <DrawerTitle>Are you sure?</DrawerTitle>
+                    <DrawerTitle className="text-secondary">
+                        {t('updateReservationDates.title')}
+                    </DrawerTitle>
                     <DrawerDescription>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
+                        {t('updateReservationDates.description')}
                     </DrawerDescription>
                 </DrawerHeader>
+                {/* <UpdateReservationForm
+                    form={form}
+                    onSubmit={async data => {
+                        // Aquí puedes manejar el envío del formulario
+                        console.log('Form data:', data);
+                        // await mutation.mutateAsync(data);
+                        // handleClose();
+                    }}
+                    updateMutationResult={updateBookingResult}
+                    roomsAvailable={query.data}
+                    handleCheckAvailability={handleCheckAvailability}
+                ></UpdateReservationForm> */}
+                <DrawerFooter>
+                    <Button
+                        variant={'destructive'}
+                        type="button"
+                        onClick={handleClose}
+                        className="rounded-none text-base h-fit"
+                    >
+                        <span>
+                            {t('updateReservationDates.cancelButton.label')}
+                        </span>
+                    </Button>
+                    <Button
+                        variant={'default'}
+                        type="submit"
+                        onClick={handleClose}
+                        className="rounded-none text-base h-fit"
+                    >
+                        <span>
+                            {t('updateReservationDates.submitButton.label')}
+                        </span>
+                    </Button>
+                </DrawerFooter>
             </DrawerContent>
         </Drawer>
     );

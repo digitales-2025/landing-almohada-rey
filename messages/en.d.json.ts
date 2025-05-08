@@ -288,42 +288,35 @@ declare const messages: {
                 label: 'Return to Home';
             };
         };
+        chronometer: {
+            timeLeftLabel: 'Tiempo restante: {timeLeft}';
+        };
         updateReservationDates: {
+            title: 'Are you sure you want to modify your reservation?';
+            description: "By clicking in the 'Update' button you will cancel your current reservation and create a new one with the new dates.";
+            submitButton: {
+                label: 'Update';
+            };
+            cancelButton: {
+                label: 'Cancel';
+            };
+            generalError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Return to Home';
+                };
+            };
             input1: {
-                label: 'Check In';
-                placeholder: 'Enter your arrival date';
-                description: 'Maximum until {maxDate}';
-                errors: {
-                    required: 'This field is required';
-                    dateError: {
-                        before: 'Check-in date must be today or later';
-                        after: 'Check-out date must be after check-in date';
-                        invalid: 'The date entered is invalid';
-                    };
-                };
-            };
-            input2: {
-                label: 'Check Out';
-                placeholder: 'Enter your departure date';
-                description: 'Your departure date';
-                errors: {
-                    required: 'This field is required';
-                    dateError: {
-                        before: 'Check-out date must be tomorrow or later';
-                        invalid: 'The date entered is invalid';
-                    };
-                };
-            };
-            input3: {
                 label: 'Number of guests';
                 placeholder: 'Enter the number of guests';
                 description: 'Maximum {guestNumber} guests';
+                placeholderDescription: 'Choose a room to know the max. number of guests';
                 errors: {
                     required: 'This field is required';
-                    min: 'The number of guests cannot be less than {min}';
+                    min: 'Minimum {min} guests';
                 };
             };
-            input4: {
+            input2: {
                 label: 'Room';
                 placeholder: 'Select a room';
                 description: {
@@ -335,10 +328,39 @@ declare const messages: {
                     noAvailable: 'No rooms available';
                 };
             };
+            input3: {
+                label: 'Check In';
+                placeholder: 'Enter your arrival date';
+                description: 'Maximum until {maxDate}';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be before check-out date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input4: {
+                label: 'Check Out';
+                placeholder: 'Enter your departure date';
+                description: 'Your departure date';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be after check-in date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
         };
         moreReservationDetailsSection: {
             title: 'Book with us';
             description: 'One step away from the perfect stay';
+            triggerButton: {
+                label: 'Modify';
+            };
             input1: {
                 label: 'Identity Document';
                 docTypeField: {
