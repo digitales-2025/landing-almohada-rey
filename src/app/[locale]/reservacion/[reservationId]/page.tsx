@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
@@ -20,16 +21,16 @@ import {
     FormLabel,
 } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
-import { AdditionalInfoSection } from './components/AdditionalInfoSection';
-import { BookingHeroSection } from './components/bookingHeroSection';
-import { AditionalDataReservationSection } from './components/MoreBookingDetailsSection';
-import { PaymentSection } from './components/PaymentSection';
-import { useBookingForm } from './hooks/useBookingForm';
-import { useBookingWebSocket } from './hooks/useBookingWs';
+import { AdditionalInfoSection } from '../components/AdditionalInfoSection';
+import { BookingHeroSection } from '../components/bookingHeroSection';
+import { AditionalDataReservationSection } from '../components/MoreBookingDetailsSection';
+import { PaymentSection } from '../components/PaymentSection';
+import { useBookingForm } from '../hooks/useBookingForm';
+import { useBookingWebSocket } from '../hooks/useBookingWs';
 import {
     ChronometerHookReturnType,
     formatTimeLeft,
-} from './hooks/useWsChronemeter';
+} from '../hooks/useWsChronemeter';
 
 export const Chronometer = ({
     warningWhen,
@@ -89,6 +90,7 @@ export const Chronometer = ({
 };
 
 export default function Page() {
+    const { reservationId } = useParams<{ reservationId: string }>();
     const t = useTranslations('IndexPageBooking');
     const locale = useLocale();
     const { form, confirmBookingResult, onSubmit } = useBookingForm(
@@ -99,10 +101,11 @@ export default function Page() {
     // const { timeLeft, isRunning, startChronometer, stopChronometer } =
     //     useChronometer();
 
-    const wsConnectionResult = useBookingWebSocket(locale);
+    const wsConnectionResult = useBookingWebSocket(locale, reservationId);
     const {
         isConnected,
         isConnecting,
+        isloading,
         startBookingPayment,
         cancelBookingPayment,
         // completeBookingPayment,
@@ -118,7 +121,7 @@ export default function Page() {
         // stopChronometer
     } = chronometer;
 
-    const generalDisabled = !isConnected || isConnecting;
+    const generalDisabled = !isConnected || isConnecting || isloading;
 
     // const handleRedirection = () => {
     //     cancelBookingPayment();

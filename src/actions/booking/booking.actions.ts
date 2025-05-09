@@ -1,17 +1,53 @@
 'use server';
 
+import { defaultLocale, SupportedLocales } from '@/i18n/routing';
 import { bookingOps } from '../action-setup';
 import {
     CheckRoomAvailabilityDto,
     ConfirmBookingDto,
     ConfirmBookingDtoForSchema,
+    CreateLandingReservationDto,
+    CreateReservationDtoForSchema,
     LandingRequestDto,
     ReservationUpdateDto,
     ReservationUpdateDtoForSchema,
 } from './booking';
 
-export async function createBookingSummary(data: any) {
-    return bookingOps.create('/booking', data);
+export async function createBookingSummary(
+    data: CreateReservationDtoForSchema,
+    locale: SupportedLocales
+) {
+    try {
+        const dtoToSend: CreateLandingReservationDto = {
+            ...data,
+            checkInDate: data.checkInDate.toISOString(),
+            checkOutDate: data.checkOutDate.toISOString(),
+        };
+        const newBookingForLanding = await bookingOps.create(
+            '/landing-reservation/create-reservation?locale=' + locale,
+            dtoToSend
+        );
+        if ('error' in newBookingForLanding) {
+            throw new Error(newBookingForLanding.error);
+        }
+        if (!newBookingForLanding.success) {
+            throw new Error(newBookingForLanding.message);
+        }
+        if (newBookingForLanding.data.id) {
+            // redirect({
+            //     href: '/reservacion/' + newBookingForLanding.data.id,
+            //     locale: locale,
+            // });
+            return newBookingForLanding;
+        }
+    } catch (error) {
+        if (error instanceof Error) {
+            throw new Error(error.message);
+        }
+        throw new Error(
+            locale == defaultLocale ? 'Error desconocido' : 'Unknown Error'
+        );
+    }
 }
 
 export async function getAvailableRooms(

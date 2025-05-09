@@ -24,9 +24,10 @@ const clientListenEvents = {
     onErrorBookingPayment: 'onErrorBookingPayment',
 };
 
-export function useBookingWebSocket(locale: string) {
+export function useBookingWebSocket(locale: string, reservationId: string) {
     const [isConnected, setIsConnected] = useState(false);
     const [isConnecting, setIsConnecting] = useState(true);
+    const [isloading, setIsLoading] = useState(false);
     const [clientId, setClientId] = useState<string | null>(null);
     const socketRef = useRef<Socket | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -78,6 +79,7 @@ export function useBookingWebSocket(locale: string) {
 
         socket.on(clientListenEvents.onConnection, data => {
             console.log('Evento de conexión:', data);
+            setIsLoading(false);
             if (data.clientId === socket.id && !data.error) {
                 setClientId(data.clientId);
                 // startBookingPayment();
@@ -92,6 +94,7 @@ export function useBookingWebSocket(locale: string) {
                     res.data.timeLimit +
                     ' segundos para completar el pago.'
             );
+            setIsLoading(false);
             // Opcionalmente puedes iniciar el cronómetro si el servidor lo indica
             if (res.clientId === socket.id && res.data.timeLimit) {
                 startChronometer(res.data.timeLimit ?? 60);
@@ -99,6 +102,7 @@ export function useBookingWebSocket(locale: string) {
         });
 
         socket.on(clientListenEvents.onCancelBookingPayment, data => {
+            setIsLoading(false);
             if (data.clientId === socket.id) {
                 stopChronometer();
             }
@@ -115,36 +119,17 @@ export function useBookingWebSocket(locale: string) {
         };
     }, [startChronometer, stopChronometer]);
 
-    // Iniciar el cronómetro de reserva
-    const startBookingPayment = useCallback(() => {
-        //startChronometer(60); // Inicia el cronómetro con un tiempo de 60 segundos
-        if (socketRef.current && clientId) {
-            console.log('Iniciando cronómetro de reserva');
-            socketRef.current.emit(clientEmitEvents.startBookingPayment, {
-                clientId,
-                locale,
-            });
-        } else {
-            console.warn(
-                'No se puede iniciar el cronómetro: socket no conectado'
-            );
-            // Podemos reintentar la conexión
-            if (socketRef.current && !socketRef.current.connected) {
-                socketRef.current.connect();
-            }
-        }
-        //
-    }, [clientId, locale]);
-
     // Cancelar la reserva
     const cancelBookingPayment = useCallback(() => {
         stopChronometer();
 
         if (socketRef.current && clientId) {
             console.log('Cancelando reserva');
+            setIsLoading(false);
             socketRef.current.emit(clientEmitEvents.cancelBookingPayment, {
                 clientId,
                 locale,
+                reservationId,
             });
         }
 
@@ -153,42 +138,7 @@ export function useBookingWebSocket(locale: string) {
                 ? `/rooms#booking`
                 : '/habitaciones#reservar';
         router.replace(route); // Redirigir a la página de inicio
-    }, [clientId, locale, stopChronometer, router]);
-
-    // Completar la reserva
-    const completeBookingPayment = useCallback(
-        (bookingData?: any) => {
-            stopChronometer();
-            if (socketRef.current && clientId) {
-                console.log('Completando reserva');
-                socketRef.current.emit(
-                    clientEmitEvents.completeBookingPayment,
-                    {
-                        clientId,
-                        locale,
-                        data: bookingData,
-                    }
-                );
-            }
-        },
-        [clientId, locale, stopChronometer]
-    );
-
-    // Notificar error en la reserva
-    const notifyBookingError = useCallback(
-        (errorData?: any) => {
-            stopChronometer();
-            if (socketRef.current && clientId) {
-                console.log('Error en la reserva');
-                socketRef.current.emit(clientEmitEvents.errorBookingPayment, {
-                    clientId,
-                    locale,
-                    error: errorData,
-                });
-            }
-        },
-        [clientId, locale, stopChronometer]
-    );
+    }, [clientId, locale, stopChronometer, router, reservationId]);
 
     const tryReconnection = useCallback((): Promise<boolean> => {
         return new Promise((resolve, reject) => {
@@ -216,9 +166,63 @@ export function useBookingWebSocket(locale: string) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [socketRef]);
 
+    // Iniciar el cronómetro de reserva
+    const startBookingPayment = useCallback(() => {
+        //startChronometer(60); // Inicia el cronómetro con un tiempo de 60 segundos
+        if (socketRef.current && clientId) {
+            console.log('Iniciando cronómetro de reserva');
+            setIsLoading(true);
+            socketRef.current.emit(clientEmitEvents.startBookingPayment, {
+                clientId,
+                locale,
+                reservationId,
+            });
+        } else {
+            tryReconnection();
+        }
+    }, [clientId, locale, tryReconnection, reservationId]);
+
+    // Completar la reserva
+    const completeBookingPayment = useCallback(
+        (bookingData?: any) => {
+            if (socketRef.current && clientId) {
+                console.log('Completando reserva');
+                setIsLoading(true);
+                stopChronometer();
+                socketRef.current.emit(
+                    clientEmitEvents.completeBookingPayment,
+                    {
+                        clientId,
+                        locale,
+                        reservationId,
+                        data: bookingData,
+                    }
+                );
+            }
+        },
+        [clientId, locale, stopChronometer, reservationId]
+    );
+
+    // Notificar error en la reserva
+    const notifyBookingError = useCallback(
+        (errorData?: any) => {
+            stopChronometer();
+            if (socketRef.current && clientId) {
+                console.log('Error en la reserva');
+                socketRef.current.emit(clientEmitEvents.errorBookingPayment, {
+                    clientId,
+                    locale,
+                    error: errorData,
+                });
+            }
+        },
+        [clientId, locale, stopChronometer]
+    );
+
     return {
         isConnected,
         isConnecting,
+        isloading,
         clientId,
         client: socketRef,
         error,

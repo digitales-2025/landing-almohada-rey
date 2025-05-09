@@ -6,6 +6,8 @@ import { components } from '@/types/api';
 // const t = await getTranslations('IndexPageBooking.moreReservationDetailsSection');
 export type Reservation = components['schemas']['Reservation'];
 export type DetailedReservation = components['schemas']['DetailedReservation'];
+export type CreateLandingReservationDto =
+    components['schemas']['CreateLandingReservationDto'];
 
 export type CustomerDocumentType = 'DNI' | 'PASSPORT' | 'FOREIGNER_CARD';
 export const CustomerDocumentTypeEnum: Record<
@@ -50,6 +52,8 @@ export type CheckRoomAvailabilityFormValues = {
     guestNumber: number;
     roomId?: string;
 };
+
+export type CreateReservationDtoForSchema = CheckRoomAvailabilityFormValues;
 
 export type ReservationUpdateDtoForSchema = {
     checkInDate: Date;

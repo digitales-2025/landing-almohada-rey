@@ -26,6 +26,7 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
+import { defaultLocale } from '@/i18n/routing';
 import {
     formatDateToLimaTimezone,
     getLimaTime,
@@ -35,7 +36,7 @@ import {
 import { cn } from '@/lib/utils';
 import { SmallFormError } from '../Errors/FormErrors';
 import { OneRowLoadingFormSkeleton } from '../loading/LoadingFormSkeleton';
-import { useSummaryBookingForm } from './summary-booking.hook';
+import { useSummaryBookingForm } from './useSummaryBookingForm';
 
 type SelectOption = {
     value: string;
@@ -49,6 +50,7 @@ export const BookingSummaryForm = () => {
         form,
         onSubmit,
         // isPending
+        mutation,
     } = useSummaryBookingForm();
     const values = form.watch();
     const defaultAvailabilityDataRef = useRef<CheckRoomAvailabilityDto>({
@@ -106,6 +108,14 @@ export const BookingSummaryForm = () => {
         return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
     }
 
+    if (mutation.isPending && !mutation.isError) {
+        toast.loading(
+            locale === defaultLocale
+                ? 'Creando reserva...'
+                : 'Creating booking...'
+        );
+    }
+
     const roomsAvailable = query.data;
 
     const roomOptions: SelectOption[] = roomsAvailable.map(room => {
@@ -161,6 +171,7 @@ export const BookingSummaryForm = () => {
                                         className={inputCommonClassnames}
                                         placeholder={t('input1.placeholder')}
                                         max={maxGuests ?? field.value ?? 0}
+                                        disabled={mutation.isPending}
                                         {...field}
                                         type="number"
                                     />
@@ -196,7 +207,10 @@ export const BookingSummaryForm = () => {
                                 <Select
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
-                                    disabled={query.data.length === 0}
+                                    disabled={
+                                        query.data.length === 0 ||
+                                        mutation.isPending
+                                    }
                                 >
                                     <FormControl>
                                         <SelectTrigger
@@ -272,6 +286,7 @@ export const BookingSummaryForm = () => {
                                         }
                                         field.onChange(newDate);
                                     }}
+                                    disabled={mutation.isPending}
                                     controlled={true}
                                     className={inputCommonClassnames}
                                 ></DatePicker>
@@ -316,6 +331,7 @@ export const BookingSummaryForm = () => {
                                     }}
                                     controlled={true}
                                     className={inputCommonClassnames}
+                                    disabled={mutation.isPending}
                                 ></DatePicker>
                                 <FormDescription>
                                     {t('input4.description')}
@@ -330,6 +346,7 @@ export const BookingSummaryForm = () => {
                             className="rounded-none text-sm md:text-base lg:text-p tracking-normal w-full leading-14 lg:leading-16 h-fit "
                             size={'lg'}
                             type="submit"
+                            disabled={mutation.isPending}
                         >
                             {t('submitButton.label')}
                         </Button>

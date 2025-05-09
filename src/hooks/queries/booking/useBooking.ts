@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import {
     CheckRoomAvailabilityDto,
     ConfirmBookingDtoForSchema,
+    CreateReservationDtoForSchema,
     ReservationUpdateDtoForSchema,
 } from '@/actions/booking/booking';
 import {
@@ -13,10 +14,13 @@ import {
     getAvailableRooms,
     updateBooking,
 } from '@/actions/booking/booking.actions';
+import { useRouter } from '@/i18n/navigation';
+import { defaultLocale, SupportedLocales } from '@/i18n/routing';
 
 export const useBooking = () => {
     // const queryClient = useQueryClient();
     const locale = useLocale();
+    const router = useRouter();
     const useRoomAvailabilityQuery = (
         availabityDto: CheckRoomAvailabilityDto
     ) => {
@@ -41,20 +45,30 @@ export const useBooking = () => {
         });
     };
 
-    const useCreateBooking = () => {
+    const useCreateBooking = (locale: SupportedLocales) => {
         return useMutation({
-            mutationFn: async (bookingData: any) => {
-                const response = await createBookingSummary(bookingData);
-                if ('error' in response) {
-                    throw new Error(response.error);
+            mutationFn: async (bookingData: CreateReservationDtoForSchema) => {
+                const newBookingForLanding = await createBookingSummary(
+                    bookingData,
+                    locale
+                );
+                if (!newBookingForLanding) {
+                    throw new Error(
+                        locale === defaultLocale
+                            ? 'Fallo la creacion de la reservación'
+                            : 'Booking creation failed'
+                    );
                 }
-                return response;
+                const { id } = newBookingForLanding.data;
+                router.replace({
+                    pathname: '/reservacion/' + id,
+                });
             },
             onSuccess: () => {
                 toast.success('Booking created successfully');
             },
             onError: (error: any) => {
-                toast.error(error.message || 'Failed to create booking');
+                toast.error(error.message ?? 'Failed to create booking');
             },
         });
     };

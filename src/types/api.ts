@@ -1224,6 +1224,40 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/landing-reservation/check-reservation-exists/{id}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Check if a reservation exists */
+        get: operations['ReservationController_checkReservationExists_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/landing-reservation/create-reservation': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create a reservation */
+        post: operations['ReservationController_createLandingReservation_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1343,13 +1377,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1409,13 +1443,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1458,13 +1492,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /**
@@ -1522,13 +1556,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /**
@@ -1617,13 +1651,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1816,13 +1850,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2095,13 +2129,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /**
@@ -2596,13 +2630,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             name: string;
@@ -2765,13 +2799,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.642Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-06T16:05:57.178Z
+             * @example 2025-05-09T17:31:38.643Z
              */
             updatedAt: string;
             /**
@@ -2830,6 +2864,28 @@ export interface components {
             guests: number;
             bed: string;
             images: components['schemas']['LandImageRoomType'][];
+        };
+        CreateLandingReservationDto: {
+            /**
+             * @description The CHeck-in date in YYYY-MM-DD format
+             * @example 2023-10-01
+             */
+            checkInDate: string;
+            /**
+             * @description The Check-out date in YYYY-MM-DD format
+             * @example 2023-10-10
+             */
+            checkOutDate: string;
+            /**
+             * @description The number of guests
+             * @example 2
+             */
+            guestNumber: number;
+            /**
+             * @description The ID of the room being reserved
+             * @example room-123
+             */
+            roomId?: string;
         };
     };
     responses: never;
@@ -6249,6 +6305,76 @@ export interface operations {
             };
             /** @description Invalid input parameters */
             400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_checkReservationExists_v1: {
+        parameters: {
+            query: {
+                /** @description ID of the reservation to check */
+                reservationId: string;
+            };
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Reservation exists */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Reservation not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_createLandingReservation_v1: {
+        parameters: {
+            query: {
+                locale: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['CreateLandingReservationDto'];
+            };
+        };
+        responses: {
+            /** @description Reservation created successfully */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Reservation'];
+                };
+            };
+            /** @description Invalid input parameters */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Room not found */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };
