@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { FetchingError } from '@/components/common/Errors/FetchingErrors';
+import { LoadingCardSkeleton } from '@/components/common/loading/LoadingCardSkeleton';
 import { CustomCard } from '@/components/customized/card/custom-card';
 import {
     NextButton,
@@ -15,6 +17,7 @@ import {
     CarouselItem,
     type CarouselApi,
 } from '@/components/ui/carousel';
+import { useRooms } from '@/hooks/queries/rooms/useRooms';
 import { formatPrice } from '@/lib/i18n-formatPrice';
 
 export type CarouselItemProps = {
@@ -39,62 +42,113 @@ export function HomeCarousel() {
 
     const carouselButtons = useCarouselButtons(api);
 
-    const carouselItems: CarouselItemProps[] = [
-        {
-            image: '/home/carousel/home_carousel_1.webp',
-            title: t('carousel.item1.title'),
-            pricing: {
-                label: t('carousel.item1.pricing.label'),
-                price: formatPrice(
-                    t('carousel.item1.pricing.price'),
-                    t('carousel.item1.pricing.currency'),
-                    locale
-                ),
-                sufix: t('carousel.item1.pricing.sufix'),
-            },
-            features: [
-                { label: t('carousel.item1.features.item1') },
-                { label: t('carousel.item1.features.item2') },
-                { label: t('carousel.item1.features.item3') },
-            ],
-        },
-        {
-            image: '/home/carousel/home_carousel_2.webp',
-            title: t('carousel.item2.title'),
-            pricing: {
-                label: t('carousel.item2.pricing.label'),
-                price: formatPrice(
-                    t('carousel.item2.pricing.price'),
-                    t('carousel.item2.pricing.currency'),
-                    locale
-                ),
-                sufix: t('carousel.item2.pricing.sufix'),
-            },
-            features: [
-                { label: t('carousel.item2.features.item1') },
-                { label: t('carousel.item2.features.item2') },
-                { label: t('carousel.item2.features.item3') },
-            ],
-        },
-        {
-            image: '/home/carousel/home_carousel_1.webp',
-            title: t('carousel.item3.title'),
-            pricing: {
-                label: t('carousel.item3.pricing.label'),
-                price: formatPrice(
-                    t('carousel.item3.pricing.price'),
-                    t('carousel.item3.pricing.currency'),
-                    locale
-                ),
-                sufix: t('carousel.item3.pricing.sufix'),
-            },
-            features: [
-                { label: t('carousel.item3.features.item1') },
-                { label: t('carousel.item3.features.item2') },
-                { label: t('carousel.item3.features.item3') },
-            ],
-        },
-    ];
+    const { useRoomTypeQuery } = useRooms();
+    const {
+        data: roomTypes,
+        isLoading,
+        isError,
+        error,
+        refetch,
+    } = useRoomTypeQuery();
+
+    if (isLoading || !roomTypes) {
+        return <LoadingCardSkeleton classNameSkeletonItems="bg-primary/10" />;
+    }
+
+    if (isError) {
+        return (
+            <FetchingError
+                title={'Error'}
+                message={t('fetchingError.message') + ' ' + error.message}
+                onRefetch={() => {
+                    refetch();
+                }}
+                refetchButtonLabel={t('fetchingError.actionButton.label')}
+            ></FetchingError>
+        );
+    }
+
+    // const carouselItems: CarouselItemProps[] = [
+    //     {
+    //         image: '/home/carousel/home_carousel_1.webp',
+    //         title: t('carousel.item1.title'),
+    //         pricing: {
+    //             label: t('carousel.item1.pricing.label'),
+    //             price: formatPrice(
+    //                 t('carousel.item1.pricing.price'),
+    //                 t('carousel.item1.pricing.currency'),
+    //                 locale
+    //             ),
+    //             sufix: t('carousel.item1.pricing.sufix'),
+    //         },
+    //         features: [
+    //             { label: t('carousel.item1.features.item1') },
+    //             { label: t('carousel.item1.features.item2') },
+    //             { label: t('carousel.item1.features.item3') },
+    //         ],
+    //     },
+    //     {
+    //         image: '/home/carousel/home_carousel_2.webp',
+    //         title: t('carousel.item2.title'),
+    //         pricing: {
+    //             label: t('carousel.item2.pricing.label'),
+    //             price: formatPrice(
+    //                 t('carousel.item2.pricing.price'),
+    //                 t('carousel.item2.pricing.currency'),
+    //                 locale
+    //             ),
+    //             sufix: t('carousel.item2.pricing.sufix'),
+    //         },
+    //         features: [
+    //             { label: t('carousel.item2.features.item1') },
+    //             { label: t('carousel.item2.features.item2') },
+    //             { label: t('carousel.item2.features.item3') },
+    //         ],
+    //     },
+    //     {
+    //         image: '/home/carousel/home_carousel_1.webp',
+    //         title: t('carousel.item3.title'),
+    //         pricing: {
+    //             label: t('carousel.item3.pricing.label'),
+    //             price: formatPrice(
+    //                 t('carousel.item3.pricing.price'),
+    //                 t('carousel.item3.pricing.currency'),
+    //                 locale
+    //             ),
+    //             sufix: t('carousel.item3.pricing.sufix'),
+    //         },
+    //         features: [
+    //             { label: t('carousel.item3.features.item1') },
+    //             { label: t('carousel.item3.features.item2') },
+    //             { label: t('carousel.item3.features.item3') },
+    //         ],
+    //     },
+    // ];
+
+    const carouselItems: CarouselItemProps[] =
+        roomTypes.map(roomType => {
+            return {
+                image: roomType.mainImageUrl,
+                title: roomType.name,
+                pricing: {
+                    label: t('carousel.item1.pricing.label'),
+                    price: formatPrice(
+                        roomType.price.toString(),
+                        t('carousel.item1.pricing.currency'),
+                        locale
+                    ),
+                    sufix: t('carousel.item1.pricing.sufix'),
+                },
+                features: [
+                    {
+                        label: t('commonFeatures.guest', {
+                            count: roomType.guests,
+                        }),
+                    },
+                    { label: roomType.bed },
+                ],
+            };
+        }) || [];
 
     // useEffect(() => {
     //     if (!api) {
@@ -117,7 +171,7 @@ export function HomeCarousel() {
                             <CustomCard
                                 cardTitle={{
                                     text: item.title,
-                                    className: 'text-lg font-bold',
+                                    className: 'text-lg font-bold capitalize',
                                 }}
                                 cardImage={{
                                     src: item.image,

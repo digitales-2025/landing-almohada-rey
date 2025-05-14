@@ -21,6 +21,7 @@ type GeneralEnvVars = {
     // INTERNAL_BACKEND_URL: string;
     NEXT_PUBLIC_WHATSAPP_NUMBER: string;
     NEXT_PUBLIC_BASE_WHATSSAPP_URL: string;
+    BACKEND_URL: string;
 };
 
 const schema = z
@@ -43,12 +44,14 @@ const schema = z
         // INTERNAL_BACKEND_URL: z.string(),
         NEXT_PUBLIC_WHATSAPP_NUMBER: z.string(),
         NEXT_PUBLIC_BASE_WHATSSAPP_URL: z.string(),
+        BACKEND_URL: z.string().default('http://localhost:4000/v1'),
     })
     .passthrough() satisfies z.ZodType<Partial<GeneralEnvVars>>;
 
 const result = schema.safeParse({
     NEXT_PUBLIC_WHATSAPP_NUMBER: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER,
     NEXT_PUBLIC_BASE_WHATSSAPP_URL: process.env.NEXT_PUBLIC_BASE_WHATSSAPP_URL,
+    BACKEND_URL: process.env.BACKEND_URL,
 });
 
 if (!result.success) {
@@ -79,4 +82,5 @@ export const envs: GeneralEnvVars = {
     // INTERNAL_BACKEND_URL: envVars.INTERNAL_BACKEND_URL,
     NEXT_PUBLIC_WHATSAPP_NUMBER: envVars.NEXT_PUBLIC_WHATSAPP_NUMBER,
     NEXT_PUBLIC_BASE_WHATSSAPP_URL: envVars.NEXT_PUBLIC_BASE_WHATSSAPP_URL,
+    BACKEND_URL: envVars.BACKEND_URL,
 };

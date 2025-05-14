@@ -2,481 +2,1031 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
-    "Error": {
-        "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
-        "title": "Something went wrong!"
-    },
-    "Footer": {
-        "addressSection": {
-            "title": "Address",
-            "address": "Mollendo Street #37 - Urb. Municipal"
-        },
-        "phoneSection": {
-            "title": "Phone",
-            "phone": "+51 958 959 958"
-        },
-        "copyrightSection": {
-            "title": "Copyright",
-            "description": "La Almohada del Rey © {year}. All rights reserved."
-        },
-        "legalSection": {
-            "title": "Legal",
-            "privacyPolicy": "Privacy policy.",
-            "termsAndConditions": "Terms and conditions."
-        }
-    },
-    "IndexPage": {
-        "titleFirstSpan": "A Memorable",
-        "titleSecondSpan": "Experience",
-        "slogan": "Enjoy your stay with the utmost comfort and convenience.",
-        "safeHostSection": {
-            "title": "Rest in a clean and safe environment",
-            "description": "Turn every moment into an unforgettable experience. Enjoying comfort and elegance, where excellence in service is our priority. Here, at Hotel La Almohada del Rey, we offer you much more than simple accommodation; we provide you with the opportunity to spend quality time with your loved ones.",
-            "ctaButton": {
-                "label": "Learn more",
-                "link": "/booking"
-            }
-        },
-        "confortableRoomsSection": {
-            "title": "Discover our rooms",
-            "caption": "Comfortable rooms for you",
-            "description": "Choose from our rooms where comfort and convenience are our highest priority.",
-            "ctaButton": {
-                "label": "View all rooms",
-                "link": "/rooms"
-            },
-            "carousel": {
-                "item1": {
-                    "title": "Double Room",
-                    "pricing": {
-                        "label": "from",
-                        "currency": "USD",
-                        "price": "45",
-                        "sufix": "/night"
-                    },
-                    "ctaButton": {
-                        "label": "Inquire",
-                        "link": "/rooms#contact"
-                    },
-                    "features": {
-                        "item1": "17 m²",
-                        "item2": "2 guests",
-                        "item3": "Work area"
-                    }
-                },
-                "item2": {
-                    "title": "Twin Room",
-                    "pricing": {
-                        "label": "from",
-                        "currency": "USD",
-                        "price": "26",
-                        "sufix": "/night"
-                    },
-                    "ctaButton": {
-                        "label": "Inquire",
-                        "link": "/rooms#contact"
-                    },
-                    "features": {
-                        "item1": "38 m²",
-                        "item2": "2 guests",
-                        "item3": "Exclusive equipment"
-                    }
-                },
-                "item3": {
-                    "title": "Suite Room",
-                    "pricing": {
-                        "label": "from",
-                        "currency": "USD",
-                        "price": "65",
-                        "sufix": "/night"
-                    },
-                    "ctaButton": {
-                        "label": "Inquire",
-                        "link": "/rooms#contact"
-                    },
-                    "features": {
-                        "item1": "50 m²",
-                        "item2": "2 guests",
-                        "item3": "Integrated living room"
-                    }
-                }
-            }
-        },
-        "goodQualitySection": {
-            "title": "Premium quality",
-            "caption": "Why choose us?",
-            "description": "Designed to meet the needs of families, tour groups, and business travelers, our hotel offers a unique lodging concept, blending modern with cozy.",
-            "ctaButton": {
-                "label": "Book now",
-                "link": "/experiences"
-            },
-            "gallery": {
-                "item1": {
-                    "title": "Maximum comfort"
-                },
-                "item2": {
-                    "title": "Excellent service"
-                },
-                "item3": {
-                    "title": "Ideal location"
-                },
-                "item4": {
-                    "title": "Special attentions"
-                },
-                "item5": {
-                    "title": "Unique experiences"
-                },
-                "item6": {
-                    "title": "Well-maintained facilities"
-                }
-            }
-        },
-        "isoCertificationSection": {
-            "title": "Certification",
-            "slogan": "The best for you",
-            "caption": "Committed to quality",
-            "description": "Quality Management System"
-        },
-        "gallerySection": {
-            "title": "Gallery",
-            "caption": "The hotel in photos",
-            "description": "Take a look at our beautiful hotel and facilities in our photo gallery. We hope you can make more memories here!",
-            "ctaButton": {
-                "label": "See more",
-                "link": "/gallery"
-            }
-        },
-        "makeReservationSection": {
-            "title": "Book your stay",
-            "caption": "Ready to book?",
-            "description": "Experience an unforgettable stay at La Almohada del Rey, whether for business or vacation, we're waiting for you.",
-            "ctaButton": {
-                "label": "Book now",
-                "link": "/booking"
-            }
-        },
-        "travelersSection": {
-            "title": "Travelers",
-            "caption": "Places you can visit",
-            "ctaButton": {
-                "label": "See all places",
-                "link": "/travelers"
-            },
-            "carousel": {
-                "item1": {
-                    "title": "Urban Destinations",
-                    "name": "Arequipa Cathedral and museum"
-                },
-                "item2": {
-                    "title": "Urban Destinations",
-                    "name": "The hotel is beautiful and the staff is very friendly. I will definitely come back."
-                },
-                "item3": {
-                    "title": "Nearby Landscapes",
-                    "name": "Arequipa Countryside"
-                },
-                "item4": {
-                    "title": "Nearby Landscapes",
-                    "name": "Colca Canyon"
-                }
-            }
-        },
-        "FAQSection": {
-            "title": "Frequently Asked Questions",
-            "questions": {
-                "item1": {
-                    "question": "What are the check-in & check-out times?",
-                    "answer": "Check-in time is from {checkinTime} and check-out time is at {checkoutTime}. For additional inquiries about the schedule, please contact us."
-                },
-                "item2": {
-                    "question": "Do you offer transportation service?",
-                    "answer": "Yes, we offer airport transportation service for an additional fee."
-                },
-                "item3": {
-                    "question": "How can I cancel my reservation?",
-                    "answer": "You can cancel your reservation through our website or by contacting our customer service."
-                },
-                "item4": {
-                    "question": "Do you accept pets at the hotel?",
-                    "answer": "No, unfortunately we do not accept pets at the hotel."
-                },
-                "item5": {
-                    "question": "Do you offer laundry service?",
-                    "answer": "Yes, we offer laundry service for an additional fee."
-                },
-                "item6": {
-                    "question": "Is parking available?",
-                    "answer": "Yes, we offer free parking for our guests."
-                }
-            }
-        }
-    },
-    "IndexPageExperiences": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Experiences",
-        "bentoSection": {
-            "title": "Special offers",
-            "description": "Live your best memories here",
-            "card1": {
-                "title": "More time, more savings",
-                "description": "Book a stay of at least 5 nights and get a 20% discount on your room price.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card2": {
-                "title": "Luxury Stay",
-                "description": "Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card3": {
-                "title": "Celebrate love, honeymoon",
-                "description": "Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.",
-                "details": {
-                    "item1": "2 - guests",
-                    "item2": "Dinner and Breakfast for 2",
-                    "item3": "Free amenities"
-                },
-                "pricing": {
-                    "label": "from",
-                    "currency": "USD",
-                    "price": "119",
-                    "sufix": "/night"
-                },
-                "ctaButton": {
-                    "label": "Inquire availability",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card4": {
-                "title": "Standard Room",
-                "description": "Enjoy a unique experience in our standard room with sea view.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            },
-            "card5": {
-                "title": "Family Vacation",
-                "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
-                "ctaButton": {
-                    "label": "Inquire",
-                    "link": "/experiences#contact"
-                }
-            }
-        },
-        "businessPackageSection": {
-            "title": "Special offer",
-            "caption": "Business Stay Package",
-            "description": "Make your business trip a pleasure with this package that includes:",
-            "ctaButton": {
-                "label": "Inquire",
-                "link": "/experiences#contact"
-            },
-            "details": {
-                "item1": "Luxury suite, integrated living room",
-                "item2": "24/7 high-speed internet access",
-                "item3": "Work area and relaxation space",
-                "item4": "Includes free daily breakfast"
-            }
-        },
-        "eventPackagesSection": {
-            "title": "Events",
-            "description": "Celebrate special moments in our conference room",
-            "packages": {
-                "item1": {
-                    "title": "Wedding Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "1500"
-                    }
-                },
-                "item2": {
-                    "title": "Corporate Conference Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "750"
-                    }
-                },
-                "item3": {
-                    "title": "Family Reunion Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "450"
-                    }
-                },
-                "item4": {
-                    "title": "Birthday Party Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "225"
-                    }
-                },
-                "item5": {
-                    "title": "Wedding Anniversary Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "150"
-                    }
-                },
-                "item6": {
-                    "title": "Holiday Package",
-                    "pricing": {
-                        "currency": "USD",
-                        "price": "300"
-                    }
-                }
-            }
-        },
-        "eventHallSection": {
-            "title": "Events",
-            "caption": "Conference Hall",
-            "description": "Equipped with various lighting, 55\" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.",
-            "slogan": "We adapt for all types of events.",
-            "ctaButton": {
-                "label": "Check availability",
-                "link": "/experiences#contact"
-            }
-        },
-        "servicesSection": {
-            "title": "Services",
-            "description": "We take care of the details",
-            "services": {
-                "item1": "24-hour Room Service",
-                "item2": "Carpeted rooms with private bathroom and hot water",
-                "item3": "Cable TV and intercoms",
-                "item4": "Free Wireless Internet access in public areas of the Hotel",
-                "item5": "Rest area",
-                "item6": "Waiting room",
-                "item7": "Free private parking",
-                "item8": "Terrace with 360º viewpoint",
-                "item9": "Luggage storage service",
-                "item10": "We accept credit cards",
-                "item11": "Free Wireless Internet access throughout the Hotel",
-                "item12": "Currency exchange (US Dollars)",
-                "item13": "Bilingual assistance",
-                "item14": "Tour assistance",
-                "item15": "24-hour wake-up service",
-                "item16": "Safety deposit box",
-                "item17": "Laundry service (additional cost)",
-                "item18": "Taxi service (additional cost)",
-                "item19": "Airport shuttle service (additional cost)"
-            }
-        },
-        "keepInTouchSection": {
-            "sectionName": "contact",
-            "title": "Contact",
-            "caption": "Any questions?",
-            "description": "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.",
-            "ctaInput": {
-                "placeholder": "Enter your inquiry...",
-                "buttonLabel": "WhatsApp"
-            }
-        }
-    },
-    "IndexPageGallery": {
-        "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.",
-        "title": "Gallery",
-        "sections": {
-            "section1": {
-                "title": "Rest & Comfort",
-                "description": "Experience the ultimate comfort in our carefully designed rooms."
-            },
-            "section2": {
-                "title": "The hotel in photos",
-                "description": "Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.",
-                "imageAlt": "Hotel reception"
-            },
-            "section3": {
-                "title": "Our ",
-                "description": "Terrace",
-                "imageAlt1": "Terrace with white loungers and red chairs with umbrellas",
-                "imageAlt2": "Terrace with red chairs and table",
-                "imageAlt3": "Terrace at sunset with lighting"
-            },
-            "section4": {
-                "title": "Rest &",
-                "description": "Comfort",
-                "imageAlt1": "Room with two single beds with purple bedspreads",
-                "imageAlt2": "Interior architectural detail with wooden railing",
-                "imageAlt3": "Single room with checkered bedspread and night lamp"
-            },
-            "section5": {
-                "title": "Spaces to Enjoy",
-                "description": "Relax and unwind in our thoughtfully designed common areas.",
-                "imageAlt": "Hotel lobby with comfortable seating area and reception desk"
-            },
-            "section6": {
-                "title": "Ideal",
-                "subtitle": "Location",
-                "description": "Perfectly situated for both business and leisure travelers.",
-                "imageAlt1": "Hotel facade at night with lighting",
-                "imageAlt2": "Hotel facade during the day",
-                "imageAlt3": "Close-up of the hotel sign with number 37"
-            },
-            "section7": {
-                "title": "Enjoy",
-                "subtitle": "Spaces to",
-                "description": "Enjoy our elegant dining spaces and exquisite cuisine.",
-                "imageAlt1": "Restaurant dining area with elegant tables and chairs",
-                "imageAlt2": "Buffet table with breakfast and drinks",
-                "imageAlt3": "Guests enjoying a meal in the restaurant"
-            }
-        }
-    },
-    "IndexPageRooms": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Rooms"
-    },
-    "IndexPageTravelers": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Travelers"
-    },
-    "KeepInTouchSection": {
-        "sectionName": "contact",
-        "title": "Contact",
-        "caption": "Any questions?",
-        "description": "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.",
-        "ctaInput": {
-            "placeholder": "Enter your inquiry...",
-            "buttonLabel": "WhatsApp",
-            "generalErrorMessage": "There was an error, please try again later.",
-            "minErrorMessage": "Please enter at least {min} characters.",
-            "maxErrorMessage": "Please enter no more than {max} characters.",
-            "failureMessage": "It seems there was an error, the message was not sent.",
-            "successMessage": "Thank you for your inquiry!"
-        }
-    },
-    "LocaleSwitcher": {
-        "label": "Change language",
-        "locale": "{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}"
-    },
-    "Manifest": {
-        "name": "La Almohada del Rey"
-    },
-    "Navigation": {
-        "home": "Home",
-        "experiences": "Experiences",
-        "gallery": "Gallery",
-        "rooms": "Rooms",
-        "travelers": "Travelers",
-        "booking": "Reservation",
-        "headquarters": {
-            "address": "Mollendo St. #37 - Urb. Municipal",
-            "link": "/"
-        },
-        "reservationButton": {
-            "label": "Book Now",
-            "link": "/booking"
-        }
-    },
-    "NotFoundPage": {
-        "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
-        "title": "Page not found"
-    }
+    CollapseParragraph: {
+        expand: 'Read more';
+        collapse: 'Read less';
+    };
+    Error: {
+        description: "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>";
+        title: 'Something went wrong!';
+    };
+    Footer: {
+        addressSection: {
+            title: 'Address';
+            address: 'Mollendo Street #37 - Urb. Municipal';
+        };
+        phoneSection: {
+            title: 'Phone';
+            phone: '+51 958 959 958';
+        };
+        copyrightSection: {
+            title: 'Copyright';
+            description: 'La Almohada del Rey © {year}. All rights reserved.';
+        };
+        legalSection: {
+            title: 'Legal';
+            privacyPolicy: 'Privacy policy.';
+            termsAndConditions: 'Terms and conditions.';
+        };
+    };
+    Forms: {
+        reserveBookingSummary: {
+            formName: 'booking';
+            input1: {
+                label: 'Number of guests';
+                placeholder: 'Enter the number of guests';
+                description: 'Maximum {guestNumber} guests';
+                placeholderDescription: 'Choose a room to know the max. number of guests';
+                errors: {
+                    required: 'This field is required';
+                };
+            };
+            input2: {
+                label: 'Room';
+                placeholder: 'Select a room';
+                description: {
+                    noAvailable: 'No rooms available for these dates';
+                    available: 'Available rooms: {availableRooms}';
+                };
+                errors: {
+                    required: 'This field is required';
+                    noAvailable: 'No rooms available';
+                };
+            };
+            input3: {
+                label: 'Check In';
+                placeholder: 'Enter your arrival date';
+                description: 'Maximum until {maxDate}';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be before check-out date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input4: {
+                label: 'Check Out';
+                placeholder: 'Enter your departure date';
+                description: 'Your departure date';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be after check-in date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            submitButton: {
+                label: 'Book';
+                href: '/booking';
+            };
+        };
+    };
+    IndexPage: {
+        titleFirstSpan: 'A Memorable';
+        titleSecondSpan: 'Experience';
+        slogan: 'Enjoy your stay with the utmost comfort and convenience.';
+        safeHostSection: {
+            title: 'Rest in a clean and safe environment';
+            description: 'Turn every moment into an unforgettable experience. Enjoying comfort and elegance, where excellence in service is our priority. Here, at Hotel La Almohada del Rey, we offer you much more than simple accommodation; we provide you with the opportunity to spend quality time with your loved ones.';
+            ctaButton: {
+                label: 'Learn more';
+                link: '/booking';
+            };
+        };
+        confortableRoomsSection: {
+            title: 'Discover our rooms';
+            caption: 'Comfortable rooms for you';
+            description: 'Choose from our rooms where comfort and convenience are our highest priority.';
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+            commonFeatures: {
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+            };
+            ctaButton: {
+                label: 'View all rooms';
+                link: '/rooms';
+            };
+            carousel: {
+                item1: {
+                    title: 'Double Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '45';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#booking';
+                    };
+                    features: {
+                        item1: '17 m²';
+                        item2: '2 guests';
+                        item3: 'Work area';
+                    };
+                };
+                item2: {
+                    title: 'Twin Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '26';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#booking';
+                    };
+                    features: {
+                        item1: '38 m²';
+                        item2: '2 guests';
+                        item3: 'Exclusive equipment';
+                    };
+                };
+                item3: {
+                    title: 'Suite Room';
+                    pricing: {
+                        label: 'from';
+                        currency: 'USD';
+                        price: '65';
+                        sufix: '/night';
+                    };
+                    ctaButton: {
+                        label: 'Inquire';
+                        link: '/rooms#booking';
+                    };
+                    features: {
+                        item1: '50 m²';
+                        item2: '2 guests';
+                        item3: 'Integrated living room';
+                    };
+                };
+            };
+        };
+        goodQualitySection: {
+            title: 'Premium quality';
+            caption: 'Why choose us?';
+            description: 'Designed to meet the needs of families, tour groups, and business travelers, our hotel offers a unique lodging concept, blending modern with cozy.';
+            ctaButton: {
+                label: 'Book now';
+                link: '/experiences';
+            };
+            gallery: {
+                item1: {
+                    title: 'Maximum comfort';
+                };
+                item2: {
+                    title: 'Excellent service';
+                };
+                item3: {
+                    title: 'Ideal location';
+                };
+                item4: {
+                    title: 'Special attentions';
+                };
+                item5: {
+                    title: 'Unique experiences';
+                };
+                item6: {
+                    title: 'Well-maintained facilities';
+                };
+            };
+        };
+        isoCertificationSection: {
+            title: 'Certification';
+            slogan: 'The best for you';
+            caption: 'Committed to quality';
+            description: 'Quality Management System';
+        };
+        gallerySection: {
+            title: 'Gallery';
+            caption: 'The hotel in photos';
+            description: 'Take a look at our beautiful hotel and facilities in our photo gallery. We hope you can make more memories here!';
+            ctaButton: {
+                label: 'See more';
+                link: '/gallery';
+            };
+        };
+        makeReservationSection: {
+            title: 'Book your stay';
+            caption: 'Ready to book?';
+            description: "Experience an unforgettable stay at La Almohada del Rey, whether for business or vacation, we're waiting for you.";
+            ctaButton: {
+                label: 'Book now';
+                link: '/booking';
+            };
+        };
+        travelersSection: {
+            title: 'Travelers';
+            caption: 'Places you can visit';
+            ctaButton: {
+                label: 'See all places';
+                link: '/travelers';
+            };
+            carousel: {
+                item1: {
+                    title: 'Urban Destinations';
+                    name: 'Arequipa Cathedral and museum';
+                };
+                item2: {
+                    title: 'Urban Destinations';
+                    name: 'The hotel is beautiful and the staff is very friendly. I will definitely come back.';
+                };
+                item3: {
+                    title: 'Nearby Landscapes';
+                    name: 'Arequipa Countryside';
+                };
+                item4: {
+                    title: 'Nearby Landscapes';
+                    name: 'Colca Canyon';
+                };
+            };
+        };
+        FAQSection: {
+            title: 'Frequently Asked Questions';
+            questions: {
+                item1: {
+                    question: 'What are the check-in & check-out times?';
+                    answer: 'Check-in time is from {checkinTime} and check-out time is at {checkoutTime}. For additional inquiries about the schedule, please contact us.';
+                };
+                item2: {
+                    question: 'Do you offer transportation service?';
+                    answer: 'Yes, we offer airport transportation service for an additional fee.';
+                };
+                item3: {
+                    question: 'How can I cancel my reservation?';
+                    answer: 'You can cancel your reservation through our website or by contacting our customer service.';
+                };
+                item4: {
+                    question: 'Do you accept pets at the hotel?';
+                    answer: 'No, unfortunately we do not accept pets at the hotel.';
+                };
+                item5: {
+                    question: 'Do you offer laundry service?';
+                    answer: 'Yes, we offer laundry service for an additional fee.';
+                };
+                item6: {
+                    question: 'Is parking available?';
+                    answer: 'Yes, we offer free parking for our guests.';
+                };
+            };
+        };
+    };
+    IndexPageBooking: {
+        connection: {
+            status: {
+                good: 'Stable connection';
+                poor: 'Weak connection';
+                lost: 'No connection';
+            };
+            connected: 'Connection established';
+            connecting: 'Connecting...';
+            lost: 'Connection lost';
+            unstable: 'The connection is unstable';
+            unstableDescription: 'This may affect the booking process';
+            critical: 'Critical connection';
+            criticalDescription: 'The booking will be canceled because of security reasons';
+            navigation: {
+                redirecting: 'Redirecting...';
+                cancelling: 'Cancelling reservation...';
+            };
+        };
+        events: {
+            startReservation: {
+                message: 'You have {timeLeft} to complete the process.';
+                additionalInfo: 'Make sure to fill in all required fields and have a good Internet connection.';
+            };
+            cancelReservation: {
+                message: 'The reservation has been canceled for security reasons.';
+                additionalInfo: 'Please try again.';
+            };
+        };
+        title: 'Booking';
+        generalError: {
+            message: 'Sorry. It seems an error has occurred.';
+            actionButton: {
+                label: 'Return to Home';
+            };
+        };
+        chronometer: {
+            timeLeftLabel: 'Tiempo restante: {timeLeft}';
+        };
+        updateReservationDates: {
+            title: 'Are you sure you want to modify your reservation?';
+            description: "By clicking in the 'Update' button you will cancel your current reservation and create a new one with the new dates.";
+            submitButton: {
+                label: 'Update';
+            };
+            cancelButton: {
+                label: 'Cancel';
+            };
+            generalError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Return to Home';
+                };
+            };
+            input1: {
+                label: 'Number of guests';
+                placeholder: 'Enter the number of guests';
+                description: 'Maximum {guestNumber} guests';
+                placeholderDescription: 'Choose a room to know the max. number of guests';
+                errors: {
+                    required: 'This field is required';
+                    min: 'Minimum {min} guests';
+                };
+            };
+            input2: {
+                label: 'Room';
+                placeholder: 'Select a room';
+                description: {
+                    noAvailable: 'No rooms available';
+                    available: 'Available rooms: {availableRooms}';
+                };
+                errors: {
+                    required: 'This field is required';
+                    noAvailable: 'No rooms available';
+                };
+            };
+            input3: {
+                label: 'Check In';
+                placeholder: 'Enter your arrival date';
+                description: 'Maximum until {maxDate}';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be before check-out date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+            input4: {
+                label: 'Check Out';
+                placeholder: 'Enter your departure date';
+                description: 'Your departure date';
+                errors: {
+                    required: 'This field is required';
+                    dateError: {
+                        before: 'The date must be after check-in date';
+                        after: 'The date must be after today';
+                        invalid: 'The date entered is invalid';
+                    };
+                };
+            };
+        };
+        moreReservationDetailsSection: {
+            title: 'Book with us';
+            description: 'One step away from the perfect stay';
+            triggerButton: {
+                label: 'Modify';
+            };
+            bookingSummary: {
+                guests: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+                night: '{count, plural, =0 {no nights} =1 {1 night} other {# nights}}';
+            };
+            input1: {
+                label: 'Identity Document';
+                docTypeField: {
+                    placeholder: 'Document type';
+                    values: {
+                        dni: 'DNI';
+                        passport: 'Passport';
+                        carnetExtranjeria: 'Foreign ID card';
+                    };
+                    selected: '{docType, select, dni {DNI} passport {Passport} carnetExtranjeria {Foreign ID card} other {Unknown}}';
+                    errors: {
+                        required: 'This field is required';
+                        invalid: 'The document type is not valid';
+                    };
+                };
+                placeholder: 'Enter your ID document number';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The document number is not valid';
+                    maxLength: 'The document number cannot have more than {maxLength} characters';
+                    minLength: 'The document number cannot have less than {minLength} characters';
+                };
+            };
+            input2: {
+                label: 'First Name';
+                placeholder: 'Enter your first name(s)';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The name cannot have less than {minLength} characters';
+                };
+            };
+            input3: {
+                label: 'Last Name';
+                placeholder: 'Enter your full last name(s)';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The last name cannot have less than {minLength} characters';
+                };
+            };
+            input4: {
+                label: 'Email';
+                placeholder: 'Enter your email address';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The email address is not valid';
+                    minLength: 'The email cannot have less than {minLength} characters';
+                };
+            };
+            input5: {
+                label: 'Phone Number';
+                placeholder: 'Enter your phone number';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The phone number is not valid';
+                    minLength: 'The phone number cannot have less than {minLength} characters';
+                    maxLength: 'The phone number cannot have more than {maxLength} characters';
+                };
+            };
+            input6: {
+                label: 'Include breakfast ({amount} additional - Payment made at check-in)';
+                description: 'Optional';
+            };
+            updateButton: {
+                label: 'Modify';
+            };
+        };
+        paymentDetailsSection: {
+            title: 'Payment method details';
+            description: 'Amount to pay for reservation: {amount}';
+            input1: {
+                label: 'Card number';
+                placeholder: 'XXXX XXXX XXXX XXXX';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The card number is not valid';
+                    minLength: 'The card number cannot have less than {minLength} characters';
+                    maxLength: 'The card number cannot have more than {maxLength} characters';
+                    invalidLength: 'The card number cannot have less than {minLength} or more than {maxLength} characters';
+                };
+            };
+            input2: {
+                label: 'Cardholder name';
+                placeholder: "Enter the cardholder's name";
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The cardholder name cannot have less than {minLength} characters';
+                };
+            };
+            input3: {
+                label: 'Expiration date';
+                placeholder: 'MM/YY';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                    invalid: 'The expiration date is not valid';
+                    invalidMonth: 'Invalid month (1-12)';
+                    expiratedDate: 'The card has expired';
+                    incomplete: 'Please enter the complete date (MM/YY)';
+                };
+            };
+            input4: {
+                label: 'Security code (CVV)';
+                placeholder: '***';
+                description: '(3 digits)';
+                errors: {
+                    required: 'This field is required';
+                    minLength: 'The security code cannot have less than {minLength} characters';
+                    maxLength: 'The security code cannot have more than {maxLength} characters';
+                };
+            };
+            safePaymentAdvertisement: {
+                title: 'Secure and encrypted payment.';
+            };
+        };
+        AdditionalInfoSection: {
+            input1: {
+                label: 'Additional comments';
+                placeholder: 'You can enter any questions or comments...';
+                description: 'Optional';
+            };
+        };
+        submitSection: {
+            input1: {
+                label1: 'I accept the';
+                label2: 'and the';
+                termsAndConditions: 'Terms and conditions';
+                privacyPolicy: 'Privacy policy';
+                description: 'Required';
+                errors: {
+                    required: 'This field is required';
+                };
+            };
+            submitButton: {
+                label: 'Book';
+            };
+        };
+    };
+    IndexPageExperiences: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Experiences';
+        bentoSection: {
+            title: 'Special offers';
+            description: 'Live your best memories here';
+            card1: {
+                title: 'More time, more savings';
+                description: 'Book a stay of at least 5 nights and get a 20% discount on your room price.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card2: {
+                title: 'Luxury Stay';
+                description: 'Take a break from the daily routine with this unmatched offer in our suite with exclusive services, inquire now and save up to 20%.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card3: {
+                title: 'Celebrate love, honeymoon';
+                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                details: {
+                    item1: '2 - guests';
+                    item2: 'Dinner and Breakfast for 2';
+                    item3: 'Free amenities';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '119';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Inquire availability';
+                    link: '/experiences#contact';
+                };
+            };
+            card4: {
+                title: 'Standard Room';
+                description: 'Enjoy a unique experience in our standard room with sea view.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+            card5: {
+                title: 'Family Vacation';
+                description: 'Book two or more rooms for your family vacation and receive a 50% discount on the second room.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/experiences#contact';
+                };
+            };
+        };
+        businessPackageSection: {
+            title: 'Special offer';
+            caption: 'Business Stay Package';
+            description: 'Make your business trip a pleasure with this package that includes:';
+            ctaButton: {
+                label: 'Inquire';
+                link: '/experiences#contact';
+            };
+            details: {
+                item1: 'Luxury suite, integrated living room';
+                item2: '24/7 high-speed internet access';
+                item3: 'Work area and relaxation space';
+                item4: 'Includes free daily breakfast';
+            };
+        };
+        eventPackagesSection: {
+            title: 'Events';
+            description: 'Celebrate special moments in our conference room';
+            packages: {
+                item1: {
+                    title: 'Wedding Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '1500';
+                    };
+                };
+                item2: {
+                    title: 'Corporate Conference Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '750';
+                    };
+                };
+                item3: {
+                    title: 'Family Reunion Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '450';
+                    };
+                };
+                item4: {
+                    title: 'Birthday Party Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '225';
+                    };
+                };
+                item5: {
+                    title: 'Wedding Anniversary Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '150';
+                    };
+                };
+                item6: {
+                    title: 'Holiday Package';
+                    pricing: {
+                        currency: 'USD';
+                        price: '300';
+                    };
+                };
+            };
+        };
+        eventHallSection: {
+            title: 'Events';
+            caption: 'Conference Hall';
+            description: 'Equipped with various lighting, 55" TV, power outlet + 1 surge protector, projection screen, multimedia equipment, ADSL internet and Wi-Fi, podium with microphone, whiteboard, tables, and a support team for your meetings.';
+            slogan: 'We adapt for all types of events.';
+            ctaButton: {
+                label: 'Check availability';
+                link: '/experiences#contact';
+            };
+        };
+        servicesSection: {
+            title: 'Services';
+            description: 'We take care of the details';
+            services: {
+                item1: '24-hour Room Service';
+                item2: 'Carpeted rooms with private bathroom and hot water';
+                item3: 'Cable TV and intercoms';
+                item4: 'Free Wireless Internet access in public areas of the Hotel';
+                item5: 'Rest area';
+                item6: 'Waiting room';
+                item7: 'Free private parking';
+                item8: 'Terrace with 360º viewpoint';
+                item9: 'Luggage storage service';
+                item10: 'We accept credit cards';
+                item11: 'Free Wireless Internet access throughout the Hotel';
+                item12: 'Currency exchange (US Dollars)';
+                item13: 'Bilingual assistance';
+                item14: 'Tour assistance';
+                item15: '24-hour wake-up service';
+                item16: 'Safety deposit box';
+                item17: 'Laundry service (additional cost)';
+                item18: 'Taxi service (additional cost)';
+                item19: 'Airport shuttle service (additional cost)';
+            };
+        };
+        keepInTouchSection: {
+            sectionName: 'contact';
+            title: 'Contact';
+            caption: 'Any questions?';
+            description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+            ctaInput: {
+                placeholder: 'Enter your inquiry...';
+                buttonLabel: 'WhatsApp';
+            };
+        };
+    };
+    IndexPageGallery: {
+        description: 'Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.';
+        title: 'Gallery';
+        sections: {
+            section1: {
+                title: 'Rest & Comfort';
+                description: 'Experience the ultimate comfort in our carefully designed rooms.';
+            };
+            section2: {
+                title: 'The hotel in photos';
+                description: 'Explore each detail of our hotel through our photo gallery. Visualize your next stay and start creating unforgettable memories with us.';
+                imageAlt: 'Hotel reception';
+            };
+            section3: {
+                title: 'Our ';
+                description: 'Terrace';
+                imageAlt1: 'Terrace with white loungers and red chairs with umbrellas';
+                imageAlt2: 'Terrace with red chairs and table';
+                imageAlt3: 'Terrace at sunset with lighting';
+            };
+            section4: {
+                title: 'Rest &';
+                description: 'Comfort';
+                imageAlt1: 'Room with two single beds with purple bedspreads';
+                imageAlt2: 'Interior architectural detail with wooden railing';
+                imageAlt3: 'Single room with checkered bedspread and night lamp';
+            };
+            section5: {
+                title: 'Spaces to Enjoy';
+                description: 'Relax and unwind in our thoughtfully designed common areas.';
+                imageAlt: 'Hotel lobby with comfortable seating area and reception desk';
+            };
+            section6: {
+                title: 'Ideal';
+                subtitle: 'Location';
+                description: 'Perfectly situated for both business and leisure travelers.';
+                imageAlt1: 'Hotel facade at night with lighting';
+                imageAlt2: 'Hotel facade during the day';
+                imageAlt3: 'Close-up of the hotel sign with number 37';
+            };
+            section7: {
+                title: 'Enjoy';
+                subtitle: 'Spaces to';
+                description: 'Enjoy our elegant dining spaces and exquisite cuisine.';
+                imageAlt1: 'Restaurant dining area with elegant tables and chairs';
+                imageAlt2: 'Buffet table with breakfast and drinks';
+                imageAlt3: 'Guests enjoying a meal in the restaurant';
+            };
+        };
+    };
+    IndexPageRooms: {
+        title: 'Rooms';
+        roomsSection: {
+            title: 'Rooms and suite';
+            description: 'Unmatched rest';
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+            commonFeatures: {
+                item1: 'Free WiFi';
+                item2: 'TV with cable';
+                item3: 'Intercom service';
+                item4: 'Warm-water Shower';
+                item5: 'Desk & wardrobe';
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+            };
+            room1: {
+                title: 'Master Suite';
+                description: 'Spacious, comfortable and modern room with integrated living room, work area, rest space, safe, minibar and complete bathroom with bathtub.';
+                features: {
+                    item1: '38 m²';
+                    item2: '2 guests';
+                    item3: 'Bathtub';
+                    item4: 'Additional furniture';
+                    item5: 'Free WiFi';
+                    item6: 'Full HD TV with cable';
+                    item7: 'Intercom';
+                    item8: 'Desk';
+                    item9: 'Minibar';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '45';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/rooms#booking';
+                };
+            };
+            room2: {
+                title: 'Master Room';
+                description: 'Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '16 m²';
+                    item2: '2 guests';
+                    item3: 'Shower';
+                    item4: 'Free WiFi';
+                    item5: 'Cable TV';
+                    item6: 'Full HD TV';
+                    item7: 'Intercom';
+                    item8: 'Desk';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '25';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/rooms#booking';
+                };
+            };
+            room3: {
+                title: 'Family Room';
+                description: 'Beautiful and functional room with a double bed and a twin bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '32 m²';
+                    item2: '3 guests';
+                    item3: '2 beds';
+                    item4: 'Shower';
+                    item5: 'Free WiFi';
+                    item6: 'Cable TV';
+                    item7: 'Full HD TV';
+                    item8: 'Intercom';
+                    item9: 'Desk';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '35';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/rooms#booking';
+                };
+            };
+            room4: {
+                title: 'Twin Room';
+                description: 'Beautiful and spacious room with two twin beds, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '17 m²';
+                    item2: '2 guests';
+                    item3: '2 beds';
+                    item4: 'Shower';
+                    item5: 'Free WiFi';
+                    item6: 'Cable TV';
+                    item7: 'Full HD TV';
+                    item8: 'Intercom';
+                    item9: 'Desk';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '30';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/rooms#booking';
+                };
+            };
+            room5: {
+                title: 'Single Room';
+                description: 'Beautiful and functional room with one twin bed, high-definition TV with cable channels and work area.';
+                features: {
+                    item1: '11 m²';
+                    item2: '1 guest';
+                    item3: 'Shower';
+                    item4: 'Free WiFi';
+                    item5: 'Cable TV';
+                    item6: 'Full HD TV';
+                    item7: 'Intercom';
+                    item8: 'Desk';
+                };
+                pricing: {
+                    label: 'from';
+                    currency: 'USD';
+                    price: '20';
+                    sufix: '/night';
+                };
+                ctaButton: {
+                    label: 'Book now';
+                    link: '/rooms#booking';
+                };
+            };
+        };
+        environmentsSection: {
+            title: 'Facilities';
+            description: 'Spaces at your disposal';
+            gallery: {
+                item1: {
+                    title: 'Reception';
+                    description: "The ideal starting point for your stay. With a cozy atmosphere, you'll feel at home from the first moment.";
+                };
+                item2: {
+                    title: 'Parking';
+                    description: 'Easy and secure access. Designed for your convenience with ample spaces and easy access.';
+                };
+                item3: {
+                    title: 'Conference room';
+                    description: 'The ideal space for your events. It adapts to your needs, from small meetings to large presentations.';
+                };
+                item4: {
+                    title: 'Café';
+                    description: 'Enjoy a moment of tranquility and calm before exploring everything Arequipa has to offer.';
+                };
+                item5: {
+                    title: 'Living room';
+                    description: 'The space to relax and connect. You can enjoy reading, a conversation, or simply a moment of relaxation.';
+                };
+                item6: {
+                    title: 'Rest area';
+                    description: 'We offer you a cozy place to relax and feel at home.';
+                };
+            };
+        };
+        offersSection: {
+            title: 'Special offers';
+            description: 'Live your best memories here';
+            card1: {
+                title: 'More time, more savings';
+                description: 'Book a stay of at least 5 nights and get a 20% discount on your room price.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+            card2: {
+                title: 'Celebrate love, Honeymoon';
+                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+            card3: {
+                title: 'Family vacation';
+                description: 'Book two or more rooms for your family vacation and receive a 50% discount on the second room.';
+                ctaButton: {
+                    label: 'Inquire';
+                    link: '/rooms#contact';
+                };
+            };
+        };
+        bookingSection: {
+            title: 'Book now';
+            caption: 'Book your stay';
+            description: 'Comfort and convenience are our highest priority. Here, every detail is designed to provide you with an unmatched lodging experience.';
+            reservationForm: {
+                checkInInput: {
+                    label: 'Check In';
+                    placeholder: 'Enter your arrival date';
+                };
+                checkOutInput: {
+                    label: 'Check Out';
+                    placeholder: 'Enter your departure date';
+                };
+                hostsInput: {
+                    label: 'Guests';
+                    placeholder: 'Enter the number of guests';
+                };
+                roomInput: {
+                    label: 'Room';
+                    placeholder: 'Enter the type of room';
+                };
+                submitButton: {
+                    label: 'Book';
+                };
+            };
+        };
+    };
+    IndexPageTravelers: {
+        description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
+        title: 'Travelers';
+    };
+    KeepInTouchSection: {
+        sectionName: 'contact';
+        title: 'Contact';
+        caption: 'Any questions?';
+        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+        ctaInput: {
+            placeholder: 'Enter your inquiry...';
+            buttonLabel: 'WhatsApp';
+            generalErrorMessage: 'There was an error, please try again later.';
+            minErrorMessage: 'Please enter at least {min} characters.';
+            maxErrorMessage: 'Please enter no more than {max} characters.';
+            failureMessage: 'It seems there was an error, the message was not sent.';
+            successMessage: 'Thank you for your inquiry!';
+        };
+    };
+    LocaleSwitcher: {
+        label: 'Change language';
+        locale: '{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}';
+    };
+    Manifest: {
+        name: 'La Almohada del Rey';
+    };
+    Navigation: {
+        home: 'Home';
+        experiences: 'Experiences';
+        gallery: 'Gallery';
+        rooms: 'Rooms';
+        travelers: 'Travelers';
+        booking: 'Reservation';
+        headquarters: {
+            address: 'Mollendo St. #37 - Urb. Municipal';
+            link: '/';
+        };
+        reservationButton: {
+            label: 'Book Now';
+            link: '/booking';
+        };
+    };
+    NotFoundPage: {
+        description: 'Please double-check the browser address bar or use the navigation to go to a known page.';
+        title: 'Page not found';
+    };
 };
 export default messages;

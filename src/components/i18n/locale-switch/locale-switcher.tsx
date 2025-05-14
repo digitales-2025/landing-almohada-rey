@@ -23,8 +23,6 @@ export default function LocaleSwitcher({ className }: LocaleSwitcherParams) {
     const t = useTranslations('LocaleSwitcher');
     const locale = useLocale();
 
-    console.log('locale', locale);
-
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
     const pathname = usePathname();

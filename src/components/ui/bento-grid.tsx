@@ -34,6 +34,7 @@ export interface BentoCardProps extends ComponentPropsWithoutRef<'div'> {
     name: string;
     className: string;
     background: ReactNode;
+    figureClassName?: string;
     description: string;
     href: string;
     cta: string;
@@ -67,6 +68,7 @@ const BentoCard = ({
     cta,
     details,
     pricing,
+    figureClassName,
     ...props
 }: BentoCardProps) => (
     <div
@@ -82,7 +84,12 @@ const BentoCard = ({
         )}
         {...props}
     >
-        <figure className="relative max-h-[40rem] min-h-[18rem] h-full">
+        <figure
+            className={cn(
+                'relative max-h-[40rem] min-h-[18rem] h-full',
+                figureClassName
+            )}
+        >
             {background}
         </figure>
         <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 pb-0 px-0 lg:pb-6 lg:transition-all lg:duration-200 lg:group-hover:-translate-y-15 lg:bg-primary-foreground relative space-y-2">
@@ -94,7 +101,7 @@ const BentoCard = ({
             )}
             <h3
                 className={cn(
-                    'text-secondary dark:text-secondary-foreground font-serif text-h7 lg:text-h4',
+                    '!text-secondary dark:text-secondary-foreground font-serif text-h7 md:text-h6 md:leading-8 2xl:leading-12 2xl:text-h4',
                     cardTitle.className ?? ''
                 )}
             >

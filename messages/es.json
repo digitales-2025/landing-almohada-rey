@@ -1,4 +1,8 @@
 {
+    "CollapseParragraph": {
+        "expand": "Leer más",
+        "collapse": "Leer menos"
+    },
     "Error": {
         "description": "<p>Desafortunamdamente ocurrió un error.</p><p>Puedes intentar <retry>recargar la página</retry> que estabas visitando.</p>",
         "title": "Algo salió mal"
@@ -22,6 +26,62 @@
             "termsAndConditions": "Términos y condiciones."
         }
     },
+    "Forms": {
+        "reserveBookingSummary": {
+            "formName": "reservar",
+            "input1": {
+                "label": "Número de huéspedes",
+                "placeholder": "Ingrese el número de huéspedes",
+                "description": "Máximo {guestNumber} huéspedes",
+                "placeholderDescription": "Escoja habitación para saber el max. de huéspedes",
+                "errors": {
+                    "required": "Este campo es obligatorio"
+                }
+            },
+            "input2": {
+                "label": "Habitación",
+                "placeholder": "Seleccione una habitación",
+                "description": {
+                    "noAvailable": "No hay habitaciones disponibles",
+                    "available": "Habitaciones disponibles: {availableRooms}"
+                },
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "noAvailable": "No hay habitaciones disponibles"
+                }
+            },
+            "input3": {
+                "label": "Check In",
+                "placeholder": "Ingrese su fecha de llegada",
+                "description": "Máximo hasta {maxDate}",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser anterior a la fecha de salida",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
+            },
+            "input4": {
+                "label": "Check Out",
+                "placeholder": "Ingrese su fecha de salida",
+                "description": "Su fecha de salida",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser posterior a la fecha de check-in",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
+            },
+            "submitButton": {
+                "label": "Reservar",
+                "href": "/reservacion"
+            }
+        }
+    },
     "IndexPage": {
         "titleFirstSpan": "Una Experiencia",
         "titleSecondSpan": "Memorable",
@@ -38,6 +98,15 @@
             "title": "Conoce nuestra habitaciones",
             "caption": "Habitaciones cómodas para usted",
             "description": "Elija entre nuestras habitaciones donde el confort y comodidad son nuestra máxima prioridad.",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
+            "commonFeatures": {
+                "guest": "{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}"
+            },
             "ctaButton": {
                 "label": "Ver todas las habitaciones",
                 "link": "/habitaciones"
@@ -53,7 +122,7 @@
                     },
                     "ctaButton": {
                         "label": "Consultar",
-                        "link": "/habitaciones#contacto"
+                        "link": "/habitaciones#reservar"
                     },
                     "features": {
                         "item1": "38 m²",
@@ -71,7 +140,7 @@
                     },
                     "ctaButton": {
                         "label": "Consultar",
-                        "link": "/habitaciones#contacto"
+                        "link": "/habitaciones#reservar"
                     },
                     "features": {
                         "item1": "17 m²",
@@ -89,7 +158,7 @@
                     },
                     "ctaButton": {
                         "label": "Consultar",
-                        "link": "/habitaciones#contacto"
+                        "link": "/habitaciones#reservar"
                     },
                     "features": {
                         "item1": "50 m²",
@@ -205,6 +274,263 @@
                     "question": "¿Hay estacionamiento disponible?",
                     "answer": "Sí, ofrecemos estacionamiento gratuito para nuestros huéspedes."
                 }
+            }
+        }
+    },
+    "IndexPageBooking": {
+        "connection": {
+            "status": {
+                "good": "Conexión estable",
+                "poor": "Conexión débil",
+                "lost": "Sin conexión"
+            },
+            "connected": "Conexión establecida",
+            "connecting": "Conectando...",
+            "lost": "Se ha perdido la conexión",
+            "unstable": "La conexión es inestable",
+            "unstableDescription": "Esto podría afectar el proceso de reserva",
+            "critical": "Conexión crítica",
+            "criticalDescription": "La reserva será cancelada por seguridad",
+            "navigation": {
+                "redirecting": "Redirigiendo...",
+                "cancelling": "Cancelando reserva..."
+            }
+        },
+        "events": {
+            "startReservation": {
+                "message": "Tiene {timeLeft} para completar el proceso.",
+                "additionalInfo": "Asegúrese de completar todos los campos requeridos y de tener una buena conexión a Internet."
+            },
+            "cancelReservation": {
+                "message": "La reserva ha sido cancelada por seguridad.",
+                "additionalInfo": "Por favor, vuelva a intentarlo."
+            }
+        },
+        "title": "Reserva",
+        "generalError": {
+            "message": "Lo sentimos. Parece que ocurrió un error.",
+            "actionButton": {
+                "label": "Regresar a Inicio"
+            }
+        },
+        "chronometer": {
+            "timeLeftLabel": "Tiempo restante: {timeLeft}"
+        },
+        "updateReservationDates": {
+            "title": "¿Estas seguro de que deseas actualizar la reserva?",
+            "description": "Al actualizar la reserva, se eliminará la reserva actual y tendrá que crear una nueva reserva.",
+            "submitButton": {
+                "label": "Actualizar"
+            },
+            "cancelButton": {
+                "label": "Cancelar"
+            },
+            "generalError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Regresar a Inicio"
+                }
+            },
+            "input1": {
+                "label": "Número de huéspedes",
+                "placeholder": "Ingrese el número de huéspedes",
+                "description": "Máximo {guestNumber} huéspedes",
+                "placeholderDescription": "Escoja habitación para saber el max. de huéspedes",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "min": "Mínimo nro. de huéspedes {min}"
+                }
+            },
+            "input2": {
+                "label": "Habitación",
+                "placeholder": "Seleccione una habitación",
+                "description": {
+                    "noAvailable": "No hay habitaciones disponibles en estas fechas",
+                    "available": "Habitaciones disponibles: {availableRooms}"
+                },
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "noAvailable": "No hay habitaciones disponibles"
+                }
+            },
+            "input3": {
+                "label": "Check In",
+                "placeholder": "Ingrese su fecha de llegada",
+                "description": "Máximo hasta {maxDate}",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser anterior a la fecha de salida",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
+            },
+            "input4": {
+                "label": "Check Out",
+                "placeholder": "Ingrese su fecha de salida",
+                "description": "Su fecha de salida",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "dateError": {
+                        "before": "La fecha debe ser posterior a la fecha de check-in",
+                        "after": "La fecha debe ser posterior a hoy",
+                        "invalid": "La fecha no es válida"
+                    }
+                }
+            }
+        },
+        "moreReservationDetailsSection": {
+            "title": "Reserve con nosotros",
+            "description": "A un paso de la estancia perfecta",
+            "triggerButton": {
+                "label": "Modificar"
+            },
+            "bookingSummary": {
+                "guests": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}",
+                "night": "{count, plural, =0 {sin noches} =1 {1 noche} other {# noches}}"
+            }, 
+            "input1": {
+                "label": "Documento de Identidad",
+                "docTypeField": {
+                    "placeholder": "Tipo de documento",
+                    "values": {
+                        "dni": "DNI",
+                        "passport": "Pasaporte",
+                        "carnetExtranjeria": "Carnet de extranjería"
+                    },
+                    "selected": "{docType, select, dni {DNI} passport {Pasaporte} carnetExtranjeria {Carnet de extranjería} other {Desconocido}}",
+                    "errors": {
+                        "required": "Este campo es obligatorio",
+                        "invalid": "El tipo de documento no es válido"
+                    }
+                },
+                "placeholder": "Ingrese el número de de su Doc. de Identidad",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "invalid": "El número de documento no es válido",
+                    "maxLength": "El número de documento no puede tener más de {maxLength} caracteres",
+                    "minLength": "El número de documento no puede tener menos de {minLength} caracteres"
+                }
+            },
+            "input2": {
+                "label": "Nombres",
+                "placeholder": "Ingrese su nombre(s)",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "minLength": "El nombre no puede tener menos de {minLength} caracteres"
+                }
+            },
+            "input3": {
+                "label": "Apellidos",
+                "placeholder": "Ingrese su apellido(s) completos",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "minLength": "El apellido no puede tener menos de {minLength} caracteres"
+                }
+            },
+            "input4": {
+                "label": "Correo Electrónico",
+                "placeholder": "Ingrese su correo electrónico",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "invalid": "El correo electrónico no es válido",
+                    "minLength": "El correo electrónico no puede tener menos de {minLength} caracteres"
+                }
+            },
+            "input5": {
+                "label": "Número de Teléfono",
+                "placeholder": "Ingrese su número de teléfono",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "invalid": "El número de teléfono no es válido",
+                    "minLength": "El número de teléfono no puede tener menos de {minLength} caracteres",
+                    "maxLength": "El número de teléfono no puede tener más de {maxLength} caracteres"
+                }
+            },
+            "input6": {
+                "label": "Incluir desayuno ({amount} adicional -El pago se realiza en el check-in)",
+                "description": "Opcional"
+            },
+            "updateButton": {
+                "label": "Modificar"
+            }
+        },
+        "paymentDetailsSection": {
+            "title": "Datos de método de pago",
+            "description": "Monto a pagar para realizar la reserva: {amount}",
+            "input1": {
+                "label": "Número de tarjeta",
+                "placeholder": "XXXX XXXX XXXX XXXX",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "invalid": "El número de tarjeta no es válido",
+                    "minLength": "El número de tarjeta no puede tener menos de {minLength} caracteres",
+                    "maxLength": "El número de tarjeta no puede tener más de {maxLength} caracteres",
+                    "invalidLength": "El número de tarjeta no puede tener menos de {minLength} o más de {maxLength} caracteres"
+                }
+            },
+            "input2": {
+                "label": "Nombre del titular",
+                "placeholder": "Ingrese el nombre del titular",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "minLength": "El nombre del titular no puede tener menos de {minLength} caracteres"
+                }
+            },
+            "input3": {
+                "label": "Caducidad",
+                "placeholder": "MM/AA",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "invalid": "La fecha de caducidad no es válida",
+                    "invalidMonth": "Mes inválido (1-12)",
+                    "expiratedDate": "La tarjeta ha caducado",
+                    "incomplete": "Porfavor ingrese la fecha completa (MM/AA)"
+                }
+            },
+            "input4": {
+                "label": "Código de seguridad (CVV)",
+                "placeholder": "***",
+                "description": "(3 dígitos)",
+                "errors": {
+                    "required": "Este campo es obligatorio",
+                    "minLength": "El código de seguridad no puede tener menos de {minLength} caracteres",
+                    "maxLength": "El código de seguridad no puede tener más de {maxLength} caracteres"
+                }
+            },
+            "safePaymentAdvertisement": {
+                "title": "Pago seguro y encriptado."
+            }
+        },
+        "AdditionalInfoSection": {
+            "input1": {
+                "label": "Comentarios adicionales",
+                "placeholder": "Puede ingresar alguna consulta o comentario ...",
+                "description": "Opcional"
+            }
+        },
+        "submitSection": {
+            "input1": {
+                "label1": "Acepto los",
+                "label2": "y la",
+                "termsAndConditions": "Términos y condiciones",
+                "privacyPolicy": "Política de privacidad",
+                "description": "Obligatorio",
+                "errors": {
+                    "required": "Este campo es obligatorio"
+                }
+            },
+            "submitButton": {
+                "label": "Reservar"
             }
         }
     },
@@ -426,8 +752,232 @@
         }
     },
     "IndexPageRooms": {
-        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-        "title": "Habitaciones"
+        "title": "Habitaciones",
+        "roomsSection": {
+            "title": "Habitaciones y suite",
+            "description": "Un descanso inigualable",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
+            "commonFeatures": {
+                "item1": "WiFi gratuito",
+                "item2": "TV con cable",
+                "item3": "Servicio a la habitación",
+                "item4": "Ducha con agua caliente",
+                "item5": "Escritorio y armario",
+                "guest": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}"
+            },
+            "room1": {
+                "title": "Suite Matrimonial",
+                "description": "Espaciosa, confortable y moderna habitación con salón integrado, área de trabajo, espacio de descanso, caja fuerte, minibar y baño completo con bañera o tina.",
+                "features": {
+                    "item1": "38 m²",
+                    "item2": "2 huéspedes",
+                    "item3": "Bañera",
+                    "item4": "Mobiliario adicional",
+                    "item5": "Wifi gratuito",
+                    "item6": "TV full HD con cable",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio",
+                    "item9": "Minibar"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "170",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
+            },
+            "room2": {
+                "title": "Habitación Matrimonial",
+                "description": "Bonita y espaciosa habitación con cama matrimonial, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "16 m²",
+                    "item2": "2 huéspedes",
+                    "item3": "Ducha",
+                    "item4": "Wifi gratuito",
+                    "item5": "Cable",
+                    "item6": "TV full HD",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "80",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
+            },
+            "room3": {
+                "title": "Habitación Familiar",
+                "description": "Bonita y funcional habitación con cama de matrimonio de dos plazas y una cama de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "32 m²",
+                    "item2": "3 huéspedes",
+                    "item3": "2 camas",
+                    "item4": "Ducha",
+                    "item5": "Wifi gratuito",
+                    "item6": "Cable",
+                    "item7": "TV full HD",
+                    "item8": "Intercomunicador",
+                    "item9": "Escritorio"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "120",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
+            },
+            "room4": {
+                "title": "Habitación Doble",
+                "description": "Bonita y espaciosa habitación con dos camas de tamaño plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "17 m²",
+                    "item2": "2 huéspedes",
+                    "item3": "2 camas",
+                    "item4": "Ducha",
+                    "item5": "Wifi gratuito",
+                    "item6": "Cable",
+                    "item7": "TV full HD",
+                    "item8": "Intercomunicador",
+                    "item9": "Escritorio"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "100",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
+            },
+            "room5": {
+                "title": "Habitación Simple",
+                "description": "Bonita y funcional habitación con una cama de tamaño de plaza y media, TV de alta definición con canales por cable y área de trabajo.",
+                "features": {
+                    "item1": "11 m²",
+                    "item2": "1 huéspedes",
+                    "item3": "Ducha",
+                    "item4": "Wifi gratuito",
+                    "item5": "Cable",
+                    "item6": "TV full HD",
+                    "item7": "Intercomunicador",
+                    "item8": "Escritorio"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "currency": "PEN",
+                    "price": "60",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
+            }
+        },
+        "environmentsSection": {
+            "title": "Instalaciones",
+            "description": "Espacios a su disposición",
+            "gallery": {
+                "item1": {
+                    "title": "Recepción",
+                    "description": "El punto de partida ideal para tu estancia. Con un ambiente acogedor, te sentirás como en casa desde el primer momento."
+                },
+                "item2": {
+                    "title": "Estacionamiento",
+                    "description": "Acceso fácil y seguro. Diseñado para su comodidad con amplios espacios y fácil acceso."
+                },
+                "item3": {
+                    "title": "Sala de conferencias",
+                    "description": "El espacio ideal para tus eventos. Se adapta a tus necesidades, desde pequeñas reuniones hasta grandes presentaciones."
+                },
+                "item4": {
+                    "title": "Cafetería",
+                    "description": "Disfrute de un momento de tranquilidad y calma antes de explorar todo lo que Arequipa tiene para ofrecer."
+                },
+                "item5": {
+                    "title": "Sala de estar",
+                    "description": "El espacio para relajarse y conectar. Puede disfrutar de una lectura, una conversación o simplemente un momento de relax."
+                },
+                "item6": {
+                    "title": "Sala de descanso",
+                    "description": "Le ofrecemos un lugar acogedor para relajarse y sentirse como en casa."
+                }
+            }
+        },
+        "offersSection": {
+            "title": "Ofertas especiales",
+            "description": "Vive tus mejores recuerdos aquí",
+            "card1": {
+                "title": "Más tiempo, más ahorro",
+                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            },
+            "card2": {
+                "title": "Celebra el amor, Luna de miel",
+                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            },
+            "card3": {
+                "title": "Vacaciones en familia",
+                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "ctaButton": {
+                    "label": "Consultar",
+                    "link": "/habitaciones#contacto"
+                }
+            }
+        },
+        "bookingSection": {
+            "title": "Reserve ahora",
+            "caption": "Reserve su estadía",
+            "description": "El confort y la comodidad son nuestra máxima prioridad. Aquí, cada detalle está diseñado para brindarle una experiencia de alojamiento inigualable.",
+            "reservationForm": {
+                "checkInInput": {
+                    "label": "Check In",
+                    "placeholder": "Ingrese su fecha de llegada"
+                },
+                "checkOutInput": {
+                    "label": "Check Out",
+                    "placeholder": "Ingrese su fecha de salida"
+                },
+                "hostsInput": {
+                    "label": "Huéspedes",
+                    "placeholder": "Ingrese el número de huéspedes"
+                },
+                "roomInput": {
+                    "label": "Habitación",
+                    "placeholder": "Ingrese el tipo de habitación"
+                },
+                "submitButton": {
+                    "label": "Reservar"
+                }
+            }
+        }
     },
     "IndexPageTravelers": {
         "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
