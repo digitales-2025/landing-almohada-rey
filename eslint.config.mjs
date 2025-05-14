@@ -24,6 +24,7 @@ const globalConfig = {
         prettier: prettierPlugin,
     },
     rules: {
+        '@next/next/no-img-element': 'off',
         'prettier/prettier': 'error',
         camelcase: 'off',
         'import/prefer-default-export': 'off',
