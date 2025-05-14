@@ -16,12 +16,13 @@ const nextConfig: NextConfig = {
             },
         ],
     },
-    //Configutacion de webpack para la compilacion de inversify
+    //Configuración de webpack para la compilación de inversify
     webpack: (config, { isServer }) => {
         if (isServer) {
             config.plugins.push(
                 new webpack.BannerPlugin({
-                    banner: 'require("reflect-metadata")',
+                    // banner: 'require("reflect-metadata")',
+                    banner: '/* eslint-disable */ try { require("reflect-metadata"); } catch(e) { console.error("Error loading reflect-metadata:", e); }',
                     raw: true,
                     entryOnly: true,
                 })
