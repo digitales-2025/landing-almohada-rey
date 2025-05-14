@@ -253,3 +253,16 @@ export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
         }
     }
 }
+
+export function wrapUriWithParams<
+    T extends Record<string, string | number | boolean>,
+>({ uri, params }: { uri: string; params: T }) {
+    const entries = Object.entries(params);
+    const queryString = entries
+        .map(
+            ([key, value]) =>
+                `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+        )
+        .join('&');
+    return `${uri}?${queryString}`;
+}

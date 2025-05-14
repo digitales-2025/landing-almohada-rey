@@ -20,7 +20,7 @@ const tomorrowDate = new Date(today.getTime()); // Crear una copia
 tomorrowDate.setDate(tomorrowDate.getDate() + 1);
 const tomorrow = getCheckOutDate(tomorrowDate);
 
-export function useBookingForm(id?: string, locale?: SupportedLocales) {
+export function useBookingForm(id: string, locale?: SupportedLocales) {
     const t = useTranslations('IndexPageBooking');
     const { useConfirmBooking } = useBooking();
     const confirmBookingResult = useConfirmBooking(id ?? 'HOLA');
@@ -197,7 +197,7 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
         .object({
             reservation: reservationSchema,
             customer: customerSchema,
-            payment: paymentSchema,
+            // payment: paymentSchema,
             observations: z.string().optional(),
             didAcceptExtraServices: z.boolean().optional(),
             didAcceptTerms: z.boolean().refine(val => val === true, {
@@ -248,12 +248,12 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
                 documentType: defaultDocumentType,
                 documentNumber: '',
             },
-            payment: {
-                cardNumber: '',
-                cardHolderName: '',
-                expirationDate: '',
-                cvv: '',
-            },
+            // payment: {
+            //     cardNumber: '',
+            //     cardHolderName: '',
+            //     expirationDate: '',
+            //     cvv: '',
+            // },
             observations: '',
             didAcceptExtraServices: false,
             didAcceptTerms: false,
@@ -261,6 +261,8 @@ export function useBookingForm(id?: string, locale?: SupportedLocales) {
     });
 
     const onSubmit = (dto: LocalFormValues) => {
+        console.log(dto);
+        console.log(form.watch);
         confirmBookingResult.mutate(dto);
     };
 

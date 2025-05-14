@@ -1,7 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 
-export const useChronometer = () => {
-    const [timeLeft, setTimeLeft] = useState(0);
+export const useChronometer = (timeLeftParam: number = 0) => {
+    const [timeLeft, setTimeLeft] = useState<number>(timeLeftParam);
+    const [isAbleToUse, setIsAbleToUse] = useState<boolean>(false);
     const [isRunning, setIsRunning] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -51,13 +52,25 @@ export const useChronometer = () => {
         }, 1000);
     }, []);
 
+    const resetChronometer = useCallback(() => {
+        setTimeLeft(timeLeftParam);
+        setIsRunning(false);
+    }, [timeLeftParam]);
+
+    const activateChronometer = useCallback(() => {
+        setIsAbleToUse(true);
+    }, []);
+
     return {
         timeLeft,
         isRunning,
+        isAbleToUse,
         startChronometer,
         stopChronometer,
         resumeChronometer,
         pauseChronometer,
+        activateChronometer,
+        resetChronometer,
     };
 };
 

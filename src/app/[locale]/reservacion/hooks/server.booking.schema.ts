@@ -5,7 +5,7 @@ import {
     ConfirmBookingDtoForSchema,
     CustomerDocumentType,
     CustomerDto,
-    PaymentData,
+    // PaymentData,
     ReservationUpdateDtoForSchema,
 } from '@/actions/booking/booking';
 import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
@@ -121,58 +121,58 @@ const customerSchema = z.object({
         }),
 }) satisfies z.ZodType<CustomerDto>;
 
-const paymentSchema = z.object({
-    cardNumber: z
-        .string({
-            required_error: t('paymentDetailsSection.input1.errors.required'),
-        })
-        .min(16, {
-            message: t('paymentDetailsSection.input1.errors.minLength', {
-                minLength: String(16),
-            }),
-        })
-        .max(16, {
-            message: t('paymentDetailsSection.input1.errors.maxLength', {
-                maxLength: String(16),
-            }),
-        }),
-    cardHolderName: z
-        .string({
-            required_error: t('paymentDetailsSection.input2.errors.required'),
-        })
-        .min(1, {
-            message: t('paymentDetailsSection.input2.errors.minLength', {
-                minLength: String(1),
-            }),
-        }),
-    expirationDate: z
-        .string({
-            required_error: t('paymentDetailsSection.input3.errors.required'),
-        })
-        .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, {
-            message: t('paymentDetailsSection.input3.errors.invalid'),
-        }),
-    cvv: z
-        .string({
-            required_error: t('paymentDetailsSection.input4.errors.required'),
-        })
-        .min(3, {
-            message: t('paymentDetailsSection.input4.errors.minLength', {
-                minLength: String(3),
-            }),
-        })
-        .max(3, {
-            message: t('paymentDetailsSection.input4.errors.maxLength', {
-                maxLength: String(3),
-            }),
-        }),
-}) satisfies z.ZodType<PaymentData>;
+// const paymentSchema = z.object({
+//     cardNumber: z
+//         .string({
+//             required_error: t('paymentDetailsSection.input1.errors.required'),
+//         })
+//         .min(16, {
+//             message: t('paymentDetailsSection.input1.errors.minLength', {
+//                 minLength: String(16),
+//             }),
+//         })
+//         .max(16, {
+//             message: t('paymentDetailsSection.input1.errors.maxLength', {
+//                 maxLength: String(16),
+//             }),
+//         }),
+//     cardHolderName: z
+//         .string({
+//             required_error: t('paymentDetailsSection.input2.errors.required'),
+//         })
+//         .min(1, {
+//             message: t('paymentDetailsSection.input2.errors.minLength', {
+//                 minLength: String(1),
+//             }),
+//         }),
+//     expirationDate: z
+//         .string({
+//             required_error: t('paymentDetailsSection.input3.errors.required'),
+//         })
+//         .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, {
+//             message: t('paymentDetailsSection.input3.errors.invalid'),
+//         }),
+//     cvv: z
+//         .string({
+//             required_error: t('paymentDetailsSection.input4.errors.required'),
+//         })
+//         .min(3, {
+//             message: t('paymentDetailsSection.input4.errors.minLength', {
+//                 minLength: String(3),
+//             }),
+//         })
+//         .max(3, {
+//             message: t('paymentDetailsSection.input4.errors.maxLength', {
+//                 maxLength: String(3),
+//             }),
+//         }),
+// }) satisfies z.ZodType<PaymentData>;
 
 export const formSchema = z
     .object({
         reservation: reservationSchema,
         customer: customerSchema,
-        payment: paymentSchema,
+        // payment: paymentSchema,
         observations: z.string().optional(),
         didAcceptExtraServices: z.boolean().optional(),
         didAcceptTerms: z.boolean().refine(val => val === true, {

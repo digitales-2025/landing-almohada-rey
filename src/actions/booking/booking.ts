@@ -1,5 +1,6 @@
 import { SupportedLocales } from '@/i18n/routing';
 import { components } from '@/types/api';
+import { BaseApiResponse } from '@/types/api/types';
 
 // import { getTranslations } from 'next-intl/server';
 
@@ -10,6 +11,8 @@ export type CreateLandingReservationDto =
     components['schemas']['CreateLandingReservationDto'];
 
 export type CustomerDocumentType = 'DNI' | 'PASSPORT' | 'FOREIGNER_CARD';
+export type PaymentAndBookingResponse = BaseApiResponse<Reservation>;
+
 export const CustomerDocumentTypeEnum: Record<
     CustomerDocumentType,
     CustomerDocumentType
@@ -90,7 +93,7 @@ export type BookingForSchema = CustomerDto & ReservationUpdateDto;
 export type ConfirmBookingDtoForSchema = {
     customer: CustomerDto;
     reservation: ReservationUpdateDtoForSchema;
-    payment: PaymentData;
+    // payment: PaymentData;
     observations?: string;
     didAcceptExtraServices?: boolean;
     didAcceptTermsAndConditions?: boolean;
@@ -99,7 +102,7 @@ export type ConfirmBookingDtoForSchema = {
 export type ConfirmBookingDto = {
     customer: CustomerDto;
     reservation: ReservationUpdateDto;
-    payment: PaymentData;
+    // payment: PaymentData;
     observations?: string;
     didAcceptExtraServices?: boolean;
     didAcceptTermsAndConditions?: boolean;

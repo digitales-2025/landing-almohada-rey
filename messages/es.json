@@ -278,6 +278,34 @@
         }
     },
     "IndexPageBooking": {
+        "connection": {
+            "status": {
+                "good": "Conexión estable",
+                "poor": "Conexión débil",
+                "lost": "Sin conexión"
+            },
+            "connected": "Conexión establecida",
+            "connecting": "Conectando...",
+            "lost": "Se ha perdido la conexión",
+            "unstable": "La conexión es inestable",
+            "unstableDescription": "Esto podría afectar el proceso de reserva",
+            "critical": "Conexión crítica",
+            "criticalDescription": "La reserva será cancelada por seguridad",
+            "navigation": {
+                "redirecting": "Redirigiendo...",
+                "cancelling": "Cancelando reserva..."
+            }
+        },
+        "events": {
+            "startReservation": {
+                "message": "Tiene {timeLeft} para completar el proceso.",
+                "additionalInfo": "Asegúrese de completar todos los campos requeridos y de tener una buena conexión a Internet."
+            },
+            "cancelReservation": {
+                "message": "La reserva ha sido cancelada por seguridad.",
+                "additionalInfo": "Por favor, vuelva a intentarlo."
+            }
+        },
         "title": "Reserva",
         "generalError": {
             "message": "Lo sentimos. Parece que ocurrió un error.",
@@ -285,7 +313,7 @@
                 "label": "Regresar a Inicio"
             }
         },
-        "chronometer":{
+        "chronometer": {
             "timeLeftLabel": "Tiempo restante: {timeLeft}"
         },
         "updateReservationDates": {
@@ -317,7 +345,7 @@
                 "label": "Habitación",
                 "placeholder": "Seleccione una habitación",
                 "description": {
-                    "noAvailable": "No hay habitaciones disponibles",
+                    "noAvailable": "No hay habitaciones disponibles en estas fechas",
                     "available": "Habitaciones disponibles: {availableRooms}"
                 },
                 "errors": {
@@ -358,6 +386,10 @@
             "triggerButton": {
                 "label": "Modificar"
             },
+            "bookingSummary": {
+                "guests": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}",
+                "night": "{count, plural, =0 {sin noches} =1 {1 noche} other {# noches}}"
+            }, 
             "input1": {
                 "label": "Documento de Identidad",
                 "docTypeField": {

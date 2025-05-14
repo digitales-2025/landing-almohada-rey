@@ -5,7 +5,7 @@ import { UseFormReturn } from 'react-hook-form';
 
 import {
     ConfirmBookingDtoForSchema,
-    DetailedReservation,
+    Reservation,
 } from '@/actions/booking/booking';
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
@@ -29,8 +29,8 @@ import {
 
 interface Props {
     form: UseFormReturn<FormValues>;
-    mutatioResult: UseMutationResult<
-        BaseApiResponse<DetailedReservation>,
+    mutationResult: UseMutationResult<
+        BaseApiResponse<Reservation>,
         any,
         ConfirmBookingDtoForSchema,
         unknown
@@ -42,7 +42,7 @@ interface Props {
 
 export const AdditionalInfoSection = ({
     form,
-    mutatioResult,
+    mutationResult,
     children,
     disabled,
 }: Props) => {
@@ -63,7 +63,7 @@ export const AdditionalInfoSection = ({
                             <Textarea
                                 {...field}
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending || disabled}
+                                disabled={mutationResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>

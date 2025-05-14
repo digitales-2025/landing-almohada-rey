@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 
-import { BaseActionOps } from '@/lib/actions/BaseActionOps';
+import { SupportedLocales } from '@/i18n/routing';
+import { BaseActionOps, wrapUriWithParams } from '@/lib/actions/BaseActionOps';
 import { GetResponse, MutationResponse } from '@/types/api/actions-crud';
 import { DetailedRoom } from '../rooms/room';
 import {
@@ -8,6 +9,7 @@ import {
     ConfirmBookingDto,
     DetailedReservation,
     LandingRequestDto,
+    Reservation,
     ReservationUpdateDto,
     SummaryBooking,
 } from './booking';
@@ -39,12 +41,18 @@ export class BookingOps extends BaseActionOps<SummaryBooking> {
     }
 
     async confirmBookingAndPay(
-        id: string, //booking id
+        reservationId: string, //booking id
+        locale: SupportedLocales,
         dto: ConfirmBookingDto
-    ): Promise<MutationResponse<DetailedReservation>> {
-        const response = await this.update<DetailedReservation>(
-            '/confirm-booking',
-            id,
+    ): Promise<MutationResponse<Reservation>> {
+        const response = await this.create<Reservation>(
+            wrapUriWithParams({
+                uri: '/landing-reservation/confirm-reservation',
+                params: {
+                    locale,
+                    reservationId,
+                },
+            }),
             dto
         );
         return response;

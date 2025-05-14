@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
@@ -20,11 +20,12 @@ import {
     FormItem,
     FormLabel,
 } from '@/components/ui/form';
+import { useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { AdditionalInfoSection } from '../components/AdditionalInfoSection';
 import { BookingHeroSection } from '../components/bookingHeroSection';
 import { AditionalDataReservationSection } from '../components/MoreBookingDetailsSection';
-import { PaymentSection } from '../components/PaymentSection';
+// import { PaymentSection } from '../components/PaymentSection';
 import { useBookingForm } from '../hooks/useBookingForm';
 import { useBookingWebSocket } from '../hooks/useBookingWs';
 import {
@@ -94,119 +95,183 @@ export default function Page() {
     const t = useTranslations('IndexPageBooking');
     const locale = useLocale();
     const { form, confirmBookingResult, onSubmit } = useBookingForm(
-        undefined,
+        reservationId,
         locale
     );
+    const router = useRouter();
     const firstRender = React.useRef(true);
-    // const { timeLeft, isRunning, startChronometer, stopChronometer } =
-    //     useChronometer();
 
     const wsConnectionResult = useBookingWebSocket(locale, reservationId);
     const {
+        reservationRef,
         isConnected,
         isConnecting,
-        isloading,
+        isLoading,
+        isRedirecting,
+        canContinue,
+        connectionQuality,
         startBookingPayment,
         cancelBookingPayment,
-        // completeBookingPayment,
-        // notifyBookingError,
-        tryReconnection,
         chronometer,
     } = wsConnectionResult;
 
     const {
         timeLeft,
         isRunning,
-        // startChronometer,
-        // stopChronometer
+        isAbleToUse: isAbleToUseChronometer,
     } = chronometer;
 
-    const generalDisabled = !isConnected || isConnecting || isloading;
+    const generalDisabled =
+        !isConnected ||
+        isConnecting ||
+        isLoading ||
+        !canContinue ||
+        isRedirecting;
 
-    // const handleRedirection = () => {
-    //     cancelBookingPayment();
-    //     router.replace('/');
+    // const redirectingToast = ()=>{
+    //     toast.error(t('connection.navigation.redirecting'), {
+    //         duration: 4000,
+    //     });
     // }
 
-    // const firstRender = React.useRef(true);
-    // const handleCancelReservation = () => {
-    //     stopChronometer();
-    //     router.push('/');
-    // };
+    const cancellingToast = () => {
+        toast.error(t('connection.navigation.cancelling'), {
+            duration: 4000,
+        });
+    };
+
+    const setReservationDefaultData = useCallback(() => {
+        if (reservationRef.current) {
+            form.setValue(
+                'reservation.checkInDate',
+                new Date(reservationRef.current.checkInDate)
+            );
+            form.setValue(
+                'reservation.checkOutDate',
+                new Date(reservationRef.current.checkOutDate)
+            );
+            form.setValue(
+                'reservation.guestNumber',
+                reservationRef.current.requestedGuestNumber
+            );
+            form.setValue('reservation.roomId', reservationRef.current.roomId);
+        }
+    }, [form, reservationRef]);
 
     React.useEffect(() => {
-        // startChronometer(60);
-        if (isConnected) {
-            // startChronometer(60);
-            startBookingPayment();
-        } else {
-            // stopChronometer();
-            toast.promise(
-                tryReconnection(),
-                // {
-                //     loading: t('connectionError.loading'),
-                //     success: t('connectionError.success'),
-                //     error: t('connectionError.error'),
-                // }
-                {
-                    loading: 'Reconnecting...',
-                    success: 'Connected',
-                    error: 'Error reconnecting. Redirecting to home',
-                }
-            );
-            if (!isConnected && !isConnecting) cancelBookingPayment();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isConnected, isConnecting]);
+        setReservationDefaultData();
+    }, [
+        setReservationDefaultData,
+        //reservationRef.current
+    ]);
 
+    // Efecto para mostrar notificaciones basadas en el estado de conexión
+    React.useEffect(() => {
+        // Omitir el primer renderizado para evitar notificaciones innecesarias al cargar la página
+        if (firstRender.current) {
+            firstRender.current = false;
+            return;
+        }
+
+        // // Notificación cuando se conecta por primera vez o se reconecta
+        // if (isConnected && !isConnecting) {
+        //     toast.success(t('connection.connected'));
+        // }
+
+        // // Notificación cuando se está conectando (después de una desconexión)
+        // if (isConnecting && !isConnected) {
+        //     toast.loading(t('connection.connecting'));
+        // }
+
+        // Notificación cuando se pierde la conexión
+        if (!isConnected && !isConnecting) {
+            toast.error(t('connection.lost'));
+        }
+
+        // Notificaciones basadas en la calidad de conexión
+        if (connectionQuality === 'good' && isConnected) {
+            // No mostramos notificación para conexión buena para no saturar al usuario
+            // Solo si hubo una mejora de 'poor' a 'good' se mostrará en el hook
+        } else if (connectionQuality === 'poor' && isConnected) {
+            toast.warning(t('connection.unstable'), {
+                description: t('connection.unstableDescription'),
+                duration: 4000,
+            });
+        } else if (connectionQuality === 'lost') {
+            toast.error(t('connection.critical'), {
+                description: t('connection.criticalDescription'),
+            });
+        }
+    }, [isConnected, isConnecting, connectionQuality, t]);
+
+    // Inicia el proceso de reservación cuando la conexión está lista
+    React.useEffect(() => {
+        if (isConnected && !isLoading && !canContinue) {
+            // Inicia el proceso de reservación una vez conectado
+            startBookingPayment();
+        }
+    }, [
+        isConnected,
+        isConnecting,
+        isLoading,
+        canContinue,
+        startBookingPayment,
+    ]);
+
+    // Añade este efecto para interceptar el botón back
+    React.useEffect(() => {
+        const handlePopState = () => {
+            // Cancelar la reserva al pulsar el botón atrás
+            cancelBookingPayment();
+            // Redirigir explícitamente a la página de habitaciones
+            router.replace('/rooms');
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [cancelBookingPayment, router]);
+
+    // Cancelar la reserva al tratar de salir de la página
+    React.useEffect(() => {
+        const handleBeforeUnload = () => {
+            cancelBookingPayment();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [cancelBookingPayment]);
+
+    // Manejar expiración del cronómetro
     React.useEffect(() => {
         if (firstRender.current) {
             firstRender.current = false;
             return;
         }
-        if (timeLeft === 0 && !isRunning) {
-            // stopChronometer();
+
+        if (
+            timeLeft === 0 &&
+            isAbleToUseChronometer &&
+            !isRunning &&
+            isConnected
+        ) {
+            cancellingToast();
             cancelBookingPayment();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isRunning, timeLeft]);
-
-    // React.useEffect(() => {
-    //     if (firstRender.current) {
-    //         firstRender.current = false;
-    //         return;
-    //     }
-    //     if (!isRunning) {
-
-    //         if (timeLeft !== 60) {
-    //             handleCancelReservation();
-    //         }
-    //     }
-    // }, [isRunning, timeLeft]);
-
-    // React.useEffect(() => {
-    //     if (confirmBookingResult.isSuccess) {
-    //         stopChronometer();
-    //         router.push(`/${locale}/reservacion/${confirmBookingResult.data}`);
-    //     }
-    // }, [confirmBookingResult.isSuccess]);
-
-    // React.useEffect(() => {
-    //     if (confirmBookingResult.isError) {
-    //         stopChronometer();
-    //         router.push('/');
-    //     }
-    // }, [confirmBookingResult.isError]);
-
-    // React.useEffect(() => {
-    //     if (!isRunning) {
-    //         // Prevent calling handleCancelReservation on initial mount
-    //         // Only trigger when chronometer stops after being started
-    //         if (timeLeft !== 60) {
-    //             handleCancelReservation();
-    //         }
-    //     }
-    // }, [isRunning, timeLeft]);
+    }, [
+        isRunning,
+        timeLeft,
+        isAbleToUseChronometer,
+        isConnected,
+        cancelBookingPayment,
+        t,
+    ]);
 
     if (confirmBookingResult.isPending) {
         return (
@@ -239,23 +304,37 @@ export default function Page() {
             <BookingHeroSection></BookingHeroSection>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    {/* {isRunning && <Chronometer timeLeft={timeLeft} warningWhen={45}/>} */}
+                    {form.formState.errors && (
+                        <div>
+                            {Object.values(form.formState.errors).map(
+                                (error, idx) =>
+                                    error?.message ? (
+                                        <div
+                                            key={idx}
+                                            className="text-destructive text-sm mb-2"
+                                        >
+                                            {error.message as string}
+                                        </div>
+                                    ) : null
+                            )}
+                        </div>
+                    )}
                     <AditionalDataReservationSection
                         form={form}
-                        mutatioResult={confirmBookingResult}
+                        mutationResult={confirmBookingResult}
                         onUpdateBookingData={cancelBookingPayment}
-                        // wsConnectionResult={wsConnectionResult}
                         disabled={generalDisabled}
+                        reservation={reservationRef.current}
                     ></AditionalDataReservationSection>
-                    <PaymentSection
+                    {/* <PaymentSection
                         form={form}
                         mutatioResult={confirmBookingResult}
                         wsConnectionResult={wsConnectionResult}
                         disabled={generalDisabled}
-                    ></PaymentSection>
+                    ></PaymentSection> */}
                     <AdditionalInfoSection
                         form={form}
-                        mutatioResult={confirmBookingResult}
+                        mutationResult={confirmBookingResult}
                         wsConnectionResult={wsConnectionResult}
                         disabled={generalDisabled}
                     >
@@ -308,8 +387,18 @@ export default function Page() {
                                 variant={'default'}
                                 type="submit"
                                 size={'lg'}
-                                className="rounded-none text-base md:text-xl h-fit"
+                                className="rounded-none text-base md:text-xl h-fit cursor-pointer"
                                 disabled={generalDisabled}
+                                onClick={() => {
+                                    console.log(
+                                        'Errors:',
+                                        form.formState.errors
+                                    );
+                                    console.log(
+                                        'Is Form Valid:',
+                                        form.formState.isValid
+                                    );
+                                }}
                             >
                                 <span className="mx-3 !my-2 ">
                                     {t('submitSection.submitButton.label')}

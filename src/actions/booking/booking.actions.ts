@@ -70,6 +70,7 @@ export async function updateBooking(
 
 export async function confirmBookingAndPay(
     id: string,
+    locale: SupportedLocales,
     data: ConfirmBookingDtoForSchema
 ) {
     const dtoToSend: ConfirmBookingDto = {
@@ -79,10 +80,10 @@ export async function confirmBookingAndPay(
             checkInDate: data.reservation.checkInDate.toISOString(),
             checkOutDate: data.reservation.checkOutDate.toISOString(),
         },
-        payment: data.payment,
+        // payment: data.payment,
         observations: data.observations,
         didAcceptExtraServices: data.didAcceptExtraServices,
         didAcceptTermsAndConditions: data.didAcceptTermsAndConditions,
     };
-    return bookingOps.confirmBookingAndPay(id, dtoToSend);
+    return bookingOps.confirmBookingAndPay(id, locale, dtoToSend);
 }

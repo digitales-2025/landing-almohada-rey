@@ -8,6 +8,7 @@ import {
     ConfirmBookingDtoForSchema,
     CustomerDocumentType,
     DetailedReservation,
+    Reservation,
 } from '@/actions/booking/booking';
 import { sectionLayoutClassnames } from '@/components/layout/reset-page-classnames';
 import { SectionWrapper } from '@/components/layout/section/base-section';
@@ -30,6 +31,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton';
 import {
     Table,
     TableBody,
@@ -38,7 +40,12 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import { defaultLocale } from '@/i18n/routing';
 import { formatPrice } from '@/lib/i18n-formatPrice';
+import {
+    calculateStayNights,
+    formatDateToLimaTimezone,
+} from '@/lib/timedate/peru-datetime';
 import { cn } from '@/lib/utils';
 import { BaseApiResponse } from '@/types/api/types';
 import { FormValues } from '../hooks/server.booking.schema';
@@ -67,9 +74,10 @@ export type FormGrid = {
 };
 
 interface Props {
+    reservation: DetailedReservation | undefined;
     form: UseFormReturn<FormValues>;
-    mutatioResult: UseMutationResult<
-        BaseApiResponse<DetailedReservation>,
+    mutationResult: UseMutationResult<
+        BaseApiResponse<Reservation>,
         any,
         ConfirmBookingDtoForSchema,
         unknown
@@ -94,8 +102,9 @@ export const inputCommonClassnames = cn(
 );
 
 export const AditionalDataReservationSection = ({
+    reservation,
     form,
-    mutatioResult,
+    mutationResult,
     onUpdateBookingData,
     // wsConnectionResult,
     disabled,
@@ -130,7 +139,7 @@ export const AditionalDataReservationSection = ({
     }));
 
     const provisionalAmount = {
-        amount: 100,
+        amount: 10,
         currency: 'PEN',
     };
 
@@ -143,6 +152,44 @@ export const AditionalDataReservationSection = ({
     //     ],
     // };
 
+    const calculateTotals = (reservation?: DetailedReservation) => {
+        if (!reservation) {
+            return {
+                totalPriceFormatted: '',
+                stayInterval: '',
+                pricePerNightFormatted: '',
+                totalNights: 0,
+                totalGuests: 0,
+            };
+        }
+        const pricePerNight = reservation?.room.RoomTypes.price;
+        const totalNights = calculateStayNights(
+            reservation?.checkInDate,
+            reservation?.checkOutDate
+        );
+        const totalPrice = pricePerNight * totalNights;
+        const stayInterval = `${formatDateToLimaTimezone(new Date(reservation?.checkInDate), locale, true).long} - ${formatDateToLimaTimezone(new Date(reservation?.checkOutDate), locale, true).long}`;
+        const pricePerNightFormatted = formatPrice(
+            pricePerNight.toString(),
+            'PEN',
+            locale
+        );
+        const totalPriceFormatted = formatPrice(
+            totalPrice.toString(),
+            'PEN',
+            locale
+        );
+        const hosts: [] = JSON.parse(reservation?.guests || '[]');
+        const totalGuests = hosts.length + 1;
+        return {
+            totalPriceFormatted,
+            stayInterval,
+            pricePerNightFormatted,
+            totalGuests,
+            totalNights,
+        };
+    };
+
     const formGrid: FormGrid = {
         items: [
             <div
@@ -150,56 +197,94 @@ export const AditionalDataReservationSection = ({
                 className="col-span-2 lg:col-span-1 space-y-4 w-full"
             >
                 <div className="flex space-x-2 items-end">
-                    <Table>
-                        <TableHeader className="pl-0">
-                            <TableRow className="text-lg font-semibold">
-                                <TableHead
-                                    className="pl-0 capitalize"
-                                    colSpan={2}
-                                >
-                                    <div className="flex flex-col">
-                                        <span>{'suite'}</span>
-                                        <span className="text-sm font-normal opacity-80">
-                                            {'todas la noches y los huespedes'}
+                    {mutationResult.isPending || !reservation ? (
+                        // Skeleton para la tabla cuando está cargando
+                        <div className="flex-grow">
+                            <Skeleton className="h-10 w-full mb-2" />
+                            <Skeleton className="h-6 w-3/4 mb-4" />
+                            <div className="space-y-3">
+                                <Skeleton className="h-8 w-full" />
+                                <Skeleton className="h-8 w-full" />
+                                <Skeleton className="h-8 w-full" />
+                            </div>
+                        </div>
+                    ) : (
+                        <Table className="text-secondary">
+                            <TableHeader className="pl-0">
+                                <TableRow className="text-lg font-semibold">
+                                    <TableHead
+                                        className="pl-0 capitalize text-secondary"
+                                        colSpan={2}
+                                    >
+                                        <div className="flex flex-col">
+                                            <span className="capitalize">
+                                                {locale === defaultLocale
+                                                    ? reservation.room.RoomTypes
+                                                          .name
+                                                    : reservation.room.RoomTypes
+                                                          .nameEn}
+                                            </span>
+                                            <span className="text-sm font-normal opacity-80">
+                                                {`${t('bookingSummary.night', {
+                                                    count: calculateTotals(
+                                                        reservation
+                                                    ).totalNights,
+                                                })}, ${t(
+                                                    'bookingSummary.guests',
+                                                    {
+                                                        count: calculateTotals(
+                                                            reservation
+                                                        ).totalGuests,
+                                                    }
+                                                )}`}
+                                            </span>
+                                        </div>
+                                    </TableHead>
+                                    <TableHead className="flex items-start">
+                                        <span className="h-fit">
+                                            {
+                                                calculateTotals(reservation)
+                                                    .totalPriceFormatted
+                                            }
                                         </span>
-                                    </div>
-                                </TableHead>
-                                <TableHead className="flex items-start">
-                                    <span className="h-fit">
-                                        {'Total en numeros'}
-                                    </span>
-                                </TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {/* <TableRow>
-                                <TableCell className='pl-0 text-wrap capitalize' colSpan={2}>todas la noches y los huespedes</TableCell>
-                            </TableRow> */}
-                            <TableRow className="capitalize">
-                                <TableCell colSpan={2} className="pl-0">
-                                    {'check in'}
-                                </TableCell>
-                                <TableCell>{'total check in'}</TableCell>
-                            </TableRow>
-                            <TableRow className="capitalize">
-                                <TableCell colSpan={2} className="pl-0">
-                                    {'check out'}
-                                </TableCell>
-                                <TableCell>{'total check out'}</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                    {/* <Button type='button' variant={'secondary'} onClick={()=> setShowUpdateDialog(true)} className='rounded-none h-fit my-3' size={'lg'}>
-                        <span className='mx-3 !my-2 text-sm md:text-lg lg:text-xl'>{t('triggerButton.label')}</span>
-                    </Button>
-                    {
-                        showUpdateDialog && 
-                    } */}
-                    <UpdateReservationDialog
-                        onUpdateBookingData={onUpdateBookingData}
-                        // reservationData={}
-                    ></UpdateReservationDialog>
+                                    </TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow className="capitalize text-secondary">
+                                    <TableCell colSpan={2} className="pl-0">
+                                        {
+                                            calculateTotals(reservation)
+                                                .stayInterval
+                                        }
+                                    </TableCell>
+                                    <TableCell>
+                                        {calculateTotals(reservation)
+                                            .pricePerNightFormatted +
+                                            `${locale === defaultLocale ? ' / noche' : ' / night'}`}
+                                    </TableCell>
+                                </TableRow>
+                                {/* <TableRow className="capitalize">
+                                    <TableCell colSpan={2} className="pl-0">
+                                        {'check out'}
+                                    </TableCell>
+                                    <TableCell>{'total check out'}</TableCell>
+                                </TableRow> */}
+                            </TableBody>
+                        </Table>
+                    )}
+
+                    {mutationResult.isPending || !reservation ? (
+                        // Skeleton para el botón de diálogo cuando está cargando
+                        <Skeleton className="h-12 w-24" />
+                    ) : (
+                        <UpdateReservationDialog
+                            onUpdateBookingData={onUpdateBookingData}
+                            // reservationData={}
+                        />
+                    )}
                 </div>
+
                 <FormField
                     control={form.control}
                     name="didAcceptExtraServices"
@@ -296,7 +381,7 @@ export const AditionalDataReservationSection = ({
                                         type="text"
                                         className={inputCommonClassnames}
                                         disabled={
-                                            mutatioResult.isPending || disabled
+                                            mutationResult.isPending || disabled
                                         }
                                     />
                                 </FormControl>
@@ -323,7 +408,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="text"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending || disabled}
+                                disabled={mutationResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -347,7 +432,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="text"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending || disabled}
+                                disabled={mutationResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -371,7 +456,7 @@ export const AditionalDataReservationSection = ({
                                 {...field}
                                 type="email"
                                 className={inputCommonClassnames}
-                                disabled={mutatioResult.isPending || disabled}
+                                disabled={mutationResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>
@@ -423,7 +508,7 @@ export const AditionalDataReservationSection = ({
                                     'w-fit md:min-w-[80px]'
                                 )}
                                 flagSize="medium"
-                                disabled={mutatioResult.isPending || disabled}
+                                disabled={mutationResult.isPending || disabled}
                             />
                         </FormControl>
                         <FormDescription>

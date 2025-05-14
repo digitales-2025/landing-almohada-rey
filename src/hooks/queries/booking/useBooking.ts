@@ -60,7 +60,7 @@ export const useBooking = () => {
                     );
                 }
                 const { id } = newBookingForLanding.data;
-                router.replace({
+                router.push({
                     pathname: '/reservacion/' + id,
                 });
             },
@@ -93,6 +93,7 @@ export const useBooking = () => {
             mutationFn: async (bookingData: ConfirmBookingDtoForSchema) => {
                 const response = await confirmBookingAndPay(
                     reservationId,
+                    locale,
                     bookingData
                 );
                 if ('error' in response) {
@@ -100,8 +101,9 @@ export const useBooking = () => {
                 }
                 return response;
             },
-            onSuccess: () => {
-                toast.success('Booking confirmed successfully');
+            onSuccess: data => {
+                toast.success(data.message);
+                router.push('/experiencias');
             },
             onError: (error: any) => {
                 toast.error(error.message || 'Failed to confirm booking');

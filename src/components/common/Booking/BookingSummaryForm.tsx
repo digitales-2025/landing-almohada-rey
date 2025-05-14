@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { addDays, startOfDay } from 'date-fns';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
@@ -26,7 +26,6 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
-import { defaultLocale } from '@/i18n/routing';
 import {
     formatDateToLimaTimezone,
     getLimaTime,
@@ -38,21 +37,19 @@ import { SmallFormError } from '../Errors/FormErrors';
 import { OneRowLoadingFormSkeleton } from '../loading/LoadingFormSkeleton';
 import { useSummaryBookingForm } from './useSummaryBookingForm';
 
-type SelectOption = {
-    value: string;
-    label: string;
-};
+// type SelectOption = {
+//     value: string;
+//     label: string;
+// };
 
 export const BookingSummaryForm = () => {
+    // 1. Primero declaramos todos los hooks básicos
     const t = useTranslations('Forms.reserveBookingSummary');
     const locale = useLocale();
-    const {
-        form,
-        onSubmit,
-        // isPending
-        mutation,
-    } = useSummaryBookingForm();
+    const { form, onSubmit, mutation } = useSummaryBookingForm();
     const values = form.watch();
+
+    // 2. Creamos el ref para los datos de disponibilidad
     const defaultAvailabilityDataRef = useRef<CheckRoomAvailabilityDto>({
         checkInDate: values.checkInDate.toISOString(),
         checkOutDate: values.checkOutDate.toISOString(),
@@ -60,83 +57,142 @@ export const BookingSummaryForm = () => {
         roomId: values.roomId,
     });
 
+    // Ref para manejar el valor seleccionado y el tipo de habitación mostrado
+    const selectedRoomIdRef = useRef<string | null>(null);
+    const selectedRoomTypeRef = useRef<string | null>(null);
+
+    // 3. Hook para la disponibilidad
     const { checkAvailability, query } = useAvailability(
         defaultAvailabilityDataRef.current
     );
 
-    // 1. handleCheckAvailability solo depende de checkAvailability
+    // 4. Definir todos los callbacks - ANTES de cualquier condicional
     const handleCheckAvailability = useCallback(
         (formValues: typeof values) => {
+            // Comparar con los valores previos para evitar llamadas innecesarias
+            if (
+                defaultAvailabilityDataRef.current.checkInDate ===
+                    formValues.checkInDate.toISOString() &&
+                defaultAvailabilityDataRef.current.checkOutDate ===
+                    formValues.checkOutDate.toISOString() &&
+                defaultAvailabilityDataRef.current.guestNumber ===
+                    formValues.guestNumber &&
+                defaultAvailabilityDataRef.current.roomId === formValues.roomId
+            ) {
+                return;
+            }
+
             const newParams: CheckRoomAvailabilityDto = {
                 checkInDate: formValues.checkInDate.toISOString(),
                 checkOutDate: formValues.checkOutDate.toISOString(),
                 guestNumber: formValues.guestNumber,
                 roomId: formValues.roomId,
             };
+
+            defaultAvailabilityDataRef.current = newParams;
             checkAvailability(newParams);
         },
         [checkAvailability]
     );
 
-    // 2. useEffect depende de los valores del formulario
+    // 5. Definimos todas las funciones useCallback antes de cualquier useEffect
+    const selectRandomRoomByType = useCallback(
+        (roomType: string) => {
+            if (!query.data) return '';
+
+            const roomsOfType = query.data.filter(
+                room => room.RoomTypes.name === roomType
+            );
+            if (roomsOfType.length > 0) {
+                const randomIndex = Math.floor(
+                    Math.random() * roomsOfType.length
+                );
+                const selectedRoom = roomsOfType[randomIndex];
+                return selectedRoom.id;
+            }
+            return '';
+        },
+        [query.data]
+    );
+
+    // Crear un mapping de ID de habitación a tipo de habitación para mostrar correctamente el valor seleccionado
+    // const roomIdToTypeMapping = useMemo(() => {
+    //     if (!query.data) return new Map();
+
+    //     const mapping = new Map<string, string>();
+    //     query.data.forEach(room => {
+    //         mapping.set(room.id, room.RoomTypes.name);
+    //     });
+    //     return mapping;
+    // }, [query.data]);
+
+    const checkInDateISO = useMemo(
+        () => values.checkInDate.toISOString(),
+        [values.checkInDate]
+    );
+    const checkOutDateISO = useMemo(
+        () => values.checkOutDate.toISOString(),
+        [values.checkOutDate]
+    );
+
+    // 6. Después de todos los callbacks, definimos los efectos
     useEffect(() => {
         handleCheckAvailability(values);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
-        values.checkInDate,
-        values.checkOutDate,
+        checkInDateISO,
+        checkOutDateISO,
         values.guestNumber,
         values.roomId,
+        handleCheckAvailability,
     ]);
 
-    // // Primera carga de datos
-    // useEffect(() => {
-    //     // Una sola vez al montar el componente
-    //     handleCheckAvailability();
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []); // array de dependencias vacío para ejecutar solo al montar
+    // 7. Calculamos los valores derivados usando useMemo para evitar recálculos innecesarios
+    const roomTypeOptions = useMemo(() => {
+        if (!query.data || query.data.length === 0) return [];
 
-    if (query.isLoading) {
-        return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
-    }
-
-    if (query.isError) {
-        return <SmallFormError></SmallFormError>;
-    }
-
-    if (!query.data) {
-        return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
-    }
-
-    if (mutation.isPending && !mutation.isError) {
-        toast.loading(
-            locale === defaultLocale
-                ? 'Creando reserva...'
-                : 'Creating booking...'
+        const roomsAvailable = query.data;
+        // Obtener tipos de habitaciones únicas disponibles
+        const roomTypesArray = Array.from(
+            new Set(roomsAvailable.map(room => room.RoomTypes.name))
         );
-    }
 
-    const roomsAvailable = query.data;
+        // Crear opciones para el select basadas en los tipos de habitación
+        return roomTypesArray.map(roomType => {
+            // Obtener todas las habitaciones de este tipo
+            const roomsOfType = roomsAvailable.filter(
+                room => room.RoomTypes.name === roomType
+            );
+            // Usar la capacidad de huéspedes de la primera habitación de este tipo
+            const guestCapacity = roomsOfType[0]?.RoomTypes.guests || 0;
+            return {
+                value: roomType,
+                label: `${roomType.toUpperCase()} - 🧍(${guestCapacity})`,
+            };
+        });
+    }, [query.data]);
 
-    const roomOptions: SelectOption[] = roomsAvailable.map(room => {
-        return {
-            value: room.id,
-            label: `${room.number}(${room.RoomTypes.name.toUpperCase()}) - 🧍(${room.RoomTypes.guests})`,
-        };
-    });
+    // 8. Valores derivados estables que no causan rerenderizados
+    // const dayBeforeCheckOutDate = useMemo(() => {
+    //     const date = new Date(values.checkOutDate);
+    //     date.setDate(date.getDate() - 1);
+    //     return date;
+    // }, [values.checkOutDate]);
 
-    const dayBeforeCheckOutDate = new Date(values.checkOutDate);
-    dayBeforeCheckOutDate.setDate(dayBeforeCheckOutDate.getDate() - 1);
-
-    const maxDate = getLimaTime(
-        new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    const maxDate = useMemo(
+        () =>
+            getLimaTime(
+                new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+            ),
+        []
     );
 
-    const maxGuests =
-        roomsAvailable.map(room => room.RoomTypes.guests).length == 0
-            ? 0
-            : Math.max(...roomsAvailable.map(room => room.RoomTypes.guests));
+    const maxGuests = useMemo(() => {
+        if (!query.data || query.data.length === 0) return 0;
+        return Math.max(...query.data.map(room => room.RoomTypes.guests));
+    }, [query.data]);
 
+    // 9. Valores para los estilos
     const textColor = 'text-secondary';
     const labelClassname = cn(
         textColor,
@@ -151,6 +207,16 @@ export const BookingSummaryForm = () => {
         fieldClassname
     );
 
+    // 10. Renderizado condicional - DESPUÉS de definir todos los hooks
+    if (query.isError) {
+        return <SmallFormError></SmallFormError>;
+    }
+
+    if (!query.data) {
+        return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
+    }
+
+    // 11. Renderizado principal
     return (
         <div className="p-6 bg-primary-foreground">
             <Form {...form}>
@@ -171,7 +237,11 @@ export const BookingSummaryForm = () => {
                                         className={inputCommonClassnames}
                                         placeholder={t('input1.placeholder')}
                                         max={maxGuests ?? field.value ?? 0}
-                                        disabled={mutation.isPending}
+                                        disabled={
+                                            mutation.isPending ||
+                                            query.isLoading ||
+                                            !query.data
+                                        }
                                         {...field}
                                         type="number"
                                     />
@@ -205,11 +275,28 @@ export const BookingSummaryForm = () => {
                                     {t('input2.label')}
                                 </FormLabel>
                                 <Select
-                                    onValueChange={field.onChange}
+                                    onValueChange={roomTypeName => {
+                                        // Seleccionar una habitación al azar del tipo seleccionado
+                                        const randomRoomId =
+                                            selectRandomRoomByType(
+                                                roomTypeName
+                                            );
+
+                                        // Guardamos los valores en las referencias
+                                        selectedRoomIdRef.current =
+                                            randomRoomId;
+                                        selectedRoomTypeRef.current =
+                                            roomTypeName;
+
+                                        // Actualizamos el valor del formulario sin usar trigger
+                                        field.onChange(randomRoomId);
+                                    }}
                                     defaultValue={field.value}
                                     disabled={
+                                        !query.data ||
                                         query.data.length === 0 ||
-                                        mutation.isPending
+                                        mutation.isPending ||
+                                        query.isLoading
                                     }
                                 >
                                     <FormControl>
@@ -225,17 +312,66 @@ export const BookingSummaryForm = () => {
                                                     'input2.placeholder'
                                                 )}
                                             >
-                                                {field.value !== undefined &&
-                                                    roomOptions.find(
-                                                        option =>
-                                                            option.value ===
-                                                            field.value
-                                                    )?.label}
+                                                {(() => {
+                                                    // Si tenemos un valor en la referencia, lo usamos primero
+                                                    if (
+                                                        selectedRoomTypeRef.current
+                                                    ) {
+                                                        // Buscar la opción correspondiente para mostrar también la capacidad
+                                                        const option =
+                                                            roomTypeOptions.find(
+                                                                opt =>
+                                                                    opt.value ===
+                                                                    selectedRoomTypeRef.current
+                                                            );
+                                                        if (option) {
+                                                            return option.label;
+                                                        }
+                                                    }
+
+                                                    // Si no hay valor en la referencia pero sí en field.value
+                                                    if (
+                                                        field.value &&
+                                                        query.data
+                                                    ) {
+                                                        const selectedRoom =
+                                                            query.data.find(
+                                                                room =>
+                                                                    room.id ===
+                                                                    field.value
+                                                            );
+
+                                                        if (selectedRoom) {
+                                                            const roomType =
+                                                                selectedRoom
+                                                                    .RoomTypes
+                                                                    .name;
+                                                            const guestCapacity =
+                                                                selectedRoom
+                                                                    .RoomTypes
+                                                                    .guests ||
+                                                                0;
+
+                                                            // Actualizamos la referencia por si acaso
+                                                            if (
+                                                                !selectedRoomTypeRef.current
+                                                            ) {
+                                                                selectedRoomTypeRef.current =
+                                                                    roomType;
+                                                            }
+
+                                                            return `${roomType.toUpperCase()} - 🧍(${guestCapacity})`;
+                                                        }
+                                                    }
+
+                                                    // Si no hay valor, no mostramos nada
+                                                    return null;
+                                                })()}
                                             </SelectValue>
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                        {roomOptions.map(option => (
+                                        {roomTypeOptions.map(option => (
                                             <SelectItem
                                                 key={option.value}
                                                 value={option.value}
@@ -246,7 +382,7 @@ export const BookingSummaryForm = () => {
                                     </SelectContent>
                                 </Select>
                                 <FormDescription>
-                                    {query.data.length > 0
+                                    {query.data && query.data.length > 0
                                         ? t('input2.description.available', {
                                               availableRooms:
                                                   query.data.length.toString(),
@@ -286,7 +422,11 @@ export const BookingSummaryForm = () => {
                                         }
                                         field.onChange(newDate);
                                     }}
-                                    disabled={mutation.isPending}
+                                    disabled={
+                                        mutation.isPending ||
+                                        query.isLoading ||
+                                        !query.data
+                                    }
                                     controlled={true}
                                     className={inputCommonClassnames}
                                 ></DatePicker>
@@ -331,7 +471,11 @@ export const BookingSummaryForm = () => {
                                     }}
                                     controlled={true}
                                     className={inputCommonClassnames}
-                                    disabled={mutation.isPending}
+                                    disabled={
+                                        mutation.isPending ||
+                                        query.isLoading ||
+                                        !query.data
+                                    }
                                 ></DatePicker>
                                 <FormDescription>
                                     {t('input4.description')}

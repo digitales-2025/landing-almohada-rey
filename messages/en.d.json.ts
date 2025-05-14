@@ -45,7 +45,7 @@ declare const messages: {
                 label: 'Room';
                 placeholder: 'Select a room';
                 description: {
-                    noAvailable: 'No rooms available';
+                    noAvailable: 'No rooms available for these dates';
                     available: 'Available rooms: {availableRooms}';
                 };
                 errors: {
@@ -281,6 +281,34 @@ declare const messages: {
         };
     };
     IndexPageBooking: {
+        connection: {
+            status: {
+                good: 'Stable connection';
+                poor: 'Weak connection';
+                lost: 'No connection';
+            };
+            connected: 'Connection established';
+            connecting: 'Connecting...';
+            lost: 'Connection lost';
+            unstable: 'The connection is unstable';
+            unstableDescription: 'This may affect the booking process';
+            critical: 'Critical connection';
+            criticalDescription: 'The booking will be canceled because of security reasons';
+            navigation: {
+                redirecting: 'Redirecting...';
+                cancelling: 'Cancelling reservation...';
+            };
+        };
+        events: {
+            startReservation: {
+                message: 'You have {timeLeft} to complete the process.';
+                additionalInfo: 'Make sure to fill in all required fields and have a good Internet connection.';
+            };
+            cancelReservation: {
+                message: 'The reservation has been canceled for security reasons.';
+                additionalInfo: 'Please try again.';
+            };
+        };
         title: 'Booking';
         generalError: {
             message: 'Sorry. It seems an error has occurred.';
@@ -360,6 +388,10 @@ declare const messages: {
             description: 'One step away from the perfect stay';
             triggerButton: {
                 label: 'Modify';
+            };
+            bookingSummary: {
+                guests: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+                night: '{count, plural, =0 {no nights} =1 {1 night} other {# nights}}';
             };
             input1: {
                 label: 'Identity Document';
