@@ -274,9 +274,6 @@ const MemoizedPhoneInput = React.memo(
             [onChange]
         );
 
-        // Elimina este console.log en producción
-        // console.log("Rendering MemoizedPhoneInput with value:", value);
-
         return (
             <PhoneInput
                 defaultCountry={defaultCountry}

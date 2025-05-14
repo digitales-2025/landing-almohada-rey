@@ -261,8 +261,6 @@ export function useBookingForm(id: string, locale?: SupportedLocales) {
     });
 
     const onSubmit = (dto: LocalFormValues) => {
-        console.log(dto);
-        console.log(form.watch);
         confirmBookingResult.mutate(dto);
     };
 

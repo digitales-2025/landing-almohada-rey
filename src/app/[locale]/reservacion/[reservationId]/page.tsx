@@ -415,16 +415,16 @@ export default function Page() {
                                 size={'lg'}
                                 className="rounded-none text-base md:text-xl h-fit cursor-pointer"
                                 disabled={generalDisabled}
-                                onClick={() => {
-                                    console.log(
-                                        'Errors:',
-                                        form.formState.errors
-                                    );
-                                    console.log(
-                                        'Is Form Valid:',
-                                        form.formState.isValid
-                                    );
-                                }}
+                                // onClick={() => {
+                                //     console.log(
+                                //         'Errors:',
+                                //         form.formState.errors
+                                //     );
+                                //     console.log(
+                                //         'Is Form Valid:',
+                                //         form.formState.isValid
+                                //     );
+                                // }}
                             >
                                 <span className="mx-3 !my-2 ">
                                     {t('submitSection.submitButton.label')}

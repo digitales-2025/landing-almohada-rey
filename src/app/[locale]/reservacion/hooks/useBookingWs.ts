@@ -162,7 +162,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
     // Iniciar el cronómetro de reserva
     const startBookingPayment = useCallback(() => {
         if (socketRef.current && clientId) {
-            console.log('Iniciando cronómetro de reserva');
             setIsLoading(true);
             socketRef.current.emit(clientEmitEvents.startBookingPayment, {
                 clientId,
@@ -182,7 +181,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
     const completeBookingPayment = useCallback(
         (bookingData?: any) => {
             if (socketRef.current && clientId) {
-                console.log('Completando reserva');
                 setIsLoading(true);
                 stopChronometer();
                 socketRef.current.emit(
@@ -204,7 +202,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
         (errorData?: any) => {
             stopChronometer();
             if (socketRef.current && clientId) {
-                console.log('Error en la reserva');
                 socketRef.current.emit(clientEmitEvents.errorBookingPayment, {
                     clientId,
                     locale,
@@ -240,7 +237,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
                 setClientId(socket.id ?? fakeId);
                 setConnectionQuality('good');
                 lastPingRef.current = Date.now();
-                console.log('WebSocket conectado con ID:', socket.id);
             });
 
             socket.on('disconnect', () => {
@@ -248,7 +244,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
                 setIsConnecting(true);
                 setClientId(null);
                 setConnectionQuality('lost');
-                console.log('WebSocket desconectado');
             });
 
             socket.on(
@@ -312,9 +307,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
 
             // Respondemos a los pings del servidor con pongs para mantener la conexión activa
             socket.on(clientListenEvents.ping, () => {
-                console.log(
-                    'Ping recibido del servidor, respondiendo con pong'
-                );
                 lastPingRef.current = Date.now();
 
                 if (socket && socket.connected && socket.id) {
@@ -344,9 +336,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
             });
 
             socket.on(clientListenEvents.onNoPing, data => {
-                // console.warn(
-                //     'El servidor no recibe pongs, la conexión puede estar comprometida'
-                // );
                 setConnectionQuality('critical');
                 toast.warning(data.message, {
                     description: t('connection.criticalDescription'),
@@ -409,7 +398,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
 
             // Manejo de errores
             socket.on('connect_error', err => {
-                console.error('Error de conexión:', err);
                 setError(`Error de conexión: ${err.message}`);
                 setConnectionQuality('lost');
 
@@ -439,9 +427,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
             setupSocketListeners(globalSocketInstance);
             return;
         }
-
-        // Si no, creamos una nueva
-        console.log('Creando nueva conexión WebSocket');
 
         // Asegúrate de usar la URL correcta de tu servidor NestJS
         const socketUrl =
