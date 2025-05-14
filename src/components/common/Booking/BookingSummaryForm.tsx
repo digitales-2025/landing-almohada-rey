@@ -37,11 +37,6 @@ import { SmallFormError } from '../Errors/FormErrors';
 import { OneRowLoadingFormSkeleton } from '../loading/LoadingFormSkeleton';
 import { useSummaryBookingForm } from './useSummaryBookingForm';
 
-// type SelectOption = {
-//     value: string;
-//     label: string;
-// };
-
 export const BookingSummaryForm = () => {
     // 1. Primero declaramos todos los hooks básicos
     const t = useTranslations('Forms.reserveBookingSummary');
@@ -115,17 +110,6 @@ export const BookingSummaryForm = () => {
         [query.data]
     );
 
-    // Crear un mapping de ID de habitación a tipo de habitación para mostrar correctamente el valor seleccionado
-    // const roomIdToTypeMapping = useMemo(() => {
-    //     if (!query.data) return new Map();
-
-    //     const mapping = new Map<string, string>();
-    //     query.data.forEach(room => {
-    //         mapping.set(room.id, room.RoomTypes.name);
-    //     });
-    //     return mapping;
-    // }, [query.data]);
-
     const checkInDateISO = useMemo(
         () => values.checkInDate.toISOString(),
         [values.checkInDate]
@@ -172,13 +156,6 @@ export const BookingSummaryForm = () => {
         });
     }, [query.data]);
 
-    // 8. Valores derivados estables que no causan rerenderizados
-    // const dayBeforeCheckOutDate = useMemo(() => {
-    //     const date = new Date(values.checkOutDate);
-    //     date.setDate(date.getDate() - 1);
-    //     return date;
-    // }, [values.checkOutDate]);
-
     const maxDate = useMemo(
         () =>
             getLimaTime(
@@ -213,7 +190,12 @@ export const BookingSummaryForm = () => {
     }
 
     if (!query.data) {
-        return <OneRowLoadingFormSkeleton></OneRowLoadingFormSkeleton>;
+        return (
+            <OneRowLoadingFormSkeleton
+                className="w-full h-full min-h-[164px] md:min-h-[168px] lg:min-h-[172px] bg-primary-foreground p-4"
+                itemClassName="!bg-secondary/5 h-[88px] md:h-[95px]"
+            ></OneRowLoadingFormSkeleton>
+        );
     }
 
     // 11. Renderizado principal

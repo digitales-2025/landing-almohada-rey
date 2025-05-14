@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { DetailedReservation } from '@/actions/booking/booking';
 import { useRouter } from '@/i18n/navigation';
 import { defaultLocale } from '@/i18n/routing';
+import { getCurrentLimaDate } from '@/lib/timedate/peru-datetime';
 import {
     BaseWsErrorResponse,
     BaseWsResponse,
@@ -46,6 +47,21 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
     const reservationRef = useRef<DetailedReservation | undefined>(undefined);
     const setReservation = (reservation: DetailedReservation | undefined) => {
         reservationRef.current = reservation;
+    };
+    const validateReservationStatus = (reservation: DetailedReservation) => {
+        if (reservation.status !== 'PENDING') {
+            return false;
+        }
+        return true;
+    };
+    const validateReservationDates = (reservation: DetailedReservation) => {
+        const today = getCurrentLimaDate();
+        const checkInDate = new Date(reservation.checkInDate);
+        const checkOutDate = new Date(reservation.checkOutDate);
+        if (checkInDate < today || checkOutDate < today) {
+            return false;
+        }
+        return true;
     };
     const [isConnected, setIsConnected] = useState(false);
     const [isConnecting, setIsConnecting] = useState(true);
@@ -262,6 +278,32 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
                             setIsConnecting(true);
                             setClientId(null);
                             cancelBookingPayment();
+                        }
+                        if (!validateReservationStatus(res.data.reservation)) {
+                            setIsLoading(false);
+                            setCanContinue(false);
+                            setIsConnected(false);
+                            setIsConnecting(true);
+                            setClientId(null);
+                            redirectToRooms();
+                            toast.error(
+                                locale === defaultLocale
+                                    ? 'La reserva es inválida'
+                                    : 'The reservation is invalid'
+                            );
+                        }
+                        if (!validateReservationDates(res.data.reservation)) {
+                            setIsLoading(false);
+                            setCanContinue(false);
+                            setIsConnected(false);
+                            setIsConnecting(true);
+                            setClientId(null);
+                            redirectToRooms();
+                            toast.error(
+                                locale === defaultLocale
+                                    ? 'La reserva es inválida'
+                                    : 'The reservation is invalid'
+                            );
                         }
                         setReservation(res.data.reservation);
                     }

@@ -91,6 +91,7 @@ export const Chronometer = ({
 };
 
 export default function Page() {
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
     const { reservationId } = useParams<{ reservationId: string }>();
     const t = useTranslations('IndexPageBooking');
     const locale = useLocale();
@@ -119,6 +120,8 @@ export default function Page() {
         timeLeft,
         isRunning,
         isAbleToUse: isAbleToUseChronometer,
+        pauseChronometer,
+        resumeChronometer,
     } = chronometer;
 
     const generalDisabled =
@@ -159,11 +162,29 @@ export default function Page() {
     }, [form, reservationRef]);
 
     React.useEffect(() => {
-        setReservationDefaultData();
+        if (confirmBookingResult.isPending && isSubmitting) {
+            pauseChronometer();
+        }
+        if (confirmBookingResult.isSuccess) {
+            // resumeChronometer();
+            setIsSubmitting(false);
+        }
+        if (confirmBookingResult.isError) {
+            resumeChronometer();
+            setIsSubmitting(false);
+        }
     }, [
-        setReservationDefaultData,
-        //reservationRef.current
+        confirmBookingResult.isPending,
+        isSubmitting,
+        pauseChronometer,
+        confirmBookingResult.isSuccess,
+        confirmBookingResult.isError,
+        resumeChronometer,
     ]);
+
+    React.useEffect(() => {
+        setReservationDefaultData();
+    }, [setReservationDefaultData, reservationRef.current]);
 
     // Efecto para mostrar notificaciones basadas en el estado de conexión
     React.useEffect(() => {
@@ -303,7 +324,12 @@ export default function Page() {
             )}
             <BookingHeroSection></BookingHeroSection>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+                <form
+                    onSubmit={form.handleSubmit(data => {
+                        setIsSubmitting(true);
+                        onSubmit(data);
+                    })}
+                >
                     {form.formState.errors && (
                         <div>
                             {Object.values(form.formState.errors).map(
