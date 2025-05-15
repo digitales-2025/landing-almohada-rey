@@ -298,12 +298,12 @@
         },
         "events": {
             "startReservation": {
-            "message": "You have {timeLeft} to complete the process.",
-            "additionalInfo": "Make sure to fill in all required fields and have a good Internet connection."
+                "message": "You have {timeLeft} to complete the process.",
+                "additionalInfo": "Make sure to fill in all required fields and have a good Internet connection."
             },
             "cancelReservation": {
-            "message": "The reservation has been canceled for security reasons.",
-            "additionalInfo": "Please try again."
+                "message": "The reservation has been canceled for security reasons.",
+                "additionalInfo": "Please try again."
             }
         },
         "title": "Booking",
@@ -748,6 +748,39 @@
                 "imageAlt1": "Restaurant dining area with elegant tables and chairs",
                 "imageAlt2": "Buffet table with breakfast and drinks",
                 "imageAlt3": "Guests enjoying a meal in the restaurant"
+            }
+        }
+    },
+    "IndexPageRoom": {
+        "title": "Room",
+        "description": "Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.",
+        "features": {
+            "item1": {
+                "label": "Huéspedes",
+                "value": "{count, plural, =0 {sin adultos} =1 {1 adulto} other {# adultos}}"
+            },
+            "item2": {
+                "label": "Tipo de cama"
+            },
+            "item3": {
+                "label": "A partir de",
+                "sufix": "/noche"
+            }
+        },
+        "roomSummarySection": {
+            "title": "Relájese en nuestra habitación más exclusiva",
+            "termsAndConditionsButton": {
+                "label": "Terms and conditions"
+            },
+            "refundAndCancelPolicyButton": {
+                "label": "Refund and cancel policy"
+            },
+            "services": {
+                "item1": "Free WiFi",
+                "item2": "TV with cable",
+                "item3": "Intercom service",
+                "item4": "Warm-water Shower",
+                "item5": "Desk & wardrobe"
             }
         }
     },

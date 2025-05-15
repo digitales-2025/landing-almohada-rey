@@ -17,6 +17,18 @@ import { BreadcrumbItemType } from '@/types/breadcrum';
 interface BreadcrumbsProps {
     items?: BreadcrumbItemType[];
     className?: string;
+    // Función para identificar rutas dinámicas: devuelve true si es ruta dinámica
+    isDynamicRoute?: (
+        segment: string,
+        index: number,
+        fullPath: string
+    ) => boolean;
+    // Función para personalizar la etiqueta de rutas dinámicas
+    getDynamicLabel?: (
+        segment: string,
+        index: number,
+        fullPath: string
+    ) => string;
 }
 
 /**
@@ -27,9 +39,14 @@ interface BreadcrumbsProps {
 const BreadcrumbNav: React.FC<BreadcrumbsProps> = ({
     items: propItems,
     className,
+    getDynamicLabel,
+    isDynamicRoute,
 }) => {
     // Obtenemos los elementos del breadcrumb del hook
-    const hookItems = useBreadcrumb();
+    const hookItems = useBreadcrumb({
+        isDynamicRoute,
+        getDynamicLabel,
+    });
 
     // Usamos los items proporcionados como prop o los del hook
     const items = propItems ?? hookItems;
