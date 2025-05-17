@@ -1470,6 +1470,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/landing/room-types/room-detail/{roomId}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get room details */
+        get: operations['LandRoomTypeController_getRoomDetail_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/landing-reservation/check-available-rooms': {
         parameters: {
             query?: never;
@@ -1727,13 +1744,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1795,13 +1812,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1844,13 +1861,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /**
@@ -1908,13 +1925,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /**
@@ -2003,13 +2020,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2207,13 +2224,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2491,13 +2508,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /**
@@ -2992,13 +3009,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             name: string;
@@ -3242,13 +3259,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-14T18:04:17.076Z
+             * @example 2025-05-17T17:16:25.141Z
              */
             updatedAt: string;
             /**
@@ -3334,6 +3351,208 @@ export interface components {
             guests: number;
             bed: string;
             images: components['schemas']['LandImageRoomType'][];
+        };
+        ImageRoomType: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            updatedAt: string;
+            /**
+             * @description URL de la imagen
+             * @example https://example.com/image.jpg
+             */
+            imageUrl: string;
+            /**
+             * @description Indica si es la imagen principal
+             * @example true
+             */
+            isMain: boolean;
+            /**
+             * @description ID del tipo de habitación asociado
+             * @example 12345678-1234-1234-1234-123456789012
+             */
+            roomTypeId: string;
+        };
+        RoomTypesWithImages: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            updatedAt: string;
+            /**
+             * @description Nombre del tipo de habitación
+             * @example Habitación doble
+             */
+            name: string;
+            /**
+             * @description Nombre del tipo de habitación en inglés
+             * @example Double Room
+             */
+            nameEn: string;
+            /**
+             * @description Capacidad máxima de huéspedes
+             * @example 2
+             */
+            guests: number;
+            /**
+             * @description Precio por noche
+             * @example 150.5
+             */
+            price: number;
+            /**
+             * @description Descripción del tipo de habitación
+             * @example Habitación con vista al mar y balcón privado
+             */
+            description: string;
+            /**
+             * @description Descripción del tipo de habitación en inglés
+             * @example Room with sea view and private balcony
+             */
+            descriptionEn: string;
+            /**
+             * @description Descripción de la cama
+             * @example Cama matrimonial king size
+             */
+            bed: string;
+            /**
+             * @description Descripción de la cama en inglés
+             * @example King size bed
+             */
+            bedEn: string;
+            /**
+             * @description URL de la imagen principal del tipo de habitación
+             * @example https://example.com/image.jpg
+             */
+            ImageRoomType: components['schemas']['ImageRoomType'];
+        };
+        DetailedRoomWithImages: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-17T17:16:25.141Z
+             */
+            updatedAt: string;
+            /**
+             * @description ID del tipo de habitación asociado
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            roomTypeId: string;
+            /**
+             * @description Número de la habitación
+             * @example 101
+             */
+            number: number;
+            /**
+             * @description Indica si la habitación tiene papelera
+             * @default true
+             * @example true
+             */
+            trashBin: boolean;
+            /**
+             * @description Indica si la habitación tiene toalla
+             * @default true
+             * @example true
+             */
+            towel: boolean;
+            /**
+             * @description Indica si la habitación tiene papel higiénico
+             * @default true
+             * @example true
+             */
+            toiletPaper: boolean;
+            /**
+             * @description Indica si la habitación tiene jabón de ducha
+             * @default true
+             * @example true
+             */
+            showerSoap: boolean;
+            /**
+             * @description Indica si la habitación tiene jabón de manos
+             * @default true
+             * @example true
+             */
+            handSoap: boolean;
+            /**
+             * @description Indica si la habitación tiene lámpara
+             * @default true
+             * @example true
+             */
+            lamp: boolean;
+            /**
+             * @description Estado de la habitación
+             * @example AVAILABLE
+             * @enum {string}
+             */
+            status: 'AVAILABLE' | 'OCCUPIED' | 'CLEANING';
+            /**
+             * @description Descripción de la televisión
+             * @example Smart TV 42 pulgadas
+             */
+            tv: string;
+            /**
+             * @description Área en metros cuadrados
+             * @example 25.5
+             */
+            area: number;
+            /**
+             * @description Tipo de piso
+             * @example LAMINATING
+             * @enum {string}
+             */
+            floorType: 'LAMINATING' | 'CARPETING';
+            /** @description Nombre del tipo de habitación asociado */
+            RoomTypes: components['schemas']['RoomTypesWithImages'];
         };
         BaseReservationWsActionsDto: {
             clientId: string;
@@ -7790,6 +8009,37 @@ export interface operations {
                 content: {
                     'application/json': components['schemas']['LandRoomTypeAllImg'];
                 };
+            };
+        };
+    };
+    LandRoomTypeController_getRoomDetail_v1: {
+        parameters: {
+            query: {
+                locale: string;
+            };
+            header?: never;
+            path: {
+                roomId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Room details retrieved successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['DetailedRoomWithImages'][];
+                };
+            };
+            /** @description Room not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

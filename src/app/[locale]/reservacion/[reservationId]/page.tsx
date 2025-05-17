@@ -123,6 +123,7 @@ export default function Page() {
 
     React.useEffect(() => {
         setReservationDefaultData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setReservationDefaultData, reservationRef.current]);
 
     // Efecto para mostrar notificaciones basadas en el estado de conexión

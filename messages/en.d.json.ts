@@ -754,6 +754,39 @@ declare const messages: {
             };
         };
     };
+    IndexPageRoom: {
+        title: 'Room';
+        description: 'Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.';
+        features: {
+            item1: {
+                label: 'Huéspedes';
+                value: '{count, plural, =0 {sin adultos} =1 {1 adulto} other {# adultos}}';
+            };
+            item2: {
+                label: 'Tipo de cama';
+            };
+            item3: {
+                label: 'A partir de';
+                sufix: '/noche';
+            };
+        };
+        roomSummarySection: {
+            title: 'Relájese en nuestra habitación más exclusiva';
+            termsAndConditionsButton: {
+                label: 'Terms and conditions';
+            };
+            refundAndCancelPolicyButton: {
+                label: 'Refund and cancel policy';
+            };
+            services: {
+                item1: 'Free WiFi';
+                item2: 'TV with cable';
+                item3: 'Intercom service';
+                item4: 'Warm-water Shower';
+                item5: 'Desk & wardrobe';
+            };
+        };
+    };
     IndexPageRooms: {
         title: 'Rooms';
         roomsSection: {

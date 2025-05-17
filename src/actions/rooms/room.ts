@@ -5,5 +5,7 @@ export type RoomType = components['schemas']['RoomType'];
 export type DetailedRoom = components['schemas']['DetailedRoom'];
 export type RoomTypeWIthAllImg = components['schemas']['LandRoomTypeAllImg'];
 export type RoomTypeWithMainImg = components['schemas']['BaseRoomTypeMainImg'];
+export type DetailedRoomWithImages =
+    components['schemas']['DetailedRoomWithImages'];
 export type RoomTypeWithStatus = components['schemas']['LandImageRoomType'];
 export type BaseQueryRoomType = components['schemas']['BaseQueryDto'];
