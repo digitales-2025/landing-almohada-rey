@@ -49,7 +49,8 @@ export abstract class BaseActionOps<T> implements ServerActionOperation<T> {
         try {
             const [data, error] = await http.get<GetOneResponse<V>>(
                 uri,
-                config
+                config,
+                true
             );
             if (error) {
                 return {

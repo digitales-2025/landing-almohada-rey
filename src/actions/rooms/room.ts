@@ -9,3 +9,4 @@ export type DetailedRoomWithImages =
     components['schemas']['DetailedRoomWithImages'];
 export type RoomTypeWithStatus = components['schemas']['LandImageRoomType'];
 export type BaseQueryRoomType = components['schemas']['BaseQueryDto'];
+export type ImageRoomType = components['schemas']['ImageRoomType'];

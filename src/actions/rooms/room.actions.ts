@@ -12,7 +12,7 @@ export async function getAllRoomTypes(dto: BaseQueryRoomType) {
 }
 
 export async function getRoom(id: string, locale: SupportedLocales) {
-    return roomOps.get<DetailedRoomWithImages>(
+    return roomOps.getOne<DetailedRoomWithImages>(
         wrapUriWithParams({
             uri: `/landing/room-types/room-detail/${id}`,
             params: {

@@ -18,13 +18,16 @@ type Props = {
         segment: string,
         index: number,
         fullPath: string
-    ) => boolean;
+    ) => boolean | boolean;
     // Función para personalizar la etiqueta de rutas dinámicas
     getDynamicLabel?: (
+        //For client components
         segment: string,
         index: number,
         fullPath: string
     ) => string;
+
+    dynamicLabel?: string; //For server components
     // // Función existente para gestionar rutas dinámicas completas
     // onDynamicRoute?: (route: string) => string;
 };
@@ -33,6 +36,7 @@ export function useBreadcrumb({
     isDynamicRoute,
     getDynamicLabel,
     // onDynamicRoute,
+    dynamicLabel,
 }: Props = {}) {
     const pathname = usePathname();
     const t = useTranslations('Navigation');
@@ -82,9 +86,13 @@ export function useBreadcrumb({
             // Esto permite manejar rutas dinámicas que tienen como base los segmentos de defaultRoutes
             if (isDynamic) {
                 // Usar etiqueta personalizada si se proporciona
-                if (getDynamicLabel) {
+                if (dynamicLabel) {
+                    label = dynamicLabel;
+                }
+                if (!dynamicLabel && getDynamicLabel) {
                     label = getDynamicLabel(segment, index, fullPath);
-                } else {
+                }
+                if (!dynamicLabel && !getDynamicLabel) {
                     // Remover corchetes si existen
                     label = segment.replace(/^\[|\]$/g, '');
                     // Capitalizar y reemplazar guiones por espacios
@@ -110,6 +118,8 @@ export function useBreadcrumb({
                 });
             }
 
+            console.log(segment, index, fullPath, isDynamic, label);
+
             // // Si existe onDynamicRoute y es ruta dinámica, usamos esa función para obtener la etiqueta
             // if (isDynamic && onDynamicRoute) {
             //     label = onDynamicRoute(segment);
@@ -123,7 +133,7 @@ export function useBreadcrumb({
         });
 
         return items;
-    }, [pathname, t, isDynamicRoute, getDynamicLabel]);
+    }, [pathname, t, isDynamicRoute, getDynamicLabel, dynamicLabel]);
 
     return breadcrumbItems;
 }

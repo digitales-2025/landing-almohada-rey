@@ -752,23 +752,31 @@
         }
     },
     "IndexPageRoom": {
-        "title": "Room",
+        "title": "Room {roomNumber}",
+        "fetching": {
+            "error": {
+                "message": "Sorry. It seems an error has occurred.",
+                "actionButton": {
+                    "label": "Load again"
+                }
+            }
+        },
         "description": "Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.",
         "features": {
             "item1": {
-                "label": "Huéspedes",
-                "value": "{count, plural, =0 {sin adultos} =1 {1 adulto} other {# adultos}}"
+                "label": "Guests",
+                "value": "{count, plural, =0 {no adults} =1 {1 adult} other {# adults}}"
             },
             "item2": {
-                "label": "Tipo de cama"
+                "label": "Bed type"
             },
             "item3": {
-                "label": "A partir de",
-                "sufix": "/noche"
+                "label": "From",
+                "sufix": "/night"
             }
         },
         "roomSummarySection": {
-            "title": "Relájese en nuestra habitación más exclusiva",
+            "title": "Just relax, our rooms are designed for your comfort",
             "termsAndConditionsButton": {
                 "label": "Terms and conditions"
             },
@@ -776,11 +784,31 @@
                 "label": "Refund and cancel policy"
             },
             "services": {
-                "item1": "Free WiFi",
-                "item2": "TV with cable",
-                "item3": "Intercom service",
-                "item4": "Warm-water Shower",
-                "item5": "Desk & wardrobe"
+                "item1": "Intercom service",
+                "item2": "{count, plural, =0 {no hosts} =1 {1 host} other {# hosts}}",
+                "item4": "Free WiFi"
+            }
+        },
+        "moreDetailsSection": {
+            "services": {
+                "title": "Services",
+                "item1": "24-hour wake-up service.",
+                "item2": "24-hour Room Service.",
+                "item3": "Laundry, ironing, and dry cleaning service (upon request)*.",
+                "item4": "Delivery service."
+            },
+            "equipment": {
+                "title": "Equipment",
+                "item1": "Integrated living room.",
+                "item2": "Full bathroom with bathtub.",
+                "item3": "High-speed Wi-Fi access.",
+                "item4": "Wired internet access (ADSL).",
+                "item5": "32” LCD TV with cable channels.",
+                "item6": "Telephone - Intercom.",
+                "item7": "Work area and relaxation space.",
+                "item8": "Mini-bar.",
+                "item9": "Safe deposit box (digital).",
+                "item10": "Hair dryer*."
             }
         }
     },

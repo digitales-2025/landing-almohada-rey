@@ -1744,13 +1744,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1812,13 +1812,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1861,13 +1861,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -1925,13 +1925,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -2020,13 +2020,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2224,13 +2224,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2508,13 +2508,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -3009,13 +3009,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             name: string;
@@ -3259,13 +3259,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -3366,13 +3366,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -3405,13 +3405,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
@@ -3458,7 +3458,7 @@ export interface components {
              * @description URL de la imagen principal del tipo de habitación
              * @example https://example.com/image.jpg
              */
-            ImageRoomType: components['schemas']['ImageRoomType'];
+            ImageRoomType: components['schemas']['ImageRoomType'][];
         };
         DetailedRoomWithImages: {
             /**
@@ -3474,13 +3474,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.956Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-17T17:16:25.141Z
+             * @example 2025-05-19T15:41:38.957Z
              */
             updatedAt: string;
             /**
