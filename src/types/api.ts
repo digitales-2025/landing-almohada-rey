@@ -132,6 +132,23 @@ export interface paths {
         patch: operations['UsersController_reactivate_v1'];
         trace?: never;
     };
+    '/v1/users/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated users */
+        get: operations['UsersController_findAllPaginated_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/users/generate-password': {
         parameters: {
             query?: never;
@@ -260,6 +277,23 @@ export interface paths {
         put?: never;
         /** Create a new product */
         post: operations['ProductController_create_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/product/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated products */
+        get: operations['ProductController_findAllPaginated_v1'];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -526,6 +560,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/rooms/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Obtener habitaciones paginadas con información detallada
+         * @description Devuelve una lista paginada de habitaciones con sus tipos e imagen principal
+         */
+        get: operations['RoomController_findAllPaginated_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/rooms/{id}': {
         parameters: {
             query?: never;
@@ -638,6 +692,26 @@ export interface paths {
         };
         /** Obtener todos los tipos de habitaciones con sus imágenes */
         get: operations['RoomTypeController_findAll_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/room-types/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Obtener tipos de habitaciones paginados con sus imágenes
+         * @description Devuelve una lista paginada de tipos de habitaciones con sus imágenes asociadas
+         */
+        get: operations['RoomTypeController_findAllPaginated_v1'];
         put?: never;
         post?: never;
         delete?: never;
@@ -822,6 +896,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/payments/paginated/all': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated payments */
+        get: operations['PaymentsController_findAllPaginated_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/payments/{id}': {
         parameters: {
             query?: never;
@@ -927,6 +1018,160 @@ export interface paths {
         patch: operations['ServiceController_update_v1'];
         trace?: never;
     };
+    '/v1/movements': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get all movements
+         * @description Get all movements with the provided data
+         */
+        get: operations['MovementsController_findAll_v1'];
+        put?: never;
+        /**
+         * Create a new movement
+         * @description Create a new movement with the provided data
+         */
+        post: operations['MovementsController_create_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/movements/{id}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get movement by id
+         * @description Get movement by id with the provided data
+         */
+        get: operations['MovementsController_findOne_v1'];
+        put?: never;
+        post?: never;
+        /**
+         * Delete movement by id
+         * @description Delete movement by id with the provided data
+         */
+        delete: operations['MovementsController_remove_v1'];
+        options?: never;
+        head?: never;
+        /**
+         * Update movement by id
+         * @description Update movement by id with the provided data
+         */
+        patch: operations['MovementsController_update_v1'];
+        trace?: never;
+    };
+    '/v1/movements/type/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated movements by type */
+        get: operations['MovementsController_findByTypePaginated_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/warehouse': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get all warehouses */
+        get: operations['WarehouseController_findAll_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/warehouse/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated warehouses */
+        get: operations['WarehouseController_findAllPaginated_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/warehouse/{id}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get warehouse by id */
+        get: operations['WarehouseController_findOne_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/warehouse/all/type/{type}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get warehouse by type */
+        get: operations['WarehouseController_findAllByType_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/warehouse/stock/product/{type}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get stock of products by warehouse type */
+        get: operations['WarehouseController_findProductsStockByType_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/seeds': {
         parameters: {
             query?: never;
@@ -987,6 +1232,23 @@ export interface paths {
         };
         /** Download template to import client excel */
         get: operations['CustomersController_downloadTemplate_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/customers/paginated': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get paginated customers */
+        get: operations['CustomersController_findAllPaginated_v1'];
         put?: never;
         post?: never;
         delete?: never;
@@ -1130,7 +1392,8 @@ export interface paths {
         delete?: never;
         options?: never;
         head?: never;
-        patch?: never;
+        /** Actualizar registro de limpieza */
+        patch: operations['CleaningChecklistController_update_v1'];
         trace?: never;
     };
     '/v1/room-cleaning/room/{roomId}': {
@@ -1258,6 +1521,193 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/landing-reservation/confirm-reservation': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Confirm a reservation */
+        post: operations['ReservationController_confirmReservation_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/expenses': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener todos los gastos */
+        get: operations['ExpenseController_findAll_v1'];
+        put?: never;
+        /** Crear nuevo gasto */
+        post: operations['ExpenseController_create_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/expenses/{id}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener gasto por ID */
+        get: operations['ExpenseController_findOne_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Actualizar gasto existente */
+        patch: operations['ExpenseController_update_v1'];
+        trace?: never;
+    };
+    '/v1/expenses/filter/date': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener gastos por fecha (paginado y filtrado) */
+        get: operations['ExpenseController_findByDate_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/expenses/remove/all': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Eliminar múltiples gastos */
+        delete: operations['ExpenseController_deleteMany_v1'];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/profit': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de profit mensual
+         * @description Genera y descarga un archivo Excel con el profit para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadProfitExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/expense': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de expense mensual
+         * @description Genera y descarga un archivo Excel con el expense para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadExpenseExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/balance': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de balance mensual
+         * @description Genera y descarga un archivo Excel con el balance para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadBalanceExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/profitRoomType': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de ganancias por tipo de habitación
+         * @description Genera y descarga un archivo Excel con el profit para un mes, año y tipo de habitación específicos.
+         */
+        get: operations['ReportsController_downloadProfitTypeRoomExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/occupancy': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de estadísticas de ocupación
+         * @description Genera y descarga un archivo Excel con estadísticas de ocupación por tipo de habitación para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadOccupancyExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1377,13 +1827,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1392,6 +1842,8 @@ export interface components {
             address: string;
             /** @description Customer birth place */
             birthPlace: string;
+            /** @description Customer birth date */
+            birthDate?: string;
             /** @description Customer country */
             country: string;
             /** @description Customer department */
@@ -1443,13 +1895,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1492,13 +1944,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /**
@@ -1556,13 +2008,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /**
@@ -1651,13 +2103,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1717,6 +2169,11 @@ export interface components {
              * @default false
              */
             didAcceptTerms: boolean;
+            /**
+             * @description Whether the reservation is pending payment deletion
+             * @default false
+             */
+            isPendingDeletePayment: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -1850,13 +2307,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -1916,6 +2373,11 @@ export interface components {
              * @default false
              */
             didAcceptTerms: boolean;
+            /**
+             * @description Whether the reservation is pending payment deletion
+             * @default false
+             */
+            isPendingDeletePayment: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -2129,13 +2591,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /**
@@ -2630,13 +3092,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             name: string;
@@ -2660,6 +3122,87 @@ export interface components {
              * @example 15.99
              */
             price?: number;
+        };
+        CreateMovementDto: {
+            /**
+             * @description Date of the movement
+             * @example 2021-09-21
+             */
+            dateMovement: string;
+            /**
+             * @description Type of movement to set the movement to. Can only be INPUT or OUTPUT
+             * @example INPUT
+             */
+            type: string;
+            /**
+             * @description Document number of the movement
+             * @example 123456
+             */
+            documentNumber?: string;
+            /**
+             * @description Description of the movement
+             * @example Description of the movement
+             */
+            description: string;
+            /**
+             * @description Id of the warehouse
+             * @example id del almacen
+             */
+            warehouseId: string;
+            /**
+             * @description Array of details of the movement
+             * @example [
+             *       {
+             *         "quantity": 0,
+             *         "unitCost": 0,
+             *         "productId": "id del producto"
+             *       }
+             *     ]
+             */
+            movementDetail?: string[];
+        };
+        UpdateMovementDto: {
+            /**
+             * @description Date of the movement
+             * @example 2021-09-21
+             */
+            dateMovement?: string;
+            /**
+             * @description Type of movement to set the movement to. Can only be INPUT or OUTPUT
+             * @example INPUT
+             */
+            type?: string;
+            /**
+             * @description Document number of the movement with payment receipt
+             * @example 123456
+             */
+            documentNumber?: string;
+            /**
+             * @description Description of the movement
+             * @example Description of the movement
+             */
+            description?: string;
+            /**
+             * @description Id of the warehouse
+             * @example id del almacen
+             */
+            warehouseId?: string;
+            /**
+             * @description Array of details of the movement
+             * @example [
+             *       {
+             *         "quantity": 0,
+             *         "unitCost": 0,
+             *         "productId": "id del producto"
+             *       }
+             *     ]
+             */
+            movementDetail?: string[];
+            /**
+             * @description Indicates if the movement has a payment receipt
+             * @example true
+             */
+            hasPaymentReceipt?: boolean;
         };
         CreateCustomerDto: {
             /** @description Nombre del cliente */
@@ -2799,13 +3342,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-13T16:32:57.412Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-13T16:32:57.413Z
+             * @example 2025-05-19T18:01:02.126Z
              */
             updatedAt: string;
             /**
@@ -2833,6 +3376,33 @@ export interface components {
              * @example Se reemplazaron las toallas y se repuso el jabón
              */
             observations?: string | null;
+        };
+        UpdateCleaningChecklistDto: {
+            /**
+             * @description Fecha de la limpieza
+             * @example 2025-03-24
+             */
+            date?: string;
+            /**
+             * @description ID de la habitación
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            roomId?: string;
+            /**
+             * @description Nombre del personal de limpieza
+             * @example Ana García
+             */
+            staffName?: string;
+            /**
+             * @description ID del usuario verificador
+             * @example 123e4567-e89b-12d3-a456-426614174001
+             */
+            userCheckId?: string;
+            /**
+             * @description Observaciones o comentarios
+             * @example Se reemplazó jabón y toallas
+             */
+            observations?: string;
         };
         BaseQueryDto: {
             /**
@@ -2949,6 +3519,170 @@ export interface components {
              * @example room-123
              */
             roomId?: string;
+        };
+        CustomerDto: {
+            /**
+             * @description Nombre del cliente
+             * @example Juan
+             */
+            name: string;
+            /**
+             * @description Apellido del cliente
+             * @example Pérez
+             */
+            lastname: string;
+            /**
+             * @description Correo electrónico del cliente
+             * @example cliente@example.com
+             */
+            email: string;
+            /**
+             * @description Número de teléfono del cliente
+             * @example +34600123456
+             */
+            phone: string;
+            /**
+             * @description Tipo de documento del cliente
+             * @example DNI
+             * @enum {string}
+             */
+            documentType: 'DNI' | 'PASSPORT' | 'FOREIGNER_CARD';
+            /**
+             * @description Número de documento del cliente
+             * @example 12345678X
+             */
+            documentNumber: string;
+        };
+        ConfirmBookingDto: {
+            /** @description Datos del cliente */
+            customer: components['schemas']['CustomerDto'];
+            /** @description Datos de la reserva */
+            reservation: components['schemas']['UpdateReservationDto'];
+            /**
+             * @description Observaciones para la reserva
+             * @example Prefiero una habitación con vistas al mar
+             */
+            observations?: string;
+            /**
+             * @description Indica si se han aceptado los servicios extra
+             * @example true
+             */
+            didAcceptExtraServices?: boolean;
+            /**
+             * @description Indica si se han aceptado los términos y condiciones
+             * @example true
+             */
+            didAcceptTermsAndConditions?: boolean;
+        };
+        CreateHotelExpenseDto: {
+            /**
+             * @description Descripción del gasto
+             * @example Compra de suministros de limpieza
+             */
+            description: string;
+            /**
+             * @description Categoría del gasto
+             * @example VARIABLE
+             * @enum {string}
+             */
+            category: 'FIXED' | 'VARIABLE' | 'OTHER';
+            /**
+             * @description Método de pago utilizado
+             * @example CASH
+             * @enum {string}
+             */
+            paymentMethod: 'CASH' | 'TRANSFER' | 'CARD';
+            /**
+             * @description Precio del gasto (en formato numérico)
+             * @example 100.15
+             */
+            amount: number;
+            /**
+             * @description Fecha del gasto (formato ISO 8601 recomendado, ej: YYYY-MM-DD)
+             * @example 2025-04-26
+             */
+            date: string;
+            /**
+             * @description Tipo de documento que respalda el gasto (opcional)
+             * @example INVOICE
+             * @enum {string}
+             */
+            documentType?: 'RECEIPT' | 'INVOICE' | 'OTHER';
+            /**
+             * @description Número del documento que respalda el gasto (opcional)
+             * @example F001-001234
+             */
+            documentNumber?: string;
+        };
+        HotelExpenseEntity: {
+            id: string;
+            description: string;
+            category: string;
+            paymentMethod: string;
+            amount: number;
+            date: string;
+            documentType?: string;
+            documentNumber?: string;
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            updatedAt: string;
+        };
+        UpdateHotelExpenseDto: {
+            /**
+             * @description Descripción del gasto
+             * @example Compra de suministros de limpieza
+             */
+            description?: string;
+            /**
+             * @description Categoría del gasto
+             * @example VARIABLE
+             * @enum {string}
+             */
+            category?: 'FIXED' | 'VARIABLE' | 'OTHER';
+            /**
+             * @description Método de pago utilizado
+             * @example CASH
+             * @enum {string}
+             */
+            paymentMethod?: 'CASH' | 'TRANSFER' | 'CARD';
+            /**
+             * @description Precio del gasto (en formato numérico)
+             * @example 100.15
+             */
+            amount?: number;
+            /**
+             * @description Fecha del gasto (formato ISO 8601 recomendado, ej: YYYY-MM-DD)
+             * @example 2025-04-26
+             */
+            date?: string;
+            /**
+             * @description Tipo de documento que respalda el gasto (opcional)
+             * @example INVOICE
+             * @enum {string}
+             */
+            documentType?: 'RECEIPT' | 'INVOICE' | 'OTHER';
+            /**
+             * @description Número del documento que respalda el gasto (opcional)
+             * @example F001-001234
+             */
+            documentNumber?: string;
+            /**
+             * @description Indica si se deben eliminar los datos de documento
+             * @default false
+             * @example false
+             */
+            dataDocument: boolean;
+        };
+        DeleteHotelExpenseDto: {
+            /**
+             * @description IDs de los gastos a eliminar
+             * @example [
+             *       "123e4567-e89b-12d3-a456-426614174000",
+             *       "987e6543-e21b-12d3-a456-556614174001"
+             *     ]
+             */
+            ids: string[];
         };
     };
     responses: never;
@@ -3380,6 +4114,74 @@ export interface operations {
             };
         };
     };
+    UsersController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of users */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: {
+                            id?: string;
+                            name?: string;
+                            email?: string;
+                            phone?: string;
+                            /** Format: date-time */
+                            lastLogin?: string;
+                            isActive?: boolean;
+                            isSuperAdmin?: boolean;
+                            mustChangePassword?: boolean;
+                            /** @enum {string} */
+                            userRol?: 'ADMIN' | 'RECEPCIONIST';
+                        }[];
+                        meta?: {
+                            total?: number;
+                            page?: number;
+                            pageSize?: number;
+                            totalPages?: number;
+                            hasNext?: boolean;
+                            hasPrevious?: boolean;
+                        };
+                    };
+                };
+            };
+            /** @description Bad request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     UsersController_generatePassword_v1: {
         parameters: {
             query?: never;
@@ -3653,6 +4455,51 @@ export interface operations {
         responses: {
             /** @description Product created successfully */
             201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ProductController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+                /** @description Product type filter */
+                type?: 'COMMERCIAL' | 'INTERNAL_USE';
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -4478,6 +5325,83 @@ export interface operations {
             };
         };
     };
+    RoomController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Número de página */
+                page?: number;
+                /** @description Cantidad de elementos por página */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Lista paginada de habitaciones */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: {
+                            id?: string;
+                            number?: number;
+                            /** @enum {string} */
+                            status?:
+                                | 'AVAILABLE'
+                                | 'OCCUPIED'
+                                | 'CLEANING'
+                                | 'MAINTENANCE';
+                            tv?: boolean;
+                            area?: number;
+                            floorType?: string;
+                            isActive?: boolean;
+                            RoomTypes?: {
+                                id?: string;
+                                name?: string;
+                                ImageRoomType?: {
+                                    id?: string;
+                                    imageUrl?: string;
+                                    isMain?: boolean;
+                                };
+                            };
+                            trashBin?: boolean;
+                            towel?: boolean;
+                            toiletPaper?: boolean;
+                            showerSoap?: boolean;
+                            handSoap?: boolean;
+                            lamp?: boolean;
+                        }[];
+                        meta?: {
+                            total?: number;
+                            page?: number;
+                            pageSize?: number;
+                            totalPages?: number;
+                            hasNext?: boolean;
+                            hasPrevious?: boolean;
+                        };
+                    };
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     RoomController_findOne_v1: {
         parameters: {
             query?: never;
@@ -4783,6 +5707,61 @@ export interface operations {
                 };
                 content: {
                     'application/json': components['schemas']['RoomType'][];
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    RoomTypeController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Número de página */
+                page?: number;
+                /** @description Cantidad de elementos por página */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Lista paginada de tipos de habitaciones con sus imágenes */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: (components['schemas']['RoomType'] & {
+                            imagesRoomType?: {
+                                id?: string;
+                                url?: string;
+                                isMain?: boolean;
+                            }[];
+                        })[];
+                        meta?: {
+                            total?: number;
+                            page?: number;
+                            pageSize?: number;
+                            totalPages?: number;
+                            hasNext?: boolean;
+                            hasPrevious?: boolean;
+                        };
+                    };
                 };
             };
             /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
@@ -5239,6 +6218,50 @@ export interface operations {
             };
         };
     };
+    PaymentsController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Payments paginated retrieved successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     PaymentsController_findOne_v1: {
         parameters: {
             query?: never;
@@ -5613,6 +6636,443 @@ export interface operations {
             };
         };
     };
+    MovementsController_findAll_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get all movements */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MovementsController_create_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['CreateMovementDto'];
+            };
+        };
+        responses: {
+            /** @description Movement successfully created */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MovementsController_findOne_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get movement by id */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MovementsController_remove_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Movement successfully deleted */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MovementsController_update_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['UpdateMovementDto'];
+            };
+        };
+        responses: {
+            /** @description Movement successfully updated */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MovementsController_findByTypePaginated_v1: {
+        parameters: {
+            query: {
+                /** @description Type of movement (INPUT or OUTPUT) */
+                type: 'INPUT' | 'OUTPUT';
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of movements by type */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: {
+                            id?: string;
+                            codeUnique?: string;
+                            /** Format: date-time */
+                            dateMovement?: string;
+                            /** @enum {string} */
+                            type?: 'INPUT' | 'OUTPUT';
+                            description?: string;
+                            warehouse?: {
+                                id?: string;
+                                /** @enum {string} */
+                                type?: 'CENTRAL' | 'LOCAL';
+                            };
+                            typePurchaseOrder?: string | null;
+                            documentNumber?: string | null;
+                        }[];
+                        meta?: {
+                            total?: number;
+                            page?: number;
+                            pageSize?: number;
+                            totalPages?: number;
+                            hasNext?: boolean;
+                            hasPrevious?: boolean;
+                        };
+                    };
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WarehouseController_findAll_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get all warehouse */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WarehouseController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Paginated list of warehouses */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: {
+                            id?: string;
+                            /** @enum {string} */
+                            type?: 'CENTRAL' | 'LOCAL';
+                            quantityProducts?: number;
+                            totalCost?: number;
+                        }[];
+                        meta?: {
+                            total?: number;
+                            page?: number;
+                            pageSize?: number;
+                            totalPages?: number;
+                            hasNext?: boolean;
+                            hasPrevious?: boolean;
+                        };
+                    };
+                };
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WarehouseController_findOne_v1: {
+        parameters: {
+            query: {
+                /** @description Warehouse ID */
+                id: string;
+                /** @description Movement ID to filter the warehouse data */
+                movementId?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get warehouse by id */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WarehouseController_findAllByType_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Tipo de almacén (COMMERCIAL o INTERNAL_USE) */
+                type: components['schemas']['ProductType'];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get warehouse by type */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    WarehouseController_findProductsStockByType_v1: {
+        parameters: {
+            query?: {
+                /** @description Payment detail ID to filter the stock data */
+                paymentDetailId?: string;
+            };
+            header?: never;
+            path: {
+                /** @description Tipo de almacén (COMMERCIAL o INTERNAL_USE) */
+                type: components['schemas']['ProductType'];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Get stock of products by warehouse type */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad Request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     SeedsController_initSeed_v1: {
         parameters: {
             query?: never;
@@ -5765,6 +7225,50 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Plantilla Excel para importar clientes */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Bad request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Internal server error */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CustomersController_findAllPaginated_v1: {
+        parameters: {
+            query?: {
+                /** @description Page number */
+                page?: number;
+                /** @description Number of items per page */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Customers found paginated successfully */
             200: {
                 headers: {
                     [name: string]: unknown;
@@ -6217,9 +7721,64 @@ export interface operations {
             };
         };
     };
-    CleaningChecklistController_findByRoom_v1: {
+    CleaningChecklistController_update_v1: {
         parameters: {
             query?: never;
+            header?: never;
+            path: {
+                /** @description ID del registro de limpieza a actualizar */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['UpdateCleaningChecklistDto'];
+            };
+        };
+        responses: {
+            /** @description Registro de limpieza actualizado exitosamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Datos de entrada inválidos */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Registro de limpieza no encontrado */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CleaningChecklistController_findByRoom_v1: {
+        parameters: {
+            query?: {
+                /** @description Número de página para paginación */
+                page?: number;
+                /** @description Mes para filtrar (ejemplo: enero, febrero, etc.) */
+                month?: string;
+                /** @description Año para filtrar (ejemplo: 2023, 2024, etc.) */
+                year?: string;
+            };
             header?: never;
             path: {
                 /** @description ID de la habitación */
@@ -6229,14 +7788,11 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description Registros de limpieza encontrados */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    'application/json': components['schemas']['CleaningChecklist'][];
-                };
+                content?: never;
             };
             /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
             400: {
@@ -6442,6 +7998,408 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    ReservationController_confirmReservation_v1: {
+        parameters: {
+            query: {
+                locale: string;
+                reservationId: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['ConfirmBookingDto'];
+            };
+        };
+        responses: {
+            /** @description Reservation confirmed successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['Reservation'];
+                };
+            };
+            /** @description Invalid input parameters */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_findAll_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Lista de todos los gastos */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['HotelExpenseEntity'][];
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_create_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['CreateHotelExpenseDto'];
+            };
+        };
+        responses: {
+            /** @description Gasto creado exitosamente */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Datos de entrada inválidos */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_findOne_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description ID del gasto */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Gasto encontrado */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['HotelExpenseEntity'];
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Gasto no encontrado */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_update_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description ID del gasto */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['UpdateHotelExpenseDto'];
+            };
+        };
+        responses: {
+            /** @description Gasto actualizado exitosamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_findByDate_v1: {
+        parameters: {
+            query?: {
+                /** @description Mes para filtrar (ejemplo: enero, febrero, etc.) */
+                month?: string;
+                /** @description Año para filtrar (ejemplo: 2023, 2024, etc.) */
+                year?: string;
+                /** @description Número de página */
+                page?: number;
+                /** @description Cantidad de elementos por página */
+                pageSize?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Lista paginada de gastos */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': {
+                        data?: components['schemas']['HotelExpenseEntity'][];
+                        meta?: components['schemas']['PaginationMetadata'];
+                    };
+                };
+            };
+            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ExpenseController_deleteMany_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['DeleteHotelExpenseDto'];
+            };
+        };
+        responses: {
+            /** @description Gastos eliminados exitosamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description IDs inválidos o gastos no existen */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReportsController_downloadProfitExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el profit mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadExpenseExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el expense mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadBalanceExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el balance mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadProfitTypeRoomExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+                /** @description ID del tipo de habitación */
+                typeRoomId: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el profit por tipo de habitación */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadOccupancyExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con estadísticas de ocupación */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
             };
         };
     };
