@@ -101,6 +101,11 @@ export function RoomsCarousel() {
     ];
 
     const rooms: CustomCardProps[] = roomTypes.map(roomType => {
+        const room = roomType.Room[0];
+        let href = t('card.ctaButton.link');
+        if (room) {
+            href = `habitaciones/${room}`;
+        }
         return {
             cardImage: {
                 alt: roomType.name,
@@ -109,6 +114,7 @@ export function RoomsCarousel() {
             cardTitle: {
                 text: roomType.name,
             },
+            href,
             description: {
                 text: roomType.description,
             },
@@ -169,6 +175,7 @@ export function RoomsCarousel() {
                                 pricing={item.pricing}
                                 features={item.features}
                                 hasSeparator={true}
+                                href={item.href}
                             ></CustomCard>
                         </CarouselItem>
                     ))}

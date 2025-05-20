@@ -1,5 +1,5 @@
 import React from 'react';
-import { revalidatePath } from 'next/cache';
+// import { revalidatePath } from 'next/cache';
 import { getLocale, getTranslations } from 'next-intl/server';
 
 import { DetailedRoomWithImages } from '@/actions/rooms/room';
@@ -59,9 +59,9 @@ export default async function page({
                         (error instanceof Error ? error.message : '')
                     }
                     refetchButtonLabel={t('fetching.error.actionButton.label')}
-                    onRefetch={() => {
-                        revalidatePath(`/habitaciones/${roomId}`);
-                    }}
+                    // onRefetch={() => {
+                    //     revalidatePath(`/habitaciones/${roomId}`);
+                    // }}
                 />
             </PageLayout>
         );
@@ -181,7 +181,7 @@ export default async function page({
             ></RoomDescriptionSection>
             <MoreDetailsSection></MoreDetailsSection>
             <MoreRoomSection></MoreRoomSection>
-            <BookingSection></BookingSection>
+            <BookingSection roomId={roomId}></BookingSection>
         </PageLayout>
     );
 }

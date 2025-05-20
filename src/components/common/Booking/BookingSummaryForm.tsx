@@ -5,7 +5,10 @@ import { addDays, startOfDay } from 'date-fns';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
+import {
+    CheckRoomAvailabilityDto,
+    CheckRoomAvailabilityFormValues,
+} from '@/actions/booking/booking';
 import { Button } from '@/components/ui/button';
 import { DatePicker } from '@/components/ui/date-picker';
 import {
@@ -41,15 +44,17 @@ export const BookingSummaryForm = ({
     className,
     formClassname,
     submitButtonClassname,
+    defaultValues,
 }: {
     className?: string;
     formClassname?: string;
     submitButtonClassname?: string;
+    defaultValues?: Required<CheckRoomAvailabilityFormValues>;
 }) => {
     // 1. Primero declaramos todos los hooks básicos
     const t = useTranslations('Forms.reserveBookingSummary');
     const locale = useLocale();
-    const { form, onSubmit, mutation } = useSummaryBookingForm();
+    const { form, onSubmit, mutation } = useSummaryBookingForm(defaultValues);
     const values = form.watch();
 
     // 2. Creamos el ref para los datos de disponibilidad
