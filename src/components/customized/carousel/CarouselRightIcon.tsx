@@ -1,6 +1,12 @@
 import React from 'react';
 
-export const CarouselRightIcon = ({ className }: { className?: string }) => {
+export const CarouselRightIcon = ({
+    className,
+    alternateColor = false,
+}: {
+    className?: string;
+    alternateColor?: boolean;
+}) => {
     return (
         <svg
             width="22"
@@ -17,7 +23,7 @@ export const CarouselRightIcon = ({ className }: { className?: string }) => {
             />
             <path
                 d="M1 41C1 41 4.96624 20.9821 21 21.1666"
-                stroke="white"
+                stroke={alternateColor ? 'black' : 'white'}
                 strokeWidth="2"
                 fill="none"
             />

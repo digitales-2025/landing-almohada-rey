@@ -20,7 +20,7 @@ type Props = {
     images: ImageRoomType[];
 };
 
-export const MainRoomCarousel = ({ images }: Props) => {
+export const RoomCarousel = ({ images }: Props) => {
     const [api, setApi] = useState<CarouselApi>();
     const { selectedIndex, onDotButtonClick } = useCarouselIndicator(api);
     return (

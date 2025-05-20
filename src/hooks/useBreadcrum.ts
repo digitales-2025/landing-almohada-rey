@@ -117,9 +117,6 @@ export function useBreadcrumb({
                     });
                 });
             }
-
-            console.log(segment, index, fullPath, isDynamic, label);
-
             // // Si existe onDynamicRoute y es ruta dinámica, usamos esa función para obtener la etiqueta
             // if (isDynamic && onDynamicRoute) {
             //     label = onDynamicRoute(segment);

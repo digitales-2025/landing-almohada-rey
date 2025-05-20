@@ -18,9 +18,11 @@ import { TextEffect } from '@/components/ui/text-effect';
 import { defaultLocale } from '@/i18n/routing';
 import { formatPrice } from '@/lib/i18n-formatPrice';
 import { cn } from '@/lib/utils';
-import { MainRoomCarousel } from './components/MainRoomCarousel';
-// import { MoreDetailsSection } from './components/MoreDetailsSection';
+import { BookingSection } from './components/bookingSection/bookingSection';
+import { RoomCarousel } from './components/MainRoomCarousel';
+import { MoreDetailsSection } from './components/MoreDetailsSection';
 import { RoomDescriptionSection } from './components/RoomDescriptionSection';
+import { MoreRoomSection } from './components/roomsCarousel/MoreRoomSection';
 
 export default async function page({
     params,
@@ -108,7 +110,7 @@ export default async function page({
         },
     ];
     return (
-        <PageLayout>
+        <PageLayout classname="pb-0">
             <BaseHeroWrapper
                 className="min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] xl:min-h-[700px] flex items-center justify-center mb-4 pb-16 sm:pb-20 md:pb-18 lg:pb-30 xl:pb-40"
                 image={{
@@ -168,16 +170,18 @@ export default async function page({
                 </div>
             </BaseHeroWrapper>
             <div className="h-fit">
-                <MainRoomCarousel
+                <RoomCarousel
                     images={room.RoomTypes.ImageRoomType.filter(
                         image => !image.isMain
                     )} // Exclude the main image
-                ></MainRoomCarousel>
+                ></RoomCarousel>
             </div>
             <RoomDescriptionSection
                 detailedRoom={room}
             ></RoomDescriptionSection>
-            {/* <MoreDetailsSection detailedRoom={room}></MoreDetailsSection> */}
+            <MoreDetailsSection></MoreDetailsSection>
+            <MoreRoomSection></MoreRoomSection>
+            <BookingSection></BookingSection>
         </PageLayout>
     );
 }

@@ -16,7 +16,7 @@ export async function RoomDescriptionSection({ detailedRoom }: Props) {
     const buttonClassnames =
         'text-sm md:text-base lg:text-xl text-secondary hover:text-secondary';
 
-    const imgClassNames = '!w-20 lg:!w-44';
+    const imgClassNames = '!w-20 lg:!w-44 object-cover';
     const features = [
         {
             icon: (

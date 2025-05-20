@@ -174,7 +174,7 @@
             "description": "Diseñado para satisfacer las necesidades de familias, grupos turísticos y viajeros de negocios, nuestro hotel ofrece un concepto de alojamiento único, fusionando lo moderno con lo acogedor.",
             "ctaButton": {
                 "label": "Reserve ahora",
-                "link": "/experiencias"
+                "link": "/habitaciones#reservar"
             },
             "gallery": {
                 "item1": {
@@ -218,7 +218,7 @@
             "description": "Viva una experiencia inolvidable en La Almohada del Rey, sea para negocios o vacaciones lo estamos esperando.",
             "ctaButton": {
                 "label": "Reserve ahora",
-                "link": "/reservacion"
+                "link": "/habitaciones#reservar"
             }
         },
         "travelersSection": {
@@ -788,7 +788,7 @@
                 "item2": "{count, plural, =0 {no huéspedes} =1 {1 huésped} other {# huéspedes}}",
                 "item4": "WiFi Gratis"
             }
-        }, 
+        },
         "moreDetailsSection": {
             "services": {
                 "title": "Servicios",
@@ -796,7 +796,7 @@
                 "item2": "Room Service 24 hrs.",
                 "item3": "Servicio de lavandería, planchado y tintorería (bajo petición)*.",
                 "item4": "Servicio de delivery."
-            }, 
+            },
             "equipment": {
                 "title": "Equipamiento",
                 "item1": "Salón integrado.",
@@ -809,6 +809,33 @@
                 "item8": "Mini-Bar.",
                 "item9": "Caja de seguridad (digital).",
                 "item10": "Secador de pelo*."
+            }
+        },
+        "moreRoomsSection": {
+            "title": "Otras habitaciones",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
+            "card": {
+                "commonFeatures": {
+                    "item1": "WiFi gratuito",
+                    "item2": "TV con cable",
+                    "item3": "Servicio a la habitación",
+                    "item4": "Ducha con agua caliente",
+                    "item5": "Escritorio y armario",
+                    "guest": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
             }
         }
     },

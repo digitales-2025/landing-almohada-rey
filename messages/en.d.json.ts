@@ -94,7 +94,7 @@ declare const messages: {
             description: 'Turn every moment into an unforgettable experience. Enjoying comfort and elegance, where excellence in service is our priority. Here, at Hotel La Almohada del Rey, we offer you much more than simple accommodation; we provide you with the opportunity to spend quality time with your loved ones.';
             ctaButton: {
                 label: 'Learn more';
-                link: '/booking';
+                link: '/rooms#booking';
             };
         };
         confortableRoomsSection: {
@@ -177,7 +177,7 @@ declare const messages: {
             description: 'Designed to meet the needs of families, tour groups, and business travelers, our hotel offers a unique lodging concept, blending modern with cozy.';
             ctaButton: {
                 label: 'Book now';
-                link: '/experiences';
+                link: '/rooms#booking';
             };
             gallery: {
                 item1: {
@@ -221,7 +221,7 @@ declare const messages: {
             description: "Experience an unforgettable stay at La Almohada del Rey, whether for business or vacation, we're waiting for you.";
             ctaButton: {
                 label: 'Book now';
-                link: '/booking';
+                link: '/rooms#booking';
             };
         };
         travelersSection: {
@@ -812,6 +812,33 @@ declare const messages: {
                 item8: 'Mini-bar.';
                 item9: 'Safe deposit box (digital).';
                 item10: 'Hair dryer*.';
+            };
+        };
+        moreRoomsSection: {
+            title: 'More rooms';
+        };
+        card: {
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+            commonFeatures: {
+                item1: 'Free WiFi';
+                item2: 'TV with cable';
+                item3: 'Intercom service';
+                item4: 'Warm-water Shower';
+                item5: 'Desk & wardrobe';
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+            };
+            pricing: {
+                label: 'from';
+                sufix: '/night';
+            };
+            ctaButton: {
+                label: 'Book';
+                link: '/rooms#booking';
             };
         };
     };

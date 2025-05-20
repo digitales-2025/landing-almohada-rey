@@ -57,10 +57,13 @@ export const useCarouselButtons = (
     };
 };
 
-type PropType = ComponentPropsWithRef<'button'>;
+type PropType = ComponentPropsWithRef<'button'> & {
+    iconClassName?: string;
+    iconAlternateColor?: boolean;
+};
 
 export const PrevButton: React.FC<PropType> = props => {
-    const { children, ...restProps } = props;
+    const { children, iconClassName, iconAlternateColor, ...restProps } = props;
 
     return (
         <button
@@ -71,14 +74,20 @@ export const PrevButton: React.FC<PropType> = props => {
                 restProps.className
             )}
         >
-            <CarouselRightIcon className="rotate-180 w-[12px] h-[22px] lg:w-[22px] lg:h-[42px]"></CarouselRightIcon>
+            <CarouselRightIcon
+                className={cn(
+                    'rotate-180 w-[12px] h-[22px] lg:w-[22px] lg:h-[42px]',
+                    iconClassName
+                )}
+                alternateColor={iconAlternateColor}
+            ></CarouselRightIcon>
             {children}
         </button>
     );
 };
 
 export const NextButton: React.FC<PropType> = props => {
-    const { children, ...restProps } = props;
+    const { children, iconClassName, iconAlternateColor, ...restProps } = props;
 
     return (
         <button
@@ -89,7 +98,13 @@ export const NextButton: React.FC<PropType> = props => {
                 restProps.className
             )}
         >
-            <CarouselRightIcon className="w-[12px] h-[22px] lg:w-[22px] lg:h-[42px]"></CarouselRightIcon>
+            <CarouselRightIcon
+                className={cn(
+                    'w-[12px] h-[22px] lg:w-[22px] lg:h-[42px]',
+                    iconClassName
+                )}
+                alternateColor={iconAlternateColor}
+            ></CarouselRightIcon>
             {children}
         </button>
     );

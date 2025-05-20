@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { toast } from 'sonner';
 
 import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
@@ -14,6 +14,25 @@ export const useAvailability = (defaultParams: CheckRoomAvailabilityDto) => {
         setParams(newParams);
     };
 
+    const selectRandomRoomByType = useCallback(
+        (roomType: string) => {
+            if (!query.data) return '';
+
+            const roomsOfType = query.data.filter(
+                room => room.RoomTypes.name === roomType
+            );
+            if (roomsOfType.length > 0) {
+                const randomIndex = Math.floor(
+                    Math.random() * roomsOfType.length
+                );
+                const selectedRoom = roomsOfType[randomIndex];
+                return selectedRoom.id;
+            }
+            return '';
+        },
+        [query.data]
+    );
+
     if (query.isError) {
         toast.error(query.error.message);
     }
@@ -21,5 +40,6 @@ export const useAvailability = (defaultParams: CheckRoomAvailabilityDto) => {
     return {
         query,
         checkAvailability,
+        selectRandomRoomByType,
     };
 };
