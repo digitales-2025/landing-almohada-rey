@@ -94,7 +94,7 @@ declare const messages: {
             description: 'Turn every moment into an unforgettable experience. Enjoying comfort and elegance, where excellence in service is our priority. Here, at Hotel La Almohada del Rey, we offer you much more than simple accommodation; we provide you with the opportunity to spend quality time with your loved ones.';
             ctaButton: {
                 label: 'Learn more';
-                link: '/booking';
+                link: '/rooms#booking';
             };
         };
         confortableRoomsSection: {
@@ -177,7 +177,7 @@ declare const messages: {
             description: 'Designed to meet the needs of families, tour groups, and business travelers, our hotel offers a unique lodging concept, blending modern with cozy.';
             ctaButton: {
                 label: 'Book now';
-                link: '/experiences';
+                link: '/rooms#booking';
             };
             gallery: {
                 item1: {
@@ -221,7 +221,7 @@ declare const messages: {
             description: "Experience an unforgettable stay at La Almohada del Rey, whether for business or vacation, we're waiting for you.";
             ctaButton: {
                 label: 'Book now';
-                link: '/booking';
+                link: '/rooms#booking';
             };
         };
         travelersSection: {
@@ -751,6 +751,94 @@ declare const messages: {
                 imageAlt1: 'Restaurant dining area with elegant tables and chairs';
                 imageAlt2: 'Buffet table with breakfast and drinks';
                 imageAlt3: 'Guests enjoying a meal in the restaurant';
+            };
+        };
+    };
+    IndexPageRoom: {
+        title: 'Room {roomNumber}';
+        fetching: {
+            error: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+        };
+        description: 'Beautiful and spacious room with a double bed, high-definition TV with cable channels and work area.';
+        features: {
+            item1: {
+                label: 'Guests';
+                value: '{count, plural, =0 {no adults} =1 {1 adult} other {# adults}}';
+            };
+            item2: {
+                label: 'Bed type';
+            };
+            item3: {
+                label: 'From';
+                sufix: '/night';
+            };
+        };
+        roomSummarySection: {
+            title: 'Just relax, our rooms are designed for your comfort';
+            termsAndConditionsButton: {
+                label: 'Terms and conditions';
+            };
+            refundAndCancelPolicyButton: {
+                label: 'Refund and cancel policy';
+            };
+            services: {
+                item1: 'Intercom service';
+                item2: '{count, plural, =0 {no hosts} =1 {1 host} other {# hosts}}';
+                item4: 'Free WiFi';
+            };
+        };
+        moreDetailsSection: {
+            services: {
+                title: 'Services';
+                item1: '24-hour wake-up service.';
+                item2: '24-hour Room Service.';
+                item3: 'Laundry, ironing, and dry cleaning service (upon request)*.';
+                item4: 'Delivery service.';
+            };
+            equipment: {
+                title: 'Equipment';
+                item1: 'Integrated living room.';
+                item2: 'Full bathroom with bathtub.';
+                item3: 'High-speed Wi-Fi access.';
+                item4: 'Wired internet access (ADSL).';
+                item5: '32” LCD TV with cable channels.';
+                item6: 'Telephone - Intercom.';
+                item7: 'Work area and relaxation space.';
+                item8: 'Mini-bar.';
+                item9: 'Safe deposit box (digital).';
+                item10: 'Hair dryer*.';
+            };
+        };
+        moreRoomsSection: {
+            title: 'More rooms';
+        };
+        card: {
+            fetchingError: {
+                message: 'Sorry. It seems an error has occurred.';
+                actionButton: {
+                    label: 'Load again';
+                };
+            };
+            commonFeatures: {
+                item1: 'Free WiFi';
+                item2: 'TV with cable';
+                item3: 'Intercom service';
+                item4: 'Warm-water Shower';
+                item5: 'Desk & wardrobe';
+                guest: '{count, plural, =0 {no guests} =1 {1 guest} other {# guests}}';
+            };
+            pricing: {
+                label: 'from';
+                sufix: '/night';
+            };
+            ctaButton: {
+                label: 'Book';
+                link: '/rooms#booking';
             };
         };
     };

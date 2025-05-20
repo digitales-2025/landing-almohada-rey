@@ -147,11 +147,17 @@ export async function RoomsSection() {
     // }
 
     const rooms: CustomCardProps[] = roomTypes.map(roomType => {
+        const room = roomType.Room[0];
+        let href = t('room1.ctaButton.link');
+        if (room) {
+            href = `habitaciones/${room}`;
+        }
         return {
             cardImage: {
                 alt: roomType.name,
                 src: roomType.mainImageUrl,
             },
+            href,
             cardTitle: {
                 text: roomType.name,
             },
@@ -215,6 +221,7 @@ export async function RoomsSection() {
                         features={card.features}
                         pricing={card.pricing}
                         hasSeparator={true}
+                        href={card.href}
                     />
                 ))}
             </div>
