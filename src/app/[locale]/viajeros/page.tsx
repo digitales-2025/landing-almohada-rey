@@ -2,17 +2,16 @@ import React from 'react';
 
 import { PageLayout } from '@/components/layout/PageLayout';
 import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA/KeepInTouchCTA';
-import { GallerySection1 } from './components/GallerySection1';
-import { TravelerHero } from './components/TravelerHero';
+import { TravelerHeader } from './components/TravelerHeader';
+import { TravelerPage } from './components/TravelerPage';
 
 export default function ViajerosPage() {
     return (
         <PageLayout>
             {/* cabezera */}
-            <TravelerHero />
+            <TravelerHeader />
             {/* contenido */}
-            <GallerySection1 />
-
+            <TravelerPage />
             {/* pie */}
             <KeepInTouchCTA />
         </PageLayout>

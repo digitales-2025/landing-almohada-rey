@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { SectionWrapper } from '@/components/layout/section/base-section';
 
-export const GallerySection1 = () => {
+export const TravelerPage = () => {
     const t = useTranslations('IndexPageGallery.sections.section3');
 
     return (

@@ -4,7 +4,7 @@ import { BreadcrumbNav } from '@/components/layout/breadcrumb/BreadcrumbNav';
 import { BaseHeroWrapper } from '@/components/layout/hero/base-hero';
 import { TextEffect } from '@/components/ui/text-effect';
 
-export const TravelerHero = () => {
+export const TravelerHeader = () => {
     const t = useTranslations('IndexPageTravelers');
     return (
         <section className="overflow-hidden">
