@@ -5,7 +5,10 @@ import { addDays, startOfDay } from 'date-fns';
 import { useLocale, useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
+import {
+    CheckRoomAvailabilityDto,
+    CheckRoomAvailabilityFormValues,
+} from '@/actions/booking/booking';
 import { Button } from '@/components/ui/button';
 import { DatePicker } from '@/components/ui/date-picker';
 import {
@@ -37,11 +40,21 @@ import { SmallFormError } from '../Errors/FormErrors';
 import { OneRowLoadingFormSkeleton } from '../loading/LoadingFormSkeleton';
 import { useSummaryBookingForm } from './useSummaryBookingForm';
 
-export const BookingSummaryForm = () => {
+export const BookingSummaryForm = ({
+    className,
+    formClassname,
+    submitButtonClassname,
+    defaultValues,
+}: {
+    className?: string;
+    formClassname?: string;
+    submitButtonClassname?: string;
+    defaultValues?: Required<CheckRoomAvailabilityFormValues>;
+}) => {
     // 1. Primero declaramos todos los hooks básicos
     const t = useTranslations('Forms.reserveBookingSummary');
     const locale = useLocale();
-    const { form, onSubmit, mutation } = useSummaryBookingForm();
+    const { form, onSubmit, mutation } = useSummaryBookingForm(defaultValues);
     const values = form.watch();
 
     // 2. Creamos el ref para los datos de disponibilidad
@@ -57,9 +70,8 @@ export const BookingSummaryForm = () => {
     const selectedRoomTypeRef = useRef<string | null>(null);
 
     // 3. Hook para la disponibilidad
-    const { checkAvailability, query } = useAvailability(
-        defaultAvailabilityDataRef.current
-    );
+    const { checkAvailability, query, selectRandomRoomByType } =
+        useAvailability(defaultAvailabilityDataRef.current);
 
     // 4. Definir todos los callbacks - ANTES de cualquier condicional
     const handleCheckAvailability = useCallback(
@@ -91,24 +103,24 @@ export const BookingSummaryForm = () => {
     );
 
     // 5. Definimos todas las funciones useCallback antes de cualquier useEffect
-    const selectRandomRoomByType = useCallback(
-        (roomType: string) => {
-            if (!query.data) return '';
+    // const selectRandomRoomByType = useCallback(
+    //     (roomType: string) => {
+    //         if (!query.data) return '';
 
-            const roomsOfType = query.data.filter(
-                room => room.RoomTypes.name === roomType
-            );
-            if (roomsOfType.length > 0) {
-                const randomIndex = Math.floor(
-                    Math.random() * roomsOfType.length
-                );
-                const selectedRoom = roomsOfType[randomIndex];
-                return selectedRoom.id;
-            }
-            return '';
-        },
-        [query.data]
-    );
+    //         const roomsOfType = query.data.filter(
+    //             room => room.RoomTypes.name === roomType
+    //         );
+    //         if (roomsOfType.length > 0) {
+    //             const randomIndex = Math.floor(
+    //                 Math.random() * roomsOfType.length
+    //             );
+    //             const selectedRoom = roomsOfType[randomIndex];
+    //             return selectedRoom.id;
+    //         }
+    //         return '';
+    //     },
+    //     [query.data]
+    // );
 
     const checkInDateISO = useMemo(
         () => values.checkInDate.toISOString(),
@@ -200,11 +212,14 @@ export const BookingSummaryForm = () => {
 
     // 11. Renderizado principal
     return (
-        <div className="p-6 bg-primary-foreground">
+        <div className={cn('p-6 bg-primary-foreground', className)}>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="grid md:grid-cols-2 2xl:grid-cols-5 gap-2 gap-y-4 md:gap-3 lg:gap-4"
+                    className={cn(
+                        'grid md:grid-cols-2 2xl:grid-cols-5 gap-2 gap-y-4 md:gap-3 lg:gap-4',
+                        formClassname
+                    )}
                 >
                     <FormField
                         control={form.control}
@@ -467,7 +482,12 @@ export const BookingSummaryForm = () => {
                         )}
                     />
 
-                    <div className="w-full h-full flex items-center md:col-span-2 2xl:col-span-1">
+                    <div
+                        className={cn(
+                            'w-full h-full flex items-center md:col-span-2 2xl:col-span-1',
+                            submitButtonClassname
+                        )}
+                    >
                         <Button
                             className="rounded-none text-sm md:text-base lg:text-p tracking-normal w-full leading-14 lg:leading-16 h-fit "
                             size={'lg'}

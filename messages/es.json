@@ -174,7 +174,7 @@
             "description": "Diseñado para satisfacer las necesidades de familias, grupos turísticos y viajeros de negocios, nuestro hotel ofrece un concepto de alojamiento único, fusionando lo moderno con lo acogedor.",
             "ctaButton": {
                 "label": "Reserve ahora",
-                "link": "/experiencias"
+                "link": "/habitaciones#reservar"
             },
             "gallery": {
                 "item1": {
@@ -218,7 +218,7 @@
             "description": "Viva una experiencia inolvidable en La Almohada del Rey, sea para negocios o vacaciones lo estamos esperando.",
             "ctaButton": {
                 "label": "Reserve ahora",
-                "link": "/reservacion"
+                "link": "/habitaciones#reservar"
             }
         },
         "travelersSection": {
@@ -389,7 +389,7 @@
             "bookingSummary": {
                 "guests": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}",
                 "night": "{count, plural, =0 {sin noches} =1 {1 noche} other {# noches}}"
-            }, 
+            },
             "input1": {
                 "label": "Documento de Identidad",
                 "docTypeField": {
@@ -748,6 +748,94 @@
                 "imageAlt1": "Área de comedor del restaurante con mesas y sillas elegantes",
                 "imageAlt2": "Mesa de buffet con desayuno y bebidas",
                 "imageAlt3": "Huéspedes disfrutando de una comida en el restaurante"
+            }
+        }
+    },
+    "IndexPageRoom": {
+        "title": "Habitación {roomNumber}",
+        "fetching": {
+            "error": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            }
+        },
+        "description": "Bonita y espaciosa habitación con cama doble, TV de alta definición con canales por cable y área de trabajo.",
+        "features": {
+            "item1": {
+                "label": "Huéspedes",
+                "value": "{count, plural, =0 {sin adultos} =1 {1 adulto} other {# adultos}}"
+            },
+            "item2": {
+                "label": "Tipo de cama"
+            },
+            "item3": {
+                "label": "A partir de",
+                "sufix": "/noche"
+            }
+        },
+        "roomSummarySection": {
+            "title": "Relájese, nuestras habitaciónes son exclusivas",
+            "termsAndConditionsButton": {
+                "label": "Términos y condiciones"
+            },
+            "refundAndCancelPolicyButton": {
+                "label": "Política de reembolso y cancelación"
+            },
+            "commonFeatures": {
+                "item1": "Servicio a la habitación",
+                "item2": "{count, plural, =0 {no huéspedes} =1 {1 huésped} other {# huéspedes}}",
+                "item4": "WiFi Gratis"
+            }
+        },
+        "moreDetailsSection": {
+            "services": {
+                "title": "Servicios",
+                "item1": "Servicio despertador 24 hrs.",
+                "item2": "Room Service 24 hrs.",
+                "item3": "Servicio de lavandería, planchado y tintorería (bajo petición)*.",
+                "item4": "Servicio de delivery."
+            },
+            "equipment": {
+                "title": "Equipamiento",
+                "item1": "Salón integrado.",
+                "item2": "Cuarto de baño completo con tina.",
+                "item3": "Acceso a Wi-Fi de alta velocidad.",
+                "item4": "Acceso a internet por cable (ADSL).",
+                "item5": "TV LCD 32” con canales por cable.",
+                "item6": "Teléfono - Intercomunicador.",
+                "item7": "Área de trabajo y espacio de descanso.",
+                "item8": "Mini-Bar.",
+                "item9": "Caja de seguridad (digital).",
+                "item10": "Secador de pelo*."
+            }
+        },
+        "moreRoomsSection": {
+            "title": "Otras habitaciones",
+            "fetchingError": {
+                "message": "Lo sentimos. Parece que ocurrió un error.",
+                "actionButton": {
+                    "label": "Cargar de nuevo"
+                }
+            },
+            "card": {
+                "commonFeatures": {
+                    "item1": "WiFi gratuito",
+                    "item2": "TV con cable",
+                    "item3": "Servicio a la habitación",
+                    "item4": "Ducha con agua caliente",
+                    "item5": "Escritorio y armario",
+                    "guest": "{count, plural, =0 {sin huéspedes} =1 {1 huésped} other {# huéspedes}}"
+                },
+                "pricing": {
+                    "label": "desde",
+                    "sufix": "/noche"
+                },
+                "ctaButton": {
+                    "label": "Reservar",
+                    "link": "/habitaciones#reservar"
+                }
             }
         }
     },

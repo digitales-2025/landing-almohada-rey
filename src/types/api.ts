@@ -449,8 +449,7 @@ export interface paths {
         get: operations['ReservationController_findOne_v1'];
         put?: never;
         post?: never;
-        /** Delete a reservation */
-        delete: operations['ReservationController_remove_v1'];
+        delete?: never;
         options?: never;
         head?: never;
         /** Update a reservation */
@@ -540,6 +539,70 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    '/v1/reservation/{id}/check-extended-checkout': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Verificar disponibilidad para extender checkout
+         * @description Comprueba si es posible aplicar un late checkout o extender estadía sin generar conflictos
+         */
+        get: operations['ReservationController_checkExtendedCheckoutAvailability_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reservation/{id}/late-checkout': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Eliminar Late Checkout de una reserva
+         * @description Elimina el Late Checkout aplicado a una reserva y restaura la hora original de salida.
+         */
+        delete: operations['ReservationController_removeLateCheckout_v1'];
+        options?: never;
+        head?: never;
+        /**
+         * Aplicar Late Checkout a una reserva
+         * @description Extiende la hora de salida de una reserva en el mismo día. Valida que no haya conflictos con otras reservas.
+         */
+        patch: operations['ReservationController_applyLateCheckout_v1'];
+        trace?: never;
+    };
+    '/v1/reservation/{id}/extend-stay': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Extender estadía de una reserva
+         * @description Cambia la fecha de checkout a una fecha posterior. Valida disponibilidad y conflictos.
+         */
+        patch: operations['ReservationController_extendStay_v1'];
         trace?: never;
     };
     '/v1/rooms': {
@@ -1470,6 +1533,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/landing/room-types/room-detail/{roomId}': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get room details */
+        get: operations['LandRoomTypeController_getRoomDetail_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/landing-reservation/check-available-rooms': {
         parameters: {
             query?: never;
@@ -1827,13 +1907,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1895,13 +1975,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1944,13 +2024,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /**
@@ -2008,13 +2088,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /**
@@ -2103,13 +2183,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2174,6 +2254,11 @@ export interface components {
              * @default false
              */
             isPendingDeletePayment: boolean;
+            /**
+             * @description Wheter the reservation was applied late check out
+             * @default false
+             */
+            appliedLateCheckOut: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -2307,13 +2392,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2378,6 +2463,11 @@ export interface components {
              * @default false
              */
             isPendingDeletePayment: boolean;
+            /**
+             * @description Wheter the reservation was applied late check out
+             * @default false
+             */
+            appliedLateCheckOut: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -2549,6 +2639,50 @@ export interface components {
              */
             roomPrice?: number;
         };
+        LateCheckoutDto: {
+            /**
+             * @description Nueva hora de checkout (formato HH:mm)
+             * @example 14:30
+             */
+            lateCheckoutTime: string;
+            /**
+             * @description Notas adicionales sobre el late checkout
+             * @example Cliente solicitó una extensión de tiempo por motivos personales
+             */
+            additionalNotes?: string;
+            /**
+             * @description Date of the payment
+             * @example 2021-09-21
+             */
+            paymentDate: string;
+            /**
+             * @description Método de pago utilizado. Puede ser CASH, CREDIT_CARD, DEBIT_CARD, TRANSFER, YAPE, PLIN, PAYPAL, IZI_PAY o PENDING_PAYMENT
+             * @example CREDIT_CARD
+             */
+            paymentMethod: string;
+        };
+        ExtendStayDto: {
+            /**
+             * @description Nueva fecha de checkout en formato ISO 8601
+             * @example 2025-05-25T12:00:00.000Z
+             */
+            newCheckoutDate: string;
+            /**
+             * @description Notas adicionales sobre el late checkout
+             * @example Cliente solicitó una extensión de tiempo por motivos personales
+             */
+            additionalNotes?: string;
+            /**
+             * @description Date of the payment
+             * @example 2021-09-21
+             */
+            paymentDate: string;
+            /**
+             * @description Método de pago utilizado. Puede ser CASH, CREDIT_CARD, DEBIT_CARD, TRANSFER, YAPE, PLIN, PAYPAL, IZI_PAY o PENDING_PAYMENT
+             * @example CREDIT_CARD
+             */
+            paymentMethod: string;
+        };
         CreateRoomDto: {
             /**
              * @description ID del tipo de habitación
@@ -2591,13 +2725,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /**
@@ -3092,13 +3226,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             name: string;
@@ -3342,13 +3476,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-19T18:01:02.126Z
+             * @example 2025-05-21T13:55:39.321Z
              */
             updatedAt: string;
             /**
@@ -3420,6 +3554,7 @@ export interface components {
             guests: number;
             bed: string;
             mainImageUrl: string;
+            Room: string[];
         };
         LandImageRoomType: {
             id: string;
@@ -3434,6 +3569,208 @@ export interface components {
             guests: number;
             bed: string;
             images: components['schemas']['LandImageRoomType'][];
+        };
+        ImageRoomType: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            updatedAt: string;
+            /**
+             * @description URL de la imagen
+             * @example https://example.com/image.jpg
+             */
+            imageUrl: string;
+            /**
+             * @description Indica si es la imagen principal
+             * @example true
+             */
+            isMain: boolean;
+            /**
+             * @description ID del tipo de habitación asociado
+             * @example 12345678-1234-1234-1234-123456789012
+             */
+            roomTypeId: string;
+        };
+        RoomTypesWithImages: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            updatedAt: string;
+            /**
+             * @description Nombre del tipo de habitación
+             * @example Habitación doble
+             */
+            name: string;
+            /**
+             * @description Nombre del tipo de habitación en inglés
+             * @example Double Room
+             */
+            nameEn: string;
+            /**
+             * @description Capacidad máxima de huéspedes
+             * @example 2
+             */
+            guests: number;
+            /**
+             * @description Precio por noche
+             * @example 150.5
+             */
+            price: number;
+            /**
+             * @description Descripción del tipo de habitación
+             * @example Habitación con vista al mar y balcón privado
+             */
+            description: string;
+            /**
+             * @description Descripción del tipo de habitación en inglés
+             * @example Room with sea view and private balcony
+             */
+            descriptionEn: string;
+            /**
+             * @description Descripción de la cama
+             * @example Cama matrimonial king size
+             */
+            bed: string;
+            /**
+             * @description Descripción de la cama en inglés
+             * @example King size bed
+             */
+            bedEn: string;
+            /**
+             * @description URL de la imagen principal del tipo de habitación
+             * @example https://example.com/image.jpg
+             */
+            ImageRoomType: components['schemas']['ImageRoomType'][];
+        };
+        DetailedRoomWithImages: {
+            /**
+             * @description Unique identifier for the entity
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            id: string;
+            /**
+             * @description Indicates whether the entity is active or not
+             * @example true
+             */
+            isActive: boolean;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was created
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            createdAt: string;
+            /**
+             * Format: date-time
+             * @description Timestamp when the entity was last updated
+             * @example 2025-05-21T13:55:39.321Z
+             */
+            updatedAt: string;
+            /**
+             * @description ID del tipo de habitación asociado
+             * @example 123e4567-e89b-12d3-a456-426614174000
+             */
+            roomTypeId: string;
+            /**
+             * @description Número de la habitación
+             * @example 101
+             */
+            number: number;
+            /**
+             * @description Indica si la habitación tiene papelera
+             * @default true
+             * @example true
+             */
+            trashBin: boolean;
+            /**
+             * @description Indica si la habitación tiene toalla
+             * @default true
+             * @example true
+             */
+            towel: boolean;
+            /**
+             * @description Indica si la habitación tiene papel higiénico
+             * @default true
+             * @example true
+             */
+            toiletPaper: boolean;
+            /**
+             * @description Indica si la habitación tiene jabón de ducha
+             * @default true
+             * @example true
+             */
+            showerSoap: boolean;
+            /**
+             * @description Indica si la habitación tiene jabón de manos
+             * @default true
+             * @example true
+             */
+            handSoap: boolean;
+            /**
+             * @description Indica si la habitación tiene lámpara
+             * @default true
+             * @example true
+             */
+            lamp: boolean;
+            /**
+             * @description Estado de la habitación
+             * @example AVAILABLE
+             * @enum {string}
+             */
+            status: 'AVAILABLE' | 'OCCUPIED' | 'CLEANING';
+            /**
+             * @description Descripción de la televisión
+             * @example Smart TV 42 pulgadas
+             */
+            tv: string;
+            /**
+             * @description Área en metros cuadrados
+             * @example 25.5
+             */
+            area: number;
+            /**
+             * @description Tipo de piso
+             * @example LAMINATING
+             * @enum {string}
+             */
+            floorType: 'LAMINATING' | 'CARPETING';
+            /** @description Nombre del tipo de habitación asociado */
+            RoomTypes: components['schemas']['RoomTypesWithImages'];
         };
         BaseReservationWsActionsDto: {
             clientId: string;
@@ -4968,41 +5305,6 @@ export interface operations {
             };
         };
     };
-    ReservationController_remove_v1: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Reservation ID */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description The reservation has been successfully deleted */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized - No autorizado para realizar esta operación */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
     ReservationController_update_v1: {
         parameters: {
             query?: never;
@@ -5246,6 +5548,202 @@ export interface operations {
             };
             /** @description Unauthorized - No autorizado para realizar esta operación */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_checkExtendedCheckoutAvailability_v1: {
+        parameters: {
+            query: {
+                /** @description Nueva fecha/hora de checkout en formato ISO */
+                newCheckoutDate: string;
+            };
+            header?: never;
+            path: {
+                /** @description ID de la reserva */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Verificación completada */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: formato incorrecto o reserva no encontrada */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_removeLateCheckout_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Late checkout eliminado correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: La reserva no tiene Late Checkout aplicado o no está en estado válido */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: Reserva no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_applyLateCheckout_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['LateCheckoutDto'];
+            };
+        };
+        responses: {
+            /** @description Late checkout aplicado correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: formato incorrecto o reserva incompatible con late checkout */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: conflicto con otra reservación existente */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_extendStay_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['ExtendStayDto'];
+            };
+        };
+        responses: {
+            /** @description Estadía extendida correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: formato incorrecto de fecha o reserva incompatible con extensión */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: conflicto con otra reservación existente */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -7890,6 +8388,37 @@ export interface operations {
                 content: {
                     'application/json': components['schemas']['LandRoomTypeAllImg'];
                 };
+            };
+        };
+    };
+    LandRoomTypeController_getRoomDetail_v1: {
+        parameters: {
+            query: {
+                locale: string;
+            };
+            header?: never;
+            path: {
+                roomId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Room details retrieved successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['DetailedRoomWithImages'][];
+                };
+            };
+            /** @description Room not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

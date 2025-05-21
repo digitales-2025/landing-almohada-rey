@@ -474,7 +474,6 @@ export function useBookingWebSocket(locale: string, reservationId: string) {
 
             // No desconectamos el socket al desmontar el componente, solo quitamos los listeners
             if (socket) {
-                console.log('Limpiando listeners de socket');
                 removeSocketListeners(socket);
                 // No desconectamos para mantener la conexión
                 // socket.disconnect();

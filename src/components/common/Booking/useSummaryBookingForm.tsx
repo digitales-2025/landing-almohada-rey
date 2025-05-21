@@ -30,17 +30,25 @@ export const schema = z.object({
 }) satisfies z.ZodType<CreateReservationDtoForSchema>;
 export type BookingSummaryFormValues = z.infer<typeof schema>;
 
-export function useSummaryBookingForm() {
+export function useSummaryBookingForm(
+    defaultValues?: BookingSummaryFormValues
+) {
     const [isRedirecting, setIsRedirecting] = useState(false);
     const { useCreateBooking } = useBooking();
     const locale = useLocale();
     const form = useForm<BookingSummaryFormValues>({
         resolver: zodResolver(schema),
+        // defaultValues: {
+        //     checkInDate: today,
+        //     checkOutDate: tomorrow,
+        //     guestNumber: 1,
+        //     roomId: undefined,
+        // },
         defaultValues: {
-            checkInDate: today,
-            checkOutDate: tomorrow,
-            guestNumber: 1,
-            roomId: undefined,
+            checkInDate: defaultValues?.checkInDate ?? today,
+            checkOutDate: defaultValues?.checkOutDate ?? tomorrow,
+            guestNumber: defaultValues?.guestNumber ?? 1,
+            roomId: defaultValues?.roomId ?? undefined,
         },
         mode: 'onBlur',
         reValidateMode: 'onChange',

@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import Autoplay from 'embla-carousel-autoplay';
 import { useLocale, useTranslations } from 'next-intl';
 
+import { CheckRoomAvailabilityDto } from '@/actions/booking/booking';
 import { FetchingError } from '@/components/common/Errors/FetchingErrors';
 import { LoadingCardSkeleton } from '@/components/common/loading/LoadingCardSkeleton';
 import { CustomCard } from '@/components/customized/card/custom-card';
@@ -17,8 +19,11 @@ import {
     CarouselItem,
     type CarouselApi,
 } from '@/components/ui/carousel';
+import { useAvailability } from '@/hooks/queries/booking/useRoomAvailability';
 import { useRooms } from '@/hooks/queries/rooms/useRooms';
+import { useRouter } from '@/i18n/navigation';
 import { formatPrice } from '@/lib/i18n-formatPrice';
+import { getCheckInDate, getCheckOutDate } from '@/lib/timedate/peru-datetime';
 
 export type CarouselItemProps = {
     image: string;
@@ -36,9 +41,8 @@ export type CarouselItemProps = {
 export function HomeCarousel() {
     const t = useTranslations('IndexPage.confortableRoomsSection');
     const locale = useLocale();
+    const router = useRouter();
     const [api, setApi] = useState<CarouselApi>();
-    // const [_current, setCurrent] = useState(0);
-    // const [_count, setCount] = useState(0);
 
     const carouselButtons = useCarouselButtons(api);
 
@@ -51,7 +55,27 @@ export function HomeCarousel() {
         refetch,
     } = useRoomTypeQuery();
 
-    if (isLoading || !roomTypes) {
+    const today = getCheckInDate();
+    const tomorrowDate = new Date(today.getTime()); // Crear una copia
+    tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+    const tomorrow = getCheckOutDate(tomorrowDate);
+
+    const defaultAvailabilityDataRef = useRef<CheckRoomAvailabilityDto>({
+        checkInDate: today.toISOString(),
+        checkOutDate: tomorrow.toISOString(),
+        guestNumber: 1,
+    });
+
+    const { query: availableRooms, selectRandomRoomByType } = useAvailability(
+        defaultAvailabilityDataRef.current
+    );
+
+    if (
+        isLoading ||
+        !roomTypes ||
+        availableRooms.isLoading ||
+        !availableRooms.data
+    ) {
         return <LoadingCardSkeleton classNameSkeletonItems="bg-primary/10" />;
     }
 
@@ -62,6 +86,23 @@ export function HomeCarousel() {
                 message={t('fetchingError.message') + ' ' + error.message}
                 onRefetch={() => {
                     refetch();
+                }}
+                refetchButtonLabel={t('fetchingError.actionButton.label')}
+            ></FetchingError>
+        );
+    }
+
+    if (availableRooms.isError) {
+        return (
+            <FetchingError
+                title={'Error'}
+                message={
+                    t('fetchingError.message') +
+                    ' ' +
+                    availableRooms.error.message
+                }
+                onRefetch={() => {
+                    availableRooms.refetch();
                 }}
                 refetchButtonLabel={t('fetchingError.actionButton.label')}
             ></FetchingError>
@@ -127,14 +168,26 @@ export function HomeCarousel() {
 
     const carouselItems: CarouselItemProps[] =
         roomTypes.map(roomType => {
+            let href = t('carousel.item1.ctaButton.link');
+            const roomtypesWithAvailableRooms = availableRooms.data.filter(
+                room => room.RoomTypes.id === roomType.id
+            );
+            const roomtypesWithAvailableRoomsIds =
+                roomtypesWithAvailableRooms.map(room => room.id);
+            if (roomtypesWithAvailableRoomsIds.includes(roomType.id)) {
+                const randomRoomId = selectRandomRoomByType(roomType.id);
+                href = `/habitaciones/${randomRoomId}`;
+            }
+
             return {
                 image: roomType.mainImageUrl,
                 title: roomType.name,
+                href: href,
                 pricing: {
                     label: t('carousel.item1.pricing.label'),
                     price: formatPrice(
                         roomType.price.toString(),
-                        t('carousel.item1.pricing.currency'),
+                        'PEN',
                         locale
                     ),
                     sufix: t('carousel.item1.pricing.sufix'),
@@ -150,25 +203,30 @@ export function HomeCarousel() {
             };
         }) || [];
 
-    // useEffect(() => {
-    //     if (!api) {
-    //         return;
-    //     }
-
-    //     // setCount(api.scrollSnapList().length);
-    //     // setCurrent(api.selectedScrollSnap() + 1);
-
-    //     // api.on('select', () => {
-    //     //     setCurrent(api.selectedScrollSnap() + 1);
-    //     // });
-    // }, [api]);
     return (
         <div className="px-6 lg:px-12 relative h-fit">
-            <Carousel setApi={setApi}>
+            <Carousel
+                setApi={setApi}
+                opts={{
+                    loop: true,
+                }}
+                plugins={[
+                    Autoplay({
+                        delay: 3000,
+                        stopOnInteraction: true,
+                        stopOnMouseEnter: true,
+                    }),
+                ]}
+            >
                 <CarouselContent className="gap-10">
                     {carouselItems.map((item, index) => (
                         <CarouselItem key={index} className="md:basis-1/2">
                             <CustomCard
+                                onClick={() => {
+                                    router.push(
+                                        t('carousel.item1.ctaButton.link')
+                                    );
+                                }}
                                 cardTitle={{
                                     text: item.title,
                                     className: 'text-lg font-bold capitalize',
@@ -186,6 +244,7 @@ export function HomeCarousel() {
                                     caption: feature.label,
                                 }))}
                                 hasSeparator={false}
+                                className="cursor-pointer"
                                 headerClassname="px-5 lg:px-8 pb-3"
                                 contentClassname="px-5 pb-5 lg:px-8 lg:pb-8"
                             ></CustomCard>

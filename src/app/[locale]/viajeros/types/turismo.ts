@@ -29,3 +29,13 @@ export type TopItem = {
     subcategoriaId: string;
     imagen: string;
 };
+
+/* export type TopItem = {
+    id: number;
+    titulo: string;
+    subtitulo: string;
+    categoriaId: string;
+    subcategoriaId: string;
+    imagen: string;
+};
+ */
