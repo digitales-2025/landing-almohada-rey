@@ -1,68 +1,210 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { SectionWrapper } from '@/components/layout/section/base-section';
+import CategoriaSelector from '@/app/[locale]/viajeros/components/categoria-selector';
+import LugarTuristico from '@/app/[locale]/viajeros/components/lugar-turistico';
+import ModalDetalle from '@/app/[locale]/viajeros/components/modal-detalle';
+import Paginacion from '@/app/[locale]/viajeros/components/paginacion';
+import TopDiez from '@/app/[locale]/viajeros/components/top-diez';
+import { categorias } from '@/app/[locale]/viajeros/data/categorias';
+import { subcategorias } from '@/app/[locale]/viajeros/data/subcategorias';
+import { topItems } from '@/app/[locale]/viajeros/data/top-items';
+import type { Subcategoria } from '@/app/[locale]/viajeros/types/turismo';
 
-export const TravelerPage = () => {
-    const t = useTranslations('IndexPageGallery.sections.section3');
+export default function TurismoPage() {
+    const tHeader = useTranslations('Header');
+    /* const tPlaces = useTranslations('TouristPlaces'); */
+
+    // Estado para la categoría seleccionada - iniciar con "todos"
+    const [categoriaActiva, setCategoriaActiva] = useState('todos');
+
+    // Estado para el modal
+    const [modalOpen, setModalOpen] = useState(false);
+    const [lugarSeleccionado, setLugarSeleccionado] =
+        useState<Subcategoria | null>(null);
+    const [imagenInicialIndex, setImagenInicialIndex] = useState(0);
+
+    // Estado para la paginación
+    const [paginaActual, setPaginaActual] = useState(1);
+    const lugaresPerPage = 6;
+
+    // Estado para el lugar destacado del Top 10
+    const [lugarDestacadoId, setLugarDestacadoId] = useState<string | null>(
+        null
+    );
+
+    // Referencia para hacer scroll al lugar destacado
+    const lugaresContainerRef = useRef<HTMLDivElement>(null);
+    const tituloSeccionRef = useRef<HTMLHeadingElement>(null);
+
+    // Filtrar lugares por categoría seleccionada o mostrar todos
+    const lugaresFiltrados =
+        categoriaActiva === 'todos'
+            ? subcategorias
+            : subcategorias.filter(
+                  lugar => lugar.categoriaId === categoriaActiva
+              );
+
+    // Reordenar lugares para mostrar el destacado primero si existe
+    const lugaresOrdenados = [...lugaresFiltrados].sort((a, b) => {
+        if (a.id === lugarDestacadoId) return -1;
+        if (b.id === lugarDestacadoId) return 1;
+        return 0;
+    });
+
+    // Calcular total de páginas
+    const totalPaginas = Math.ceil(lugaresOrdenados.length / lugaresPerPage);
+
+    // Obtener lugares para la página actual
+    const lugaresActuales = lugaresOrdenados.slice(
+        (paginaActual - 1) * lugaresPerPage,
+        paginaActual * lugaresPerPage
+    );
+
+    // Resetear la página al cambiar de categoría
+    useEffect(() => {
+        setPaginaActual(1);
+    }, [categoriaActiva]);
+
+    // Manejar clic en imagen para abrir modal
+    const handleImageClick = (lugar: Subcategoria, imagenIndex: number) => {
+        setLugarSeleccionado(lugar);
+        setImagenInicialIndex(imagenIndex);
+        setModalOpen(true);
+    };
+
+    // Cerrar modal
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
+
+    // Cambiar página
+    const handlePageChange = (pagina: number) => {
+        setPaginaActual(pagina);
+        // Scroll al inicio de la sección
+        window.scrollTo({
+            top: document.getElementById('lugares-turisticos')?.offsetTop || 0,
+            behavior: 'smooth',
+        });
+    };
+
+    // Manejar clic en elemento del Top 10
+    const handleTopItemClick = (
+        categoriaId: string,
+        subcategoriaId: string
+    ) => {
+        // Cambiar a la categoría correspondiente
+        setCategoriaActiva(categoriaId);
+
+        // Establecer el lugar destacado
+        setLugarDestacadoId(subcategoriaId);
+
+        // Asegurarse de que estamos en la página 1 para ver el elemento destacado
+        setPaginaActual(1);
+
+        // Hacer scroll con mejor posicionamiento
+        setTimeout(() => {
+            // Usar el título de la sección como punto de referencia para el scroll
+            if (tituloSeccionRef.current) {
+                // Calcular la posición para el scroll
+                const yOffset = -80; // Offset negativo para posicionar más abajo
+                const y =
+                    tituloSeccionRef.current.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    yOffset;
+
+                // Hacer scroll a la posición calculada
+                window.scrollTo({
+                    top: y,
+                    behavior: 'smooth',
+                });
+            }
+        }, 100);
+    };
+
+    // Efecto para limpiar el destacado después de un tiempo
+    useEffect(() => {
+        if (lugarDestacadoId) {
+            const timer = setTimeout(() => {
+                setLugarDestacadoId(null);
+            }, 8000); // Aumentar a 8 segundos para dar más tiempo para ver el destacado
+
+            return () => clearTimeout(timer);
+        }
+    }, [lugarDestacadoId]);
 
     return (
-        <SectionWrapper>
-            <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 ">
-                    {/* Imagen grande a la izquierda que ocupa toda la altura */}
-                    <div className="relative min-h-[400px] md:min-h-[800px] w-full">
-                        <img
-                            src="/gallery/seccion3/ImgLateralIzquierda.webp"
-                            alt={t('imageAlt1')}
-                            className="object-cover w-full h-full"
-                        />
+        <main className="container mx-auto px-4 py-8">
+            {/* Título principal */}
+            <div className="mb-6 md:mb-8">
+                <span className="text-xs md:text-sm font-light tracking-wider text-amber-600 uppercase">
+                    {tHeader('travelers')}
+                </span>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mt-2">
+                    {tHeader('tourist_information')}
+                </h1>
+            </div>
+
+            {/* Selector de categorías */}
+            <CategoriaSelector
+                categorias={categorias}
+                categoriaActiva={categoriaActiva}
+                onCategoriaChange={setCategoriaActiva}
+            />
+
+            {/* Contenido principal dividido en dos secciones */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+                {/* Sección de lugares turísticos (2/3 del ancho en escritorio, segundo en móvil/tablet) */}
+                <div
+                    className="lg:col-span-2 order-2 lg:order-1"
+                    id="lugares-turisticos"
+                    ref={lugaresContainerRef}
+                >
+                    {/* Título de la sección para mejor scroll */}
+                    <h2
+                        ref={tituloSeccionRef}
+                        className="text-2xl font-serif text-gray-700 mb-6 sr-only"
+                    >
+                        Destinos Turísticos
+                    </h2>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                        {lugaresActuales.map(lugar => (
+                            <LugarTuristico
+                                key={lugar.id}
+                                lugar={lugar}
+                                onImageClick={handleImageClick}
+                                isHighlighted={lugar.id === lugarDestacadoId}
+                            />
+                        ))}
                     </div>
 
-                    {/* Columna derecha con distribución vertical */}
-                    <div className="flex flex-col min-h-[400px] md:min-h-[800px] justify-between">
-                        {/* Contenedor de imágenes con altura máxima definida */}
-                        <div className="space-y-4 flex-shrink-0">
-                            {/* Imagen superior derecha - altura reducida en móvil */}
-                            <div className="relative aspect-[16/10] md:aspect-[16/9] w-full">
-                                <img
-                                    src="/gallery/seccion3/ImgLateralDerechoSuperior.webp"
-                                    alt={t('imageAlt2')}
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
+                    {/* Paginación */}
+                    <Paginacion
+                        totalPaginas={totalPaginas}
+                        paginaActual={paginaActual}
+                        onPageChange={handlePageChange}
+                    />
+                </div>
 
-                            {/* Imagen inferior derecha - altura reducida en móvil */}
-                            <div className="relative aspect-[16/10] md:aspect-[16/9] w-full">
-                                <img
-                                    src="/gallery/seccion3/ImgLateralDerechoInferior.webp"
-                                    alt={t('imageAlt3')}
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Versión móvil: título y descripción en línea única */}
-                        <div className="mt-6 block md:hidden text-right pb-4">
-                            <h2 className="text-h5 font-serif text-secondary dark:text-secondary-foreground">
-                                {t('title')} {t('description')}
-                            </h2>
-                        </div>
-
-                        {/* Versión desktop: título y descripción separados */}
-                        <div className="mt-6 hidden md:block text-right pb-4">
-                            <h3 className="text-h5 md:text-h4 lg:text-h4 font-serif text-secondary dark:text-secondary-foreground ">
-                                {t('title')}
-                            </h3>
-                            <h2 className="text-h3 lg:text-h3 3xl:text-h1 2xl:text-[8rem] xl:text-h3 font-serif text-secondary dark:text-secondary-foreground">
-                                {t('description')}
-                            </h2>
-                        </div>
-                    </div>
+                {/* Sección de Top 10 (1/3 del ancho en escritorio, primero en móvil/tablet) */}
+                <div className="order-1 lg:order-2 mb-8 lg:mb-0">
+                    <TopDiez
+                        items={topItems}
+                        onItemClick={handleTopItemClick}
+                    />
                 </div>
             </div>
-        </SectionWrapper>
+
+            {/* Modal de detalle */}
+            <ModalDetalle
+                isOpen={modalOpen}
+                onClose={handleCloseModal}
+                lugar={lugarSeleccionado}
+                initialImageIndex={imagenInicialIndex}
+            />
+        </main>
     );
-};
+}

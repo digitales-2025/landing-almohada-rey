@@ -979,10 +979,122 @@
             }
         }
     },
-    "IndexPageTravelers": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Travelers"
-    },
+
+        "IndexPageTravelers": {
+          "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+          "title": "Travelers"
+        },
+        "Categories": {
+          "title": "CATEGORIES",
+          "todos": "ALL",
+          "urban_destinations": "URBAN DESTINATIONS",
+          "beaches": "BEACHES",
+          "nearby_landscapes": "NEARBY LANDSCAPES",
+          "colca_canyon": "COLCA CANYON",
+          "festivals_celebrations": "FESTIVALS & CELEBRATIONS",
+          "gastronomy": "GASTRONOMY",
+          "majes_valley": "MAJES VALLEY"
+        },
+        "TouristPlaces": {
+          "popular": "POPULAR",
+          "pagination": {
+            "page": "Page"
+          }
+        },
+        "TouristPlace": {
+          "readMore": "Read more..."
+        },
+        "Modal": {
+          "close": "Close"
+        },
+        "Places": {
+          "monasterio_santa_catalina": {
+            "title": "Santa Catalina Monastery",
+            "subtitle": "Colonial architectural jewel",
+            "description": "The Santa Catalina Monastery is a religious citadel founded in 1579, built in sillar stone. Within its walls you can appreciate streets, squares, and cloisters that preserve their original charm. It is one of the most important religious enclosures of colonial Peru."
+          },
+          "museo_santuarios_andinos": {
+            "title": "Andean Sanctuaries Archaeological Museum",
+            "subtitle": "Home of the Juanita mummy",
+            "description": "The Andean Sanctuaries Museum houses the Juanita mummy, an Inca girl sacrificed on the Ampato volcano. The museum exhibits findings from expeditions to the region's volcanoes, showing Inca offerings and artifacts in perfect preservation thanks to the ice."
+          },
+          "basilica_catedral": {
+            "title": "Basilica Cathedral of Arequipa",
+            "subtitle": "Neoclassical architectural jewel",
+            "description": "You can appreciate its Carrara marble altar, the pulpit, and an ancient organ. One of the first religious monuments of the 17th century in the city. It was built in sillar (volcanic stone), in neoclassical style."
+          },
+          "mollendo_mejia_camana": {
+            "title": "Mollendo, Mejía and Camaná",
+            "subtitle": "Beaches of the Arequipa coastline",
+            "description": "The beaches of Mollendo, Mejía and Camaná are the main seaside resorts of Arequipa. They offer beautiful coasts with crystal clear waters, perfect for relaxation and water sports. During summer, they are the preferred destination for Arequipa residents and tourists."
+          },
+          "puerto_inca": {
+            "title": "Puerto Inca",
+            "subtitle": "Historic beach",
+            "description": "Puerto Inca is a beautiful bay that was used by the Incas as a port to transport products between the coast and the highlands. Today it is a quiet beach surrounded by Inca archaeological remains, ideal for those looking to combine history and nature."
+          },
+          "petroglifos_toro_muerto": {
+            "title": "Toro Muerto Petroglyphs",
+            "subtitle": "Millenary rock art",
+            "description": "Toro Muerto is one of the largest rock art sites in South America, with more than 5,000 blocks of volcanic stone engraved with figures of animals, human beings, and geometric symbols. These artistic manifestations date from between 500 and 1,000 AD."
+          },
+          "mirador_condor": {
+            "title": "Condor Viewpoint",
+            "subtitle": "Andean condor observation",
+            "description": "The Cruz del Cóndor is a natural viewpoint from where you can observe the majestic flight of the Andean condor. This point also offers an impressive view of the Colca Canyon, one of the deepest in the world, with more than 4,160 meters in depth."
+          },
+          "termas_calera": {
+            "title": "La Calera Hot Springs",
+            "subtitle": "Medicinal thermal waters",
+            "description": "The thermal waters of La Calera, located in Chivay, have medicinal properties thanks to their high mineral content. With temperatures between 38°C and 40°C, these natural pools are perfect for relaxing after a day of hiking through the canyon."
+          },
+          "volcan_misti": {
+            "title": "Misti Volcano",
+            "subtitle": "The guardian of Arequipa",
+            "description": "The Misti is an active volcano of 5,822 meters that dominates the landscape of Arequipa. Its perfect conical shape makes it a symbol of the city. For the more adventurous, it is possible to climb to its crater, a challenging but unforgettable experience."
+          },
+          "rocoto_relleno": {
+            "title": "Rocoto Relleno",
+            "subtitle": "Emblematic Arequipa dish",
+            "description": "Rocoto relleno is one of the most representative dishes of Arequipa. It consists of a rocoto (spicy pepper) stuffed with ground meat, cheese, olives, and spices, gratinated in the oven. It is traditionally served with potato cake, a delicious combination of intense flavors."
+          },
+          "aniversario_arequipa": {
+            "title": "Anniversary of the Spanish Foundation of Arequipa",
+            "subtitle": "August festivities",
+            "description": "Every August 15, Arequipa celebrates its Spanish foundation with a month full of cultural, gastronomic, and artistic activities. The culminating point is the corso of friendship, a colorful parade that runs through the main streets of the city with floats and traditional dances."
+          },
+          "wititi": {
+            "title": "Wititi Dance",
+            "subtitle": "Intangible Cultural Heritage of Humanity",
+            "description": "The Wititi is a traditional dance from the Colca Valley, declared Intangible Cultural Heritage of Humanity by UNESCO. This courtship dance is characterized by its colorful costumes and movements that represent the mating ritual of Andean birds."
+          }
+        },
+        "TopItems": {
+          "mirador_condor": "Colca Canyon",
+          "mirador_condor_subtitle": "One of the deepest canyons in the world",
+          "aniversario_arequipa": "Anniversary of the Spanish Foundation of Arequipa",
+          "aniversario_arequipa_subtitle": "Historical and cultural celebration",
+          "rocoto_relleno": "Adobo Arequipeño",
+          "rocoto_relleno_subtitle": "Traditional dish of local gastronomy",
+          "monasterio_santa_catalina": "Santa Catalina Monastery",
+          "monasterio_santa_catalina_subtitle": "Colonial architectural jewel",
+          "volcan_misti": "Misti Volcano",
+          "volcan_misti_subtitle": "The guardian of Arequipa",
+          "petroglifos_toro_muerto": "Toro Muerto Petroglyphs",
+          "petroglifos_toro_muerto_subtitle": "Millenary rock art",
+          "mollendo_mejia_camana": "Mollendo",
+          "mollendo_mejia_camana_subtitle": "Main seaside resort of Arequipa",
+          "termas_calera": "La Calera Hot Springs",
+          "termas_calera_subtitle": "Medicinal thermal waters",
+          "museo_santuarios_andinos": "Andean Sanctuaries Museum",
+          "museo_santuarios_andinos_subtitle": "Home of the Juanita mummy"
+        },
+        "Header": {
+          "travelers": "TRAVELERS",
+          "tourist_information": "Tourist Information"
+        },
+
+      
     "KeepInTouchSection": {
         "sectionName": "contact",
         "title": "Contact",

@@ -979,10 +979,122 @@
             }
         }
     },
-    "IndexPageTravelers": {
-        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-        "title": "Viajeros"
-    },
+
+        "IndexPageTravelers": {
+          "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+          "title": "Viajeros"
+        },
+        "Categories": {
+          "title": "CATEGORÍAS",
+          "todos": "TODOS",
+          "urban_destinations": "DESTINOS URBANOS",
+          "beaches": "PLAYAS",
+          "nearby_landscapes": "PAISAJES CERCANOS",
+          "colca_canyon": "CAÑÓN DEL COLCA",
+          "festivals_celebrations": "FIESTAS Y CELEBRACIONES",
+          "gastronomy": "GASTRONOMÍA",
+          "majes_valley": "VALLE DE MAJES"
+        },
+        "TouristPlaces": {
+          "popular": "POPULARES",
+          "pagination": {
+            "page": "Página"
+          }
+        },
+        "TouristPlace": {
+          "readMore": "Leer más..."
+        },
+        "Modal": {
+          "close": "Cerrar"
+        },
+        "Places": {
+          "monasterio_santa_catalina": {
+            "title": "Monasterio de Santa Catalina",
+            "subtitle": "Joya arquitectónica colonial",
+            "description": "El Monasterio de Santa Catalina es una ciudadela religiosa fundada en 1579, construida en sillar. Dentro de sus muros se puede apreciar calles, plazas y claustros que conservan su encanto original. Es uno de los recintos religiosos más importantes del Perú colonial."
+          },
+          "museo_santuarios_andinos": {
+            "title": "Museo Arqueológico Santuarios Andinos",
+            "subtitle": "Hogar de la momia Juanita",
+            "description": "El Museo Santuarios Andinos alberga a la momia Juanita, una niña inca sacrificada en el volcán Ampato. El museo exhibe los hallazgos de las expediciones a los volcanes de la región, mostrando ofrendas y artefactos incas en perfecto estado de conservación gracias al hielo."
+          },
+          "basilica_catedral": {
+            "title": "Basílica Catedral de la ciudad de Arequipa",
+            "subtitle": "Joya arquitectónica neoclásica",
+            "description": "Se puede apreciar su altar de mármol de carrara, el púlpito y un antiguo órgano. Uno de los primeros monumentos religiosos del siglo XVII en la ciudad. Se construyó en sillar (piedra de origen volcánico), de estilo neoclásico."
+          },
+          "mollendo_mejia_camana": {
+            "title": "Mollendo, Mejía y Camaná",
+            "subtitle": "Playas del litoral arequipeño",
+            "description": "Las playas de Mollendo, Mejía y Camaná son los principales balnearios de Arequipa. Ofrecen hermosas costas con aguas cristalinas, perfectas para el descanso y deportes acuáticos. Durante el verano, son el destino preferido de los arequipeños y turistas."
+          },
+          "puerto_inca": {
+            "title": "Puerto Inca",
+            "subtitle": "Playa histórica",
+            "description": "Puerto Inca es una hermosa bahía que fue utilizada por los incas como puerto para transportar productos entre la costa y la sierra. Hoy es una playa tranquila rodeada de restos arqueológicos incas, ideal para quienes buscan combinar historia y naturaleza."
+          },
+          "petroglifos_toro_muerto": {
+            "title": "Petroglifos de Toro Muerto",
+            "subtitle": "Arte rupestre milenario",
+            "description": "Toro Muerto es uno de los sitios de arte rupestre más grandes de Sudamérica, con más de 5,000 bloques de piedra volcánica grabados con figuras de animales, seres humanos y símbolos geométricos. Estas manifestaciones artísticas datan de entre 500 y 1,000 d.C."
+          },
+          "mirador_condor": {
+            "title": "Mirador del Cóndor",
+            "subtitle": "Observación de cóndores andinos",
+            "description": "La Cruz del Cóndor es un mirador natural desde donde se puede observar el vuelo majestuoso del cóndor andino. Este punto ofrece también una vista impresionante del Cañón del Colca, uno de los más profundos del mundo, con más de 4,160 metros de profundidad."
+          },
+          "termas_calera": {
+            "title": "Termas de La Calera",
+            "subtitle": "Aguas termales medicinales",
+            "description": "Las aguas termales de La Calera, ubicadas en Chivay, tienen propiedades medicinales gracias a su alto contenido mineral. Con temperaturas entre 38°C y 40°C, estas piscinas naturales son perfectas para relajarse después de un día de caminata por el cañón."
+          },
+          "volcan_misti": {
+            "title": "Volcán Misti",
+            "subtitle": "El guardián de Arequipa",
+            "description": "El Misti es un volcán activo de 5,822 metros que domina el paisaje de Arequipa. Su forma cónica perfecta lo convierte en un símbolo de la ciudad. Para los más aventureros, es posible realizar ascensos hasta su cráter, una experiencia desafiante pero inolvidable."
+          },
+          "rocoto_relleno": {
+            "title": "Rocoto Relleno",
+            "subtitle": "Plato emblemático arequipeño",
+            "description": "El rocoto relleno es uno de los platos más representativos de Arequipa. Consiste en un rocoto (ají picante) relleno de carne molida, queso, aceitunas y especias, gratinado al horno. Se sirve tradicionalmente con pastel de papa, una deliciosa combinación de sabores intensos."
+          },
+          "aniversario_arequipa": {
+            "title": "Aniversario de la Fundación Española de la ciudad de Arequipa",
+            "subtitle": "Festividades de agosto",
+            "description": "Cada 15 de agosto, Arequipa celebra su fundación española con un mes lleno de actividades culturales, gastronómicas y artísticas. El punto culminante es el corso de la amistad, un colorido desfile que recorre las principales calles de la ciudad con carros alegóricos y danzas tradicionales."
+          },
+          "wititi": {
+            "title": "Danza del Wititi",
+            "subtitle": "Patrimonio Cultural de la Humanidad",
+            "description": "El Wititi es una danza tradicional del Valle del Colca, declarada Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO. Esta danza de cortejo se caracteriza por sus coloridos trajes y movimientos que representan el ritual de apareamiento de las aves andinas."
+          }
+        },
+        "TopItems": {
+          "mirador_condor": "Cañón del Colca",
+          "mirador_condor_subtitle": "Uno de los cañones más profundos del mundo",
+          "aniversario_arequipa": "Aniversario de la Fundación Española de la ciudad de Arequipa",
+          "aniversario_arequipa_subtitle": "Celebración histórica y cultural",
+          "rocoto_relleno": "Adobo Arequipeño",
+          "rocoto_relleno_subtitle": "Plato tradicional de la gastronomía local",
+          "monasterio_santa_catalina": "Monasterio de Santa Catalina",
+          "monasterio_santa_catalina_subtitle": "Joya arquitectónica colonial",
+          "volcan_misti": "Volcán Misti",
+          "volcan_misti_subtitle": "El guardián de Arequipa",
+          "petroglifos_toro_muerto": "Petroglifos de Toro Muerto",
+          "petroglifos_toro_muerto_subtitle": "Arte rupestre milenario",
+          "mollendo_mejia_camana": "Mollendo",
+          "mollendo_mejia_camana_subtitle": "Principal balneario de Arequipa",
+          "termas_calera": "Termas de La Calera",
+          "termas_calera_subtitle": "Aguas termales medicinales",
+          "museo_santuarios_andinos": "Museo Santuarios Andinos",
+          "museo_santuarios_andinos_subtitle": "Hogar de la momia Juanita"
+        },
+        "Header": {
+          "travelers": "VIAJEROS",
+          "tourist_information": "Información Turística"
+        }
+  
+      ,
     "KeepInTouchSection": {
         "sectionName": "contacto",
         "title": "Contacto",
