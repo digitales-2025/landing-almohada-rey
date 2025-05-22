@@ -182,7 +182,7 @@ export default function ModalDetalle({
             <Drawer open={isOpen} onOpenChange={open => !open && onClose()}>
                 <DrawerContent className="max-h-[85vh]">
                     <DrawerHeader>
-                        <DrawerTitle className="text-xl font-serif text-black">
+                        <DrawerTitle className="text-xl font-serif text-secondary dark:text-secondary-foreground">
                             {tPlace(`${lugar.id}.title` as TraduccionKey)}
                         </DrawerTitle>
                         <DrawerDescription className="text-muted-foreground">
@@ -194,7 +194,7 @@ export default function ModalDetalle({
                     </DrawerHeader>
 
                     <div className="flex-1 overflow-hidden px-4">
-                        <ScrollArea className="h-[60vh]">
+                        <ScrollArea className="h-[45vh]">
                             <ImageCarousel />
                             <DescriptionContent />
                         </ScrollArea>
