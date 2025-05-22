@@ -11,7 +11,7 @@ import { DefaultRoutes, defaultRoutes } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import LocaleSwitcher from '../i18n/locale-switch/locale-switcher';
 import ExternalLink from '../i18n/navigation/ExternalLink';
-import { ModeToggle } from '../mode-toggle';
+/* import { ModeToggle } from '../mode-toggle'; */
 import { Logo } from './logo';
 
 // "home": "Inicio",
@@ -333,7 +333,7 @@ export const NavMenu = () => {
                                             <span>Reservar</span>
                                         </Link>
                                     </Button>
-                                    <ModeToggle />
+                                    {/*   <ModeToggle /> */}
                                     <LocaleSwitcher></LocaleSwitcher>
                                 </div>
                             </div>

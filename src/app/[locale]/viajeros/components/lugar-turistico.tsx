@@ -82,9 +82,13 @@ export default function LugarTuristico({
                         `${lugar.id}.description` as TraduccionKey
                     ).substring(0, 120)}
                     ...{' '}
-                    <span className="text-primary hover:underline font-medium">
+                    <button
+                        type="button"
+                        className="text-primary hover:underline font-medium bg-transparent p-0 m-0 align-baseline"
+                        onClick={() => onImageClick(lugar, 0)}
+                    >
                         {tTouristPlace('readMore')}
-                    </span>
+                    </button>
                 </p>
             </div>
         </div>
