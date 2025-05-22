@@ -26,7 +26,7 @@ export default function TopDiez({ items, onItemClick }: TopDiezProps) {
                         onClick={() =>
                             onItemClick(item.categoriaId, item.subcategoriaId)
                         }
-                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 hover:bg-background rounded-lg transition-colors w-full text-left"
+                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 hover:bg-primary/10 rounded-lg transition-colors w-full text-left"
                     >
                         <span className="text-2xl md:text-3xl font-serif text-primary min-w-[30px] md:min-w-[40px]">
                             {item.id}.

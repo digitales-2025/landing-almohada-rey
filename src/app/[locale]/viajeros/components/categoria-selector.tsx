@@ -30,7 +30,7 @@ export default function CategoriaSelector({
                         className={`px-3 py-2 md:px-6 md:py-3 border text-sm md:text-base ${
                             categoriaActiva === categoria.id
                                 ? 'border-primary text-primary'
-                                : 'border-border text-muted-foreground hover:border-primary/30'
+                                : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
                         } transition-colors duration-200 font-light tracking-wider rounded-md`}
                     >
                         {t(categoria.id as any)}
