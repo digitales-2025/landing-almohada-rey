@@ -139,18 +139,18 @@ export default function ModalDetalle({
             {/* Botones de navegación lateral */}
             <button
                 onClick={goToPrevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-white/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-background/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                 aria-label="Imagen anterior"
             >
-                <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-800" />
+                <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
             </button>
 
             <button
                 onClick={goToNextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-white/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-background/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                 aria-label="Imagen siguiente"
             >
-                <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-800" />
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
             </button>
 
             {/* Indicadores de carrusel */}
@@ -162,7 +162,7 @@ export default function ModalDetalle({
                             e.stopPropagation();
                             setCurrentImageIndex(index);
                         }}
-                        className={`w-2 h-2 rounded-full ${currentImageIndex === index ? 'bg-white' : 'bg-white/50'}`}
+                        className={`w-2 h-2 rounded-full ${currentImageIndex === index ? 'bg-primary' : 'bg-primary/50'}`}
                     />
                 ))}
             </div>
@@ -171,7 +171,7 @@ export default function ModalDetalle({
 
     // Contenido de la descripción
     const DescriptionContent = () => (
-        <div className="text-sm md:text-base text-gray-700 leading-relaxed">
+        <div className="text-sm md:text-base text-muted-foreground leading-relaxed">
             <p>{tPlace(`${lugar.id}.description` as any)}</p>
         </div>
     );
@@ -182,13 +182,13 @@ export default function ModalDetalle({
             <Drawer open={isOpen} onOpenChange={open => !open && onClose()}>
                 <DrawerContent className="max-h-[85vh]">
                     <DrawerHeader>
-                        <DrawerTitle className="text-xl font-serif text-gray-800">
+                        <DrawerTitle className="text-xl font-serif text-black">
                             {tPlace(`${lugar.id}.title` as any)}
                         </DrawerTitle>
-                        <DrawerDescription className="text-gray-600">
+                        <DrawerDescription className="text-muted-foreground">
                             {tPlace(`${lugar.id}.subtitle` as any)}
                         </DrawerDescription>
-                        <span className="text-xs font-light tracking-wider text-amber-600 uppercase block mt-1">
+                        <span className="text-xs font-light tracking-wider text-primary uppercase block mt-1">
                             {tCategories(lugar.categoriaId as any)}
                         </span>
                     </DrawerHeader>
@@ -202,9 +202,9 @@ export default function ModalDetalle({
 
                     <DrawerClose
                         onClick={onClose}
-                        className="absolute right-4 top-4 rounded-full p-1.5 bg-white/80 hover:bg-white transition-colors"
+                        className="absolute right-4 top-4 rounded-full p-1.5 bg-background/80 hover:bg-background transition-colors"
                     >
-                        <X className="h-4 w-4 text-gray-700" />
+                        <X className="h-4 w-4 text-foreground" />
                     </DrawerClose>
                 </DrawerContent>
             </Drawer>
@@ -216,25 +216,25 @@ export default function ModalDetalle({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
             <div
                 ref={modalRef}
-                className="relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-xl"
+                className="relative bg-background w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg"
             >
                 <button
                     onClick={onClose}
-                    className="absolute right-3 top-3 md:right-4 md:top-4 z-10 p-1.5 md:p-2 bg-white/80 rounded-full hover:bg-white transition-colors"
+                    className="absolute right-3 top-3 md:right-4 md:top-4 z-10 p-1.5 md:p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
                     aria-label={tModal('close')}
                 >
-                    <X className="h-4 w-4 md:h-5 md:w-5 text-gray-700" />
+                    <X className="h-4 w-4 md:h-5 md:w-5 text-foreground" />
                 </button>
 
                 <div className="p-4 md:p-6">
                     <div className="mb-3 md:mb-4">
-                        <span className="text-xs md:text-sm font-light tracking-wider text-amber-600 uppercase">
+                        <span className="text-xs md:text-sm font-light tracking-wider text-primary uppercase">
                             {tCategories(lugar.categoriaId as any)}
                         </span>
-                        <h2 className="text-2xl md:text-3xl font-serif text-gray-800 mt-1">
+                        <h2 className="text-2xl md:text-3xl font-serif text-black mt-1">
                             {tPlace(`${lugar.id}.title` as any)}
                         </h2>
-                        <h3 className="text-lg md:text-xl text-gray-600 mb-3 md:mb-4">
+                        <h3 className="text-lg md:text-xl text-muted-foreground mb-3 md:mb-4">
                             {tPlace(`${lugar.id}.subtitle` as any)}
                         </h3>
                     </div>
