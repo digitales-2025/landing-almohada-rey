@@ -1087,7 +1087,9 @@
           "popular": "POPULAR",
           "pagination": {
             "page": "Page"
-          }
+          },
+              "viewDestination": "View destination",
+              "nextRecommendation": "Next recommendation:"
         },
         "TouristPlace": {
           "readMore": "Read more..."
@@ -1147,7 +1149,7 @@
             "description": "Rocoto relleno is one of the most representative dishes of Arequipa. It consists of a rocoto (spicy pepper) stuffed with ground meat, cheese, olives, and spices, gratinated in the oven. It is traditionally served with potato cake, a delicious combination of intense flavors."
           },
           "aniversario_arequipa": {
-            "title": "Anniversary of the Spanish Foundation of Arequipa",
+            "title": "Anniversary of the Arequipa",
             "subtitle": "August festivities",
             "description": "Every August 15, Arequipa celebrates its Spanish foundation with a month full of cultural, gastronomic, and artistic activities. The culminating point is the corso of friendship, a colorful parade that runs through the main streets of the city with floats and traditional dances."
           },
@@ -1160,7 +1162,7 @@
         "TopItems": {
           "mirador_condor": "Colca Canyon",
           "mirador_condor_subtitle": "One of the deepest canyons in the world",
-          "aniversario_arequipa": "Anniversary of the Spanish Foundation of Arequipa",
+          "aniversario_arequipa": "Anniversary of the Arequipa",
           "aniversario_arequipa_subtitle": "Historical and cultural celebration",
           "rocoto_relleno": "Adobo Arequipeño",
           "rocoto_relleno_subtitle": "Traditional dish of local gastronomy",

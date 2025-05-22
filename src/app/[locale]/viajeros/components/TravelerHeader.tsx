@@ -26,7 +26,7 @@ export const TravelerHeader = () => {
                     preset="fade-in-blur"
                     speedSegment={0.3}
                     as="h1"
-                    className="text-balance text-h5 sm:text-h3 md:text-h3 lg:text-h2 xl:text-h1 text-background font-h1 truncate"
+                    className="text-balance text-h5 sm:text-h3 md:text-h3 lg:text-h2 xl:text-h1 text-background font-h1"
                 >
                     {t('title').toUpperCase()}
                 </TextEffect>

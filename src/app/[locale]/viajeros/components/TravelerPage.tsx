@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import CarruselDestinos from '@/app/[locale]/viajeros/components/carrusel-destinos';
 import CategoriaSelector from '@/app/[locale]/viajeros/components/categoria-selector';
 import LugarTuristico from '@/app/[locale]/viajeros/components/lugar-turistico';
 import ModalDetalle from '@/app/[locale]/viajeros/components/modal-detalle';
@@ -63,6 +64,18 @@ export default function TurismoPage() {
         paginaActual * lugaresPerPage
     );
 
+    // Seleccionar destinos destacados para el carrusel (uno de cada categoría)
+    const destinosDestacados = categorias
+        .filter(cat => cat.id !== 'todos')
+        .map(cat => {
+            const destino = subcategorias.find(
+                sub => sub.categoriaId === cat.id
+            );
+            return destino;
+        })
+        .filter((destino): destino is Subcategoria => destino !== undefined)
+        .slice(0, 5); // Limitar a 5 destinos destacados
+
     // Resetear la página al cambiar de categoría
     useEffect(() => {
         setPaginaActual(1);
@@ -90,8 +103,8 @@ export default function TurismoPage() {
         });
     };
 
-    // Manejar clic en elemento del Top 10
-    const handleTopItemClick = (
+    // Manejar clic en elemento del Top 10 o del Carrusel
+    const handleDestinoClick = (
         categoriaId: string,
         subcategoriaId: string
     ) => {
@@ -137,16 +150,11 @@ export default function TurismoPage() {
 
     return (
         <main className="container mx-auto px-4 py-8">
-            {/* Título principal */}
-            <div className="mb-6 md:mb-8">
-                <span className="text-xs md:text-sm font-light tracking-wider text-amber-600 uppercase">
-                    {tHeader('travelers')}
-                </span>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mt-2">
-                    {tHeader('tourist_information')}
-                </h1>
-            </div>
-
+            {/* Carrusel de destinos destacados */}
+            <CarruselDestinos
+                destinos={destinosDestacados}
+                onDestinoClick={handleDestinoClick}
+            />
             {/* Selector de categorías */}
             <CategoriaSelector
                 categorias={categorias}
@@ -165,10 +173,20 @@ export default function TurismoPage() {
                     {/* Título de la sección para mejor scroll */}
                     <h2
                         ref={tituloSeccionRef}
-                        className="text-2xl font-serif text-gray-700 mb-6 sr-only"
+                        className="text-2xl font-serif text-foreground mb-6 sr-only"
                     >
                         Destinos Turísticos
                     </h2>
+
+                    {/* Título principal */}
+                    <div className="mb-6 md:mb-8">
+                        <span className="text-xs md:text-sm font-light tracking-wider text-primary uppercase">
+                            {tHeader('travelers')}
+                        </span>
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-black mt-2">
+                            {tHeader('tourist_information')}
+                        </h1>
+                    </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                         {lugaresActuales.map(lugar => (
@@ -193,7 +211,7 @@ export default function TurismoPage() {
                 <div className="order-1 lg:order-2 mb-8 lg:mb-0">
                     <TopDiez
                         items={topItems}
-                        onItemClick={handleTopItemClick}
+                        onItemClick={handleDestinoClick}
                     />
                 </div>
             </div>

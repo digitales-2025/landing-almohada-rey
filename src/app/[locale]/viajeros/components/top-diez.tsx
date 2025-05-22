@@ -15,8 +15,8 @@ export default function TopDiez({ items, onItemClick }: TopDiezProps) {
     const tTopItems = useTranslations('TopItems');
 
     return (
-        <div className="bg-gray-50 p-4 md:p-6 rounded-lg">
-            <h2 className="text-xl md:text-2xl font-serif text-amber-700 mb-4 md:mb-6">
+        <div className="bg-muted/20 p-4 md:p-6 rounded-lg">
+            <h2 className="text-xl md:text-2xl font-serif text-black mb-4 md:mb-6">
                 {t('popular')}
             </h2>
             <div className="space-y-3 md:space-y-4">
@@ -26,16 +26,16 @@ export default function TopDiez({ items, onItemClick }: TopDiezProps) {
                         onClick={() =>
                             onItemClick(item.categoriaId, item.subcategoriaId)
                         }
-                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 hover:bg-white rounded-lg transition-colors w-full text-left"
+                        className="flex items-center gap-3 md:gap-4 p-2 md:p-3 hover:bg-background rounded-lg transition-colors w-full text-left"
                     >
-                        <span className="text-2xl md:text-3xl font-serif text-amber-600 min-w-[30px] md:min-w-[40px]">
+                        <span className="text-2xl md:text-3xl font-serif text-primary min-w-[30px] md:min-w-[40px]">
                             {item.id}.
                         </span>
                         <div className="flex-grow">
-                            <h3 className="text-sm md:text-base font-medium text-gray-800">
+                            <h3 className="text-sm md:text-base font-medium text-black">
                                 {tTopItems(item.subcategoriaId as any)}
                             </h3>
-                            <p className="text-xs md:text-sm text-gray-600">
+                            <p className="text-xs md:text-sm text-muted-foreground">
                                 {tTopItems(
                                     `${item.subcategoriaId}_subtitle` as any
                                 )}

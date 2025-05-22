@@ -11,7 +11,7 @@ export const topItems: TopItem[] = [
     },
     {
         id: 2,
-        titulo: 'Aniversario de la Fundación Española de la ciudad de Arequipa',
+        titulo: 'Aniversario de la ciudad de Arequipa',
         subtitulo: 'Celebración histórica y cultural',
         categoriaId: 'festivals_celebrations',
         subcategoriaId: 'aniversario_arequipa',

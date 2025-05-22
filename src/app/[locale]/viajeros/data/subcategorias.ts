@@ -297,7 +297,7 @@ export const subcategorias: Subcategoria[] = [
     {
         id: 'aniversario_arequipa',
         categoriaId: 'festivals_celebrations',
-        titulo: 'Aniversario de la Fundación Española de la ciudad de Arequipa',
+        titulo: 'Aniversario de la ciudad de Arequipa',
         subtitulo: 'Festividades de agosto',
         descripcion:
             'Cada 15 de agosto, Arequipa celebra su fundación española con un mes lleno de actividades culturales, gastronómicas y artísticas. El punto culminante es el corso de la amistad, un colorido desfile que recorre las principales calles de la ciudad con carros alegóricos y danzas tradicionales.',

@@ -1087,7 +1087,9 @@
           "popular": "POPULARES",
           "pagination": {
             "page": "Página"
-          }
+          },
+              "viewDestination": "Ver destino",
+              "nextRecommendation": "Siguiente recomendación:"
         },
         "TouristPlace": {
           "readMore": "Leer más..."
@@ -1147,7 +1149,7 @@
             "description": "El rocoto relleno es uno de los platos más representativos de Arequipa. Consiste en un rocoto (ají picante) relleno de carne molida, queso, aceitunas y especias, gratinado al horno. Se sirve tradicionalmente con pastel de papa, una deliciosa combinación de sabores intensos."
           },
           "aniversario_arequipa": {
-            "title": "Aniversario de la Fundación Española de la ciudad de Arequipa",
+            "title": "Aniversario de la ciudad de Arequipa",
             "subtitle": "Festividades de agosto",
             "description": "Cada 15 de agosto, Arequipa celebra su fundación española con un mes lleno de actividades culturales, gastronómicas y artísticas. El punto culminante es el corso de la amistad, un colorido desfile que recorre las principales calles de la ciudad con carros alegóricos y danzas tradicionales."
           },
@@ -1160,7 +1162,7 @@
         "TopItems": {
           "mirador_condor": "Cañón del Colca",
           "mirador_condor_subtitle": "Uno de los cañones más profundos del mundo",
-          "aniversario_arequipa": "Aniversario de la Fundación Española de la ciudad de Arequipa",
+          "aniversario_arequipa": "Aniversario de la ciudad de Arequipa",
           "aniversario_arequipa_subtitle": "Celebración histórica y cultural",
           "rocoto_relleno": "Adobo Arequipeño",
           "rocoto_relleno_subtitle": "Plato tradicional de la gastronomía local",
