@@ -9,7 +9,7 @@ import {
     NextButton,
     PrevButton,
 } from '@/components/customized/carousel/carousel-button';
-import { Subcategoria } from '../types/turismo';
+import { Subcategoria, TraduccionKey } from '../types/turismo';
 
 interface CarruselDestinosProps {
     destinos: Subcategoria[];
@@ -189,7 +189,7 @@ export default function CarruselDestinos({
                                             '/placeholder.svg'
                                         }
                                         alt={tPlaces(
-                                            `${destinoActual.id}.title` as any
+                                            `${destinoActual.id}.title` as TraduccionKey
                                         )}
                                         className="object-cover w-full h-full"
                                         style={{ objectFit: 'cover' }}
@@ -220,12 +220,12 @@ export default function CarruselDestinos({
                                 <div className="flex-grow">
                                     <span className="text-sm md:text-base font-light tracking-wider text-primary uppercase">
                                         {tCategories(
-                                            destinoActual.categoriaId as any
+                                            destinoActual.categoriaId as TraduccionKey
                                         )}
                                     </span>
-                                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-black mt-3 mb-6 leading-tight">
+                                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-secondary dark:text-secondary-foreground mt-3 mb-6 leading-tight">
                                         {tPlaces(
-                                            `${destinoActual.id}.title` as any
+                                            `${destinoActual.id}.title` as TraduccionKey
                                         )}
                                     </h2>
 
@@ -273,7 +273,7 @@ export default function CarruselDestinos({
                                                     .url || '/placeholder.svg'
                                             }
                                             alt={tPlaces(
-                                                `${destinoSiguiente.id}.title` as any
+                                                `${destinoSiguiente.id}.title` as TraduccionKey
                                             )}
                                             className="object-cover w-full h-full"
                                             style={{ objectFit: 'cover' }}
@@ -281,9 +281,9 @@ export default function CarruselDestinos({
                                         />
                                     </div>
                                     <div>
-                                        <h3 className="font-serif text-xl md:text-2xl lg:text-3xl text-black">
+                                        <h3 className="font-serif text-xl md:text-2xl lg:text-3xl text-secondary dark:text-secondary-foreground">
                                             {tPlaces(
-                                                `${destinoSiguiente.id}.title` as any
+                                                `${destinoSiguiente.id}.title` as TraduccionKey
                                             )}
                                         </h3>
                                     </div>

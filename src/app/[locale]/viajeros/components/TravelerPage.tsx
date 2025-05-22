@@ -183,7 +183,7 @@ export default function TurismoPage() {
                         <span className="text-xs md:text-sm font-light tracking-wider text-primary uppercase">
                             {tHeader('travelers')}
                         </span>
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-black mt-2">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-secondary dark:text-secondary-foreground mt-2">
                             {tHeader('tourist_information')}
                         </h1>
                     </div>

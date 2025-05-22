@@ -30,12 +30,11 @@ export type TopItem = {
     imagen: string;
 };
 
-/* export type TopItem = {
-    id: number;
-    titulo: string;
-    subtitulo: string;
-    categoriaId: string;
-    subcategoriaId: string;
-    imagen: string;
-};
- */
+export type TraduccionKey =
+    | string
+    | number
+    | boolean
+    | undefined
+    | null
+    | any
+    | object;

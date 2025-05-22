@@ -4,7 +4,10 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import type { Subcategoria } from '@/app/[locale]/viajeros/types/turismo';
+import type {
+    Subcategoria,
+    TraduccionKey,
+} from '@/app/[locale]/viajeros/types/turismo';
 
 interface LugarTuristicoProps {
     lugar: Subcategoria;
@@ -48,7 +51,7 @@ export default function LugarTuristico({
                         lugar.imagenes[currentImageIndex].url ||
                         '/placeholder.svg'
                     }
-                    alt={tPlace(`${lugar.id}.title` as any)}
+                    alt={tPlace(`${lugar.id}.title` as TraduccionKey)}
                     className={`object-cover w-full h-full transition-transform duration-700 ${
                         isHighlighted ? 'scale-[1.02]' : 'hover:scale-110'
                     }`}
@@ -61,21 +64,23 @@ export default function LugarTuristico({
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 md:p-4">
                     <span className="text-xs font-light tracking-wider text-primary-foreground uppercase">
-                        {tCategories(lugar.categoriaId as any)}
+                        {tCategories(lugar.categoriaId as TraduccionKey)}
                     </span>
                 </div>
             </div>
             <div
                 className={`p-3 md:p-4 flex-grow ${isHighlighted ? 'bg-primary/5' : ''}`}
             >
-                <h3 className="text-lg md:text-xl font-serif text-black mb-1">
-                    {tPlace(`${lugar.id}.title` as any)}
+                <h3 className="text-lg md:text-xl font-serif text-secondary dark:text-secondary-foreground mb-1">
+                    {tPlace(`${lugar.id}.title` as TraduccionKey)}
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground mb-2 md:mb-3">
-                    {tPlace(`${lugar.id}.subtitle` as any)}
+                    {tPlace(`${lugar.id}.subtitle` as TraduccionKey)}
                 </p>
                 <p className="text-xs md:text-sm text-muted-foreground/80 line-clamp-3">
-                    {tPlace(`${lugar.id}.description` as any).substring(0, 120)}
+                    {tPlace(
+                        `${lugar.id}.description` as TraduccionKey
+                    ).substring(0, 120)}
                     ...{' '}
                     <span className="text-primary hover:underline font-medium">
                         {tTouristPlace('readMore')}

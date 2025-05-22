@@ -7,7 +7,10 @@ import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { useMobile } from '@/app/[locale]/viajeros/hooks/use-mobile';
-import type { Subcategoria } from '@/app/[locale]/viajeros/types/turismo';
+import type {
+    Subcategoria,
+    TraduccionKey,
+} from '@/app/[locale]/viajeros/types/turismo';
 import {
     NextButton,
     PrevButton,
@@ -135,7 +138,7 @@ export default function ModalDetalle({
                 src={
                     lugar.imagenes[currentImageIndex].url || '/placeholder.svg'
                 }
-                alt={`${tPlace(`${lugar.id}.title` as any)} - Imagen ${currentImageIndex + 1}`}
+                alt={`${tPlace(`${lugar.id}.title` as TraduccionKey)} - Imagen ${currentImageIndex + 1}`}
                 className={`w-full h-full object-cover transition-transform duration-700 ${isZoomed ? 'scale-125' : 'scale-100'}`}
                 loading="lazy"
             />
@@ -169,7 +172,7 @@ export default function ModalDetalle({
     // Contenido de la descripción
     const DescriptionContent = () => (
         <div className="text-sm md:text-base text-muted-foreground leading-relaxed">
-            <p>{tPlace(`${lugar.id}.description` as any)}</p>
+            <p>{tPlace(`${lugar.id}.description` as TraduccionKey)}</p>
         </div>
     );
 
@@ -180,13 +183,13 @@ export default function ModalDetalle({
                 <DrawerContent className="max-h-[85vh]">
                     <DrawerHeader>
                         <DrawerTitle className="text-xl font-serif text-black">
-                            {tPlace(`${lugar.id}.title` as any)}
+                            {tPlace(`${lugar.id}.title` as TraduccionKey)}
                         </DrawerTitle>
                         <DrawerDescription className="text-muted-foreground">
-                            {tPlace(`${lugar.id}.subtitle` as any)}
+                            {tPlace(`${lugar.id}.subtitle` as TraduccionKey)}
                         </DrawerDescription>
                         <span className="text-xs font-light tracking-wider text-primary uppercase block mt-1">
-                            {tCategories(lugar.categoriaId as any)}
+                            {tCategories(lugar.categoriaId as TraduccionKey)}
                         </span>
                     </DrawerHeader>
 
@@ -226,13 +229,13 @@ export default function ModalDetalle({
                 <div className="p-4 md:p-6">
                     <div className="mb-3 md:mb-4">
                         <span className="text-xs md:text-sm font-light tracking-wider text-primary uppercase">
-                            {tCategories(lugar.categoriaId as any)}
+                            {tCategories(lugar.categoriaId as TraduccionKey)}
                         </span>
-                        <h2 className="text-2xl md:text-3xl font-serif text-black mt-1">
-                            {tPlace(`${lugar.id}.title` as any)}
+                        <h2 className="text-2xl md:text-3xl font-serif text-secondary dark:text-secondary-foreground mt-1">
+                            {tPlace(`${lugar.id}.title` as TraduccionKey)}
                         </h2>
                         <h3 className="text-lg md:text-xl text-muted-foreground mb-3 md:mb-4">
-                            {tPlace(`${lugar.id}.subtitle` as any)}
+                            {tPlace(`${lugar.id}.subtitle` as TraduccionKey)}
                         </h3>
                     </div>
 
