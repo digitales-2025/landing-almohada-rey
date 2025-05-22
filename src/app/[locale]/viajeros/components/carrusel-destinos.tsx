@@ -3,9 +3,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import {
+    NextButton,
+    PrevButton,
+} from '@/components/customized/carousel/carousel-button';
 import { Subcategoria } from '../types/turismo';
 
 interface CarruselDestinosProps {
@@ -293,22 +296,18 @@ export default function CarruselDestinos({
 
             {/* Botones de navegación mejorados */}
             <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20">
-                <button
+                <PrevButton
                     onClick={handlePrev}
-                    className="p-3 md:p-4 bg-background/80 rounded-full shadow-md hover:bg-background transition-all hover:scale-110 focus:outline-none"
                     aria-label="Destino anterior"
-                >
-                    <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
-                </button>
+                    className="p-3 md:p-4 bg-primary text-primary-foreground rounded-full shadow-md hover:bg-primary/90 transition-all hover:scale-110 focus:outline-none"
+                />
             </div>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20">
-                <button
+                <NextButton
                     onClick={handleNext}
-                    className="p-3 md:p-4 bg-background/80 rounded-full shadow-md hover:bg-background transition-all hover:scale-110 focus:outline-none"
                     aria-label="Destino siguiente"
-                >
-                    <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
-                </button>
+                    className="p-3 md:p-4 bg-primary text-primary-foreground rounded-full shadow-md hover:bg-primary/90 transition-all hover:scale-110 focus:outline-none"
+                />
             </div>
 
             {/* Indicadores (solo para móvil) */}

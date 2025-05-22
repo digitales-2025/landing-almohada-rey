@@ -3,11 +3,15 @@
 
 import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { useMobile } from '@/app/[locale]/viajeros/hooks/use-mobile';
 import type { Subcategoria } from '@/app/[locale]/viajeros/types/turismo';
+import {
+    NextButton,
+    PrevButton,
+} from '@/components/customized/carousel/carousel-button';
 import {
     Drawer,
     DrawerClose,
@@ -137,21 +141,14 @@ export default function ModalDetalle({
             />
 
             {/* Botones de navegación lateral */}
-            <button
+            <PrevButton
                 onClick={goToPrevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-background/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Imagen anterior"
-            >
-                <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
-            </button>
-
-            <button
+                className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
+            />
+            <NextButton
                 onClick={goToNextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-background/70 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                aria-label="Imagen siguiente"
-            >
-                <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-foreground" />
-            </button>
+                className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
+            />
 
             {/* Indicadores de carrusel */}
             <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">

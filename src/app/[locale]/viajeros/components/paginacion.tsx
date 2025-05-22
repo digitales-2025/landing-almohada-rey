@@ -54,11 +54,12 @@ export default function Paginacion({
                     <button
                         key={pageNumber}
                         onClick={() => onPageChange(pageNumber)}
-                        className={`w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-serif text-lg md:text-xl ${
-                            isActive
-                                ? 'text-amber-700 font-medium border-b-2 border-amber-500'
-                                : 'text-gray-500 hover:bg-primary/10 hover:text-primary rounded-full transition-colors'
-                        }`}
+                        className={`w-8 h-8 md:w-10 md:h-10 flex items-center justify-center font-serif text-lg md:text-xl leading-none transition-colors rounded-full
+        ${
+            isActive
+                ? 'bg-primary text-primary-foreground border-2 border-primary font-semibold'
+                : 'text-gray-500 hover:bg-primary/10 hover:text-primary'
+        }`}
                     >
                         {pageNumber < 10 ? `0${pageNumber}` : pageNumber}
                     </button>
