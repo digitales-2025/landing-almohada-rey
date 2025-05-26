@@ -19,10 +19,10 @@ export const topItems: TopItem[] = [
     },
     {
         id: 3,
-        titulo: 'Adobo Arequipeño',
-        subtitulo: 'Plato tradicional de la gastronomía local',
+        titulo: 'Gastronomía Arequipeña',
+        subtitulo: 'Capital Gastronómica del Perú',
         categoriaId: 'gastronomy',
-        subcategoriaId: 'rocoto_relleno',
+        subcategoriaId: 'gastronomia_aqp',
         imagen: '/traveler/top10/03_adobo-arequipeno.webp',
     },
     {
@@ -35,10 +35,10 @@ export const topItems: TopItem[] = [
     },
     {
         id: 5,
-        titulo: 'Volcán Misti',
-        subtitulo: 'El guardián de Arequipa',
+        titulo: 'Campiña de Arequipa',
+        subtitulo: 'Paisajes coloniales y volcanes',
         categoriaId: 'nearby_landscapes',
-        subcategoriaId: 'volcan_misti',
+        subcategoriaId: 'campina_aqp',
         imagen: '/traveler/top10/05_volcan-misti.webp',
     },
     {
@@ -59,10 +59,10 @@ export const topItems: TopItem[] = [
     },
     {
         id: 8,
-        titulo: 'Rocoto Relleno',
-        subtitulo: 'Plato emblemático arequipeño',
+        titulo: 'Gastronomía Arequipeña',
+        subtitulo: 'Capital Gastronómica del Perú',
         categoriaId: 'gastronomy',
-        subcategoriaId: 'rocoto_relleno',
+        subcategoriaId: 'gastronomia_aqp',
         imagen: '/traveler/top10/08_rocoto-relleno.webp',
     },
     {

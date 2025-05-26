@@ -1109,7 +1109,7 @@ declare const messages: {
         museo_santuarios_andinos: {
             title: 'Andean Sanctuaries Archaeological Museum';
             subtitle: 'Home of the Juanita mummy';
-            description: "The Andean Sanctuaries Museum houses the Juanita mummy, an Inca girl sacrificed on the Ampato volcano. The museum exhibits findings from expeditions to the region's volcanoes, showing Inca offerings and artifacts in perfect preservation thanks to the ice.";
+            description: 'Exhibits the Lady of Ampato, an Inca mummy found at the summit of Ampato volcano, who was a 12 to 14-year-old girl who would have been an offering to the protective apu. Her antiquity dates back about 500 years.';
         };
         basilica_catedral: {
             title: 'Basilica Cathedral of Arequipa';
@@ -1121,10 +1121,10 @@ declare const messages: {
             subtitle: 'Beaches of the Arequipa coastline';
             description: 'The beaches of Mollendo, Mejía and Camaná are the main seaside resorts of Arequipa. They offer beautiful coasts with crystal clear waters, perfect for relaxation and water sports. During summer, they are the preferred destination for Arequipa residents and tourists.';
         };
-        puerto_inca: {
-            title: 'Puerto Inca';
-            subtitle: 'Historic beach';
-            description: 'Puerto Inca is a beautiful bay that was used by the Incas as a port to transport products between the coast and the highlands. Today it is a quiet beach surrounded by Inca archaeological remains, ideal for those looking to combine history and nature.';
+        lagunas_mejia: {
+            title: 'Mejía Lagoons National Sanctuary';
+            subtitle: 'Refuge for migratory birds';
+            description: 'Provides the habitat and food necessary for the long journey of migratory birds that come from the northern hemisphere, such as the sanderling (Calidris Alba). In its 690.6 ha extension, it manages to encompass different types of habitats: lagoon mirrors, swamps, saline mudflats, reed beds, scrubland and riparian estuary, grasslands and vast sandy beaches, making it one of the most important sanctuaries on the western coast of South America.';
         };
         petroglifos_toro_muerto: {
             title: 'Toro Muerto Petroglyphs';
@@ -1141,25 +1141,25 @@ declare const messages: {
             subtitle: 'Medicinal thermal waters';
             description: 'The thermal waters of La Calera, located in Chivay, have medicinal properties thanks to their high mineral content. With temperatures between 38°C and 40°C, these natural pools are perfect for relaxing after a day of hiking through the canyon.';
         };
-        volcan_misti: {
-            title: 'Misti Volcano';
-            subtitle: 'The guardian of Arequipa';
-            description: 'The Misti is an active volcano of 5,822 meters that dominates the landscape of Arequipa. Its perfect conical shape makes it a symbol of the city. For the more adventurous, it is possible to climb to its crater, a challenging but unforgettable experience.';
+        campina_aqp: {
+            title: 'Arequipa Countryside';
+            subtitle: 'Panoramic views and colonial heritage';
+            description: 'Just minutes from the city, you can find the best panoramic views. Observe the volcanoes that surround it and spectacular colonial constructions of the area.';
         };
-        rocoto_relleno: {
-            title: 'Rocoto Relleno';
-            subtitle: 'Emblematic Arequipa dish';
-            description: 'Rocoto relleno is one of the most representative dishes of Arequipa. It consists of a rocoto (spicy pepper) stuffed with ground meat, cheese, olives, and spices, gratinated in the oven. It is traditionally served with potato cake, a delicious combination of intense flavors.';
+        gastronomia_aqp: {
+            title: 'Arequipa Gastronomy';
+            subtitle: 'Gastronomic Capital of Peru';
+            description: 'Arequipa\'s gastronomy, recognized as the "Gastronomic Capital of Peru", offers a wide variety of typical dishes that fuse ancestral Andean cuisine with Spanish influences, creating unique and authentic flavors.';
         };
         aniversario_arequipa: {
             title: 'Anniversary of the Arequipa';
             subtitle: 'August festivities';
             description: 'Every August 15, Arequipa celebrates its Spanish foundation with a month full of cultural, gastronomic, and artistic activities. The culminating point is the corso of friendship, a colorful parade that runs through the main streets of the city with floats and traditional dances.';
         };
-        wititi: {
-            title: 'Wititi Dance';
-            subtitle: 'Intangible Cultural Heritage of Humanity';
-            description: 'The Wititi is a traditional dance from the Colca Valley, declared Intangible Cultural Heritage of Humanity by UNESCO. This courtship dance is characterized by its colorful costumes and movements that represent the mating ritual of Andean birds.';
+        virgen_chapi: {
+            title: 'Virgin of Chapi';
+            subtitle: 'Arequipa religious celebration';
+            description: 'Date: MAY 01 - MAY 02. Religious celebration with deep roots in Arequipa. A pilgrimage of faithful to the Sanctuary of the Virgin of Chapi takes place, including a serenade, festive mass and procession at the Sanctuary as well as fireworks and firework displays.';
         };
     };
     TopItems: {
@@ -1167,12 +1167,12 @@ declare const messages: {
         mirador_condor_subtitle: 'One of the deepest canyons in the world';
         aniversario_arequipa: 'Anniversary of the Arequipa';
         aniversario_arequipa_subtitle: 'Historical and cultural celebration';
-        rocoto_relleno: 'Adobo Arequipeño';
-        rocoto_relleno_subtitle: 'Traditional dish of local gastronomy';
+        gastronomia_aqp: 'Arequipa Gastronomy';
+        gastronomia_aqp_subtitle: 'Gastronomic Capital of Peru';
         monasterio_santa_catalina: 'Santa Catalina Monastery';
         monasterio_santa_catalina_subtitle: 'Colonial architectural jewel';
-        volcan_misti: 'Misti Volcano';
-        volcan_misti_subtitle: 'The guardian of Arequipa';
+        campina_aqp: 'Arequipa Countryside';
+        campina_aqp_subtitle: 'Panoramic views and colonial heritage';
         petroglifos_toro_muerto: 'Toro Muerto Petroglyphs';
         petroglifos_toro_muerto_subtitle: 'Millenary rock art';
         mollendo_mejia_camana: 'Mollendo';
