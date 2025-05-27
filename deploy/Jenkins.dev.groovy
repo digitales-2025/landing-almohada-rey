@@ -59,7 +59,7 @@ pipeline {
 #!/bin/bash
 cat << EOF
 # Non-sensitive variables
-TEAMINNOVATION_LANDING_VERSION=${BUILD_REF}
+TEAMINNOVATION_LANDING_VERSION=${BUILD_NUMBER}
 ${nonSensitiveVars.join('\n')}
 
 # Sensitive variables
@@ -77,7 +77,7 @@ EOL
                             // populate & restart
                             sh """
                                 ${SSH_COM} 'cd ${REMOTE_FOLDER} && \
-                                docker pull ${FULL_REGISTRY_URL}:${BUILD_REF} && \
+                                docker pull ${FULL_REGISTRY_URL}:${BUILD_NUMBER} && \
                                 (rm .env || true) && \
                                 touch .env.base && \
                                 touch .env.backend && \
