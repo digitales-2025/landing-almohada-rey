@@ -25,6 +25,7 @@ import { AdditionalInfoSection } from '../components/AdditionalInfoSection';
 import { BookingHeroSection } from '../components/bookingHeroSection';
 import { Chronometer } from '../components/Chronometer';
 import { AditionalDataReservationSection } from '../components/MoreBookingDetailsSection';
+import { PaymentSection } from '../components/PaymentSection';
 // import { PaymentSection } from '../components/PaymentSection';
 import { useBookingForm } from '../hooks/useBookingForm';
 import { useBookingWebSocket } from '../hooks/useBookingWs';
@@ -292,12 +293,7 @@ export default function Page() {
                         disabled={generalDisabled}
                         reservation={reservationRef.current}
                     ></AditionalDataReservationSection>
-                    {/* <PaymentSection
-                        form={form}
-                        mutatioResult={confirmBookingResult}
-                        wsConnectionResult={wsConnectionResult}
-                        disabled={generalDisabled}
-                    ></PaymentSection> */}
+                    <PaymentSection></PaymentSection>
                     <AdditionalInfoSection
                         form={form}
                         mutationResult={confirmBookingResult}

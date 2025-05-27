@@ -87,3 +87,19 @@ export async function confirmBookingAndPay(
     };
     return bookingOps.confirmBookingAndPay(id, locale, dtoToSend);
 }
+
+export async function requestPaymentToken(
+    amount: number,
+    currency: string,
+    orderId: string,
+    customerEmail: string
+) {
+    const payload = {
+        amount,
+        currency,
+        orderId,
+        customer: { email: customerEmail },
+    };
+    // Aquí el endpoint que maneja el token de pago, adaptalo si hace falta
+    return bookingOps.create('/landing-payment', payload);
+}

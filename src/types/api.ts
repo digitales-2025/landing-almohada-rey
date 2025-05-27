@@ -449,8 +449,7 @@ export interface paths {
         get: operations['ReservationController_findOne_v1'];
         put?: never;
         post?: never;
-        /** Delete a reservation */
-        delete: operations['ReservationController_remove_v1'];
+        delete?: never;
         options?: never;
         head?: never;
         /** Update a reservation */
@@ -540,6 +539,70 @@ export interface paths {
         options?: never;
         head?: never;
         patch?: never;
+        trace?: never;
+    };
+    '/v1/reservation/{id}/check-extended-checkout': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Verificar disponibilidad para extender checkout
+         * @description Comprueba si es posible aplicar un late checkout o extender estadía sin generar conflictos
+         */
+        get: operations['ReservationController_checkExtendedCheckoutAvailability_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reservation/{id}/late-checkout': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Eliminar Late Checkout de una reserva
+         * @description Elimina el Late Checkout aplicado a una reserva y restaura la hora original de salida.
+         */
+        delete: operations['ReservationController_removeLateCheckout_v1'];
+        options?: never;
+        head?: never;
+        /**
+         * Aplicar Late Checkout a una reserva
+         * @description Extiende la hora de salida de una reserva en el mismo día. Valida que no haya conflictos con otras reservas.
+         */
+        patch: operations['ReservationController_applyLateCheckout_v1'];
+        trace?: never;
+    };
+    '/v1/reservation/{id}/extend-stay': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Extender estadía de una reserva
+         * @description Cambia la fecha de checkout a una fecha posterior. Valida disponibilidad y conflictos.
+         */
+        patch: operations['ReservationController_extendStay_v1'];
         trace?: never;
     };
     '/v1/rooms': {
@@ -1172,6 +1235,329 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/dashboard/annual-statistics': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener estadísticas administrativas anuales */
+        get: operations['DashboardController_findAnnualStatistics_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/monthly-earnings-expenses': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener ganancias y gastos mensuales */
+        get: operations['DashboardController_findMonthlyEarningsExpenses_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/room-occupancy': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener mapa de ocupación de habitaciones */
+        get: operations['DashboardController_findRoomOccupancy_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/recent-reservations': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener reservaciones recientes y del día actual */
+        get: operations['DashboardController_findRecentReservations_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/next-pending-payments': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener próximos pagos pendientes */
+        get: operations['DashboardController_findNextPendingPayments_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/occupation-statistics': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener estadísticas de ocupación por tipo de habitación */
+        get: operations['DashboardController_findOccupationStatistics_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/booking-trends': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener tendencia mensual de reservaciones (web vs directas) */
+        get: operations['DashboardController_findBookingTrends_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/summary-finance': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener resumen financiero */
+        get: operations['DashboardController_findSummaryFinance_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/customer-origin': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener resumen del origen de los clientes */
+        get: operations['DashboardController_findCustomerOriginSummary_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/monthly-customer-origin': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener distribución mensual de clientes nacionales e internacionales */
+        get: operations['DashboardController_findMonthlyCustomerOrigin_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/top-countries': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener top 10 países con más clientes (excluyendo Perú) */
+        get: operations['DashboardController_findTop10Countries_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/top-provinces': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener top 10 provincias de Perú con más clientes */
+        get: operations['DashboardController_findTop10Provinces_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/today-receptionist-statistics': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener estadísticas diarias para recepcionistas */
+        get: operations['DashboardController_findTodayRecepcionistStatistics_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/top-today-check-ins': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener los 5 próximos check-ins programados para hoy */
+        get: operations['DashboardController_findTop5TodayCheckIns_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/top-today-check-outs': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener los 5 próximos check-outs programados para hoy */
+        get: operations['DashboardController_findTop5TodayCheckOuts_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/top-priority-amenities': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener las 5 habitaciones con mayor prioridad de reposición de amenidades */
+        get: operations['DashboardController_findTop5PriorityAmenities_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/priority-amenities-grouped': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener habitaciones con amenidades pendientes agrupadas por nivel de prioridad */
+        get: operations['DashboardController_findAmenitiesByPriority_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/today-available-rooms': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener habitaciones disponibles para hoy sin reservas */
+        get: operations['DashboardController_findTodayAvailableRooms_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/dashboard/week-reservations': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Obtener información sobre reservaciones para la semana actual */
+        get: operations['DashboardController_findWeekReservations_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     '/v1/seeds': {
         parameters: {
             query?: never;
@@ -1625,6 +2011,138 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    '/v1/reports/profit': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de profit mensual
+         * @description Genera y descarga un archivo Excel con el profit para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadProfitExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/expense': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de expense mensual
+         * @description Genera y descarga un archivo Excel con el expense para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadExpenseExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/balance': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de balance mensual
+         * @description Genera y descarga un archivo Excel con el balance para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadBalanceExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/profitRoomType': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de ganancias por tipo de habitación
+         * @description Genera y descarga un archivo Excel con el profit para un mes, año y tipo de habitación específicos.
+         */
+        get: operations['ReportsController_downloadProfitTypeRoomExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/reports/occupancy': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Descargar Excel de estadísticas de ocupación
+         * @description Genera y descarga un archivo Excel con estadísticas de ocupación por tipo de habitación para un mes y año específicos.
+         */
+        get: operations['ReportsController_downloadOccupancyExcel_v1'];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/landing-payment': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations['PaymentController_createPayment_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    '/v1/landing-payment/validate': {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations['PaymentController_validatePayment_v1'];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1744,13 +2262,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /** @description Customer name */
@@ -1812,13 +2330,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /** @description User name */
@@ -1861,13 +2379,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -1925,13 +2443,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -2020,13 +2538,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2091,6 +2609,11 @@ export interface components {
              * @default false
              */
             isPendingDeletePayment: boolean;
+            /**
+             * @description Wheter the reservation was applied late check out
+             * @default false
+             */
+            appliedLateCheckOut: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -2224,13 +2747,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the reservation was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt?: string;
             /**
              * Format: date-time
              * @description Timestamp when the reservation was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt?: string;
             /** @description Customer ID associated with the reservation */
@@ -2295,6 +2818,11 @@ export interface components {
              * @default false
              */
             isPendingDeletePayment: boolean;
+            /**
+             * @description Wheter the reservation was applied late check out
+             * @default false
+             */
+            appliedLateCheckOut: boolean;
             /**
              * @description Customer created by landing page
              * @default false
@@ -2466,6 +2994,50 @@ export interface components {
              */
             roomPrice?: number;
         };
+        LateCheckoutDto: {
+            /**
+             * @description Nueva hora de checkout (formato HH:mm)
+             * @example 14:30
+             */
+            lateCheckoutTime: string;
+            /**
+             * @description Notas adicionales sobre el late checkout
+             * @example Cliente solicitó una extensión de tiempo por motivos personales
+             */
+            additionalNotes?: string;
+            /**
+             * @description Date of the payment
+             * @example 2021-09-21
+             */
+            paymentDate: string;
+            /**
+             * @description Método de pago utilizado. Puede ser CASH, CREDIT_CARD, DEBIT_CARD, TRANSFER, YAPE, PLIN, PAYPAL, IZI_PAY o PENDING_PAYMENT
+             * @example CREDIT_CARD
+             */
+            paymentMethod: string;
+        };
+        ExtendStayDto: {
+            /**
+             * @description Nueva fecha de checkout en formato ISO 8601
+             * @example 2025-05-25T12:00:00.000Z
+             */
+            newCheckoutDate: string;
+            /**
+             * @description Notas adicionales sobre el late checkout
+             * @example Cliente solicitó una extensión de tiempo por motivos personales
+             */
+            additionalNotes?: string;
+            /**
+             * @description Date of the payment
+             * @example 2021-09-21
+             */
+            paymentDate: string;
+            /**
+             * @description Método de pago utilizado. Puede ser CASH, CREDIT_CARD, DEBIT_CARD, TRANSFER, YAPE, PLIN, PAYPAL, IZI_PAY o PENDING_PAYMENT
+             * @example CREDIT_CARD
+             */
+            paymentMethod: string;
+        };
         CreateRoomDto: {
             /**
              * @description ID del tipo de habitación
@@ -2508,13 +3080,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -2789,51 +3361,27 @@ export interface components {
         };
         CreatePaymentDto: {
             /**
-             * @description Monto
-             * @example 37829.85
+             * @description Monto en céntimos (PEN)
+             * @example 200
              */
             amount: number;
             /**
-             * @description Monto pagado
-             * @example 38002.55
+             * @description Moneda del pago
+             * @example PEN
              */
-            amountPaid?: number;
+            currency: string;
             /**
-             * @description ID de la reserva
-             * @example ID de la reserva
+             * @description ID de la orden
+             * @example pedido-001
              */
-            reservationId: string;
+            orderId: string;
+            /** @description Información del cliente */
+            customer: components['schemas']['CustomerDto'];
             /**
-             * @description Observaciones
-             * @example Observaciones
+             * @description URL opcional de retorno luego del pago
+             * @example https://miweb.com/retorno
              */
-            observations?: string;
-            /**
-             * @description Array of details of the payment
-             * @example [
-             *       {
-             *         "paymentDate": "2023-08-15",
-             *         "description": "Pago de reserva de habitación",
-             *         "type": "ROOM_RESERVATION",
-             *         "method": "CREDIT_CARD",
-             *         "roomId": "7a1b9c2d-3e4f-5a6b-7c8d-9e0f1a2b3c4d",
-             *         "days": 3,
-             *         "unitPrice": 150,
-             *         "subtotal": 450
-             *       },
-             *       {
-             *         "paymentDate": "2023-08-15",
-             *         "description": "Servicio de desayuno",
-             *         "type": "EXTRA_SERVICE",
-             *         "method": "CASH",
-             *         "serviceId": "123e4567-e89b-12d3-a456-426614174000",
-             *         "quantity": 2,
-             *         "unitPrice": 25,
-             *         "subtotal": 50
-             *       }
-             *     ]
-             */
-            paymentDetail?: string[];
+            returnUrl?: string;
         };
         CreateManyPaymentDetailDto: {
             /**
@@ -3009,13 +3557,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             name: string;
@@ -3259,13 +3807,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -3367,13 +3915,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -3406,13 +3954,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -3475,13 +4023,13 @@ export interface components {
             /**
              * Format: date-time
              * @description Timestamp when the entity was created
-             * @example 2025-05-20T17:16:08.785Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             createdAt: string;
             /**
              * Format: date-time
              * @description Timestamp when the entity was last updated
-             * @example 2025-05-20T17:16:08.786Z
+             * @example 2025-05-27T06:02:11.592Z
              */
             updatedAt: string;
             /**
@@ -5088,41 +5636,6 @@ export interface operations {
             };
         };
     };
-    ReservationController_remove_v1: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Reservation ID */
-                id: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description The reservation has been successfully deleted */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Bad Request - Error en la validación de datos o solicitud incorrecta */
-            400: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthorized - No autorizado para realizar esta operación */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
     ReservationController_update_v1: {
         parameters: {
             query?: never;
@@ -5366,6 +5879,202 @@ export interface operations {
             };
             /** @description Unauthorized - No autorizado para realizar esta operación */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_checkExtendedCheckoutAvailability_v1: {
+        parameters: {
+            query: {
+                /** @description Nueva fecha/hora de checkout en formato ISO */
+                newCheckoutDate: string;
+            };
+            header?: never;
+            path: {
+                /** @description ID de la reserva */
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Verificación completada */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: formato incorrecto o reserva no encontrada */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_removeLateCheckout_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Late checkout eliminado correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: La reserva no tiene Late Checkout aplicado o no está en estado válido */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: Reserva no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_applyLateCheckout_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['LateCheckoutDto'];
+            };
+        };
+        responses: {
+            /** @description Late checkout aplicado correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: formato incorrecto o reserva incompatible con late checkout */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: conflicto con otra reservación existente */
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReservationController_extendStay_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['ExtendStayDto'];
+            };
+        };
+        responses: {
+            /** @description Estadía extendida correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': components['schemas']['BaseApiResponse'];
+                };
+            };
+            /** @description Error: formato incorrecto de fecha o reserva incompatible con extensión */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized - No autorizado para realizar esta operación */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: reservación no encontrada */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error: conflicto con otra reservación existente */
+            409: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -7193,6 +7902,774 @@ export interface operations {
             };
         };
     };
+    DashboardController_findAnnualStatistics_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desean obtener las estadísticas (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Estadísticas anuales obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findMonthlyEarningsExpenses_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desean obtener las ganancias y gastos mensuales (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Ganancias y gastos mensuales obtenidos correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findRoomOccupancy_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Mapa de ocupación obtenido correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findRecentReservations_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Reservaciones recientes obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findNextPendingPayments_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Próximos pagos pendientes obtenidos correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findOccupationStatistics_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desean obtener las estadísticas de ocupación (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Estadísticas de ocupación obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findBookingTrends_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desean obtener las tendencias de reservaciones (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Tendencias de reservaciones obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findSummaryFinance_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desea obtener el resumen financiero (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Resumen financiero obtenido correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findCustomerOriginSummary_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desea obtener el resumen de origen de clientes (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Resumen de origen de clientes obtenido correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findMonthlyCustomerOrigin_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desea obtener la distribución mensual de clientes (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Distribución mensual de clientes obtenida correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTop10Countries_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desea obtener el top de países (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top 10 países obtenidos correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTop10Provinces_v1: {
+        parameters: {
+            query?: {
+                /** @description Año para el que se desea obtener el top de provincias (por defecto: año actual) */
+                year?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top 10 provincias obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTodayRecepcionistStatistics_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Estadísticas diarias obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTop5TodayCheckIns_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top 5 check-ins obtenidos correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTop5TodayCheckOuts_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top 5 check-outs obtenidos correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTop5PriorityAmenities_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Top 5 habitaciones con amenidades prioritarias obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findAmenitiesByPriority_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Habitaciones con amenidades agrupadas por prioridad obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findTodayAvailableRooms_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Habitaciones disponibles obtenidas correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DashboardController_findWeekReservations_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Información de reservaciones obtenida correctamente */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Solicitud incorrecta */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthorized */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Error interno del servidor */
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     SeedsController_initSeed_v1: {
         parameters: {
             query?: never;
@@ -8420,6 +9897,171 @@ export interface operations {
             };
             /** @description Unauthorized - No autorizado para realizar esta operación */
             401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ReportsController_downloadProfitExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el profit mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadExpenseExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el expense mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadBalanceExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el balance mensual */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadProfitTypeRoomExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+                /** @description ID del tipo de habitación */
+                typeRoomId: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con el profit por tipo de habitación */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    ReportsController_downloadOccupancyExcel_v1: {
+        parameters: {
+            query: {
+                /** @description Mes numérico (1-12) */
+                month: number;
+                /** @description Año en formato YYYY */
+                year: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Archivo Excel con estadísticas de ocupación */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    'application/json': string;
+                };
+            };
+        };
+    };
+    PaymentController_createPayment_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                'application/json': components['schemas']['CreatePaymentDto'];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PaymentController_validatePayment_v1: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
