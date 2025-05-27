@@ -39,7 +39,7 @@ pipeline {
         stage("Restart landing service") {
             steps {
                 script {
-                    def config = readYaml file: 'devops/env.yaml'
+                    def config = readYaml file: 'deploy/env.yaml'
                     def env = config.develop.landing
 
                     def nonSensitiveVars = env.nonsensitive.collect { k, v -> "${k}=${v}" }
