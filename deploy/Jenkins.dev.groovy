@@ -10,6 +10,7 @@ pipeline {
         REMOTE_IP = "116.203.105.37"
         REMOTE_FOLDER = "/opt/docker/compose/projects/${PROJECT_NAME}-${PROJECT_STAGE}"
 
+        REGISTRY_CREDENTIALS = "dockerhub-digitalesacide-credentials"
         REGISTRY_URL = "docker.io"
         REGISTRY_USER = "digitalesacide"
         REGISTRY_REPO = "${PROJECT_TRIPLET}"
