@@ -1,5 +1,7 @@
 'use server';
 
+import 'reflect-metadata';
+
 import { SupportedLocales } from '@/i18n/routing';
 import { wrapUriWithParams } from '@/lib/actions/BaseActionOps';
 import { roomOps, roomTypeOps } from '../action-setup';

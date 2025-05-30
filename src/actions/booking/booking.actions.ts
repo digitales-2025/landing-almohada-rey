@@ -1,5 +1,7 @@
 'use server';
 
+import 'reflect-metadata';
+
 import { defaultLocale, SupportedLocales } from '@/i18n/routing';
 import { bookingOps } from '../action-setup';
 import {
