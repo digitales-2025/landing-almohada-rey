@@ -23,13 +23,14 @@ pipeline {
         // Hash for this build
         NEXT_PUBLIC_WHATSAPP_NUMBER="+51958959958"
         NEXT_PUBLIC_BASE_WHATSSAPP_URL="https://api.whatsapp.com/send"
+        NEXT_PUBLIC_WEBSOCKET_URL="https://almohada-backend-develop.acide.win"
     }
     stages {
         stage("Build & push image") {
             steps {
                 script {
                     withDockerRegistry(credentialsId: "${REGISTRY_CREDENTIALS}") {
-                        def image = docker.build("${FULL_REGISTRY_URL}:${BUILD_NUMBER}", "--build-arg NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER} --build-arg NEXT_PUBLIC_BASE_WHATSSAPP_URL=${NEXT_PUBLIC_BASE_WHATSSAPP_URL} -f deploy/Dockerfile.dev .")
+                        def image = docker.build("${FULL_REGISTRY_URL}:${BUILD_NUMBER}", "--build-arg NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER} --build-arg NEXT_PUBLIC_BASE_WHATSSAPP_URL=${NEXT_PUBLIC_BASE_WHATSSAPP_URL} --build-arg NEXT_PUBLIC_WEBSOCKET_URL=${NEXT_PUBLIC_WEBSOCKET_URL} -f deploy/Dockerfile.dev .")
                         image.push()
                         image.push("latest")
                     }
