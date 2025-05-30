@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import { ReactNode } from 'react';
 
 type Props = {
