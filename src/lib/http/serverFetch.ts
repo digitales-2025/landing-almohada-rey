@@ -79,11 +79,6 @@ export async function serverFetch<Success>(
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token')?.value;
 
-    console.log("fetching debug ===============================")
-    console.log(envs.BACKEND_URL)
-    console.log(url)
-    console.log("fetching debug ===============================\n\n")
-
     if (!accessToken && !publicRequest) {
         if (process.env.NODE_ENV !== 'production') {
             console.error(
@@ -133,8 +128,11 @@ export async function serverFetch<Success>(
             const data = await response.json();
             return [data, null];
         } catch (e) {
-            console.error("Error while fetching:") 
-            console.error(e)
+            console.error('url debug:');
+            console.error(envs.BACKEND_URL);
+            console.error(url);
+            console.error('Error while fetching:');
+            console.error(e);
             return [
                 // @ts-expect-error allowing null
                 null,
@@ -142,8 +140,11 @@ export async function serverFetch<Success>(
             ];
         }
     } catch (e) {
-            console.error("Error while fetching (fetch error):") 
-            console.error(e)
+        console.error('url debug:');
+        console.error(envs.BACKEND_URL);
+        console.error(url);
+        console.error('Error while fetching (fetch error):');
+        console.error(e);
         return [
             // @ts-expect-error allowing null
             null,
