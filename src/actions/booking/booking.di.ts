@@ -1,5 +1,3 @@
-import { injectable } from 'inversify';
-
 import { SupportedLocales } from '@/i18n/routing';
 import { BaseActionOps, wrapUriWithParams } from '@/lib/actions/BaseActionOps';
 import { GetResponse, MutationResponse } from '@/types/api/actions-crud';
@@ -14,7 +12,6 @@ import {
     SummaryBooking,
 } from './booking';
 
-@injectable()
 export class BookingOps extends BaseActionOps<SummaryBooking> {
     async getAvailableRooms(
         dto: LandingRequestDto<CheckRoomAvailabilityDto>
