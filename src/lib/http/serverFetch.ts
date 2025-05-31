@@ -127,14 +127,18 @@ export async function serverFetch<Success>(
         try {
             const data = await response.json();
             return [data, null];
-        } catch {
+        } catch (e) {
+            console.error("Error while fetching:") 
+            console.error(e)
             return [
                 // @ts-expect-error allowing null
                 null,
                 null,
             ];
         }
-    } catch {
+    } catch (e) {
+            console.error("Error while fetching (fetch error):") 
+            console.error(e)
         return [
             // @ts-expect-error allowing null
             null,
