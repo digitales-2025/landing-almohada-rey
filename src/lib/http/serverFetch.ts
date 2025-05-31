@@ -144,8 +144,8 @@ export async function serverFetch<Success>(
             null,
             {
                 statusCode: 503,
-                message: 'Error interno',
-                error: 'Error interno',
+                message: 'Error de backend',
+                error: 'Error de backend',
             },
         ];
     }
