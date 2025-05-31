@@ -61,7 +61,7 @@ pipeline {
 #!/bin/bash
 cat << EOF
 # Non-sensitive variables
-TEAMINNOVATION_LANDING_VERSION=${BUILD_NUMBER}
+ALMOHADA_LANDING_VERSION=${BUILD_NUMBER}
 ${nonSensitiveVars.join('\n')}
 
 # Sensitive variables

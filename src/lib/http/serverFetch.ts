@@ -79,6 +79,11 @@ export async function serverFetch<Success>(
     const cookieStore = await cookies();
     const accessToken = cookieStore.get('access_token')?.value;
 
+    console.log("fetching debug ===============================")
+    console.log(envs.BACKEND_URL)
+    console.log(url)
+    console.log("fetching debug ===============================\n\n")
+
     if (!accessToken && !publicRequest) {
         if (process.env.NODE_ENV !== 'production') {
             console.error(
