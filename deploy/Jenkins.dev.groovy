@@ -87,6 +87,7 @@ EOL
                                 cat .env.base >> .env && \
                                 cat .env.backend >> .env && \
                                 cat .env.frontend >> .env && \
+                                cat .env.landing >> .env && \
                                 docker compose up -d'
                             """
                         }
