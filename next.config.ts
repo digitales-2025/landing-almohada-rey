@@ -29,12 +29,9 @@ const nextConfig: NextConfig = {
         return config;
     },
 
-    // Nueva configuración crítica para Edge Runtime
-    experimental: {
-        serverComponentsExternalPackages: ['reflect-metadata'],
-    },
+    // 🧠 Aquí va directo, no dentro de `experimental`
+    serverExternalPackages: ['reflect-metadata', 'inversify'],
 
-    // Configuración existente
     output: 'standalone',
     eslint: {
         ignoreDuringBuilds: true,
