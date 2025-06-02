@@ -1067,10 +1067,124 @@
             }
         }
     },
-    "IndexPageTravelers": {
-        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
-        "title": "Travelers"
-    },
+
+        "IndexPageTravelers": {
+          "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.",
+          "title": "Travelers"
+        },
+        "Categories": {
+          "title": "CATEGORIES",
+          "todos": "ALL",
+          "urban_destinations": "URBAN DESTINATIONS",
+          "beaches": "BEACHES",
+          "nearby_landscapes": "NEARBY LANDSCAPES",
+          "colca_canyon": "COLCA CANYON",
+          "festivals_celebrations": "FESTIVALS & CELEBRATIONS",
+          "gastronomy": "GASTRONOMY",
+          "majes_valley": "MAJES VALLEY"
+        },
+        "TouristPlaces": {
+          "popular": "POPULAR",
+          "pagination": {
+            "page": "Page"
+          },
+              "viewDestination": "View destination",
+              "nextRecommendation": "Next recommendation:"
+        },
+        "TouristPlace": {
+          "readMore": "Read more..."
+        },
+        "Modal": {
+          "close": "Close"
+        },
+        "Places": {
+          "monasterio_santa_catalina": {
+            "title": "Santa Catalina Monastery",
+            "subtitle": "Colonial architectural jewel",
+            "description": "The Santa Catalina Monastery is a religious citadel founded in 1579, built in sillar stone. Within its walls you can appreciate streets, squares, and cloisters that preserve their original charm. It is one of the most important religious enclosures of colonial Peru."
+          },
+          "museo_santuarios_andinos": {
+            "title": "Andean Sanctuaries Archaeological Museum",
+            "subtitle": "Home of the Juanita mummy",
+            "description": "Exhibits the Lady of Ampato, an Inca mummy found at the summit of Ampato volcano, who was a 12 to 14-year-old girl who would have been an offering to the protective apu. Her antiquity dates back about 500 years."
+          },
+          "basilica_catedral": {
+            "title": "Basilica Cathedral of Arequipa",
+            "subtitle": "Neoclassical architectural jewel",
+            "description": "You can appreciate its Carrara marble altar, the pulpit, and an ancient organ. One of the first religious monuments of the 17th century in the city. It was built in sillar (volcanic stone), in neoclassical style."
+          },
+          "mollendo_mejia_camana": {
+            "title": "Mollendo, Mejía and Camaná",
+            "subtitle": "Beaches of the Arequipa coastline",
+            "description": "The beaches of Mollendo, Mejía and Camaná are the main seaside resorts of Arequipa. They offer beautiful coasts with crystal clear waters, perfect for relaxation and water sports. During summer, they are the preferred destination for Arequipa residents and tourists."
+          },
+          "lagunas_mejia": {
+            "title": "Mejía Lagoons National Sanctuary",
+            "subtitle": "Refuge for migratory birds",
+            "description": "Provides the habitat and food necessary for the long journey of migratory birds that come from the northern hemisphere, such as the sanderling (Calidris Alba). In its 690.6 ha extension, it manages to encompass different types of habitats: lagoon mirrors, swamps, saline mudflats, reed beds, scrubland and riparian estuary, grasslands and vast sandy beaches, making it one of the most important sanctuaries on the western coast of South America."
+          },
+          "petroglifos_toro_muerto": {
+            "title": "Toro Muerto Petroglyphs",
+            "subtitle": "Millenary rock art",
+            "description": "Toro Muerto is one of the largest rock art sites in South America, with more than 5,000 blocks of volcanic stone engraved with figures of animals, human beings, and geometric symbols. These artistic manifestations date from between 500 and 1,000 AD."
+          },
+          "mirador_condor": {
+            "title": "Condor Viewpoint",
+            "subtitle": "Andean condor observation",
+            "description": "The Cruz del Cóndor is a natural viewpoint from where you can observe the majestic flight of the Andean condor. This point also offers an impressive view of the Colca Canyon, one of the deepest in the world, with more than 4,160 meters in depth."
+          },
+          "termas_calera": {
+            "title": "La Calera Hot Springs",
+            "subtitle": "Medicinal thermal waters",
+            "description": "The thermal waters of La Calera, located in Chivay, have medicinal properties thanks to their high mineral content. With temperatures between 38°C and 40°C, these natural pools are perfect for relaxing after a day of hiking through the canyon."
+          },
+          "campina_aqp": {
+            "title": "Arequipa Countryside",
+            "subtitle": "Panoramic views and colonial heritage",
+            "description": "Just minutes from the city, you can find the best panoramic views. Observe the volcanoes that surround it and spectacular colonial constructions of the area."
+          },
+          "gastronomia_aqp": {
+            "title": "Arequipa Gastronomy",
+            "subtitle": "Gastronomic Capital of Peru",
+            "description": "Arequipa's gastronomy, recognized as the \"Gastronomic Capital of Peru\", offers a wide variety of typical dishes that fuse ancestral Andean cuisine with Spanish influences, creating unique and authentic flavors."
+          },
+          "aniversario_arequipa": {
+            "title": "Anniversary of the Arequipa",
+            "subtitle": "August festivities",
+            "description": "Every August 15, Arequipa celebrates its Spanish foundation with a month full of cultural, gastronomic, and artistic activities. The culminating point is the corso of friendship, a colorful parade that runs through the main streets of the city with floats and traditional dances."
+          },
+          "virgen_chapi": {
+            "title": "Virgin of Chapi",
+            "subtitle": "Arequipa religious celebration",
+            "description": "Date: MAY 01 - MAY 02. Religious celebration with deep roots in Arequipa. A pilgrimage of faithful to the Sanctuary of the Virgin of Chapi takes place, including a serenade, festive mass and procession at the Sanctuary as well as fireworks and firework displays."
+          }
+        },
+        "TopItems": {
+          "mirador_condor": "Colca Canyon",
+          "mirador_condor_subtitle": "One of the deepest canyons in the world",
+          "aniversario_arequipa": "Anniversary of the Arequipa",
+          "aniversario_arequipa_subtitle": "Historical and cultural celebration",
+          "gastronomia_aqp": "Arequipa Gastronomy",
+          "gastronomia_aqp_subtitle": "Gastronomic Capital of Peru",
+          "monasterio_santa_catalina": "Santa Catalina Monastery",
+          "monasterio_santa_catalina_subtitle": "Colonial architectural jewel",
+          "campina_aqp": "Arequipa Countryside",
+          "campina_aqp_subtitle": "Panoramic views and colonial heritage",
+          "petroglifos_toro_muerto": "Toro Muerto Petroglyphs",
+          "petroglifos_toro_muerto_subtitle": "Millenary rock art",
+          "mollendo_mejia_camana": "Mollendo",
+          "mollendo_mejia_camana_subtitle": "Main seaside resort of Arequipa",
+          "termas_calera": "La Calera Hot Springs",
+          "termas_calera_subtitle": "Medicinal thermal waters",
+          "museo_santuarios_andinos": "Andean Sanctuaries Museum",
+          "museo_santuarios_andinos_subtitle": "Home of the Juanita mummy"
+        },
+        "Header": {
+          "travelers": "TRAVELERS",
+          "tourist_information": "Tourist Information"
+        },
+
+      
     "KeepInTouchSection": {
         "sectionName": "contact",
         "title": "Contact",

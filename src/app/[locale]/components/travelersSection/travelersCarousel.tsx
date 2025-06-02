@@ -32,25 +32,25 @@ export const TravelersCarousel = () => {
             image: '/home/travellersCarousel/travellers_carousel_1.webp',
             caption: t('item1.title').toUpperCase(),
             description: t('item1.name'),
-            href: '/travellers/1',
+            href: '/viajeros',
         },
         {
             image: '/home/travellersCarousel/travellers_carousel_2.webp',
             caption: t('item2.title').toUpperCase(),
             description: t('item3.name'),
-            href: '/travellers/2',
+            href: '/viajeros',
         },
         {
             image: '/home/travellersCarousel/travellers_carousel_3.webp',
             caption: t('item3.title').toUpperCase(),
             description: t('item3.name'),
-            href: '/travellers/1',
+            href: '/viajeros',
         },
         {
             image: '/home/travellersCarousel/travellers_carousel_1.webp',
             caption: t('item1.title').toUpperCase(),
             description: t('item1.name'),
-            href: '/home/carousel/home_carousel_4.webp',
+            href: '/viajeros',
         },
     ];
     return (
