@@ -16,25 +16,15 @@ RUN pnpm i
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY assets assets
-COPY messages messages
-COPY public public
-COPY src src
-COPY envConfig.ts envConfig.ts
-COPY eslint.config.mjs eslint.config.mjs
-COPY globals.ts globals.ts
-COPY next.config.ts next.config.ts
-COPY package.json package.json
-COPY pnpm-lock.yaml pnpm-lock.yaml
-COPY postcss.config.mjs postcss.config.mjs
-COPY tsconfig.json tsconfig.json
+COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-ARG NEXT_PUBLIC_WHATSAPP_NUMBER=""
-ENV NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER}
-ARG NEXT_PUBLIC_BASE_WHATSSAPP_URL="/"
-ENV NEXT_PUBLIC_BASE_WHATSSAPP_URL=${NEXT_PUBLIC_BASE_WHATSSAPP_URL}
+ARG NEXT_PUBLIC_WHATSAPP_NUMBER
+ARG NEXT_PUBLIC_BASE_WHATSSAPP_URL
+ARG NEXT_PUBLIC_WEBSOCKET_URL
+
+
 
 RUN npm i -g pnpm
 RUN pnpm run build
