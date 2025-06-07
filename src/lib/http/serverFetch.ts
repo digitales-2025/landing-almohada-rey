@@ -127,21 +127,31 @@ export async function serverFetch<Success>(
         try {
             const data = await response.json();
             return [data, null];
-        } catch {
+        } catch (e) {
+            console.error('url debug:');
+            console.error(envs.BACKEND_URL);
+            console.error(url);
+            console.error('Error while fetching:');
+            console.error(e);
             return [
                 // @ts-expect-error allowing null
                 null,
                 null,
             ];
         }
-    } catch {
+    } catch (e) {
+        console.error('url debug:');
+        console.error(envs.BACKEND_URL);
+        console.error(url);
+        console.error('Error while fetching (fetch error):');
+        console.error(e);
         return [
             // @ts-expect-error allowing null
             null,
             {
                 statusCode: 503,
-                message: 'Error interno',
-                error: 'Error interno',
+                message: 'Error de backend',
+                error: 'Error de backend',
             },
         ];
     }

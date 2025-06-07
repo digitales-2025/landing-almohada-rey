@@ -28,6 +28,7 @@ pipeline {
     stages {
         stage("Build & push image") {
             steps {
+                sh 'cp deploy/.dockerignore .'
                 script {
                     withDockerRegistry(credentialsId: "${REGISTRY_CREDENTIALS}") {
                         def image = docker.build("${FULL_REGISTRY_URL}:${BUILD_NUMBER}", "--build-arg NEXT_PUBLIC_WHATSAPP_NUMBER=${NEXT_PUBLIC_WHATSAPP_NUMBER} --build-arg NEXT_PUBLIC_BASE_WHATSSAPP_URL=${NEXT_PUBLIC_BASE_WHATSSAPP_URL} --build-arg NEXT_PUBLIC_WEBSOCKET_URL=${NEXT_PUBLIC_WEBSOCKET_URL} -f deploy/Dockerfile.dev .")
@@ -60,7 +61,7 @@ pipeline {
 #!/bin/bash
 cat << EOF
 # Non-sensitive variables
-TEAMINNOVATION_LANDING_VERSION=${BUILD_NUMBER}
+ALMOHADA_LANDING_VERSION=${BUILD_NUMBER}
 ${nonSensitiveVars.join('\n')}
 
 # Sensitive variables
@@ -86,6 +87,7 @@ EOL
                                 cat .env.base >> .env && \
                                 cat .env.backend >> .env && \
                                 cat .env.frontend >> .env && \
+                                cat .env.landing >> .env && \
                                 docker compose up -d'
                             """
                         }

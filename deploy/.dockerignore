@@ -1,0 +1,8 @@
+node_modules
+devops
+README.md
+commitlint.config.json
+.husky
+.vscode
+.env.example
+
