@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Meddon&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'tailwindcss-animated';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Poppins', sans-serif;
+    --font-mono: var(--font-geist-mono);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+
+    /* Custom Variables for texts*/
+    --font-h1: 'Playfair Display', serif;
+    --font-h1--font-weight: 400;
+
+    --font-h2: 'Meddon', cursive;
+    --font-h2--font-weight: 400;
+
+    --font-h3: 'Playfair Display', serif;
+    --font-h3--font-weight: 400;
+
+    --font-h4: 'Playfair Display', serif;
+    --font-h4--font-weight: 400;
+
+    --font-h5: 'Playfair Display', serif;
+    --font-h5--font-weight: 400;
+
+    --font-h6: 'Playfair Display', serif;
+    --font-h6--font-weight: 400;
+
+    --font-h7: 'Poppins', sans-serif;
+    --font-h7--font-weight: 300;
+
+    --font-h8: 'Poppins', sans-serif;
+    --font-h8--font-weight: 500;
+
+    --font-h9: 'Poppins', sans-serif;
+    --font-h9--font-weight: 400;
+
+    --font-p: 'Poppins', sans-serif;
+    --font-p--font-weight: 300;
+
+    --font-ps: 'Poppins', sans-serif;
+    --font-ps--font-weight: 300;
+
+    --font-pxs: 'Poppins', sans-serif;
+    --font-pxs--font-weight: 300;
+
+    --text-h1: 11.25rem;
+    --text-h1--line-height: 11.25rem;
+    --text-h1--letter-spacing: 0.005rem;
+    --text-h1--text-align: center;
+
+    --text-h2: 10rem;
+    --text-h2--line-height: 1;
+    --text-h2--letter-spacing: 0.005rem;
+    --text-h2--text-align: center;
+
+    --text-h3: 4rem;
+    --text-h3--line-height: 1;
+    --text-h3--letter-spacing: 0.0005rem;
+
+    --text-h4: 3rem;
+    --text-h4--line-height: 1;
+    --text-h4--letter-spacing: 0.015rem;
+
+    --text-h5: 2.5rem;
+    --text-h5--line-height: 1;
+    --text-h5--letter-spacing: 0.015rem;
+
+    --text-h6: 2rem;
+    --text-h6--line-height: 1.5rem;
+    --text-h6--letter-spacing: 0.015rem;
+
+    --text-h7: 1.5rem;
+    --text-h7--line-height: 1.5rem;
+    --text-h7--letter-spacing: 0.015rem;
+
+    --text-h8: 1.25rem;
+    --text-h8--line-height: 1.25rem;
+    --text-h8--letter-spacing: 0.015rem;
+
+    --text-h9: 1rem;
+    --text-h9--line-height: 1.25rem;
+    --text-h9--letter-spacing: 0.015rem;
+
+    --text-p: 1.25rem;
+    --text-p--line-height: 1.875rem;
+    --text-p--letter-spacing: 0.125rem;
+    --text-p--text-align: center;
+
+    --text-ps: 1rem;
+    --text-ps--line-height: 1.375rem;
+    --text-ps--letter-spacing: 0.125rem;
+    --text-ps--text-align: center;
+
+    --text-pxs: 0.75rem;
+    --text-pxs--line-height: 1.125rem;
+    --text-pxs--letter-spacing: 0.125rem;
+    --text-pxs--text-align: center;
+}
+
+:root {
+    --background: oklch(0.97 0.01 99.98);
+    --foreground: oklch(0.38 0.04 47.55);
+    --card: oklch(0.97 0.01 99.98);
+    --card-foreground: oklch(0.26 0 0);
+    --popover: oklch(0.97 0.01 99.98);
+    --popover-foreground: oklch(0.26 0 0);
+    --primary: oklch(0.66 0.09 80.47);
+    --primary-foreground: oklch(0.97 0.01 99.98);
+    --secondary: oklch(0.33 0.01 151.53);
+    --secondary-foreground: oklch(0.98 0 145.56);
+    --muted: oklch(0.95 0.02 99);
+    --muted-foreground: oklch(0.65 0 0);
+    --accent: oklch(0.97 0.01 99.98);
+    --accent-foreground: oklch(0.48 0.05 75.96);
+    --destructive: oklch(0.62 0.21 25.77);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.93 0.03 92.4);
+    --input: oklch(0.86 0.05 91.78);
+    --ring: oklch(0.77 0.07 88.85);
+    --chart-1: oklch(0.82 0.13 84.49);
+    --chart-2: oklch(0.8 0.11 203.6);
+    --chart-3: oklch(0.42 0.17 266.78);
+    --chart-4: oklch(0.92 0.08 125.58);
+    --chart-5: oklch(0.92 0.1 116.19);
+    --sidebar: oklch(0.97 0.01 99.98);
+    --sidebar-foreground: oklch(0.38 0.04 47.55);
+    --sidebar-primary: oklch(0.66 0.09 80.47);
+    --sidebar-primary-foreground: oklch(0.97 0.01 99.98);
+    --sidebar-accent: oklch(0.97 0.01 99.98);
+    --sidebar-accent-foreground: oklch(0.48 0.05 75.96);
+    --sidebar-border: oklch(0.93 0.03 92.4);
+    --sidebar-ring: oklch(0.77 0.07 88.85);
+    --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        'Liberation Mono', 'Courier New', monospace;
+    --radius: 0.625rem;
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
+        0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
+        0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
+        0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
+        0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
+        0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+}
+
+.dark {
+    --background: oklch(0.15 0.01 280); /* oscuro neutro */
+    --foreground: oklch(0.93 0.02 99.98); /* texto claro */
+    --card: oklch(0.18 0.01 280);
+    --card-foreground: oklch(0.93 0.02 99.98);
+    --popover: oklch(0.2 0.01 280);
+    --popover-foreground: oklch(0.93 0.02 99.98);
+    --primary: oklch(
+        0.75 0.11 80.47
+    ); /* igual tono que el light pero más vibrante */
+    --primary-foreground: oklch(0.15 0.01 280);
+    --secondary: oklch(0.45 0.03 151.53);
+    --secondary-foreground: oklch(0.93 0.02 145.56);
+    --muted: oklch(0.25 0.02 280);
+    --muted-foreground: oklch(0.75 0.01 280);
+    --accent: oklch(0.3 0.02 280);
+    --accent-foreground: oklch(0.95 0.03 75.96);
+    --destructive: oklch(0.55 0.17 25.77);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.25 0.02 280);
+    --input: oklch(0.28 0.02 280);
+    --ring: oklch(0.4 0.05 88.85);
+    --chart-1: oklch(0.72 0.13 84.49);
+    --chart-2: oklch(0.7 0.11 203.6);
+    --chart-3: oklch(0.55 0.17 266.78);
+    --chart-4: oklch(0.8 0.08 125.58);
+    --chart-5: oklch(0.8 0.1 116.19);
+    --sidebar: oklch(0.18 0.01 280);
+    --sidebar-foreground: oklch(0.93 0.02 99.98);
+    --sidebar-primary: oklch(0.75 0.11 80.47);
+    --sidebar-primary-foreground: oklch(0.15 0.01 280);
+    --sidebar-accent: oklch(0.25 0.02 280);
+    --sidebar-accent-foreground: oklch(0.95 0.03 75.96);
+    --sidebar-border: oklch(0.3 0.02 280);
+    --sidebar-ring: oklch(0.4 0.05 88.85);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+/* ...existing code... */
+
+/* Efecto de zoom-out para imágenen de hero de gallery */
+.image-zoom-effect {
+    overflow: hidden;
+}
+
+.image-zoom-effect img {
+    transform-origin: center;
+    animation: zoom-out 8s ease-out forwards;
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* ...existing code... */
