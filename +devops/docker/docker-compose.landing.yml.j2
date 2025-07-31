@@ -1,7 +1,7 @@
 services:
   {{ project_name }}-landing-{{ project_stage }}:
     image: ${{ project_name | upper }}_LANDING_REGISTRY_URL:${{ project_name | upper }}_LANDING_VERSION
-    container_name: {{ project_name }}-LANDING-{{ project_stage }}
+    container_name: {{ project_name }}-landing-{{ project_stage }}
     restart: unless-stopped
     depends_on:
       {{ project_name }}-backend-{{ project_stage }}:
