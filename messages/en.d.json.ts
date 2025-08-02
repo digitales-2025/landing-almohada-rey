@@ -577,7 +577,7 @@ declare const messages: {
             };
             card3: {
                 title: 'A honeymoon to remember';
-                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                description: 'Book a Suite for your honeymoon and receive a romantic breakfast for two and much more to make the occasion even more special.';
                 details: {
                     item1: '2 - guests';
                     item2: 'Breakfast for 2';
@@ -603,7 +603,7 @@ declare const messages: {
                 };
             };
             card5: {
-                title: 'Family Vacation';
+                title: 'Rest for the whole family';
                 description: 'Share unique moments by booking two or more rooms and enjoy an unforgettable experience with your family.';
                 ctaButton: {
                     label: 'Inquire';
@@ -1044,14 +1044,14 @@ declare const messages: {
             };
             card2: {
                 title: 'Celebrate love, Honeymoon';
-                description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
+                description: 'Book a Suite for your honeymoon and receive a romantic breakfast for two and much more to make the occasion even more special.';
                 ctaButton: {
                     label: 'Inquire';
                     link: '/rooms#contact';
                 };
             };
             card3: {
-                title: 'Family vacation';
+                title: 'Rest for the whole family';
                 description: 'Share unique moments by booking two or more rooms and enjoy an unforgettable experience with your family.';
                 ctaButton: {
                     label: 'Inquire';

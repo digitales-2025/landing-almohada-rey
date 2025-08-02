@@ -574,7 +574,7 @@
             },
             "card3": {
                 "title": "Una luna de miel para recordar",
-                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "description": "Reserve una Suite para su luna de miel y reciba un desayuno romántico para dos y mucho más para hacer la ocasión más especial aún.",
                 "details": {
                     "item1": "2 - huéspedes",
                     "item2": "Desayuno para 2",
@@ -600,7 +600,7 @@
                 }
             },
             "card5": {
-                "title": "Vacaciones en Familia",
+                "title": "Descanso para toda la familia",
                 "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
@@ -1041,14 +1041,14 @@
             },
             "card2": {
                 "title": "Celebra el amor, Luna de miel",
-                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "description": "Reserve una Suite para su luna de miel y reciba un desayuno romántico para dos y mucho más para hacer la ocasión más especial aún.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/habitaciones#contacto"
                 }
             },
             "card3": {
-                "title": "Vacaciones en familia",
+                "title": "Descanso para toda la familia",
                 "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
