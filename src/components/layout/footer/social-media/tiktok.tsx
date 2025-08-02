@@ -12,7 +12,7 @@ interface TiktokProps {
 const TiktokLink: React.FC<TiktokProps> = ({
     className = 'text-primary',
     svgClassName = '',
-    href = 'https://www.tiktok.com/@almohada_rey',
+    href = 'https://www.tiktok.com/@hotellaalmohadadelrey?_t=ZS-8yXmu0tEuDE&_r=1',
 }) => {
     return (
         <ExternalLink

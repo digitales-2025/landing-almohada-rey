@@ -218,7 +218,7 @@ export const NavMenu = () => {
                                             textCommonClassnames,
                                             'flex items-center space-x-2 text-primary relative z-10 font-light'
                                         )}
-                                        href="https://goo.gl/maps/2v1x5G4Z3kz"
+                                        href="https://maps.app.goo.gl/tTyMegMm8GqSAyBk9"
                                     >
                                         <MapPin
                                             className={cn(

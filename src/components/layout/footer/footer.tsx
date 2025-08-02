@@ -13,6 +13,13 @@ import WhatsAppLinK from './social-media/whatsapp';
 
 export default function FooterSection() {
     const t = useTranslations('Footer');
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+    const whatsappBaseUrl =
+        process.env.NEXT_PUBLIC_BASE_WHATSAPP_URL ||
+        'https://api.whatsapp.com/send';
+    const whatsappMessage = encodeURIComponent(
+        'Hola, quiero más información sobre La Almohada del Rey.'
+    );
 
     // Enlaces personalizados para Almohada Rey
     const links = [
@@ -32,10 +39,11 @@ export default function FooterSection() {
     ];
 
     const socialMediaLinks = {
-        facebook: 'https://www.facebook.com/almohadarey',
-        instagram: 'https://www.instagram.com/almohada_rey',
-        tiktok: 'https://www.tiktok.com/@almohada_rey',
-        whatsapp: 'https://wa.me/573206560002',
+        facebook: 'https://www.facebook.com/share/16eG91bWNJ/',
+        instagram:
+            'https://www.instagram.com/hlaalmohadadelrey?igsh=MTVlMzE3cDQ4YmVrcA==',
+        tiktok: 'https://www.tiktok.com/@hotellaalmohadadelrey?_t=ZS-8yXmu0tEuDE&_r=1',
+        whatsapp: `${whatsappBaseUrl}?phone=${whatsappNumber}&text=${whatsappMessage}`,
     };
 
     const socialMediaClassnames =

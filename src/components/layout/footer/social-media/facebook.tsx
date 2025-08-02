@@ -10,7 +10,7 @@ interface FacebookIconProps {
 
 const FacebookLink: React.FC<FacebookIconProps> = ({
     className = ' text-primary',
-    href = 'https://www.facebook.com/almohadarey',
+    href = 'https://www.facebook.com/share/16eG91bWNJ/',
     svgClassName = 'size-5',
 }) => {
     return (
