@@ -2,6 +2,17 @@
 // See: https://next-intl.dev/docs/workflows/typescript#messages-arguments
 
 declare const messages: {
+    Categories: {
+        title: 'CATEGORIES';
+        todos: 'ALL';
+        urban_destinations: 'URBAN DESTINATIONS';
+        beaches: 'BEACHES';
+        nearby_landscapes: 'NEARBY LANDSCAPES';
+        colca_canyon: 'COLCA CANYON';
+        festivals_celebrations: 'FESTIVALS & CELEBRATIONS';
+        gastronomy: 'GASTRONOMY';
+        majes_valley: 'MAJES VALLEY';
+    };
     CollapseParragraph: {
         expand: 'Read more';
         collapse: 'Read less';
@@ -85,6 +96,11 @@ declare const messages: {
             };
         };
     };
+    Header: {
+        travelers: 'TRAVELERS';
+        tourist_information: 'Tourist Information';
+    };
+
     IndexPage: {
         titleFirstSpan: 'A Memorable';
         titleSecondSpan: 'Experience';
@@ -544,8 +560,8 @@ declare const messages: {
             title: 'Special offers';
             description: 'Live your best memories here';
             card1: {
-                title: 'More time, more savings';
-                description: 'Book a stay of at least 5 nights and get a 20% discount on your room price.';
+                title: 'Extend your rest, save without hurry';
+                description: 'Enjoy your stay at your own pace, with the comfort and tranquility you deserve.';
                 ctaButton: {
                     label: 'Inquire';
                     link: '/experiences#contact';
@@ -560,11 +576,11 @@ declare const messages: {
                 };
             };
             card3: {
-                title: 'Celebrate love, honeymoon';
+                title: 'A honeymoon to remember';
                 description: 'Book a Suite for your honeymoon and receive a romantic dinner for two and much more to make the occasion even more special.';
                 details: {
                     item1: '2 - guests';
-                    item2: 'Dinner and Breakfast for 2';
+                    item2: 'Breakfast for 2';
                     item3: 'Free amenities';
                 };
                 pricing: {
@@ -1075,30 +1091,50 @@ declare const messages: {
         description: 'This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes.';
         title: 'Travelers';
     };
-    Categories: {
-        title: 'CATEGORIES';
-        todos: 'ALL';
-        urban_destinations: 'URBAN DESTINATIONS';
-        beaches: 'BEACHES';
-        nearby_landscapes: 'NEARBY LANDSCAPES';
-        colca_canyon: 'COLCA CANYON';
-        festivals_celebrations: 'FESTIVALS & CELEBRATIONS';
-        gastronomy: 'GASTRONOMY';
-        majes_valley: 'MAJES VALLEY';
-    };
-    TouristPlaces: {
-        popular: 'POPULAR';
-        pagination: {
-            page: 'Page';
+    KeepInTouchSection: {
+        sectionName: 'contact';
+        title: 'Contact';
+        caption: 'Any questions?';
+        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
+        ctaInput: {
+            placeholder: 'Enter your inquiry...';
+            buttonLabel: 'WhatsApp';
+            generalErrorMessage: 'There was an error, please try again later.';
+            minErrorMessage: 'Please enter at least {min} characters.';
+            maxErrorMessage: 'Please enter no more than {max} characters.';
+            failureMessage: 'It seems there was an error, the message was not sent.';
+            successMessage: 'Thank you for your inquiry!';
         };
-        viewDestination: 'View destination';
-        nextRecommendation: 'Next recommendation:';
     };
-    TouristPlace: {
-        readMore: 'Read more...';
+    LocaleSwitcher: {
+        label: 'Change language';
+        locale: '{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}';
+    };
+    Manifest: {
+        name: 'La Almohada del Rey';
     };
     Modal: {
         close: 'Close';
+    };
+    Navigation: {
+        home: 'Home';
+        experiences: 'Experiences';
+        gallery: 'Gallery';
+        rooms: 'Rooms';
+        travelers: 'Travelers';
+        booking: 'Reservation';
+        headquarters: {
+            address: 'Mollendo St. #37 - Urb. Municipal';
+            link: '/';
+        };
+        reservationButton: {
+            label: 'Book Now';
+            link: '/booking';
+        };
+    };
+    NotFoundPage: {
+        description: 'Please double-check the browser address bar or use the navigation to go to a known page.';
+        title: 'Page not found';
     };
     Places: {
         monasterio_santa_catalina: {
@@ -1182,52 +1218,16 @@ declare const messages: {
         museo_santuarios_andinos: 'Andean Sanctuaries Museum';
         museo_santuarios_andinos_subtitle: 'Home of the Juanita mummy';
     };
-    Header: {
-        travelers: 'TRAVELERS';
-        tourist_information: 'Tourist Information';
+    TouristPlace: {
+        readMore: 'Read more...';
     };
-
-    KeepInTouchSection: {
-        sectionName: 'contact';
-        title: 'Contact';
-        caption: 'Any questions?';
-        description: "We'd love to hear from you! If you have any questions about our accommodation, services, or events, or simply want to know more about La Almohada del Rey, our staff is always ready to help you. You can contact us via WhatsApp and we'll get back to you as soon as possible.";
-        ctaInput: {
-            placeholder: 'Enter your inquiry...';
-            buttonLabel: 'WhatsApp';
-            generalErrorMessage: 'There was an error, please try again later.';
-            minErrorMessage: 'Please enter at least {min} characters.';
-            maxErrorMessage: 'Please enter no more than {max} characters.';
-            failureMessage: 'It seems there was an error, the message was not sent.';
-            successMessage: 'Thank you for your inquiry!';
+    TouristPlaces: {
+        popular: 'POPULAR';
+        pagination: {
+            page: 'Page';
         };
-    };
-    LocaleSwitcher: {
-        label: 'Change language';
-        locale: '{locale, select, es {🇵🇪 Spanish} en {🇺🇸 English} other {Unknown}}';
-    };
-    Manifest: {
-        name: 'La Almohada del Rey';
-    };
-    Navigation: {
-        home: 'Home';
-        experiences: 'Experiences';
-        gallery: 'Gallery';
-        rooms: 'Rooms';
-        travelers: 'Travelers';
-        booking: 'Reservation';
-        headquarters: {
-            address: 'Mollendo St. #37 - Urb. Municipal';
-            link: '/';
-        };
-        reservationButton: {
-            label: 'Book Now';
-            link: '/booking';
-        };
-    };
-    NotFoundPage: {
-        description: 'Please double-check the browser address bar or use the navigation to go to a known page.';
-        title: 'Page not found';
+        viewDestination: 'View destination';
+        nextRecommendation: 'Next recommendation:';
     };
 };
 export default messages;
