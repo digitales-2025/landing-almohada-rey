@@ -167,7 +167,7 @@ export default function CarruselDestinos({
             <div className="overflow-hidden">
                 <div className="flex flex-col md:flex-row">
                     {/* Imagen principal a la izquierda (ocupa 50% en desktop) - Altura fija */}
-                    <div className="relative w-full md:w-1/2 h-[450px] md:h-[700px] overflow-hidden">
+                    <div className="relative w-full md:w-1/2 h-[450px] md:h-[600px] overflow-hidden">
                         <AnimatePresence
                             initial={false}
                             custom={direction}

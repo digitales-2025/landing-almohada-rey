@@ -11,14 +11,7 @@ import { DefaultRoutes, defaultRoutes } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import LocaleSwitcher from '../i18n/locale-switch/locale-switcher';
 import ExternalLink from '../i18n/navigation/ExternalLink';
-/* import { ModeToggle } from '../mode-toggle'; */
 import { Logo } from './logo';
-
-// "home": "Inicio",
-// "experiences": "Experiencias",
-// "gallery": "Galería",
-// "rooms": "Habitaciones",
-// "travelers": "Viajeros"
 
 type NavItem = {
     name: string;
@@ -149,58 +142,6 @@ export const NavMenu = () => {
                                 scrolledClassname
                             )}
                         >
-                            {/* Columna izquierda - Menú izquierdo */}
-                            {/* <div className="flex items-center">
-                                <ul className="flex gap-8 text-sm">
-                                    {leftMenuItems.map(item => (
-                                        <li key={item.key}>
-                                            <Link
-                                                href={item.href}
-                                                className="text-muted-foreground hover:text-accent-foreground block duration-150"
-                                            >
-                                                <span>{t(item.key)}</span>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div> */}
-
-                            {/* Columna central - Logo más grande */}
-                            {/* <div className="flex justify-center px-4">
-                                <Link
-                                    href="/"
-                                    aria-label="home"
-                                    className="flex items-center space-x-2 scale-150 transform"
-                                >
-                                    <Logo />
-                                </Link>
-                            </div> */}
-
-                            {/* Columna derecha - Menú derecho + botón */}
-                            {/* <div className="flex items-center gap-8">
-                                <ul className="flex gap-8 text-sm">
-                                    {rightMenuItems.map(item => (
-                                        <li key={item.key}>
-                                            <Link
-                                                href={item.href}
-                                                className="text-muted-foreground hover:text-accent-foreground block duration-150"
-                                            >
-                                                <span>{t(item.key)}</span>
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className="flex items-center gap-3">
-                                    <Button asChild size="sm">
-                                        <Link href="#">
-                                            <span>Reservar</span>
-                                        </Link>
-                                    </Button>
-                                    <ModeToggle />
-                                </div>
-                            </div> */}
-
                             <div
                                 className={cn(
                                     'border-b-primary-foreground border-b-[1px] w-full',
