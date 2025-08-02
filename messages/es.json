@@ -601,7 +601,7 @@
             },
             "card5": {
                 "title": "Vacaciones en Familia",
-                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/experiencias#contacto"
@@ -1049,7 +1049,7 @@
             },
             "card3": {
                 "title": "Vacaciones en familia",
-                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/habitaciones#contacto"

@@ -601,7 +601,7 @@
             },
             "card5": {
                 "title": "Family Vacation",
-                "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
+                "description": "Share unique moments by booking two or more rooms and enjoy an unforgettable experience with your family.",
                 "ctaButton": {
                     "label": "Inquire",
                     "link": "/experiences#contact"
@@ -1049,7 +1049,7 @@
             },
             "card3": {
                 "title": "Family vacation",
-                "description": "Book two or more rooms for your family vacation and receive a 50% discount on the second room.",
+                "description": "Share unique moments by booking two or more rooms and enjoy an unforgettable experience with your family.",
                 "ctaButton": {
                     "label": "Inquire",
                     "link": "/rooms#contact"
