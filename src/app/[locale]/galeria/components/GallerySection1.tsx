@@ -29,8 +29,8 @@ export const GallerySection1 = () => {
     }, []);
 
     // Construir la URL del video con autoplay cuando está en vista
-    const videoSrc = `https://www.youtube.com/embed/4_lzrprot5U?${
-        isInView ? 'autoplay=1&mute=1&loop=1&playlist=4_lzrprot5U' : ''
+    const videoSrc = `https://www.youtube.com/embed/QLUBjoN3w1I?${
+        isInView ? 'autoplay=1&mute=1&loop=1&playlist=QLUBjoN3w1I' : ''
     }`;
 
     return (
