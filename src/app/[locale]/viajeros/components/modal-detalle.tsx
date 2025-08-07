@@ -180,8 +180,8 @@ export default function ModalDetalle({
     if (isMobile) {
         return (
             <Drawer open={isOpen} onOpenChange={open => !open && onClose()}>
-                <DrawerContent className="max-h-[85vh]">
-                    <DrawerHeader>
+                <DrawerContent className="max-h-[85vh] pb-4">
+                    <DrawerHeader className="px-4">
                         <DrawerTitle className="text-xl font-serif text-secondary dark:text-secondary-foreground">
                             {tPlace(`${lugar.id}.title` as TraduccionKey)}
                         </DrawerTitle>
@@ -193,10 +193,12 @@ export default function ModalDetalle({
                         </span>
                     </DrawerHeader>
 
-                    <div className="flex-1 overflow-hidden px-4">
-                        <ScrollArea className="h-[45vh]">
-                            <ImageCarousel />
-                            <DescriptionContent />
+                    <div className="flex-1 overflow-hidden">
+                        <ScrollArea className="h-[50vh] px-0">
+                            <div className="px-4">
+                                <ImageCarousel />
+                                <DescriptionContent />
+                            </div>
                         </ScrollArea>
                     </div>
 
@@ -213,21 +215,21 @@ export default function ModalDetalle({
 
     // Renderizar modal para escritorio
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
             <div
                 ref={modalRef}
-                className="relative bg-background w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg"
+                className="relative bg-background w-full max-w-4xl"
             >
                 <button
                     onClick={onClose}
-                    className="absolute right-3 top-3 md:right-4 md:top-4 z-10 p-1.5 md:p-2 bg-background/80 rounded-full hover:bg-background transition-colors"
+                    className="absolute right-3 top-3 md:right-4 md:top-4 z-10 p-1.5 md:p-2 bg-background/80 rounded-full hover:bg-background transition-colors cursor-pointer"
                     aria-label={tModal('close')}
                 >
                     <X className="h-4 w-4 md:h-5 md:w-5 text-foreground" />
                 </button>
 
-                <div className="p-4 md:p-6">
-                    <div className="mb-3 md:mb-4">
+                <div className="p-4 md:p-6 flex flex-col overflow-hidden">
+                    <div className="mb-3 md:mb-4 flex-shrink-0">
                         <span className="text-xs md:text-sm font-light tracking-wider text-primary uppercase">
                             {tCategories(lugar.categoriaId as TraduccionKey)}
                         </span>
@@ -239,8 +241,10 @@ export default function ModalDetalle({
                         </h3>
                     </div>
 
-                    <ImageCarousel />
-                    <DescriptionContent />
+                    <ScrollArea className="flex-1 px-0 max-h-[80vh]">
+                        <ImageCarousel />
+                        <DescriptionContent />
+                    </ScrollArea>
                 </div>
             </div>
         </div>

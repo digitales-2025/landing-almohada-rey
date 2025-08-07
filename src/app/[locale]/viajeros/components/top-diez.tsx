@@ -19,7 +19,7 @@ export default function TopDiez({ items, onItemClick }: TopDiezProps) {
 
     return (
         <div className="p-4 md:p-6 rounded-lg">
-            <h2 className="text-xl md:text-2xl font-serif text-secondary dark:text-secondary-foreground mb-4 md:mb-6">
+            <h2 className="text-xl md:text-2xl font-serif text-primary mb-4 md:mb-6">
                 {t('popular')}
             </h2>
             <div className="space-y-3 md:space-y-4">

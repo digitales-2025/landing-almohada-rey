@@ -164,7 +164,7 @@ export default function CarruselDestinos({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            <div className="overflow-hidden rounded-lg">
+            <div className="overflow-hidden">
                 <div className="flex flex-col md:flex-row">
                     {/* Imagen principal a la izquierda (ocupa 50% en desktop) - Altura fija */}
                     <div className="relative w-full md:w-1/2 h-[450px] md:h-[600px] overflow-hidden">
@@ -201,7 +201,7 @@ export default function CarruselDestinos({
                     </div>
 
                     {/* Contenido a la derecha (ocupa 50% en desktop) */}
-                    <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-between bg-background">
+                    <div className="w-full md:w-1/2 p-8 md:p-12 pb-0 md:pb-0 flex flex-col justify-between bg-background">
                         {/* Información del destino actual */}
                         <AnimatePresence
                             initial={false}
@@ -236,7 +236,7 @@ export default function CarruselDestinos({
                                                 destinoActual.id
                                             )
                                         }
-                                        className="px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-base md:text-lg"
+                                        className="px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-base md:text-lg"
                                     >
                                         {tTouristPlaces('viewDestination')}
                                     </button>
@@ -258,7 +258,7 @@ export default function CarruselDestinos({
                                     {tTouristPlaces('nextRecommendation')}
                                 </p>
                                 <div
-                                    className="flex items-center gap-5 cursor-pointer hover:bg-accent/10 p-3 rounded-md transition-colors"
+                                    className="flex items-center gap-5 cursor-pointer hover:bg-accent/10 p-3 pb-0 transition-colors"
                                     onClick={() =>
                                         onDestinoClick(
                                             destinoSiguiente.categoriaId,
@@ -266,7 +266,7 @@ export default function CarruselDestinos({
                                         )
                                     }
                                 >
-                                    <div className="relative w-28 h-28 md:w-36 md:h-36 overflow-hidden rounded-md flex-shrink-0">
+                                    <div className="relative w-28 h-28 md:w-48 md:h-48 overflow-hidden flex-shrink-0">
                                         <img
                                             src={
                                                 destinoSiguiente.imagenes[0]
