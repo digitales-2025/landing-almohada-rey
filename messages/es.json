@@ -1,4 +1,15 @@
 {
+    "Categories": {
+        "title": "CATEGORÍAS",
+        "todos": "TODOS",
+        "urban_destinations": "DESTINOS URBANOS",
+        "beaches": "PLAYAS",
+        "nearby_landscapes": "PAISAJES CERCANOS",
+        "colca_canyon": "CAÑÓN DEL COLCA",
+        "festivals_celebrations": "FIESTAS Y CELEBRACIONES",
+        "gastronomy": "GASTRONOMÍA",
+        "majes_valley": "VALLE DE MAJES"
+    },
     "CollapseParragraph": {
         "expand": "Leer más",
         "collapse": "Leer menos"
@@ -82,6 +93,11 @@
             }
         }
     },
+    "Header": {
+        "travelers": "VIAJEROS",
+        "tourist_information": "Información Turística"
+    },
+
     "IndexPage": {
         "titleFirstSpan": "Una Experiencia",
         "titleSecondSpan": "Memorable",
@@ -541,8 +557,8 @@
             "title": "Ofertas especiales",
             "description": "Viva tus mejores recuerdos aquí",
             "card1": {
-                "title": "Más tiempo, más ahorro",
-                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "title": "Alargue su descanso, ahorre sin apuro",
+                "description": "Disfrute su estadía a su propio ritmo, con la comodidad y tranquilidad que merece.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/experiencias#contacto"
@@ -557,11 +573,11 @@
                 }
             },
             "card3": {
-                "title": "Celebra el amor, luna de miel",
-                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "title": "Una luna de miel para recordar",
+                "description": "Reserve una Suite para su luna de miel y reciba un desayuno romántico para dos y mucho más para hacer la ocasión más especial aún.",
                 "details": {
                     "item1": "2 - huéspedes",
-                    "item2": "Cena y desayuno para 2",
+                    "item2": "Desayuno para 2",
                     "item3": "Amenidades de cortesía"
                 },
                 "pricing": {
@@ -584,8 +600,8 @@
                 }
             },
             "card5": {
-                "title": "Vacaciones en Familia",
-                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "title": "Descanso para toda la familia",
+                "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/experiencias#contacto"
@@ -715,11 +731,11 @@
                 "imageAlt": "Recepción del hotel"
             },
             "section3": {
-                "title": "Nuestra",
-                "description": "Terraza",
-                "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
-                "imageAlt2": "Terraza con sillas rojas y mesa",
-                "imageAlt3": "Terraza al atardecer con iluminación"
+                "title": "Sala de",
+                "description": "Conferencias",
+                "imageAlt1": "Sala de conferencias sillas marrones y proyector",
+                "imageAlt2": "Sala de conferencias sillas marrones y mesa de madera",
+                "imageAlt3": "Sala de conferencias con sillas marrones mesa y proyector"
             },
             "section4": {
                 "title": "Descanso &",
@@ -1016,8 +1032,8 @@
             "title": "Ofertas especiales",
             "description": "Vive tus mejores recuerdos aquí",
             "card1": {
-                "title": "Más tiempo, más ahorro",
-                "description": "Reserve una estancia de al menos 5 noches y obtenga un 20% de descuento en el precio de su habitación.",
+                "title": "Alargue su descanso, ahorre sin apuro",
+                "description": "Disfrute su estadía a su propio ritmo, con la comodidad y tranquilidad que merece.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/habitaciones#contacto"
@@ -1025,15 +1041,15 @@
             },
             "card2": {
                 "title": "Celebra el amor, Luna de miel",
-                "description": "Reserve una Suite para su luna de miel y reciba una cena romántica para dos y mucho más para hacer la ocasión más especial aún.",
+                "description": "Reserve una Suite para su luna de miel y reciba un desayuno romántico para dos y mucho más para hacer la ocasión más especial aún.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/habitaciones#contacto"
                 }
             },
             "card3": {
-                "title": "Vacaciones en familia",
-                "description": "Reserve dos o más habitaciones para sus vacaciones familiares y reciba un 50% de descuento en la segunda habitación.",
+                "title": "Descanso para toda la familia",
+                "description": "Comparta momentos únicos reservando dos o más habitaciones y viva una experiencia inolvidable junto a su familia.",
                 "ctaButton": {
                     "label": "Consultar",
                     "link": "/habitaciones#contacto"
@@ -1068,123 +1084,10 @@
         }
     },
 
-        "IndexPageTravelers": {
-          "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
-          "title": "Viajeros"
-        },
-        "Categories": {
-          "title": "CATEGORÍAS",
-          "todos": "TODOS",
-          "urban_destinations": "DESTINOS URBANOS",
-          "beaches": "PLAYAS",
-          "nearby_landscapes": "PAISAJES CERCANOS",
-          "colca_canyon": "CAÑÓN DEL COLCA",
-          "festivals_celebrations": "FIESTAS Y CELEBRACIONES",
-          "gastronomy": "GASTRONOMÍA",
-          "majes_valley": "VALLE DE MAJES"
-        },
-        "TouristPlaces": {
-          "popular": "POPULARES",
-          "pagination": {
-            "page": "Página"
-          },
-              "viewDestination": "Ver destino",
-              "nextRecommendation": "Siguiente recomendación:"
-        },
-        "TouristPlace": {
-          "readMore": "Leer más..."
-        },
-        "Modal": {
-          "close": "Cerrar"
-        },
-        "Places": {
-          "monasterio_santa_catalina": {
-            "title": "Monasterio de Santa Catalina",
-            "subtitle": "Joya arquitectónica colonial",
-            "description": "El Monasterio de Santa Catalina es una ciudadela religiosa fundada en 1579, construida en sillar. Dentro de sus muros se puede apreciar calles, plazas y claustros que conservan su encanto original. Es uno de los recintos religiosos más importantes del Perú colonial."
-          },
-          "museo_santuarios_andinos": {
-            "title": "Museo Arqueológico Santuarios Andinos",
-            "subtitle": "Hogar de la momia Juanita",
-            "description": "Exhibe a la Dama de Ampato, momia inca encontrada en la cima del volcán Ampato, trata de una niña de 12 ó 14 años, quien habría sido una ofrenda al apu protector. Su antigüedad se remonta a unos 500 años."
-          },
-          "basilica_catedral": {
-            "title": "Basílica Catedral de la ciudad de Arequipa",
-            "subtitle": "Joya arquitectónica neoclásica",
-            "description": "Se puede apreciar su altar de mármol de carrara, el púlpito y un antiguo órgano. Uno de los primeros monumentos religiosos del siglo XVII en la ciudad. Se construyó en sillar (piedra de origen volcánico), de estilo neoclásico."
-          },
-          "mollendo_mejia_camana": {
-            "title": "Mollendo, Mejía y Camaná",
-            "subtitle": "Playas del litoral arequipeño",
-            "description": "Las playas de Mollendo, Mejía y Camaná son los principales balnearios de Arequipa. Ofrecen hermosas costas con aguas cristalinas, perfectas para el descanso y deportes acuáticos. Durante el verano, son el destino preferido de los arequipeños y turistas."
-          },
-          "lagunas_mejia": {
-            "title": "Santuario Nacional Lagunas de Mejía",
-            "subtitle": "Refugio de aves migratorias",
-            "description": "Proporciona el hábitat y alimento necesario para el largo viaje de las aves migratorias que vienen del hemisferio norte, como el playero blanco (Calidris Alba). En sus 690,6 ha de extensión, logra abarcar diferentes tipos de hábitats: espejos lagunares, pantanos, fangales salinos, totorales, monte y estuario ribereño, gramadales y vastas playas arenosas., convirtiéndolo en uno de los más importantes santuarios de la costa occidental de Sudamérica."
-          },
-          "petroglifos_toro_muerto": {
-            "title": "Petroglifos de Toro Muerto",
-            "subtitle": "Arte rupestre milenario",
-            "description": "Toro Muerto es uno de los sitios de arte rupestre más grandes de Sudamérica, con más de 5,000 bloques de piedra volcánica grabados con figuras de animales, seres humanos y símbolos geométricos. Estas manifestaciones artísticas datan de entre 500 y 1,000 d.C."
-          },
-          "mirador_condor": {
-            "title": "Mirador del Cóndor",
-            "subtitle": "Observación de cóndores andinos",
-            "description": "La Cruz del Cóndor es un mirador natural desde donde se puede observar el vuelo majestuoso del cóndor andino. Este punto ofrece también una vista impresionante del Cañón del Colca, uno de los más profundos del mundo, con más de 4,160 metros de profundidad."
-          },
-          "termas_calera": {
-            "title": "Termas de La Calera",
-            "subtitle": "Aguas termales medicinales",
-            "description": "Las aguas termales de La Calera, ubicadas en Chivay, tienen propiedades medicinales gracias a su alto contenido mineral. Con temperaturas entre 38°C y 40°C, estas piscinas naturales son perfectas para relajarse después de un día de caminata por el cañón."
-          },
-          "campina_aqp": {
-            "title": "Campiña de Arequipa",
-            "subtitle": "Paisajes coloniales y volcanes",
-            "description": "A minutos de la ciudad, se encuentran las mejores vistas panorámicas. Observa los volcanes que la rodean y espectaculares construcciones coloniales de la zona."
-          },
-          "gastronomia_aqp": {
-            "title": "Gastronomía Arequipeña",
-            "subtitle": "Capital Gastronómica del Perú",
-            "description": "La gastronomía arequipeña, reconocida como \"Capital Gastronómica de Perú\", ofrece una amplia variedad de platos típicos que fusionan la cocina andina ancestral con influencias españolas, creando sabores únicos y auténticos."
-          },
-          "aniversario_arequipa": {
-            "title": "Aniversario de la ciudad de Arequipa",
-            "subtitle": "Festividades de agosto",
-            "description": "Cada 15 de agosto, Arequipa celebra su fundación española con un mes lleno de actividades culturales, gastronómicas y artísticas. El punto culminante es el corso de la amistad, un colorido desfile que recorre las principales calles de la ciudad con carros alegóricos y danzas tradicionales."
-          },
-          "virgen_chapi": {
-            "title": "Virgen de Chapi",
-            "subtitle": "Celebración religiosa arequipeña",
-            "description": "Fecha: 01 MAY - 02 MAY. Celebración religiosa de arraigo arequipeño. Se realiza una peregrinación de fieles al Santuario de la Virgen de Chapi, se lleva a cabo una serenata, misa de fiesta y procesión en el Santuario así como quema de castillos y presentación de fuegos artificiales."
-          }
-        },
-        "TopItems": {
-          "mirador_condor": "Cañón del Colca",
-          "mirador_condor_subtitle": "Uno de los cañones más profundos del mundo",
-          "aniversario_arequipa": "Aniversario de la ciudad de Arequipa",
-          "aniversario_arequipa_subtitle": "Celebración histórica y cultural",
-          "gastronomia_aqp": "Gastronomía Arequipeña",
-          "gastronomia_aqp_subtitle": "Capital Gastronómica del Perú",
-          "monasterio_santa_catalina": "Monasterio de Santa Catalina",
-          "monasterio_santa_catalina_subtitle": "Joya arquitectónica colonial",
-          "campina_aqp": "Campiña de Arequipa",
-          "campina_aqp_subtitle": "Vistas panorámicas y patrimonio colonial",
-          "petroglifos_toro_muerto": "Petroglifos de Toro Muerto",
-          "petroglifos_toro_muerto_subtitle": "Arte rupestre milenario",
-          "mollendo_mejia_camana": "Mollendo",
-          "mollendo_mejia_camana_subtitle": "Principal balneario de Arequipa",
-          "termas_calera": "Termas de La Calera",
-          "termas_calera_subtitle": "Aguas termales medicinales",
-          "museo_santuarios_andinos": "Museo Santuarios Andinos",
-          "museo_santuarios_andinos_subtitle": "Hogar de la momia Juanita"
-        },
-        "Header": {
-          "travelers": "VIAJEROS",
-          "tourist_information": "Información Turística"
-        }
-  
-      ,
+    "IndexPageTravelers": {
+        "description": "Esta es una página de ejemplo que demuestra el uso de <code>next-intl</code> con el enrutador de aplicaciones de Next.js. Intenta cambiar el idioma en la esquina superior derecha y observa cómo cambia el contenido.",
+        "title": "Viajeros"
+    },
     "KeepInTouchSection": {
         "sectionName": "contacto",
         "title": "Contacto",
@@ -1207,6 +1110,9 @@
     "Manifest": {
         "name": "La Almohada del Rey"
     },
+    "Modal": {
+        "close": "Cerrar"
+    },
     "Navigation": {
         "home": "Inicio",
         "experiences": "Experiencias",
@@ -1226,5 +1132,98 @@
     "NotFoundPage": {
         "description": "Por favor recarga la página y a través de la barra de navegación vaya a una ruta conocida.",
         "title": "Página no encontrada"
+    },
+    "Places": {
+        "monasterio_santa_catalina": {
+            "title": "Monasterio de Santa Catalina",
+            "subtitle": "Joya arquitectónica colonial",
+            "description": "El Monasterio de Santa Catalina es una ciudadela religiosa fundada en 1579, construida en sillar. Dentro de sus muros se puede apreciar calles, plazas y claustros que conservan su encanto original. Es uno de los recintos religiosos más importantes del Perú colonial."
+        },
+        "museo_santuarios_andinos": {
+            "title": "Museo Arqueológico Santuarios Andinos",
+            "subtitle": "Hogar de la momia Juanita",
+            "description": "Exhibe a la Dama de Ampato, momia inca encontrada en la cima del volcán Ampato, trata de una niña de 12 ó 14 años, quien habría sido una ofrenda al apu protector. Su antigüedad se remonta a unos 500 años."
+        },
+        "basilica_catedral": {
+            "title": "Basílica Catedral de la ciudad de Arequipa",
+            "subtitle": "Joya arquitectónica neoclásica",
+            "description": "Se puede apreciar su altar de mármol de carrara, el púlpito y un antiguo órgano. Uno de los primeros monumentos religiosos del siglo XVII en la ciudad. Se construyó en sillar (piedra de origen volcánico), de estilo neoclásico."
+        },
+        "mollendo_mejia_camana": {
+            "title": "Mollendo, Mejía y Camaná",
+            "subtitle": "Playas del litoral arequipeño",
+            "description": "Las playas de Mollendo, Mejía y Camaná son los principales balnearios de Arequipa. Ofrecen hermosas costas con aguas cristalinas, perfectas para el descanso y deportes acuáticos. Durante el verano, son el destino preferido de los arequipeños y turistas."
+        },
+        "lagunas_mejia": {
+            "title": "Santuario Nacional Lagunas de Mejía",
+            "subtitle": "Refugio de aves migratorias",
+            "description": "Proporciona el hábitat y alimento necesario para el largo viaje de las aves migratorias que vienen del hemisferio norte, como el playero blanco (Calidris Alba). En sus 690,6 ha de extensión, logra abarcar diferentes tipos de hábitats: espejos lagunares, pantanos, fangales salinos, totorales, monte y estuario ribereño, gramadales y vastas playas arenosas., convirtiéndolo en uno de los más importantes santuarios de la costa occidental de Sudamérica."
+        },
+        "petroglifos_toro_muerto": {
+            "title": "Petroglifos de Toro Muerto",
+            "subtitle": "Arte rupestre milenario",
+            "description": "Toro Muerto es uno de los sitios de arte rupestre más grandes de Sudamérica, con más de 5,000 bloques de piedra volcánica grabados con figuras de animales, seres humanos y símbolos geométricos. Estas manifestaciones artísticas datan de entre 500 y 1,000 d.C."
+        },
+        "mirador_condor": {
+            "title": "Mirador del Cóndor",
+            "subtitle": "Observación de cóndores andinos",
+            "description": "La Cruz del Cóndor es un mirador natural desde donde se puede observar el vuelo majestuoso del cóndor andino. Este punto ofrece también una vista impresionante del Cañón del Colca, uno de los más profundos del mundo, con más de 4,160 metros de profundidad."
+        },
+        "termas_calera": {
+            "title": "Termas de La Calera",
+            "subtitle": "Aguas termales medicinales",
+            "description": "Las aguas termales de La Calera, ubicadas en Chivay, tienen propiedades medicinales gracias a su alto contenido mineral. Con temperaturas entre 38°C y 40°C, estas piscinas naturales son perfectas para relajarse después de un día de caminata por el cañón."
+        },
+        "campina_aqp": {
+            "title": "Campiña de Arequipa",
+            "subtitle": "Paisajes coloniales y volcanes",
+            "description": "A minutos de la ciudad, se encuentran las mejores vistas panorámicas. Observa los volcanes que la rodean y espectaculares construcciones coloniales de la zona."
+        },
+        "gastronomia_aqp": {
+            "title": "Gastronomía Arequipeña",
+            "subtitle": "Capital Gastronómica del Perú",
+            "description": "La gastronomía arequipeña, reconocida como \"Capital Gastronómica de Perú\", ofrece una amplia variedad de platos típicos que fusionan la cocina andina ancestral con influencias españolas, creando sabores únicos y auténticos."
+        },
+        "aniversario_arequipa": {
+            "title": "Aniversario de la ciudad de Arequipa",
+            "subtitle": "Festividades de agosto",
+            "description": "Cada 15 de agosto, Arequipa celebra su fundación española con un mes lleno de actividades culturales, gastronómicas y artísticas. El punto culminante es el corso de la amistad, un colorido desfile que recorre las principales calles de la ciudad con carros alegóricos y danzas tradicionales."
+        },
+        "virgen_chapi": {
+            "title": "Virgen de Chapi",
+            "subtitle": "Celebración religiosa arequipeña",
+            "description": "Fecha: 01 MAY - 02 MAY. Celebración religiosa de arraigo arequipeño. Se realiza una peregrinación de fieles al Santuario de la Virgen de Chapi, se lleva a cabo una serenata, misa de fiesta y procesión en el Santuario así como quema de castillos y presentación de fuegos artificiales."
+        }
+    },
+    "TopItems": {
+        "mirador_condor": "Cañón del Colca",
+        "mirador_condor_subtitle": "Uno de los cañones más profundos del mundo",
+        "aniversario_arequipa": "Aniversario de la ciudad de Arequipa",
+        "aniversario_arequipa_subtitle": "Celebración histórica y cultural",
+        "gastronomia_aqp": "Gastronomía Arequipeña",
+        "gastronomia_aqp_subtitle": "Capital Gastronómica del Perú",
+        "monasterio_santa_catalina": "Monasterio de Santa Catalina",
+        "monasterio_santa_catalina_subtitle": "Joya arquitectónica colonial",
+        "campina_aqp": "Campiña de Arequipa",
+        "campina_aqp_subtitle": "Vistas panorámicas y patrimonio colonial",
+        "petroglifos_toro_muerto": "Petroglifos de Toro Muerto",
+        "petroglifos_toro_muerto_subtitle": "Arte rupestre milenario",
+        "mollendo_mejia_camana": "Mollendo",
+        "mollendo_mejia_camana_subtitle": "Principal balneario de Arequipa",
+        "termas_calera": "Termas de La Calera",
+        "termas_calera_subtitle": "Aguas termales medicinales",
+        "museo_santuarios_andinos": "Museo Santuarios Andinos",
+        "museo_santuarios_andinos_subtitle": "Hogar de la momia Juanita"
+    },
+    "TouristPlace": {
+        "readMore": "Leer más..."
+    },
+    "TouristPlaces": {
+        "popular": "POPULARES",
+        "pagination": {
+            "page": "Página"
+        },
+        "viewDestination": "Ver destino",
+        "nextRecommendation": "Siguiente recomendación:"
     }
 }

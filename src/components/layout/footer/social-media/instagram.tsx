@@ -12,7 +12,7 @@ interface InstagramProps {
 const InstagramLink: React.FC<InstagramProps> = ({
     className = 'text-primary',
     svgClassName = '',
-    href = 'https://www.instagram.com/almohada_rey',
+    href = 'https://www.instagram.com/hlaalmohadadelrey?igsh=MTVlMzE3cDQ4YmVrcA==',
 }) => {
     return (
         <ExternalLink

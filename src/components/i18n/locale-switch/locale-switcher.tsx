@@ -46,7 +46,12 @@ export default function LocaleSwitcher({ className }: LocaleSwitcherParams) {
         });
     }
     return (
-        <div className={cn('relative text-gray-400', className)}>
+        <div
+            className={cn(
+                'relative cursor-pointer border-none shadow-none',
+                className
+            )}
+        >
             <Select
                 defaultValue={locale}
                 value={locale}
@@ -54,17 +59,24 @@ export default function LocaleSwitcher({ className }: LocaleSwitcherParams) {
                 onValueChange={onSelectChange}
             >
                 <SelectTrigger
-                    className="border-none py-0"
+                    className="!border-none !shadow-none py-0 cursor-pointer focus-visible:!ring-0 focus-visible:!border-none"
                     disabled={isPending}
                 >
-                    {/* <SelectValue placeholder={'Lang'} /> */}
-                    <span>{getLocaleLabel(locale)}</span>
+                    <span className="cursor-pointer">
+                        {getLocaleLabel(locale)}
+                    </span>
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="!border-none !shadow-none">
                     <SelectGroup>
                         {routing.locales.map(cur => (
-                            <SelectItem key={cur} value={cur}>
-                                {t('locale', { locale: cur })}
+                            <SelectItem
+                                key={cur}
+                                value={cur}
+                                className="cursor-pointer"
+                            >
+                                <span className="cursor-pointer">
+                                    {t('locale', { locale: cur })}
+                                </span>
                             </SelectItem>
                         ))}
                     </SelectGroup>

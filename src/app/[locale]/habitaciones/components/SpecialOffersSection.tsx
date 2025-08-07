@@ -33,23 +33,6 @@ export const SpecialOffersSection = () => {
         },
         {
             cardTitle: {
-                text: t('card2.title'),
-            },
-            name: 'card2',
-            description: t('card2.description'),
-            href: t('card2.ctaButton.link'),
-            cta: t('card1.ctaButton.label'),
-            background: (
-                <img
-                    src="/rooms/offers_section/honeymoon_champagne.webp"
-                    alt="honeymoon_champagne"
-                    className={imageClassnames}
-                />
-            ),
-            className: 'col-span-1',
-        },
-        {
-            cardTitle: {
                 text: t('card3.title'),
             },
             name: 'card3',

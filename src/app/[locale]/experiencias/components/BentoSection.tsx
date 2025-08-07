@@ -41,31 +41,31 @@ export const BentoSection = () => {
             className:
                 'lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3',
         },
-        {
-            cardTitle: {
-                text: t('bentoSection.card2.title'),
-            },
-            name: 'card2',
-            description: t('bentoSection.card2.description'),
-            href: t('bentoSection.card2.ctaButton.link'),
-            cta: t('bentoSection.card2.ctaButton.label'),
-            background: (
-                <Image
-                    src="/experiences/RelaxDrinkingLatte.webp"
-                    alt="RelaxDrinkingLatte"
-                    quality={100}
-                    fill
-                    className="object-cover object-top"
-                    priority
-                    loading="eager"
-                    placeholder="blur"
-                    blurDataURL="/experiences/RelaxDrinkingLatte.webp"
-                    unoptimized
-                />
-            ),
-            className:
-                'lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-5',
-        },
+        // {
+        //     cardTitle: {
+        //         text: t('bentoSection.card2.title'),
+        //     },
+        //     name: 'card2',
+        //     description: t('bentoSection.card2.description'),
+        //     href: t('bentoSection.card2.ctaButton.link'),
+        //     cta: t('bentoSection.card2.ctaButton.label'),
+        //     background: (
+        //         <Image
+        //             src="/experiences/RelaxDrinkingLatte.webp"
+        //             alt="RelaxDrinkingLatte"
+        //             quality={100}
+        //             fill
+        //             className="object-cover object-top"
+        //             priority
+        //             loading="eager"
+        //             placeholder="blur"
+        //             blurDataURL="/experiences/RelaxDrinkingLatte.webp"
+        //             unoptimized
+        //         />
+        //     ),
+        //     className:
+        //         'lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-5',
+        // },
         {
             cardTitle: {
                 text: t('bentoSection.card3.title'),
@@ -114,31 +114,31 @@ export const BentoSection = () => {
             className:
                 'row-span-2 lg:row-start-1 lg:row-end-3 lg:col-start-2 lg:col-end-4',
         },
-        {
-            cardTitle: {
-                text: t('bentoSection.card4.title'),
-            },
-            name: 'card4',
-            description: t('bentoSection.card4.description'),
-            href: t('bentoSection.card4.ctaButton.link'),
-            cta: t('bentoSection.card4.ctaButton.label'),
-            background: (
-                <Image
-                    src="/experiences/MainSquareCathedral.webp"
-                    alt="MainSquareCathedral"
-                    quality={100}
-                    fill
-                    className="object-cover"
-                    priority
-                    loading="eager"
-                    placeholder="blur"
-                    blurDataURL="/experiences/MainSquareCathedral.webp"
-                    unoptimized
-                />
-            ),
-            className:
-                'lg:col-start-2 lg:col-end-2 lg:row-start-3 lg:row-end-5',
-        },
+        // {
+        //     cardTitle: {
+        //         text: t('bentoSection.card4.title'),
+        //     },
+        //     name: 'card4',
+        //     description: t('bentoSection.card4.description'),
+        //     href: t('bentoSection.card4.ctaButton.link'),
+        //     cta: t('bentoSection.card4.ctaButton.label'),
+        //     background: (
+        //         <Image
+        //             src="/experiences/MainSquareCathedral.webp"
+        //             alt="MainSquareCathedral"
+        //             quality={100}
+        //             fill
+        //             className="object-cover"
+        //             priority
+        //             loading="eager"
+        //             placeholder="blur"
+        //             blurDataURL="/experiences/MainSquareCathedral.webp"
+        //             unoptimized
+        //         />
+        //     ),
+        //     className:
+        //         'lg:col-start-2 lg:col-end-2 lg:row-start-3 lg:row-end-5',
+        // },
         {
             cardTitle: {
                 text: t('bentoSection.card5.title'),
@@ -162,7 +162,7 @@ export const BentoSection = () => {
                 />
             ),
             className:
-                'lg:col-start-3 lg:col-end-3 lg:row-start-3 lg:row-end-5',
+                'lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-5',
         },
     ];
 

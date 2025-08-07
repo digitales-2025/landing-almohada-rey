@@ -38,7 +38,7 @@ export default function LugarTuristico({
 
     return (
         <div
-            className={`flex flex-col h-full rounded-lg overflow-hidden transition-all duration-500 ${
+            className={`flex flex-col h-full overflow-hidden transition-all duration-500 ${
                 isHighlighted ? 'shadow-md' : 'hover:shadow-md'
             }`}
         >

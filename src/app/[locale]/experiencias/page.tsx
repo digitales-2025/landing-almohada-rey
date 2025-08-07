@@ -3,7 +3,7 @@ import { KeepInTouchCTA } from '../../../components/common/KeepInTouchCTA/KeepIn
 import { BentoSection } from './components/BentoSection';
 import { BusinessPackageHero } from './components/BusinessPackageHero';
 import { ConferenceHallSection } from './components/ConferenceHallSection';
-import { EventPackagesSection } from './components/EventPackagesSection';
+/* import { EventPackagesSection } from './components/EventPackagesSection'; */
 import { ExperiencesHeroSection } from './components/ExperiencesHero';
 import { ServicesSection } from './components/ServicesSection';
 
@@ -13,7 +13,7 @@ export default function page() {
             <ExperiencesHeroSection />
             <BentoSection></BentoSection>
             <BusinessPackageHero></BusinessPackageHero>
-            <EventPackagesSection></EventPackagesSection>
+            {/*             <EventPackagesSection></EventPackagesSection> */}
             <ConferenceHallSection></ConferenceHallSection>
             <ServicesSection></ServicesSection>
             <KeepInTouchCTA></KeepInTouchCTA>
