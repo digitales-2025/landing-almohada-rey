@@ -731,11 +731,11 @@
                 "imageAlt": "Recepción del hotel"
             },
             "section3": {
-                "title": "Nuestra",
-                "description": "Terraza",
-                "imageAlt1": "Terraza con tumbonas blancas y sillas rojas con sombrillas",
-                "imageAlt2": "Terraza con sillas rojas y mesa",
-                "imageAlt3": "Terraza al atardecer con iluminación"
+                "title": "Sala de",
+                "description": "Conferencias",
+                "imageAlt1": "Sala de conferencias sillas marrones y proyector",
+                "imageAlt2": "Sala de conferencias sillas marrones y mesa de madera",
+                "imageAlt3": "Sala de conferencias con sillas marrones mesa y proyector"
             },
             "section4": {
                 "title": "Descanso &",

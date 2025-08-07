@@ -734,11 +734,11 @@ declare const messages: {
                 imageAlt: 'Hotel reception';
             };
             section3: {
-                title: 'Our ';
-                description: 'Terrace';
-                imageAlt1: 'Terrace with white loungers and red chairs with umbrellas';
-                imageAlt2: 'Terrace with red chairs and table';
-                imageAlt3: 'Terrace at sunset with lighting';
+                title: 'Conference ';
+                description: 'room';
+                imageAlt1: 'Conference room brown chairs and projector';
+                imageAlt2: 'Conference room brown chairs and wooden table';
+                imageAlt3: 'Conference room with brown chairs, table and projector';
             };
             section4: {
                 title: 'Rest &';
