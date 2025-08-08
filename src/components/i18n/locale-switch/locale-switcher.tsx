@@ -59,7 +59,7 @@ export default function LocaleSwitcher({ className }: LocaleSwitcherParams) {
                 onValueChange={onSelectChange}
             >
                 <SelectTrigger
-                    className="!border-none !shadow-none py-0 cursor-pointer focus-visible:!ring-0 focus-visible:!border-none"
+                    className="!border-none !shadow-none py-0 cursor-pointer"
                     disabled={isPending}
                 >
                     <span className="cursor-pointer">
@@ -72,7 +72,7 @@ export default function LocaleSwitcher({ className }: LocaleSwitcherParams) {
                             <SelectItem
                                 key={cur}
                                 value={cur}
-                                className="cursor-pointer"
+                                className="cursor-pointer px-2 py-1"
                             >
                                 <span className="cursor-pointer">
                                     {t('locale', { locale: cur })}
