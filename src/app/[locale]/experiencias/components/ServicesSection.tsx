@@ -24,7 +24,6 @@ export const ServicesSection = () => {
         { id: 'item11', name: t('services.item11') },
         { id: 'item2', name: t('services.item2') },
         { id: 'item19', name: t('services.item19') },
-        { id: 'item4', name: t('services.item4') },
     ];
 
     return (
