@@ -27,7 +27,7 @@ export const SafeHostSection = () => {
                 <figure className="w-full flex justify-center ">
                     <img
                         src="/home/TerracePhoto.webp"
-                        className="max-w-[880px] w-full aspect-21/9 object-cover object-top-right md:object-top"
+                        className="max-w-[1100px] w-full aspect-video object-cover object-top-right md:object-top"
                         alt="TerracePhoto"
                     />
                 </figure>
