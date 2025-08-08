@@ -158,7 +158,6 @@ export const BentoSection = () => {
                     loading="eager"
                     placeholder="blur"
                     blurDataURL="/experiences/MomAndSonHosts.webp"
-                    unoptimized
                 />
             ),
             className:
